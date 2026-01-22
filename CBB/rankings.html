@@ -32,8 +32,8 @@
 
     document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
 
-    // Path to CSV file (uppercase CBB)
-    const csvPath = `data/CBB_${year}_resume.csv`;
+    // Path to CSV file (matches your CBB_Elo_YYYY.csv format)
+    const csvPath = `data/CBB_Elo_${year}.csv`;
 
     // Fetch and parse CSV
     fetch(csvPath)
@@ -72,7 +72,7 @@
       .catch(err => {
         console.error("Error loading CSV:", err);
         const tbody = document.querySelector("#rankings tbody");
-        tbody.innerHTML = `<tr><td colspan="20">Failed to load rankings for ${year}. Make sure the CSV exists in data/CBB_${year}_resume.csv</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="20">Failed to load rankings for ${year}. Make sure the CSV exists in data/CBB_Elo_${year}.csv</td></tr>`;
       });
   </script>
 </body>
