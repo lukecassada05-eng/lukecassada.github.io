@@ -15,124 +15,155 @@
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { margin-bottom: 20px; }
-    h2 { margin-top: 40px; }
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f8; color: #111; }
+    h1 { text-align: center; margin-bottom: 10px; }
+    .subtitle { text-align: center; margin-bottom: 20px; color: #555; }
 
-    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { padding: 8px; text-align: left; border: 1px solid #ccc; }
+    .toggle-buttons { text-align: center; margin-bottom: 20px; }
+    .toggle-buttons button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ddd;
+      transition: background 0.2s;
+    }
+    .toggle-buttons button.active { background: #111; color: #fff; }
+    .toggle-buttons button:hover { background: #aaa; color: #fff; }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    th, td { padding: 8px 10px; border: 1px solid #ccc; text-align: left; }
     th { background-color: #f2f2f2; cursor: pointer; user-select: none; }
     th.sort-asc::after { content: " ▲"; }
     th.sort-desc::after { content: " ▼"; }
 
-    a { text-decoration: none; color: blue; }
+    a { text-decoration: none; color: blue; display: block; margin-top: 30px; text-align: center; }
     a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <h1 id="title">College Basketball Rankings</h1>
-  <a href="index.html">← Back to College Basketball</a>
+  <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
+
+  <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
+    <button id="show-elo" class="active">Elo Rankings</button>
+    <button id="show-projected">Projected Seeding</button>
+  </div>
 
   <div id="elo-container">
-    <h2>Elo Rankings</h2>
-    <table id="rankings">
+    <table id="elo-table">
       <thead><tr></tr></thead>
       <tbody></tbody>
     </table>
   </div>
 
   <div id="projected-container" style="display:none;">
-    <h2>Projected Bracket</h2>
-    <table id="projected">
+    <table id="projected-table">
       <thead><tr></tr></thead>
       <tbody></tbody>
     </table>
   </div>
 
+  <a href="index.html">← Back to College Basketball</a>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const year = params.get("year") || "2025";
+    document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
 
-    document.getElementById("title").textContent =
-      `College Basketball ${year} Rankings`;
+    const eloCsv = `data/CBB_Elo_${year}.csv`;
+    const projectedCsv = `data/projected_bracket${year}.csv`;
 
-    // Paths
-    const eloPath = `data/CBB_Elo_${year}.csv`;
-    const projectedPath = `data/projected_bracket2026.csv`;
+    const eloContainer = document.getElementById("elo-container");
+    const projectedContainer = document.getElementById("projected-container");
+    const toggleButtons = document.getElementById("toggle-buttons");
 
-    // Tables
-    const eloTable = document.querySelector("#rankings");
-    const projectedTable = document.querySelector("#projected");
-
-    // --- Load Elo CSV ---
     let eloData = [];
+    let projectedData = [];
     let sortState = {};
 
-    fetch(eloPath)
-      .then(res => { if (!res.ok) throw new Error("CSV not found"); return res.text(); })
+    // Fetch Elo CSV
+    fetch(eloCsv)
+      .then(res => {
+        if (!res.ok) throw new Error("Elo CSV not found");
+        return res.text();
+      })
       .then(csv => {
         const rows = csv.trim().split("\n").map(r => r.split(","));
         const headers = rows[0];
         eloData = rows.slice(1);
-
-        // Render headers
-        const theadRow = eloTable.querySelector("thead tr");
-        const tbody = eloTable.querySelector("tbody");
-        theadRow.innerHTML = "";
-        tbody.innerHTML = "";
-
-        headers.forEach((header, index) => {
-          const th = document.createElement("th");
-          th.textContent = header;
-          th.addEventListener("click", () => sortByColumn(index, th, eloData, eloTable));
-          theadRow.appendChild(th);
-        });
-
-        renderTable(eloData, eloTable);
+        renderTable(headers, eloData, document.querySelector("#elo-table thead tr"), document.querySelector("#elo-table tbody"));
       })
       .catch(err => {
+        document.querySelector("#elo-table tbody").innerHTML = `<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`;
         console.error(err);
-        eloTable.querySelector("tbody").innerHTML =
-          `<tr><td colspan="20">Failed to load rankings for ${year}.</td></tr>`;
       });
 
-    // --- Load projected bracket CSV for 2026 ---
-    if (year === "2026") {
-      document.getElementById("projected-container").style.display = "block";
+    // Fetch Projected CSV (only show button if exists)
+    fetch(projectedCsv)
+      .then(res => {
+        if (!res.ok) throw new Error("Projected CSV not found");
+        return res.text();
+      })
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(r => r.split(","));
+        const headers = rows[0];
+        projectedData = rows.slice(1);
+        renderTable(headers, projectedData, document.querySelector("#projected-table thead tr"), document.querySelector("#projected-table tbody"));
+        toggleButtons.style.display = "block"; // Show toggle only if projected exists
+      })
+      .catch(err => {
+        console.warn("Projected CSV not found:", err);
+      });
 
-      let projectedData = [];
-      fetch(projectedPath)
-        .then(res => { if (!res.ok) throw new Error("CSV not found"); return res.text(); })
-        .then(csv => {
-          const rows = csv.trim().split("\n").map(r => r.split(","));
-          const headers = rows[0];
-          projectedData = rows.slice(1);
+    function renderTable(headers, data, theadRow, tbody) {
+      theadRow.innerHTML = "";
+      tbody.innerHTML = "";
 
-          const theadRow = projectedTable.querySelector("thead tr");
-          const tbody = projectedTable.querySelector("tbody");
-          theadRow.innerHTML = "";
-          tbody.innerHTML = "";
+      headers.forEach((header, index) => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        th.addEventListener("click", () => sortByColumn(index, data, tbody, th));
+        theadRow.appendChild(th);
+      });
 
-          headers.forEach((header, index) => {
-            const th = document.createElement("th");
-            th.textContent = header;
-            th.addEventListener("click", () => sortByColumn(index, th, projectedData, projectedTable));
-            theadRow.appendChild(th);
-          });
-
-          renderTable(projectedData, projectedTable);
-        })
-        .catch(err => {
-          console.error(err);
-          projectedTable.querySelector("tbody").innerHTML =
-            `<tr><td colspan="20">Failed to load projected bracket data.</td></tr>`;
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
         });
+        tbody.appendChild(tr);
+      });
     }
 
-    // --- Helper functions ---
-    function renderTable(data, table) {
-      const tbody = table.querySelector("tbody");
+    function sortByColumn(colIndex, data, tbody, th) {
+      const headers = th.parentElement.querySelectorAll("th");
+      headers.forEach(h => h.classList.remove("sort-asc","sort-desc"));
+      const ascending = sortState[colIndex] !== "asc";
+      sortState = {};
+      sortState[colIndex] = ascending ? "asc" : "desc";
+      th.classList.add(ascending ? "sort-asc":"sort-desc");
+
+      data.sort((a,b) => {
+        const numA = parseFloat(a[colIndex]);
+        const numB = parseFloat(b[colIndex]);
+        if(!isNaN(numA) && !isNaN(numB)) return ascending ? numA - numB : numB - numA;
+        return ascending ? a[colIndex].localeCompare(b[colIndex]) : b[colIndex].localeCompare(a[colIndex]);
+      });
+
       tbody.innerHTML = "";
       data.forEach(row => {
         const tr = document.createElement("tr");
@@ -145,30 +176,20 @@
       });
     }
 
-    function sortByColumn(colIndex, th, data, table) {
-      const headers = table.querySelectorAll("th");
-      headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
+    // --- Toggle Buttons ---
+    document.getElementById("show-elo").addEventListener("click", () => {
+      eloContainer.style.display = "block";
+      projectedContainer.style.display = "none";
+      document.getElementById("show-elo").classList.add("active");
+      document.getElementById("show-projected").classList.remove("active");
+    });
 
-      const ascending = sortState[colIndex] !== "asc";
-      sortState = {};
-      sortState[colIndex] = ascending ? "asc" : "desc";
-
-      th.classList.add(ascending ? "sort-asc" : "sort-desc");
-
-      data.sort((a, b) => {
-        const valA = a[colIndex] || "";
-        const valB = b[colIndex] || "";
-
-        const numA = parseFloat(valA);
-        const numB = parseFloat(valB);
-
-        if (!isNaN(numA) && !isNaN(numB)) return ascending ? numA - numB : numB - numA;
-
-        return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
-      });
-
-      renderTable(data, table);
-    }
+    document.getElementById("show-projected").addEventListener("click", () => {
+      eloContainer.style.display = "none";
+      projectedContainer.style.display = "block";
+      document.getElementById("show-elo").classList.remove("active");
+      document.getElementById("show-projected").classList.add("active");
+    });
   </script>
 
 </body>
