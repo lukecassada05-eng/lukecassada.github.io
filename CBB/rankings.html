@@ -78,13 +78,16 @@
     document.getElementById("title").textContent =
       `College Basketball ${year} Rankings`;
 
-    // Handle 2026 toggle: Elo vs Projected Bracket
-    let csvOptions = [`CBB_Elo_${year}.csv`];
+    // Define CSV file(s)
+    let csvFiles = [`CBB_Elo_${year}.csv`];
+
+    // Add toggle buttons only for 2026
     if (year === "2026") {
-      csvOptions = ["CBB_Elo_2026.csv", "projected_bracket2026.csv"];
+      csvFiles = ["CBB_Elo_2026.csv", "projected_bracket2026.csv"];
       const toggleDiv = document.getElementById("toggleButtons");
       toggleDiv.innerHTML = "";
-      csvOptions.forEach((file, i) => {
+
+      csvFiles.forEach((file, i) => {
         const btn = document.createElement("button");
         btn.textContent = i === 0 ? "Elo Rankings" : "Projected Bracket";
         btn.classList.add(i === 0 ? "active" : "");
@@ -103,7 +106,7 @@
     function loadCSV(csvFile) {
       fetch(`data/${csvFile}`)
         .then(res => {
-          if (!res.ok) throw new Error("CSV not found");
+          if (!res.ok) throw new Error("CSV not found: " + csvFile);
           return res.text();
         })
         .then(csv => {
@@ -130,8 +133,7 @@
           console.error(err);
           document.querySelector("#rankings tbody").innerHTML =
             `<tr><td colspan="20">
-              Failed to load rankings for ${year}.
-              Make sure data/${csvFile} exists.
+              Failed to load rankings. Make sure "data/${csvFile}" exists.
             </td></tr>`;
         });
     }
@@ -175,7 +177,7 @@
     }
 
     // Initial load
-    loadCSV(csvOptions[0]);
+    loadCSV(csvFiles[0]);
   </script>
 
 </body>
