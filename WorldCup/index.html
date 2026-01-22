@@ -5,7 +5,7 @@
   <title>World Cup Rankings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWG43QNM3P"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,41 +15,120 @@
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    nav a { margin-right: 15px; text-decoration: none; color: blue; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: #555;
+    }
+
+    .divider {
+      width: 70px;
+      height: 3px;
+      background: #111;
+      margin: 30px auto;
+      border-radius: 2px;
+    }
+
+    .year-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .year {
+      background: #fff;
+      padding: 14px 0;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .year:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 25px;
+      border-top: 1px solid #ddd;
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <h1>World Cup Rankings</h1>
 
-  <nav>
-    <!-- Links for all World Cup years -->
-    <a href="rankings.html?year=2022">2022</a>
-    <a href="rankings.html?year=2018">2018</a>
-    <a href="rankings.html?year=2014">2014</a>
-    <a href="rankings.html?year=2010">2010</a>
-    <a href="rankings.html?year=2006">2006</a>
-    <a href="rankings.html?year=2002">2002</a>
-    <a href="rankings.html?year=1998">1998</a>
-    <a href="rankings.html?year=1994">1994</a>
-    <a href="rankings.html?year=1990">1990</a>
-    <a href="rankings.html?year=1986">1986</a>
-    <a href="rankings.html?year=1982">1982</a>
-    <a href="rankings.html?year=1978">1978</a>
-    <a href="rankings.html?year=1974">1974</a>
-    <a href="rankings.html?year=1970">1970</a>
-    <a href="rankings.html?year=1966">1966</a>
-    <a href="rankings.html?year=1962">1962</a>
-    <a href="rankings.html?year=1958">1958</a>
-    <a href="rankings.html?year=1954">1954</a>
-    <a href="rankings.html?year=1950">1950</a>
-    <a href="rankings.html?year=1938">1938</a>
-    <a href="rankings.html?year=1934">1934</a>
-    <a href="rankings.html?year=1930">1930</a>
-  </nav>
+  <div class="page">
 
-  <p>Select a year above to see the rankings.</p>
+    <h1>World Cup Rankings</h1>
+    <div class="subtitle">
+      Elo-based national team rankings by tournament year (1930–2022)
+    </div>
 
-  <p><a href="../index.html">← Back to homepage</a></p>
+    <div class="divider"></div>
+
+    <div class="year-grid">
+      <a class="year" href="rankings.html?year=2022">2022</a>
+      <a class="year" href="rankings.html?year=2018">2018</a>
+      <a class="year" href="rankings.html?year=2014">2014</a>
+      <a class="year" href="rankings.html?year=2010">2010</a>
+      <a class="year" href="rankings.html?year=2006">2006</a>
+      <a class="year" href="rankings.html?year=2002">2002</a>
+      <a class="year" href="rankings.html?year=1998">1998</a>
+      <a class="year" href="rankings.html?year=1994">1994</a>
+      <a class="year" href="rankings.html?year=1990">1990</a>
+      <a class="year" href="rankings.html?year=1986">1986</a>
+      <a class="year" href="rankings.html?year=1982">1982</a>
+      <a class="year" href="rankings.html?year=1978">1978</a>
+      <a class="year" href="rankings.html?year=1974">1974</a>
+      <a class="year" href="rankings.html?year=1970">1970</a>
+      <a class="year" href="rankings.html?year=1966">1966</a>
+      <a class="year" href="rankings.html?year=1962">1962</a>
+      <a class="year" href="rankings.html?year=1958">1958</a>
+      <a class="year" href="rankings.html?year=1954">1954</a>
+      <a class="year" href="rankings.html?year=1950">1950</a>
+      <a class="year" href="rankings.html?year=1938">1938</a>
+      <a class="year" href="rankings.html?year=1934">1934</a>
+      <a class="year" href="rankings.html?year=1930">1930</a>
+    </div>
+
+    <div class="footer">
+      <a href="../index.html">← Back to homepage</a>
+    </div>
+
+  </div>
+
 </body>
 </html>
