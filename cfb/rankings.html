@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>College Football Rankings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { margin-bottom: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { padding: 8px; text-align: left; border: 1px solid #ccc; }
+    th { background-color: #f2f2f2; }
+    a { text-decoration: none; color: blue; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1 id="title">College Football Rankings</h1>
+  <a href="index.html">← Back to College Football</a>
+
+  <table id="rankings">
+    <thead>
+      <tr></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Get the year from the URL query parameter (?year=YYYY)
+    const params = new URLSearchParams(window.location.search);
+    const year = params.get("year") || "2025"; // default to 2025 if not provided
+
+    document.getElementById("title").textContent = `College Football ${year} Rankings`;
+
+    // Path to CSV file
+    const csvPath = `data/CFB_${year}_resume.csv`;
+
+    // Fetch and parse CSV
+    fetch(csvPath)
+      .then(response => {
+        if (!response.ok) throw new Error(`CSV for ${year} not found`);
+        return response.text();
+      })
+      .then(csvText => {
+        const rows = csvText.trim().split("\n").map(r => r.split(","));
+
+        const thead = document.querySelector("#rankings thead tr");
+        const tbody = document.querySelector("#rankings tbody");
+
+        // Clear any previous content
+        thead.innerHTML = "";
+        tbody.innerHTML = "";
+
+        // Add headers
+        rows[0].forEach(col => {
+          const th = document.createElement("th");
+          th.textContent = col;
+          thead.appendChild(th);
+        });
+
+        // Add table rows
+        rows.slice(1).forEach(row => {
+          const tr = document.createElement("tr");
+          row.forEach(cell => {
+            const td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(err => {
+        console.error("Error loading CSV:", err);
+        const tbody = document.querySelector("#rankings tbody");
+        tbody.innerHTML = `<tr><td colspan="20">Failed to load rankings for ${year}. Make sure the CSV exists in data/CFB_${year}_resume.csv</td></tr>`;
+      });
+  </script>
+</body>
+</html>
