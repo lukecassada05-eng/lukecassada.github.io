@@ -16,58 +16,29 @@
 
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { margin-bottom: 20px; text-align: center; }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-    th, td {
-      padding: 8px;
-      text-align: left;
-      border: 1px solid #ccc;
-    }
-    th {
-      background-color: #f2f2f2;
-      cursor: pointer;
-      user-select: none;
-    }
+    h1 { margin-bottom: 20px; }
+
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { padding: 8px; text-align: left; border: 1px solid #ccc; }
+    th { background-color: #f2f2f2; cursor: pointer; user-select: none; }
     th.sort-asc::after { content: " ▲"; }
     th.sort-desc::after { content: " ▼"; }
 
     a { text-decoration: none; color: blue; }
     a:hover { text-decoration: underline; }
 
-    .toggle-buttons {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .toggle-buttons button {
-      padding: 8px 16px;
-      margin: 0 5px;
-      border: none;
-      border-radius: 6px;
-      background-color: #111;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .toggle-buttons button.active, .toggle-buttons button:hover {
-      background-color: #444;
-    }
+    .note { color: #c00; margin-top: 10px; font-weight: bold; }
   </style>
 </head>
 <body>
 
   <h1 id="title">College Basketball Rankings</h1>
-  <div class="toggle-buttons" id="toggleButtons"></div>
   <a href="index.html">← Back to College Basketball</a>
 
+  <div id="note"></div>
+
   <table id="rankings">
-    <thead>
-      <tr></tr>
-    </thead>
+    <thead><tr></tr></thead>
     <tbody></tbody>
   </table>
 
@@ -78,65 +49,49 @@
     document.getElementById("title").textContent =
       `College Basketball ${year} Rankings`;
 
-    // Define CSV file(s)
-    let csvFiles = [`CBB_Elo_${year}.csv`];
-
-    // Add toggle buttons only for 2026
-    if (year === "2026") {
-      csvFiles = ["CBB_Elo_2026.csv", "projected_bracket2026.csv"];
-      const toggleDiv = document.getElementById("toggleButtons");
-      toggleDiv.innerHTML = "";
-
-      csvFiles.forEach((file, i) => {
-        const btn = document.createElement("button");
-        btn.textContent = i === 0 ? "Elo Rankings" : "Projected Bracket";
-        btn.classList.add(i === 0 ? "active" : "");
-        btn.addEventListener("click", () => {
-          document.querySelectorAll(".toggle-buttons button").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          loadCSV(file);
-        });
-        toggleDiv.appendChild(btn);
-      });
-    }
-
+    const csvPath = `data/CBB_Elo_${year}.csv`;
     let tableData = [];
     let sortState = {};
 
-    function loadCSV(csvFile) {
-      fetch(`data/${csvFile}`)
-        .then(res => {
-          if (!res.ok) throw new Error("CSV not found: " + csvFile);
-          return res.text();
-        })
-        .then(csv => {
-          const rows = csv.trim().split("\n").map(r => r.split(","));
-          const headers = rows[0];
-          tableData = rows.slice(1);
+    fetch(csvPath)
+      .then(res => {
+        if (!res.ok) throw new Error("CSV not found");
+        return res.text();
+      })
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(r => r.split(","));
+        const headers = rows[0];
+        tableData = rows.slice(1);
 
-          const theadRow = document.querySelector("#rankings thead tr");
-          const tbody = document.querySelector("#rankings tbody");
+        // Show note for 2026
+        if (year === "2026") {
+          document.getElementById("note").textContent =
+            "⚠️ 2026 data is projected; column names differ from past seasons.";
+        }
 
-          theadRow.innerHTML = "";
-          tbody.innerHTML = "";
+        // Render headers
+        const theadRow = document.querySelector("#rankings thead tr");
+        const tbody = document.querySelector("#rankings tbody");
+        theadRow.innerHTML = "";
+        tbody.innerHTML = "";
 
-          headers.forEach((header, index) => {
-            const th = document.createElement("th");
-            th.textContent = header;
-            th.addEventListener("click", () => sortByColumn(index, th));
-            theadRow.appendChild(th);
-          });
-
-          renderTable(tableData);
-        })
-        .catch(err => {
-          console.error(err);
-          document.querySelector("#rankings tbody").innerHTML =
-            `<tr><td colspan="20">
-              Failed to load rankings. Make sure "data/${csvFile}" exists.
-            </td></tr>`;
+        headers.forEach((header, index) => {
+          const th = document.createElement("th");
+          th.textContent = header;
+          th.addEventListener("click", () => sortByColumn(index, th));
+          theadRow.appendChild(th);
         });
-    }
+
+        renderTable(tableData);
+      })
+      .catch(err => {
+        console.error(err);
+        document.querySelector("#rankings tbody").innerHTML =
+          `<tr><td colspan="20">
+            Failed to load rankings for ${year}.
+            Make sure ${csvPath} exists.
+          </td></tr>`;
+      });
 
     function renderTable(data) {
       const tbody = document.querySelector("#rankings tbody");
@@ -163,21 +118,23 @@
       th.classList.add(ascending ? "sort-asc" : "sort-desc");
 
       tableData.sort((a, b) => {
-        const valA = a[colIndex];
-        const valB = b[colIndex];
+        const valA = a[colIndex] || "";
+        const valB = b[colIndex] || "";
 
         const numA = parseFloat(valA);
         const numB = parseFloat(valB);
 
-        if (!isNaN(numA) && !isNaN(numB)) return ascending ? numA - numB : numB - numA;
-        return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        if (!isNaN(numA) && !isNaN(numB)) {
+          return ascending ? numA - numB : numB - numA;
+        }
+
+        return ascending
+          ? valA.localeCompare(valB)
+          : valB.localeCompare(valA);
       });
 
       renderTable(tableData);
     }
-
-    // Initial load
-    loadCSV(csvFiles[0]);
   </script>
 
 </body>
