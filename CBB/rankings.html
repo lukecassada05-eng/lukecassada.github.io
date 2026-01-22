@@ -7,14 +7,34 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     h1 { margin-bottom: 20px; }
-    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { padding: 8px; text-align: left; border: 1px solid #ccc; }
-    th { background-color: #f2f2f2; }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th.sort-asc::after { content: " ▲"; }
+    th.sort-desc::after { content: " ▼"; }
+
     a { text-decoration: none; color: blue; }
     a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+
   <h1 id="title">College Basketball Rankings</h1>
   <a href="index.html">← Back to College Basketball</a>
 
@@ -26,54 +46,95 @@
   </table>
 
   <script>
-    // Get the year from the URL query parameter (?year=YYYY)
     const params = new URLSearchParams(window.location.search);
-    const year = params.get("year") || "2025"; // default to 2025 if not provided
+    const year = params.get("year") || "2025";
 
-    document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
+    document.getElementById("title").textContent =
+      `College Basketball ${year} Rankings`;
 
-    // Path to CSV file (matches your CBB_Elo_YYYY.csv format)
     const csvPath = `data/CBB_Elo_${year}.csv`;
 
-    // Fetch and parse CSV
-    fetch(csvPath)
-      .then(response => {
-        if (!response.ok) throw new Error(`CSV for ${year} not found`);
-        return response.text();
-      })
-      .then(csvText => {
-        const rows = csvText.trim().split("\n").map(r => r.split(","));
+    let tableData = [];
+    let sortState = {};
 
-        const thead = document.querySelector("#rankings thead tr");
+    fetch(csvPath)
+      .then(res => {
+        if (!res.ok) throw new Error("CSV not found");
+        return res.text();
+      })
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(r => r.split(","));
+        const headers = rows[0];
+        tableData = rows.slice(1);
+
+        const theadRow = document.querySelector("#rankings thead tr");
         const tbody = document.querySelector("#rankings tbody");
 
-        // Clear any previous content
-        thead.innerHTML = "";
+        theadRow.innerHTML = "";
         tbody.innerHTML = "";
 
-        // Add headers
-        rows[0].forEach(col => {
+        headers.forEach((header, index) => {
           const th = document.createElement("th");
-          th.textContent = col;
-          thead.appendChild(th);
+          th.textContent = header;
+          th.addEventListener("click", () => sortByColumn(index, th));
+          theadRow.appendChild(th);
         });
 
-        // Add table rows
-        rows.slice(1).forEach(row => {
-          const tr = document.createElement("tr");
-          row.forEach(cell => {
-            const td = document.createElement("td");
-            td.textContent = cell;
-            tr.appendChild(td);
-          });
-          tbody.appendChild(tr);
-        });
+        renderTable(tableData);
       })
       .catch(err => {
-        console.error("Error loading CSV:", err);
-        const tbody = document.querySelector("#rankings tbody");
-        tbody.innerHTML = `<tr><td colspan="20">Failed to load rankings for ${year}. Make sure the CSV exists in data/CBB_Elo_${year}.csv</td></tr>`;
+        console.error(err);
+        document.querySelector("#rankings tbody").innerHTML =
+          `<tr><td colspan="20">
+            Failed to load rankings for ${year}.
+            Make sure data/CBB_Elo_${year}.csv exists.
+          </td></tr>`;
       });
+
+    function renderTable(data) {
+      const tbody = document.querySelector("#rankings tbody");
+      tbody.innerHTML = "";
+
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    function sortByColumn(colIndex, th) {
+      const headers = document.querySelectorAll("th");
+      headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
+
+      const ascending = sortState[colIndex] !== "asc";
+      sortState = {};
+      sortState[colIndex] = ascending ? "asc" : "desc";
+
+      th.classList.add(ascending ? "sort-asc" : "sort-desc");
+
+      tableData.sort((a, b) => {
+        const valA = a[colIndex];
+        const valB = b[colIndex];
+
+        const numA = parseFloat(valA);
+        const numB = parseFloat(valB);
+
+        if (!isNaN(numA) && !isNaN(numB)) {
+          return ascending ? numA - numB : numB - numA;
+        }
+
+        return ascending
+          ? valA.localeCompare(valB)
+          : valB.localeCompare(valA);
+      });
+
+      renderTable(tableData);
+    }
   </script>
+
 </body>
 </html>
