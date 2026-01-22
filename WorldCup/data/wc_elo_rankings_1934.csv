@@ -1,0 +1,17 @@
+team,elo,wins,draws,losses,best_win_name,best_win_elo,rank
+Italy,1540,4,1,0,Czechoslovakia,1530,1
+Germany,1520,3,0,1,Sweden,1510,2
+Czechoslovakia,1520,3,0,1,Germany,1520,3
+Austria,1500,2,0,2,Hungary,1510,4
+Hungary,1500,1,0,1,Egypt,1500,5
+Switzerland,1500,1,0,1,Netherlands,1500,6
+Sweden,1500,1,0,1,Argentina,1500,7
+Spain,1500,1,1,1,Brazil,1500,8
+France,1490,0,0,1,NA,NA,9
+Egypt,1490,0,0,1,NA,NA,10
+Netherlands,1490,0,0,1,NA,NA,11
+Argentina,1490,0,0,1,NA,NA,12
+Belgium,1490,0,0,1,NA,NA,13
+Brazil,1490,0,0,1,NA,NA,14
+USA,1490,0,0,1,NA,NA,15
+Romania,1490,0,0,1,NA,NA,16
