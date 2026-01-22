@@ -17,6 +17,7 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
     h1 { margin-bottom: 20px; }
+    h2 { margin-top: 40px; }
 
     table { border-collapse: collapse; width: 100%; margin-top: 20px; }
     th, td { padding: 8px; text-align: left; border: 1px solid #ccc; }
@@ -26,8 +27,6 @@
 
     a { text-decoration: none; color: blue; }
     a:hover { text-decoration: underline; }
-
-    .note { color: #c00; margin-top: 10px; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -35,12 +34,21 @@
   <h1 id="title">College Basketball Rankings</h1>
   <a href="index.html">← Back to College Basketball</a>
 
-  <div id="note"></div>
+  <div id="elo-container">
+    <h2>Elo Rankings</h2>
+    <table id="rankings">
+      <thead><tr></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
-  <table id="rankings">
-    <thead><tr></tr></thead>
-    <tbody></tbody>
-  </table>
+  <div id="projected-container" style="display:none;">
+    <h2>Projected Bracket</h2>
+    <table id="projected">
+      <thead><tr></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -49,52 +57,82 @@
     document.getElementById("title").textContent =
       `College Basketball ${year} Rankings`;
 
-    const csvPath = `data/CBB_Elo_${year}.csv`;
-    let tableData = [];
+    // Paths
+    const eloPath = `data/CBB_Elo_${year}.csv`;
+    const projectedPath = `data/projected_bracket2026.csv`;
+
+    // Tables
+    const eloTable = document.querySelector("#rankings");
+    const projectedTable = document.querySelector("#projected");
+
+    // --- Load Elo CSV ---
+    let eloData = [];
     let sortState = {};
 
-    fetch(csvPath)
-      .then(res => {
-        if (!res.ok) throw new Error("CSV not found");
-        return res.text();
-      })
+    fetch(eloPath)
+      .then(res => { if (!res.ok) throw new Error("CSV not found"); return res.text(); })
       .then(csv => {
         const rows = csv.trim().split("\n").map(r => r.split(","));
         const headers = rows[0];
-        tableData = rows.slice(1);
-
-        // Show note for 2026
-        if (year === "2026") {
-          document.getElementById("note").textContent =
-            "⚠️ 2026 data is projected; column names differ from past seasons.";
-        }
+        eloData = rows.slice(1);
 
         // Render headers
-        const theadRow = document.querySelector("#rankings thead tr");
-        const tbody = document.querySelector("#rankings tbody");
+        const theadRow = eloTable.querySelector("thead tr");
+        const tbody = eloTable.querySelector("tbody");
         theadRow.innerHTML = "";
         tbody.innerHTML = "";
 
         headers.forEach((header, index) => {
           const th = document.createElement("th");
           th.textContent = header;
-          th.addEventListener("click", () => sortByColumn(index, th));
+          th.addEventListener("click", () => sortByColumn(index, th, eloData, eloTable));
           theadRow.appendChild(th);
         });
 
-        renderTable(tableData);
+        renderTable(eloData, eloTable);
       })
       .catch(err => {
         console.error(err);
-        document.querySelector("#rankings tbody").innerHTML =
-          `<tr><td colspan="20">
-            Failed to load rankings for ${year}.
-            Make sure ${csvPath} exists.
-          </td></tr>`;
+        eloTable.querySelector("tbody").innerHTML =
+          `<tr><td colspan="20">Failed to load rankings for ${year}.</td></tr>`;
       });
 
-    function renderTable(data) {
-      const tbody = document.querySelector("#rankings tbody");
+    // --- Load projected bracket CSV for 2026 ---
+    if (year === "2026") {
+      document.getElementById("projected-container").style.display = "block";
+
+      let projectedData = [];
+      fetch(projectedPath)
+        .then(res => { if (!res.ok) throw new Error("CSV not found"); return res.text(); })
+        .then(csv => {
+          const rows = csv.trim().split("\n").map(r => r.split(","));
+          const headers = rows[0];
+          projectedData = rows.slice(1);
+
+          const theadRow = projectedTable.querySelector("thead tr");
+          const tbody = projectedTable.querySelector("tbody");
+          theadRow.innerHTML = "";
+          tbody.innerHTML = "";
+
+          headers.forEach((header, index) => {
+            const th = document.createElement("th");
+            th.textContent = header;
+            th.addEventListener("click", () => sortByColumn(index, th, projectedData, projectedTable));
+            theadRow.appendChild(th);
+          });
+
+          renderTable(projectedData, projectedTable);
+        })
+        .catch(err => {
+          console.error(err);
+          projectedTable.querySelector("tbody").innerHTML =
+            `<tr><td colspan="20">Failed to load projected bracket data.</td></tr>`;
+        });
+    }
+
+    // --- Helper functions ---
+    function renderTable(data, table) {
+      const tbody = table.querySelector("tbody");
       tbody.innerHTML = "";
       data.forEach(row => {
         const tr = document.createElement("tr");
@@ -107,8 +145,8 @@
       });
     }
 
-    function sortByColumn(colIndex, th) {
-      const headers = document.querySelectorAll("th");
+    function sortByColumn(colIndex, th, data, table) {
+      const headers = table.querySelectorAll("th");
       headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
 
       const ascending = sortState[colIndex] !== "asc";
@@ -117,25 +155,22 @@
 
       th.classList.add(ascending ? "sort-asc" : "sort-desc");
 
-      tableData.sort((a, b) => {
+      data.sort((a, b) => {
         const valA = a[colIndex] || "";
         const valB = b[colIndex] || "";
 
         const numA = parseFloat(valA);
         const numB = parseFloat(valB);
 
-        if (!isNaN(numA) && !isNaN(numB)) {
-          return ascending ? numA - numB : numB - numA;
-        }
+        if (!isNaN(numA) && !isNaN(numB)) return ascending ? numA - numB : numB - numA;
 
-        return ascending
-          ? valA.localeCompare(valB)
-          : valB.localeCompare(valA);
+        return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
       });
 
-      renderTable(tableData);
+      renderTable(data, table);
     }
   </script>
 
 </body>
 </html>
+
