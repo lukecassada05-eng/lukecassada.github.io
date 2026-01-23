@@ -15,11 +15,52 @@
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f8; color: #111; }
-    h1 { text-align: center; margin-bottom: 10px; }
-    .subtitle { text-align: center; margin-bottom: 20px; color: #555; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
 
-    .toggle-buttons { text-align: center; margin-bottom: 20px; }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* --- Top back link --- */
+    .top-nav {
+      margin-bottom: 20px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .toggle-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
     .toggle-buttons button {
       padding: 8px 16px;
       margin: 0 5px;
@@ -30,8 +71,16 @@
       background: #ddd;
       transition: background 0.2s;
     }
-    .toggle-buttons button.active { background: #111; color: #fff; }
-    .toggle-buttons button:hover { background: #aaa; color: #fff; }
+
+    .toggle-buttons button.active {
+      background: #111;
+      color: #fff;
+    }
+
+    .toggle-buttons button:hover {
+      background: #aaa;
+      color: #fff;
+    }
 
     table {
       border-collapse: collapse;
@@ -42,40 +91,55 @@
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    th, td { padding: 8px 10px; border: 1px solid #ccc; text-align: left; }
-    th { background-color: #f2f2f2; cursor: pointer; user-select: none; }
+
+    th, td {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+      user-select: none;
+    }
+
     th.sort-asc::after { content: " ▲"; }
     th.sort-desc::after { content: " ▼"; }
-
-    a { text-decoration: none; color: blue; display: block; margin-top: 30px; text-align: center; }
-    a:hover { text-decoration: underline; }
   </style>
 </head>
+
 <body>
+  <div class="page">
 
-  <h1 id="title">College Basketball Rankings</h1>
-  <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
+    <!-- ✅ BACK LINK IS NOW AT THE TOP -->
+    <div class="top-nav">
+      <a href="index.html">← Back to College Basketball</a>
+    </div>
 
-  <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
-    <button id="show-elo" class="active">Elo Rankings</button>
-    <button id="show-projected">Projected Seeding</button>
+    <h1 id="title">College Basketball Rankings</h1>
+    <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
+
+    <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
+      <button id="show-elo" class="active">Elo Rankings</button>
+      <button id="show-projected">Projected Seeding</button>
+    </div>
+
+    <div id="elo-container">
+      <table id="elo-table">
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div id="projected-container" style="display:none;">
+      <table id="projected-table">
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
   </div>
-
-  <div id="elo-container">
-    <table id="elo-table">
-      <thead><tr></tr></thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <div id="projected-container" style="display:none;">
-    <table id="projected-table">
-      <thead><tr></tr></thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <a href="index.html">← Back to College Basketball</a>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -93,7 +157,6 @@
     let projectedData = [];
     let sortState = {};
 
-    // Fetch Elo CSV
     fetch(eloCsv)
       .then(res => {
         if (!res.ok) throw new Error("Elo CSV not found");
@@ -105,12 +168,11 @@
         eloData = rows.slice(1);
         renderTable(headers, eloData, document.querySelector("#elo-table thead tr"), document.querySelector("#elo-table tbody"));
       })
-      .catch(err => {
-        document.querySelector("#elo-table tbody").innerHTML = `<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`;
-        console.error(err);
+      .catch(() => {
+        document.querySelector("#elo-table tbody").innerHTML =
+          `<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`;
       });
 
-    // Fetch Projected CSV (only show button if exists)
     fetch(projectedCsv)
       .then(res => {
         if (!res.ok) throw new Error("Projected CSV not found");
@@ -121,10 +183,7 @@
         const headers = rows[0];
         projectedData = rows.slice(1);
         renderTable(headers, projectedData, document.querySelector("#projected-table thead tr"), document.querySelector("#projected-table tbody"));
-        toggleButtons.style.display = "block"; // Show toggle only if projected exists
-      })
-      .catch(err => {
-        console.warn("Projected CSV not found:", err);
+        toggleButtons.style.display = "block";
       });
 
     function renderTable(headers, data, theadRow, tbody) {
@@ -152,15 +211,15 @@
     function sortByColumn(colIndex, data, tbody, th) {
       const headers = th.parentElement.querySelectorAll("th");
       headers.forEach(h => h.classList.remove("sort-asc","sort-desc"));
+
       const ascending = sortState[colIndex] !== "asc";
-      sortState = {};
-      sortState[colIndex] = ascending ? "asc" : "desc";
-      th.classList.add(ascending ? "sort-asc":"sort-desc");
+      sortState = { [colIndex]: ascending ? "asc" : "desc" };
+      th.classList.add(ascending ? "sort-asc" : "sort-desc");
 
       data.sort((a,b) => {
-        const numA = parseFloat(a[colIndex]);
-        const numB = parseFloat(b[colIndex]);
-        if(!isNaN(numA) && !isNaN(numB)) return ascending ? numA - numB : numB - numA;
+        const A = parseFloat(a[colIndex]);
+        const B = parseFloat(b[colIndex]);
+        if (!isNaN(A) && !isNaN(B)) return ascending ? A - B : B - A;
         return ascending ? a[colIndex].localeCompare(b[colIndex]) : b[colIndex].localeCompare(a[colIndex]);
       });
 
@@ -176,22 +235,20 @@
       });
     }
 
-    // --- Toggle Buttons ---
-    document.getElementById("show-elo").addEventListener("click", () => {
+    document.getElementById("show-elo").onclick = () => {
       eloContainer.style.display = "block";
       projectedContainer.style.display = "none";
-      document.getElementById("show-elo").classList.add("active");
-      document.getElementById("show-projected").classList.remove("active");
-    });
+      showElo.classList.add("active");
+      showProjected.classList.remove("active");
+    };
 
-    document.getElementById("show-projected").addEventListener("click", () => {
+    document.getElementById("show-projected").onclick = () => {
       eloContainer.style.display = "none";
       projectedContainer.style.display = "block";
-      document.getElementById("show-elo").classList.remove("active");
-      document.getElementById("show-projected").classList.add("active");
-    });
+      showElo.classList.remove("active");
+      showProjected.classList.add("active");
+    };
   </script>
-
 </body>
 </html>
 
