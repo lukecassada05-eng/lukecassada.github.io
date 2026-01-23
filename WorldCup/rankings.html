@@ -4,58 +4,158 @@
   <meta charset="UTF-8">
   <title>World Cup Rankings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWG43QNM3P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PWG43QNM3P');
+  </script>
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { margin-bottom: 20px; }
-    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-    th, td { padding: 8px; text-align: left; border: 1px solid #ccc; cursor: pointer; }
-    th { background-color: #f2f2f2; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Top navigation */
+    .top-nav {
+      margin-bottom: 20px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    th, td {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+      user-select: none;
+    }
+
     th.sort-asc::after { content: " ▲"; }
     th.sort-desc::after { content: " ▼"; }
-    a { text-decoration: none; color: blue; }
-    a:hover { text-decoration: underline; }
   </style>
 </head>
-<body>
-  <h1 id="title">World Cup Rankings</h1>
-  <a href="index.html">← Back to World Cup</a>
 
-  <table id="rankings">
-    <thead>
-      <tr></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<body>
+  <div class="page">
+
+    <!-- Back link at TOP -->
+    <div class="top-nav">
+      <a href="index.html">← Back to World Cup</a>
+    </div>
+
+    <h1 id="title">World Cup Rankings</h1>
+    <div class="subtitle">
+      Elo-based national team rankings by World Cup
+    </div>
+
+    <table id="rankings">
+      <thead>
+        <tr></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const year = params.get("year") || "2022"; // default to latest World Cup
-    document.getElementById("title").textContent = `World Cup ${year} Rankings`;
+    const year = params.get("year") || "2022";
+
+    document.getElementById("title").textContent =
+      `World Cup ${year} Rankings`;
 
     const csvPath = `data/wc_elo_rankings_${year}.csv`;
 
     let tableData = [];
-    let currentSort = { col: null, asc: true };
+    let sortState = {};
 
-    function renderTable(data) {
-      const thead = document.querySelector("#rankings thead tr");
-      const tbody = document.querySelector("#rankings tbody");
+    fetch(csvPath)
+      .then(res => {
+        if (!res.ok) throw new Error("CSV not found");
+        return res.text();
+      })
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(r => r.split(","));
+        const headers = rows[0];
+        tableData = rows.slice(1);
 
-      thead.innerHTML = "";
-      tbody.innerHTML = "";
+        const theadRow = document.querySelector("#rankings thead tr");
+        const tbody = document.querySelector("#rankings tbody");
 
-      if (!data.length) return;
+        theadRow.innerHTML = "";
+        tbody.innerHTML = "";
 
-      // Add headers
-      data[0].forEach((col, idx) => {
-        const th = document.createElement("th");
-        th.textContent = col;
-        th.addEventListener("click", () => sortTable(idx));
-        thead.appendChild(th);
+        headers.forEach((header, index) => {
+          const th = document.createElement("th");
+          th.textContent = header;
+          th.addEventListener("click", () => sortByColumn(index, th));
+          theadRow.appendChild(th);
+        });
+
+        renderTable(tableData);
+      })
+      .catch(() => {
+        document.querySelector("#rankings tbody").innerHTML =
+          `<tr>
+            <td colspan="20">
+              Rankings not available for ${year}.
+              Make sure <code>data/wc_elo_rankings_${year}.csv</code> exists.
+            </td>
+          </tr>`;
       });
 
-      // Add rows
-      data.slice(1).forEach(row => {
+    function renderTable(data) {
+      const tbody = document.querySelector("#rankings tbody");
+      tbody.innerHTML = "";
+
+      data.forEach(row => {
         const tr = document.createElement("tr");
         row.forEach(cell => {
           const td = document.createElement("td");
@@ -66,51 +166,29 @@
       });
     }
 
-    function sortTable(colIndex) {
-      const asc = currentSort.col === colIndex ? !currentSort.asc : true;
-      currentSort = { col: colIndex, asc };
+    function sortByColumn(colIndex, th) {
+      const headers = document.querySelectorAll("th");
+      headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
 
-      tableData = [tableData[0]].concat(
-        tableData.slice(1).sort((a, b) => {
-          const aVal = parseFloat(a[colIndex]) || a[colIndex];
-          const bVal = parseFloat(b[colIndex]) || b[colIndex];
+      const ascending = sortState[colIndex] !== "asc";
+      sortState = { [colIndex]: ascending ? "asc" : "desc" };
+      th.classList.add(ascending ? "sort-asc" : "sort-desc");
 
-          if (typeof aVal === "number" && typeof bVal === "number") {
-            return asc ? aVal - bVal : bVal - aVal;
-          } else {
-            return asc ? String(aVal).localeCompare(bVal) : String(bVal).localeCompare(aVal);
-          }
-        })
-      );
+      tableData.sort((a, b) => {
+        const A = parseFloat(a[colIndex]);
+        const B = parseFloat(b[colIndex]);
+
+        if (!isNaN(A) && !isNaN(B)) {
+          return ascending ? A - B : B - A;
+        }
+
+        return ascending
+          ? a[colIndex].localeCompare(b[colIndex])
+          : b[colIndex].localeCompare(a[colIndex]);
+      });
 
       renderTable(tableData);
-      updateSortIndicators();
     }
-
-    function updateSortIndicators() {
-      const ths = document.querySelectorAll("#rankings thead th");
-      ths.forEach((th, idx) => {
-        th.classList.remove("sort-asc", "sort-desc");
-        if (idx === currentSort.col) {
-          th.classList.add(currentSort.asc ? "sort-asc" : "sort-desc");
-        }
-      });
-    }
-
-    fetch(csvPath)
-      .then(res => {
-        if (!res.ok) throw new Error("CSV not found");
-        return res.text();
-      })
-      .then(text => {
-        tableData = text.trim().split("\n").map(r => r.split(","));
-        renderTable(tableData);
-      })
-      .catch(err => {
-        console.error(err);
-        document.querySelector("#rankings tbody").innerHTML =
-          `<tr><td colspan="20">Failed to load rankings for ${year}. Make sure data/wc_elo_rankings_${year}.csv exists.</td></tr>`;
-      });
   </script>
 </body>
 </html>
