@@ -112,7 +112,7 @@
 <body>
   <div class="page">
 
-    <!-- ✅ BACK LINK IS NOW AT THE TOP -->
+    <!-- ✅ BACK LINK AT THE TOP -->
     <div class="top-nav">
       <a href="index.html">← Back to College Basketball</a>
     </div>
@@ -123,6 +123,7 @@
     <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
       <button id="show-elo" class="active">Elo Rankings</button>
       <button id="show-projected">Projected Seeding</button>
+      <button id="show-conference" style="display:none;">Conference Elo</button>
     </div>
 
     <div id="elo-container">
@@ -139,29 +140,36 @@
       </table>
     </div>
 
+    <div id="conference-container" style="display:none;">
+      <table id="conference-table">
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const year = params.get("year") || "2025";
+    const year = params.get("year") || "2026";
     document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
 
     const eloCsv = `data/CBB_Elo_${year}.csv`;
     const projectedCsv = `data/projected_bracket${year}.csv`;
+    const conferenceCsv = `data/CBB_Conference_Elo_${year}.csv`;
 
     const eloContainer = document.getElementById("elo-container");
     const projectedContainer = document.getElementById("projected-container");
+    const conferenceContainer = document.getElementById("conference-container");
     const toggleButtons = document.getElementById("toggle-buttons");
+    const showConferenceBtn = document.getElementById("show-conference");
 
-    let eloData = [];
-    let projectedData = [];
+    let eloData = [], projectedData = [], conferenceData = [];
     let sortState = {};
 
+    // --- Fetch Elo ---
     fetch(eloCsv)
-      .then(res => {
-        if (!res.ok) throw new Error("Elo CSV not found");
-        return res.text();
-      })
+      .then(res => { if(!res.ok) throw new Error("Elo CSV not found"); return res.text(); })
       .then(csv => {
         const rows = csv.trim().split("\n").map(r => r.split(","));
         const headers = rows[0];
@@ -173,11 +181,9 @@
           `<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`;
       });
 
+    // --- Fetch Projected ---
     fetch(projectedCsv)
-      .then(res => {
-        if (!res.ok) throw new Error("Projected CSV not found");
-        return res.text();
-      })
+      .then(res => { if(!res.ok) throw new Error("Projected CSV not found"); return res.text(); })
       .then(csv => {
         const rows = csv.trim().split("\n").map(r => r.split(","));
         const headers = rows[0];
@@ -185,6 +191,19 @@
         renderTable(headers, projectedData, document.querySelector("#projected-table thead tr"), document.querySelector("#projected-table tbody"));
         toggleButtons.style.display = "block";
       });
+
+    // --- Fetch Conference Elo ---
+    fetch(conferenceCsv)
+      .then(res => { if(!res.ok) throw new Error("Conference CSV not found"); return res.text(); })
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(r => r.split(","));
+        const headers = rows[0];
+        conferenceData = rows.slice(1);
+        renderTable(headers, conferenceData, document.querySelector("#conference-table thead tr"), document.querySelector("#conference-table tbody"));
+        showConferenceBtn.style.display = "inline-block";
+        toggleButtons.style.display = "block";
+      })
+      .catch(() => { console.warn("Conference CSV not found for " + year); });
 
     function renderTable(headers, data, theadRow, tbody) {
       theadRow.innerHTML = "";
@@ -235,20 +254,36 @@
       });
     }
 
-    document.getElementById("show-elo").onclick = () => {
+    // --- Toggle buttons ---
+    const showEloBtn = document.getElementById("show-elo");
+    const showProjectedBtn = document.getElementById("show-projected");
+
+    showEloBtn.onclick = () => {
       eloContainer.style.display = "block";
       projectedContainer.style.display = "none";
-      showElo.classList.add("active");
-      showProjected.classList.remove("active");
+      conferenceContainer.style.display = "none";
+      showEloBtn.classList.add("active");
+      showProjectedBtn.classList.remove("active");
+      showConferenceBtn.classList.remove("active");
     };
 
-    document.getElementById("show-projected").onclick = () => {
+    showProjectedBtn.onclick = () => {
       eloContainer.style.display = "none";
       projectedContainer.style.display = "block";
-      showElo.classList.remove("active");
-      showProjected.classList.add("active");
+      conferenceContainer.style.display = "none";
+      showEloBtn.classList.remove("active");
+      showProjectedBtn.classList.add("active");
+      showConferenceBtn.classList.remove("active");
+    };
+
+    showConferenceBtn.onclick = () => {
+      eloContainer.style.display = "none";
+      projectedContainer.style.display = "none";
+      conferenceContainer.style.display = "block";
+      showEloBtn.classList.remove("active");
+      showProjectedBtn.classList.remove("active");
+      showConferenceBtn.classList.add("active");
     };
   </script>
 </body>
 </html>
-
