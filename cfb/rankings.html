@@ -4,20 +4,71 @@
   <meta charset="UTF-8">
   <title>College Football Rankings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWG43QNM3P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PWG43QNM3P');
+  </script>
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { margin-bottom: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* --- Top back link --- */
+    .top-nav {
+      margin-bottom: 20px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
 
     table {
       border-collapse: collapse;
       width: 100%;
-      margin-top: 20px;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     th, td {
-      padding: 8px;
-      text-align: left;
+      padding: 8px 10px;
       border: 1px solid #ccc;
+      text-align: left;
     }
 
     th {
@@ -28,22 +79,30 @@
 
     th.sort-asc::after { content: " ▲"; }
     th.sort-desc::after { content: " ▼"; }
-
-    a { text-decoration: none; color: blue; }
-    a:hover { text-decoration: underline; }
   </style>
 </head>
+
 <body>
+  <div class="page">
 
-  <h1 id="title">College Football Rankings</h1>
-  <a href="index.html">← Back to College Football</a>
+    <!-- ✅ Back link at TOP -->
+    <div class="top-nav">
+      <a href="index.html">← Back to College Football</a>
+    </div>
 
-  <table id="rankings">
-    <thead>
-      <tr></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+    <h1 id="title">College Football Rankings</h1>
+    <div class="subtitle">
+      Elo-based FBS team rankings by season
+    </div>
+
+    <table id="rankings">
+      <thead>
+        <tr></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -82,13 +141,14 @@
 
         renderTable(tableData);
       })
-      .catch(err => {
-        console.error(err);
+      .catch(() => {
         document.querySelector("#rankings tbody").innerHTML =
-          `<tr><td colspan="20">
-            Failed to load rankings for ${year}.
-            Make sure data/CFB_${year}_resume.csv exists.
-          </td></tr>`;
+          `<tr>
+            <td colspan="20">
+              Rankings not available for ${year}.
+              Make sure <code>data/CFB_${year}_resume.csv</code> exists.
+            </td>
+          </tr>`;
       });
 
     function renderTable(data) {
@@ -111,30 +171,23 @@
       headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
 
       const ascending = sortState[colIndex] !== "asc";
-      sortState = {};
-      sortState[colIndex] = ascending ? "asc" : "desc";
-
+      sortState = { [colIndex]: ascending ? "asc" : "desc" };
       th.classList.add(ascending ? "sort-asc" : "sort-desc");
 
       tableData.sort((a, b) => {
-        const valA = a[colIndex];
-        const valB = b[colIndex];
+        const A = parseFloat(a[colIndex]);
+        const B = parseFloat(b[colIndex]);
 
-        const numA = parseFloat(valA);
-        const numB = parseFloat(valB);
-
-        if (!isNaN(numA) && !isNaN(numB)) {
-          return ascending ? numA - numB : numB - numA;
+        if (!isNaN(A) && !isNaN(B)) {
+          return ascending ? A - B : B - A;
         }
-
         return ascending
-          ? valA.localeCompare(valB)
-          : valB.localeCompare(valA);
+          ? a[colIndex].localeCompare(b[colIndex])
+          : b[colIndex].localeCompare(a[colIndex]);
       });
 
       renderTable(tableData);
     }
   </script>
-
 </body>
 </html>
