@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NFL Elo Rankings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWG43QNM3P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PWG43QNM3P');
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .top-nav {
+      margin-bottom: 20px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    th, td {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th.sort-asc::after { content: " ▲"; }
+    th.sort-desc::after { content: " ▼"; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ✅ BACK LINK AT THE TOP -->
+    <div class="top-nav">
+      <a href="index.html">← Back to NFL Elo Rankings</a>
+    </div>
+
+    <h1 id="title">NFL Elo Rankings</h1>
+    <div class="subtitle">Elo-based team ratings by season (2001–2025)</div>
+
+    <div id="elo-container">
+      <table id="elo-table">
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const year = params.get("year") || "2025";
+    document.getElementById("title").textContent = `NFL Elo Rankings - ${year}`;
+
+    const eloCsv = `data/NFL_Elo_Rankings_${year}.csv`;
+    const eloContainer = document.getElementById("elo-container");
+
+    let eloData = [];
+    let sortState = {};
+
+    fetch(eloCsv)
+      .then(res => {
+        if(!res.ok) throw new Error("Elo CSV not found");
+        return res.text();
+      })
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(r => r.split(","));
+        const headers = rows[0];
+        eloData = rows.slice(1);
+        renderTable(headers, eloData, document.querySelector("#elo-table thead tr"), document.querySelector("#elo-table tbody"));
+      })
+      .catch(() => {
+        document.querySelector("#elo-table tbody").innerHTML =
+          `<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`;
+      });
+
+    function renderTable(headers, data, theadRow, tbody) {
+      theadRow.innerHTML = "";
+      tbody.innerHTML = "";
+
+      headers.forEach((header, index) => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        th.addEventListener("click", () => sortByColumn(index, data, tbody, th));
+        theadRow.appendChild(th);
+      });
+
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    function sortByColumn(colIndex, data, tbody, th) {
+      const headers = th.parentElement.querySelectorAll("th");
+      headers.forEach(h => h.classList.remove("sort-asc","sort-desc"));
+
+      const ascending = sortState[colIndex] !== "asc";
+      sortState = { [colIndex]: ascending ? "asc" : "desc" };
+      th.classList.add(ascending ? "sort-asc" : "sort-desc");
+
+      data.sort((a,b) => {
+        const A = parseFloat(a[colIndex]);
+        const B = parseFloat(b[colIndex]);
+        if (!isNaN(A) && !isNaN(B)) return ascending ? A - B : B - A;
+        return ascending ? a[colIndex].localeCompare(b[colIndex]) : b[colIndex].localeCompare(a[colIndex]);
+      });
+
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>
