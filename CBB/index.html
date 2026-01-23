@@ -25,19 +25,23 @@
     .page {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 40px 20px 50px;
+      padding: 30px 20px 50px;
       text-align: center;
     }
 
-    .back-link {
-      display: inline-block;
-      margin-bottom: 25px;
+    .top-nav {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .top-nav a {
       text-decoration: none;
       color: #111;
       font-weight: bold;
+      font-size: 0.9rem;
     }
 
-    .back-link:hover {
+    .top-nav a:hover {
       text-decoration: underline;
     }
 
@@ -87,7 +91,10 @@
 
   <div class="page">
 
-    <a class="back-link" href="../index.html">← Back to homepage</a>
+    <!-- Back link at TOP -->
+    <div class="top-nav">
+      <a href="../index.html">← Back to homepage</a>
+    </div>
 
     <h1>College Basketball Rankings</h1>
     <div class="subtitle">
