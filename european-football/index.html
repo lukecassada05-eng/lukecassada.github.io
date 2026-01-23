@@ -29,6 +29,22 @@
       text-align: center;
     }
 
+    .top-nav {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
     h1 {
       font-size: 2.8rem;
       margin-bottom: 10px;
@@ -37,6 +53,7 @@
     .subtitle {
       font-size: 1.05rem;
       color: #555;
+      margin-bottom: 20px;
     }
 
     .divider {
@@ -69,28 +86,16 @@
       transform: translateY(-4px);
       box-shadow: 0 10px 24px rgba(0,0,0,0.14);
     }
-
-    .footer {
-      margin-top: 60px;
-      padding-top: 25px;
-      border-top: 1px solid #ddd;
-      font-size: 0.85rem;
-    }
-
-    .footer a {
-      text-decoration: none;
-      color: #111;
-      font-weight: bold;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
 
   <div class="page">
+
+    <!-- Back link at the TOP -->
+    <div class="top-nav">
+      <a href="../index.html">← Back to homepage</a>
+    </div>
 
     <h1>European Football Rankings</h1>
     <div class="subtitle">
@@ -125,10 +130,6 @@
       <a class="year" href="rankings.html?year=2003">2003</a>
       <a class="year" href="rankings.html?year=2002">2002</a>
       <a class="year" href="rankings.html?year=2001">2001</a>
-    </div>
-
-    <div class="footer">
-      <a href="../index.html">← Back to homepage</a>
     </div>
 
   </div>
