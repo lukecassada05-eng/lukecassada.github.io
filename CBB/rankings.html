@@ -47,9 +47,10 @@ th.sort-desc::after { content:" ▼";}
 <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
 
 <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
-<button id="show-elo" class="active">Elo Rankings</button>
-<button id="show-projected" style="display:none;">Projected Seeding</button>
-<button id="show-conference" style="display:none;">Conference Elo / Standings</button>
+  <button id="show-elo" class="active">Elo Rankings</button>
+  <button id="show-projected" style="display:none;">Projected Seeding</button>
+  <button id="show-conference-elo" style="display:none;">Conference Elo</button>
+  <button id="show-conference-standings" style="display:none;">Conference Standings (2026)</button>
 </div>
 
 <!-- Elo Table -->
@@ -68,15 +69,22 @@ th.sort-desc::after { content:" ▼";}
 </table>
 </div>
 
-<!-- Conference Elo / Standings Table -->
-<div id="conference-container" style="display:none;">
-<!-- Dropdown only for 2026 -->
+<!-- Conference Elo Table -->
+<div id="conference-elo-container" style="display:none;">
+<table id="conference-elo-table">
+<thead><tr></tr></thead>
+<tbody></tbody>
+</table>
+</div>
+
+<!-- Conference Standings Table (2026 only) -->
+<div id="conference-standings-container" style="display:none;">
 <div id="conference-dropdown-container">
 <select id="conference-dropdown">
 <option value="">Select a Conference</option>
 </select>
 </div>
-<table id="conference-table">
+<table id="conference-standings-table">
 <thead><tr></tr></thead>
 <tbody></tbody>
 </table>
@@ -91,19 +99,21 @@ document.getElementById("title").textContent = `College Basketball ${year} Ranki
 
 const eloCsv = `data/CBB_Elo_${year}.csv`;
 const projectedCsv = `data/projected_bracket${year}.csv`;
-const conferenceCsv = `data/CBB_Conference_Elo_${year}.csv`; // Average Elo
+const conferenceEloCsv = `data/CBB_Conference_Elo_${year}.csv`;
 
 const eloContainer = document.getElementById("elo-container");
 const projectedContainer = document.getElementById("projected-container");
-const conferenceContainer = document.getElementById("conference-container");
+const confEloContainer = document.getElementById("conference-elo-container");
+const confStandingsContainer = document.getElementById("conference-standings-container");
 const toggleButtons = document.getElementById("toggle-buttons");
 const showEloBtn = document.getElementById("show-elo");
 const showProjectedBtn = document.getElementById("show-projected");
-const showConferenceBtn = document.getElementById("show-conference");
+const showConfEloBtn = document.getElementById("show-conference-elo");
+const showConfStandingsBtn = document.getElementById("show-conference-standings");
 const confDropdownContainer = document.getElementById("conference-dropdown-container");
 const confDropdown = document.getElementById("conference-dropdown");
 
-let eloData=[], projectedData=[], conferenceData=[], standingsData={};
+let eloData=[], projectedData=[], confEloData=[], standingsData={};
 let sortState={};
 
 // --- Fetch Elo ---
@@ -133,44 +143,79 @@ fetch(projectedCsv)
 })
 .catch(()=>{ console.warn(`No projected bracket for ${year}`); });
 
-// --- Fetch Conference Elo (all years) ---
-fetch(conferenceCsv)
-.then(res=>{ if(!res.ok) throw new Error("Conference CSV not found"); return res.text(); })
+// --- Fetch Conference Elo ---
+fetch(conferenceEloCsv)
+.then(res=>{ if(!res.ok) throw new Error("Conference Elo CSV not found"); return res.text(); })
 .then(csv=>{
   const rows = csv.trim().split("\n").map(r=>r.split(","));
   const headers = rows[0];
-  conferenceData = rows.slice(1);
-  renderTable(headers, conferenceData, document.querySelector("#conference-table thead tr"), document.querySelector("#conference-table tbody"));
-  showConferenceBtn.style.display="inline-block";
+  confEloData = rows.slice(1);
+  renderTable(headers, confEloData, document.querySelector("#conference-elo-table thead tr"), document.querySelector("#conference-elo-table tbody"));
+  showConfEloBtn.style.display="inline-block";
+  toggleButtons.style.display="block";
+})
+.catch(()=>{ console.warn(`Conference Elo CSV not found for ${year}`); });
+
+// --- Setup 2026 Conference Standings Dropdown ---
+if(year==="2026"){
+  showConfStandingsBtn.style.display="inline-block";
   toggleButtons.style.display="block";
 
-  // Only for 2026: load dropdown with standings CSV names
-  if(year==="2026") {
-    confDropdownContainer.style.display="block";
-    const conferences = [
-      // List all 31 conference CSV names for 2026
-      "Atlantic_Coast_Conference",
-      "Big_Ten_Conference",
-      "Big_12_Conference",
-      "American_Conference",
-      "Southeastern_Conference",
-      "Sun_Belt_Conference",
-      "Mid-American_Conference",
-      "Conference_USA",
-      "Mountain_West_Conference",
-      "Independent",
-      // ... add remaining conferences here except Horizon_League & West_Coast_Conference
-    ];
-    conferences.forEach(conf=>{
-      const opt=document.createElement("option");
-      opt.value=conf;
-      opt.textContent=conf.replace(/_/g," ");
-      confDropdown.appendChild(opt);
-    });
-  }
-})
-.catch(()=>{ console.warn(`Conference CSV not found for ${year}`); });
+  const conferences = [
+    "ASUN_Conference",
+    "America_East_Conference",
+    "American_Conference",
+    "Atlantic_10_Conference",
+    "Atlantic_Coast_Conference",
+    "Big_12_Conference",
+    "Big_East_Conference",
+    "Big_Sky_Conference",
+    "Big_South_Conference",
+    "Big_Ten_Conference",
+    "Big_West_Conference",
+    "Coastal_Athletic_Association",
+    "Conference_USA",
+    "Ivy_League",
+    "Metro_Atlantic_Athletic_Conference",
+    "Mid_American_Conference",
+    "Mid_Eastern_Athletic_Conference",
+    "Missouri_Valley_Conference",
+    "Mountain_West_Conference",
+    "Northeast_Conference",
+    "Ohio_Valley_Conference",
+    "Patriot_League",
+    "Southeastern_Conference",
+    "Southern_Conference",
+    "Southland_Conference",
+    "Southwestern_Athletic_Conference",
+    "Summit_League",
+    "Sun_Belt_Conference",
+    "Western_Athletic_Conference"
+  ];
 
+  conferences.forEach(conf=>{
+    const opt=document.createElement("option");
+    opt.value=conf;
+    opt.textContent=conf.replace(/_/g," ");
+    confDropdown.appendChild(opt);
+  });
+
+  confDropdown.onchange = ()=>{
+    const selected = confDropdown.value;
+    if(!selected) return;
+    fetch(`data/${selected}_Elo_2026.csv`)
+    .then(res=>{ if(!res.ok) throw new Error("CSV not found"); return res.text(); })
+    .then(csv=>{
+      const rows = csv.trim().split("\n").map(r=>r.split(","));
+      const headers = rows[0];
+      const data = rows.slice(1);
+      renderTable(headers, data, document.querySelector("#conference-standings-table thead tr"), document.querySelector("#conference-standings-table tbody"));
+    })
+    .catch(()=>{ console.warn(`Conference CSV not found: ${selected}`); });
+  };
+}
+
+// --- Render Table ---
 function renderTable(headers,data,theadRow,tbody){
   theadRow.innerHTML="";
   tbody.innerHTML="";
@@ -191,6 +236,7 @@ function renderTable(headers,data,theadRow,tbody){
   });
 }
 
+// --- Sort Table ---
 function sortByColumn(colIndex,data,tbody,th){
   const headers=th.parentElement.querySelectorAll("th");
   headers.forEach(h=>h.classList.remove("sort-asc","sort-desc"));
@@ -219,46 +265,46 @@ function sortByColumn(colIndex,data,tbody,th){
 showEloBtn.onclick = ()=>{
   eloContainer.style.display="block";
   projectedContainer.style.display="none";
-  conferenceContainer.style.display="none";
+  confEloContainer.style.display="none";
+  confStandingsContainer.style.display="none";
   showEloBtn.classList.add("active");
   showProjectedBtn.classList.remove("active");
-  showConferenceBtn.classList.remove("active");
-  confDropdownContainer.style.display="none";
+  showConfEloBtn.classList.remove("active");
+  showConfStandingsBtn.classList.remove("active");
 };
 
 showProjectedBtn.onclick = ()=>{
   eloContainer.style.display="none";
   projectedContainer.style.display="block";
-  conferenceContainer.style.display="none";
+  confEloContainer.style.display="none";
+  confStandingsContainer.style.display="none";
   showEloBtn.classList.remove("active");
   showProjectedBtn.classList.add("active");
-  showConferenceBtn.classList.remove("active");
-  confDropdownContainer.style.display="none";
+  showConfEloBtn.classList.remove("active");
+  showConfStandingsBtn.classList.remove("active");
 };
 
-showConferenceBtn.onclick = ()=>{
+showConfEloBtn.onclick = ()=>{
   eloContainer.style.display="none";
   projectedContainer.style.display="none";
-  conferenceContainer.style.display="block";
+  confEloContainer.style.display="block";
+  confStandingsContainer.style.display="none";
   showEloBtn.classList.remove("active");
   showProjectedBtn.classList.remove("active");
-  showConferenceBtn.classList.add("active");
-  confDropdownContainer.style.display = (year==="2026")?"block":"none";
+  showConfEloBtn.classList.add("active");
+  showConfStandingsBtn.classList.remove("active");
 };
 
-// --- Dropdown change: load specific 2026 conference CSV ---
-confDropdown.onchange = ()=>{
-  const selected = confDropdown.value;
-  if(!selected) return;
-  fetch(`data/${selected}_Elo_2026.csv`)
-    .then(res=>{ if(!res.ok) throw new Error("CSV not found"); return res.text(); })
-    .then(csv=>{
-      const rows=csv.trim().split("\n").map(r=>r.split(","));
-      const headers=rows[0];
-      const data=rows.slice(1);
-      renderTable(headers,data,document.querySelector("#conference-table thead tr"),document.querySelector("#conference-table tbody"));
-    })
-    .catch(()=>{ console.warn(`Conference CSV not found: ${selected}`); });
+showConfStandingsBtn.onclick = ()=>{
+  eloContainer.style.display="none";
+  projectedContainer.style.display="none";
+  confEloContainer.style.display="none";
+  confStandingsContainer.style.display="block";
+  showEloBtn.classList.remove("active");
+  showProjectedBtn.classList.remove("active");
+  showConfEloBtn.classList.remove("active");
+  showConfStandingsBtn.classList.add("active");
+  confDropdownContainer.style.display="block";
 };
 </script>
 </body>
