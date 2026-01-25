@@ -18,6 +18,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
+      padding: 0;
       background: #f4f6f8;
       color: #111;
     }
@@ -39,9 +40,7 @@
       font-size: 0.9rem;
     }
 
-    .top-nav a:hover {
-      text-decoration: underline;
-    }
+    .top-nav a:hover { text-decoration: underline; }
 
     h1 {
       text-align: center;
@@ -83,73 +82,63 @@
 
 <body>
   <div class="page">
+
     <div class="top-nav">
       <a href="index.html">← Back to MLB Year Selection</a>
     </div>
 
     <h1 id="title">MLB Elo Rankings</h1>
-    <div class="subtitle">
-      Elo-based team rankings by season
+    <div class="subtitle">Elo-based team ratings by season</div>
+
+    <div id="elo-container">
+      <table id="elo-table">
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
 
-    <table id="rankings">
-      <thead>
-        <tr></tr>
-      </thead>
-      <tbody></tbody>
-    </table>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const year = params.get("year") || "2025";
+    document.getElementById("title").textContent = `MLB Elo Rankings - ${year}`;
 
-    document.getElementById("title").textContent =
-      `MLB Elo Rankings ${year}`;
+    // Path to CSV file
+    const eloCsv = `mlb_elo_${year}.csv`;
+    const eloContainer = document.getElementById("elo-container");
 
-    const csvPath = `mlb_elo_${year}.csv`;
-
-    let tableData = [];
+    let eloData = [];
     let sortState = {};
 
-    fetch(csvPath)
+    fetch(eloCsv)
       .then(res => {
-        if (!res.ok) throw new Error("CSV not found");
+        if (!res.ok) throw new Error("Elo CSV not found");
         return res.text();
       })
       .then(csv => {
         const rows = csv.trim().split("\n").map(r => r.split(","));
+        if (rows.length < 2) throw new Error("No data found");
         const headers = rows[0];
-        tableData = rows.slice(1);
-
-        const theadRow = document.querySelector("#rankings thead tr");
-        const tbody = document.querySelector("#rankings tbody");
-
-        theadRow.innerHTML = "";
-        tbody.innerHTML = "";
-
-        headers.forEach((header, index) => {
-          const th = document.createElement("th");
-          th.textContent = header;
-          th.addEventListener("click", () => sortByColumn(index, th));
-          theadRow.appendChild(th);
-        });
-
-        renderTable(tableData);
+        eloData = rows.slice(1);
+        renderTable(headers, eloData, document.querySelector("#elo-table thead tr"), document.querySelector("#elo-table tbody"));
       })
-      .catch(() => {
-        document.querySelector("#rankings tbody").innerHTML =
-          `<tr>
-            <td colspan="20">
-              Rankings not available for ${year}.
-              Make sure <code>${csvPath}</code> exists.
-            </td>
-          </tr>`;
+      .catch(err => {
+        console.error(err);
+        document.querySelector("#elo-table tbody").innerHTML =
+          `<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`;
       });
 
-    function renderTable(data) {
-      const tbody = document.querySelector("#rankings tbody");
+    function renderTable(headers, data, theadRow, tbody) {
+      theadRow.innerHTML = "";
       tbody.innerHTML = "";
+
+      headers.forEach((header, index) => {
+        const th = document.createElement("th");
+        th.textContent = header;
+        th.addEventListener("click", () => sortByColumn(index, data, tbody, th));
+        theadRow.appendChild(th);
+      });
 
       data.forEach(row => {
         const tr = document.createElement("tr");
@@ -162,28 +151,31 @@
       });
     }
 
-    function sortByColumn(colIndex, th) {
-      const headers = document.querySelectorAll("th");
-      headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
+    function sortByColumn(colIndex, data, tbody, th) {
+      const headers = th.parentElement.querySelectorAll("th");
+      headers.forEach(h => h.classList.remove("sort-asc","sort-desc"));
 
       const ascending = sortState[colIndex] !== "asc";
       sortState = { [colIndex]: ascending ? "asc" : "desc" };
       th.classList.add(ascending ? "sort-asc" : "sort-desc");
 
-      tableData.sort((a, b) => {
+      data.sort((a,b) => {
         const A = parseFloat(a[colIndex]);
         const B = parseFloat(b[colIndex]);
-
-        if (!isNaN(A) && !isNaN(B)) {
-          return ascending ? A - B : B - A;
-        }
-
-        return ascending
-          ? a[colIndex].localeCompare(b[colIndex])
-          : b[colIndex].localeCompare(a[colIndex]);
+        if (!isNaN(A) && !isNaN(B)) return ascending ? A - B : B - A;
+        return ascending ? a[colIndex].localeCompare(b[colIndex]) : b[colIndex].localeCompare(a[colIndex]);
       });
 
-      renderTable(tableData);
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
     }
   </script>
 </body>
