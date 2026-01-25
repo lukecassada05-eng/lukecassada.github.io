@@ -15,16 +15,68 @@
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; color: #111; }
-    .page { max-width: 1100px; margin: 0 auto; padding: 20px; }
-    .top-nav { margin-bottom: 20px; }
-    .top-nav a { text-decoration: none; color: #111; font-weight: bold; font-size: 0.9rem; }
-    .top-nav a:hover { text-decoration: underline; }
-    h1 { text-align: center; margin-bottom: 10px; }
-    .subtitle { text-align: center; margin-bottom: 20px; color: #555; }
-    table { border-collapse: collapse; width: 100%; margin-top: 10px; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    th, td { padding: 8px 10px; border: 1px solid #ccc; text-align: left; }
-    th { background-color: #f2f2f2; cursor: pointer; user-select: none; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* --- Top back link --- */
+    .top-nav {
+      margin-bottom: 20px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    th, td {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      cursor: pointer;
+      user-select: none;
+    }
+
     th.sort-asc::after { content: " ▲"; }
     th.sort-desc::after { content: " ▼"; }
   </style>
@@ -32,26 +84,62 @@
 
 <body>
   <div class="page">
+
+    <!-- ✅ Back link -->
     <div class="top-nav">
-      <a href="leagues.html?year=2025">← Back to League Selection</a>
+      <a href="#" id="backLink">← Back</a>
     </div>
 
     <h1 id="title">European Football Rankings</h1>
-    <div class="subtitle">Elo-based club rankings by season</div>
+    <div class="subtitle" id="subtitle">Elo-based club rankings by season</div>
 
     <table id="rankings">
-      <thead><tr></tr></thead>
+      <thead>
+        <tr></tr>
+      </thead>
       <tbody></tbody>
     </table>
+
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const year = params.get("year") || "2025";
-    const league = params.get("league") || "ENG_1st";
+    const year = params.get("year");
+    const league = params.get("league");
+
+    // Redirect if year missing
+    if (!year) {
+      window.location.href = "index.html";
+    }
+
+    // Redirect to league selection if league missing
+    if (!league) {
+      window.location.href = `leagues.html?year=${year}`;
+    }
+
+    // Back button goes to league selection for the same year
+    document.getElementById("backLink").href = `leagues.html?year=${year}`;
+
+    // Update titles
+    const leagueNames = {
+      "ENG_1st": "English Premier League",
+      "ENG_2nd": "English Championship",
+      "SCO_1st": "Scottish Premiership",
+      "ESP_1st": "Spanish La Liga",
+      "ESP_2nd": "Spanish Segunda División",
+      "ITA_1st": "Italian Serie A",
+      "ITA_2nd": "Italian Serie B",
+      "GER_2nd": "German 2. Bundesliga",
+      "POR_1st": "Portuguese Primeira Liga",
+      "TUR_1st": "Turkish Super Lig",
+      "FRA_1st": "French Ligue 1",
+      "FRA_2nd": "French Ligue 2",
+      "BEL_1st": "Belgian First Division A",
+      "NED_1st": "Dutch Eredivisie"
+    };
 
     document.getElementById("title").textContent =
-      `European Football ${year} - ${league} Rankings`;
+      `${leagueNames[league] || league} Rankings ${year}`;
 
     const csvPath = `data/elo_rankings_${year}_${league}.csv`;
 
@@ -85,15 +173,18 @@
       })
       .catch(() => {
         document.querySelector("#rankings tbody").innerHTML =
-          `<tr><td colspan="20">
-             Rankings not available for ${year} - ${league}.<br>
-             Make sure <code>data/elo_rankings_${year}_${league}.csv</code> exists.
-           </td></tr>`;
+          `<tr>
+            <td colspan="20">
+              Rankings not available for ${year} ${leagueNames[league] || league}.<br>
+              Make sure <code>data/elo_rankings_${year}_${league}.csv</code> exists.
+            </td>
+          </tr>`;
       });
 
     function renderTable(data) {
       const tbody = document.querySelector("#rankings tbody");
       tbody.innerHTML = "";
+
       data.forEach(row => {
         const tr = document.createElement("tr");
         row.forEach(cell => {
@@ -116,8 +207,14 @@
       tableData.sort((a, b) => {
         const A = parseFloat(a[colIndex]);
         const B = parseFloat(b[colIndex]);
-        if (!isNaN(A) && !isNaN(B)) return ascending ? A - B : B - A;
-        return ascending ? a[colIndex].localeCompare(b[colIndex]) : b[colIndex].localeCompare(a[colIndex]);
+
+        if (!isNaN(A) && !isNaN(B)) {
+          return ascending ? A - B : B - A;
+        }
+
+        return ascending
+          ? a[colIndex].localeCompare(b[colIndex])
+          : b[colIndex].localeCompare(a[colIndex]);
       });
 
       renderTable(tableData);
