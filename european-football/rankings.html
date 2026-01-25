@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>European Football Leagues</title>
+  <title>European Football Rankings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ✅ Google Analytics -->
@@ -15,96 +15,113 @@
   </script>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f6f8;
-      color: #111;
-    }
-
-    .page {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      margin-bottom: 30px;
-      color: #555;
-    }
-
-    .league-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .league-list li {
-      margin: 10px 0;
-    }
-
-    .league-list a {
-      text-decoration: none;
-      font-size: 1.1rem;
-      color: #111;
-      background: #e2e8f0;
-      padding: 10px 15px;
-      border-radius: 6px;
-      display: inline-block;
-      width: 100%;
-      max-width: 300px;
-      transition: background 0.2s;
-    }
-
-    .league-list a:hover {
-      background: #cbd5e1;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; color: #111; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    .top-nav { margin-bottom: 20px; }
+    .top-nav a { text-decoration: none; color: #111; font-weight: bold; font-size: 0.9rem; }
+    .top-nav a:hover { text-decoration: underline; }
+    h1 { text-align: center; margin-bottom: 10px; }
+    .subtitle { text-align: center; margin-bottom: 20px; color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    th, td { padding: 8px 10px; border: 1px solid #ccc; text-align: left; }
+    th { background-color: #f2f2f2; cursor: pointer; user-select: none; }
+    th.sort-asc::after { content: " ▲"; }
+    th.sort-desc::after { content: " ▼"; }
   </style>
 </head>
 
 <body>
   <div class="page">
-    <h1>Select a League</h1>
-    <div class="subtitle">European Football Rankings</div>
+    <div class="top-nav">
+      <a href="leagues.html?year=2025">← Back to League Selection</a>
+    </div>
 
-    <ul class="league-list" id="leagueList"></ul>
+    <h1 id="title">European Football Rankings</h1>
+    <div class="subtitle">Elo-based club rankings by season</div>
+
+    <table id="rankings">
+      <thead><tr></tr></thead>
+      <tbody></tbody>
+    </table>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const year = params.get("year") || "2025";
+    const league = params.get("league") || "ENG_1st";
 
-    const leagues = {
-      "ENG_1st": "English Premier League",
-      "ENG_2nd": "English Championship",
-      "SCO_1st": "Scottish Premiership",
-      "ESP_1st": "Spanish La Liga",
-      "ESP_2nd": "Spanish Segunda División",
-      "ITA_1st": "Italian Serie A",
-      "ITA_2nd": "Italian Serie B",
-      "GER_2nd": "German 2. Bundesliga",
-      "POR_1st": "Portuguese Primeira Liga",
-      "TUR_1st": "Turkish Super Lig",
-      "FRA_1st": "French Ligue 1",
-      "FRA_2nd": "French Ligue 2",
-      "BEL_1st": "Belgian First Division A",
-      "NED_1st": "Dutch Eredivisie"
-    };
+    document.getElementById("title").textContent =
+      `European Football ${year} - ${league} Rankings`;
 
-    const leagueList = document.getElementById("leagueList");
+    const csvPath = `data/elo_rankings_${year}_${league}.csv`;
 
-    Object.entries(leagues).forEach(([code, name]) => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = `rankings.html?year=${year}&league=${code}`;
-      a.textContent = name;
-      li.appendChild(a);
-      leagueList.appendChild(li);
-    });
+    let tableData = [];
+    let sortState = {};
+
+    fetch(csvPath)
+      .then(res => {
+        if (!res.ok) throw new Error("CSV not found");
+        return res.text();
+      })
+      .then(csv => {
+        const rows = csv.trim().split("\n").map(r => r.split(","));
+        const headers = rows[0];
+        tableData = rows.slice(1);
+
+        const theadRow = document.querySelector("#rankings thead tr");
+        const tbody = document.querySelector("#rankings tbody");
+
+        theadRow.innerHTML = "";
+        tbody.innerHTML = "";
+
+        headers.forEach((header, index) => {
+          const th = document.createElement("th");
+          th.textContent = header;
+          th.addEventListener("click", () => sortByColumn(index, th));
+          theadRow.appendChild(th);
+        });
+
+        renderTable(tableData);
+      })
+      .catch(() => {
+        document.querySelector("#rankings tbody").innerHTML =
+          `<tr><td colspan="20">
+             Rankings not available for ${year} - ${league}.<br>
+             Make sure <code>data/elo_rankings_${year}_${league}.csv</code> exists.
+           </td></tr>`;
+      });
+
+    function renderTable(data) {
+      const tbody = document.querySelector("#rankings tbody");
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    function sortByColumn(colIndex, th) {
+      const headers = document.querySelectorAll("th");
+      headers.forEach(h => h.classList.remove("sort-asc", "sort-desc"));
+
+      const ascending = sortState[colIndex] !== "asc";
+      sortState = { [colIndex]: ascending ? "asc" : "desc" };
+      th.classList.add(ascending ? "sort-asc" : "sort-desc");
+
+      tableData.sort((a, b) => {
+        const A = parseFloat(a[colIndex]);
+        const B = parseFloat(b[colIndex]);
+        if (!isNaN(A) && !isNaN(B)) return ascending ? A - B : B - A;
+        return ascending ? a[colIndex].localeCompare(b[colIndex]) : b[colIndex].localeCompare(a[colIndex]);
+      });
+
+      renderTable(tableData);
+    }
   </script>
 </body>
 </html>
