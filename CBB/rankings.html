@@ -15,22 +15,52 @@
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f6f8; color: #111; }
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; color: #111; }
     .page { max-width: 1100px; margin: 0 auto; padding: 20px; }
     .top-nav { margin-bottom: 20px; }
-    .top-nav a { text-decoration: none; color: #111; font-weight: bold; font-size: 0.9rem; }
-    .top-nav a:hover { text-decoration: underline; }
+    .top-nav a { text-decoration: none; color: #111; font-weight: bold; }
     h1 { text-align: center; margin-bottom: 10px; }
     .subtitle { text-align: center; margin-bottom: 20px; color: #555; }
-    .toggle-buttons { text-align: center; margin-bottom: 20px; }
-    .toggle-buttons button { padding: 8px 16px; margin: 0 5px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; background: #ddd; transition: background 0.2s; }
-    .toggle-buttons button.active { background: #111; color: #fff; }
-    .toggle-buttons button:hover { background: #aaa; color: #fff; }
-    table { border-collapse: collapse; width: 100%; margin-top: 10px; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    th, td { padding: 8px 10px; border: 1px solid #ccc; text-align: left; }
-    th { background-color: #f2f2f2; cursor: pointer; user-select: none; }
-    th.sort-asc::after { content: " ▲"; }
-    th.sort-desc::after { content: " ▼"; }
+
+    .toggle-buttons { text-align: center; margin-bottom: 15px; }
+    .toggle-buttons button {
+      padding: 8px 16px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ddd;
+    }
+    .toggle-buttons button.active {
+      background: #111;
+      color: #fff;
+    }
+
+    .conference-select {
+      display: none;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    input {
+      padding: 10px 14px;
+      width: 320px;
+      max-width: 90%;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    th, td { padding: 8px 10px; border: 1px solid #ccc; }
+    th { background: #f2f2f2; }
   </style>
 </head>
 
@@ -41,177 +71,91 @@
     <a href="index.html">← Back to College Basketball</a>
   </div>
 
-  <h1 id="title">College Basketball Rankings</h1>
-  <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
+  <h1>College Basketball 2026 Rankings</h1>
+  <div class="subtitle">Elo-based rankings by season</div>
 
-  <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
+  <div class="toggle-buttons">
     <button id="show-elo" class="active">Elo Rankings</button>
-    <button id="show-projected" style="display:none;">Projected Seeding</button>
-    <button id="show-conference" style="display:none;">Conference Elo</button>
+    <button id="show-projected">Projected Bracket</button>
+    <button id="show-conference">Conference Elo</button>
+  </div>
+
+  <!-- ✅ Conference Selector -->
+  <div class="conference-select" id="conference-select">
+    <input
+      id="conferenceInput"
+      placeholder="Type conference name (e.g. Atlantic_Coast_Conference)"
+    />
   </div>
 
   <div id="elo-container">
-    <table id="elo-table">
-      <thead><tr></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="elo-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
   <div id="projected-container" style="display:none;">
-    <table id="projected-table">
-      <thead><tr></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="projected-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
   <div id="conference-container" style="display:none;">
-    <table id="conference-table">
-      <thead><tr></tr></thead>
-      <tbody></tbody>
-    </table>
+    <table id="conference-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
 </div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const year = params.get("year") || "2026";
-  document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
+const year = "2026";
+const dataDir = "data/";
 
-  const eloCsv = `data/CBB_Elo_${year}.csv`;
-  const projectedCsv = `data/projected_bracket${year}.csv`;
-  const conferenceCsv = `data/CBB_Conference_Elo_${year}.csv`;
-
-  const eloContainer = document.getElementById("elo-container");
-  const projectedContainer = document.getElementById("projected-container");
-  const conferenceContainer = document.getElementById("conference-container");
-  const toggleButtons = document.getElementById("toggle-buttons");
-  const showEloBtn = document.getElementById("show-elo");
-  const showProjectedBtn = document.getElementById("show-projected");
-  const showConferenceBtn = document.getElementById("show-conference");
-
-  let eloData = [], projectedData = [], conferenceData = [];
-  let sortState = {};
-
-  // --- Fetch Elo ---
-  fetch(eloCsv)
-    .then(res => { if(!res.ok) throw new Error("Elo CSV not found"); return res.text(); })
-    .then(csv => {
-      const rows = csv.trim().split("\n").map(r => r.split(","));
-      const headers = rows[0];
-      eloData = rows.slice(1);
-      renderTable(headers, eloData, document.querySelector("#elo-table thead tr"), document.querySelector("#elo-table tbody"));
-    })
-    .catch(() => {
-      document.querySelector("#elo-table tbody").innerHTML =
-        `<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`;
-    });
-
-  // --- Fetch Projected (only show button if CSV exists) ---
-  fetch(projectedCsv)
+function loadCsv(path, tableId) {
+  fetch(path)
     .then(res => {
-      if(!res.ok) throw new Error("No projected CSV");
+      if (!res.ok) throw new Error("CSV not found");
       return res.text();
     })
     .then(csv => {
       const rows = csv.trim().split("\n").map(r => r.split(","));
-      const headers = rows[0];
-      projectedData = rows.slice(1);
-      renderTable(headers, projectedData, document.querySelector("#projected-table thead tr"), document.querySelector("#projected-table tbody"));
-      showProjectedBtn.style.display = "inline-block";
-      toggleButtons.style.display = "block";
+      const table = document.getElementById(tableId);
+      table.querySelector("thead tr").innerHTML =
+        rows[0].map(h => `<th>${h}</th>`).join("");
+      table.querySelector("tbody").innerHTML =
+        rows.slice(1).map(r =>
+          `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`
+        ).join("");
     })
-    .catch(() => { console.warn(`No projected bracket for ${year}`); });
-
-  // --- Fetch Conference Elo ---
-  fetch(conferenceCsv)
-    .then(res => { if(!res.ok) throw new Error("Conference CSV not found"); return res.text(); })
-    .then(csv => {
-      const rows = csv.trim().split("\n").map(r => r.split(","));
-      const headers = rows[0];
-      conferenceData = rows.slice(1);
-      renderTable(headers, conferenceData, document.querySelector("#conference-table thead tr"), document.querySelector("#conference-table tbody"));
-      showConferenceBtn.style.display = "inline-block";
-      toggleButtons.style.display = "block";
-    })
-    .catch(() => { console.warn(`Conference CSV not found for ${year}`); });
-
-  function renderTable(headers, data, theadRow, tbody) {
-    theadRow.innerHTML = "";
-    tbody.innerHTML = "";
-
-    headers.forEach((header, index) => {
-      const th = document.createElement("th");
-      th.textContent = header;
-      th.addEventListener("click", () => sortByColumn(index, data, tbody, th));
-      theadRow.appendChild(th);
+    .catch(() => {
+      document.querySelector("#conference-table tbody").innerHTML =
+        `<tr><td colspan="10">Conference CSV not found.</td></tr>`;
     });
+}
 
-    data.forEach(row => {
-      const tr = document.createElement("tr");
-      row.forEach(cell => {
-        const td = document.createElement("td");
-        td.textContent = cell;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  }
+// Conference input handler
+document.getElementById("conferenceInput").addEventListener("change", e => {
+  const conf = e.target.value.trim();
+  if (!conf) return;
+  loadCsv(`${dataDir}${conf}_Elo_2026.csv`, "conference-table");
+});
 
-  function sortByColumn(colIndex, data, tbody, th) {
-    const headers = th.parentElement.querySelectorAll("th");
-    headers.forEach(h => h.classList.remove("sort-asc","sort-desc"));
+// Tab toggles
+show-elo.onclick = () => {
+  elo-container.style.display = "block";
+  projected-container.style.display = "none";
+  conference-container.style.display = "none";
+  conference-select.style.display = "none";
+};
 
-    const ascending = sortState[colIndex] !== "asc";
-    sortState = { [colIndex]: ascending ? "asc" : "desc" };
-    th.classList.add(ascending ? "sort-asc" : "sort-desc");
+show-projected.onclick = () => {
+  elo-container.style.display = "none";
+  projected-container.style.display = "block";
+  conference-container.style.display = "none";
+  conference-select.style.display = "none";
+};
 
-    data.sort((a,b) => {
-      const A = parseFloat(a[colIndex]);
-      const B = parseFloat(b[colIndex]);
-      if (!isNaN(A) && !isNaN(B)) return ascending ? A - B : B - A;
-      return ascending ? a[colIndex].localeCompare(b[colIndex]) : b[colIndex].localeCompare(a[colIndex]);
-    });
-
-    tbody.innerHTML = "";
-    data.forEach(row => {
-      const tr = document.createElement("tr");
-      row.forEach(cell => {
-        const td = document.createElement("td");
-        td.textContent = cell;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  }
-
-  // --- Toggle buttons ---
-  showEloBtn.onclick = () => {
-    eloContainer.style.display = "block";
-    projectedContainer.style.display = "none";
-    conferenceContainer.style.display = "none";
-    showEloBtn.classList.add("active");
-    showProjectedBtn.classList.remove("active");
-    showConferenceBtn.classList.remove("active");
-  };
-
-  showProjectedBtn.onclick = () => {
-    eloContainer.style.display = "none";
-    projectedContainer.style.display = "block";
-    conferenceContainer.style.display = "none";
-    showEloBtn.classList.remove("active");
-    showProjectedBtn.classList.add("active");
-    showConferenceBtn.classList.remove("active");
-  };
-
-  showConferenceBtn.onclick = () => {
-    eloContainer.style.display = "none";
-    projectedContainer.style.display = "none";
-    conferenceContainer.style.display = "block";
-    showEloBtn.classList.remove("active");
-    showProjectedBtn.classList.remove("active");
-    showConferenceBtn.classList.add("active");
-  };
+show-conference.onclick = () => {
+  elo-container.style.display = "none";
+  projected-container.style.display = "none";
+  conference-container.style.display = "block";
+  conference-select.style.display = "block";
+};
 </script>
 </body>
 </html>
