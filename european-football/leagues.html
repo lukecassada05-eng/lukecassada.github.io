@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>European Football Leagues</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWG43QNM3P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PWG43QNM3P');
+  </script>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; color: #111; }
+    .page { max-width: 700px; margin: 0 auto; padding: 20px; text-align: center; }
+    h1 { margin-bottom: 10px; }
+    .subtitle { margin-bottom: 30px; color: #555; }
+    .league-list { list-style: none; padding: 0; }
+    .league-list li { margin: 10px 0; }
+    .league-list a {
+      text-decoration: none; font-size: 1.1rem; color: #111; background: #e2e8f0;
+      padding: 10px 15px; border-radius: 6px; display: inline-block; width: 100%; max-width: 300px;
+      transition: background 0.2s;
+    }
+    .league-list a:hover { background: #cbd5e1; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <h1>Select a League</h1>
+    <div class="subtitle">European Football Rankings</div>
+
+    <ul class="league-list" id="leagueList"></ul>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const year = params.get("year") || "2025";
+
+    const leagues = {
+      "ENG_1st": "English Premier League",
+      "ENG_2nd": "English Championship",
+      "SCO_1st": "Scottish Premiership",
+      "ESP_1st": "Spanish La Liga",
+      "ESP_2nd": "Spanish Segunda División",
+      "ITA_1st": "Italian Serie A",
+      "ITA_2nd": "Italian Serie B",
+      "GER_2nd": "German 2. Bundesliga",
+      "POR_1st": "Portuguese Primeira Liga",
+      "TUR_1st": "Turkish Super Lig",
+      "FRA_1st": "French Ligue 1",
+      "FRA_2nd": "French Ligue 2",
+      "BEL_1st": "Belgian First Division A",
+      "NED_1st": "Dutch Eredivisie"
+    };
+
+    const leagueList = document.getElementById("leagueList");
+
+    Object.entries(leagues).forEach(([code, name]) => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `rankings.html?year=${year}&league=${code}`;
+      a.textContent = name;
+      li.appendChild(a);
+      leagueList.appendChild(li);
+    });
+  </script>
+</body>
+</html>
