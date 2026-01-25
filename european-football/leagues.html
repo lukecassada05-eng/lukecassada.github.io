@@ -15,23 +15,78 @@
   </script>
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; color: #111; }
-    .page { max-width: 700px; margin: 0 auto; padding: 20px; text-align: center; }
-    h1 { margin-bottom: 10px; }
-    .subtitle { margin-bottom: 30px; color: #555; }
-    .league-list { list-style: none; padding: 0; }
-    .league-list li { margin: 10px 0; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .league-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .league-list li {
+      margin: 10px 0;
+    }
+
     .league-list a {
-      text-decoration: none; font-size: 1.1rem; color: #111; background: #e2e8f0;
-      padding: 10px 15px; border-radius: 6px; display: inline-block; width: 100%; max-width: 300px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: #111;
+      background: #e2e8f0;
+      padding: 10px 15px;
+      border-radius: 6px;
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
       transition: background 0.2s;
     }
-    .league-list a:hover { background: #cbd5e1; }
+
+    .league-list a:hover {
+      background: #cbd5e1;
+    }
+
+    .back-link {
+      margin-bottom: 20px;
+      display: inline-block;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+      background: #e2e8f0;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .back-link:hover {
+      background: #cbd5e1;
+    }
   </style>
 </head>
 
 <body>
   <div class="page">
+    <!-- Back to Year Selection -->
+    <a href="index.html" class="back-link">← Back to Year Selection</a>
+
     <h1>Select a League</h1>
     <div class="subtitle">European Football Rankings</div>
 
@@ -40,7 +95,12 @@
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const year = params.get("year") || "2025";
+    const year = params.get("year");
+
+    if (!year) {
+      // If no year, redirect to main page
+      window.location.href = "index.html";
+    }
 
     const leagues = {
       "ENG_1st": "English Premier League",
@@ -61,9 +121,14 @@
 
     const leagueList = document.getElementById("leagueList");
 
+    // Clear any previous content
+    leagueList.innerHTML = "";
+
+    // Loop through leagues and create a link for each
     Object.entries(leagues).forEach(([code, name]) => {
       const li = document.createElement("li");
       const a = document.createElement("a");
+      // Link to rankings page for the selected year and league
       a.href = `rankings.html?year=${year}&league=${code}`;
       a.textContent = name;
       li.appendChild(a);
