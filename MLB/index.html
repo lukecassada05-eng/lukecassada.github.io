@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MLB Elo Rankings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWG43QNM3P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PWG43QNM3P');
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #111;
+    }
+
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .year-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .year-list li {
+      margin: 10px 0;
+    }
+
+    .year-list a {
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: #111;
+      background: #e2e8f0;
+      padding: 10px 15px;
+      border-radius: 6px;
+      display: inline-block;
+      width: 100%;
+      max-width: 200px;
+      transition: background 0.2s;
+    }
+
+    .year-list a:hover {
+      background: #cbd5e1;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 40px;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Select a Year</h1>
+    <div class="subtitle">MLB Elo Rankings</div>
+
+    <ul class="year-list" id="yearList"></ul>
+
+    <a href="../index.html" class="back-link">← Back to Homepage</a>
+  </div>
+
+  <script>
+    // Available years for MLB rankings
+    const years = [
+      2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+      2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+      2021, 2022, 2023, 2024, 2025
+    ];
+
+    const yearList = document.getElementById("yearList");
+
+    years.forEach(year => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `mlb_rankings.html?year=${year}`;
+      a.textContent = year;
+      li.appendChild(a);
+      yearList.appendChild(li);
+    });
+  </script>
+</body>
+</html>
