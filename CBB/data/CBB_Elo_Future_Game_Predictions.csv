@@ -1,0 +1,109 @@
+team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
+UConn,Providence,0.993,0.007,34.7
+Southern,Miss Valley St,0.988,0.012,30.4
+Miami OH,UMass,0.987,0.013,30
+SF Austin,N'Western St,0.987,0.013,30.1
+UNC Asheville,Gardner-Webb,0.978,0.022,26.5
+Duke,Louisville,0.962,0.038,22.4
+Robert Morris,IU Indy,0.961,0.039,22.3
+Saint Louis,G Washington,0.957,0.043,21.6
+Long Island,Wagner,0.955,0.045,21.3
+Virginia Tech,Georgia Tech,0.952,0.048,20.7
+New Mexico St,Delaware,0.951,0.049,20.6
+Arkansas St,Old Dominion,0.936,0.064,18.7
+Ohio State,Penn State,0.934,0.066,18.4
+Santa Clara,San Francisco,0.921,0.079,17.1
+Tulsa,North Texas,0.909,0.091,16
+Bethune,Alcorn St,0.904,0.096,15.5
+Vanderbilt,Kentucky,0.89,0.11,14.5
+Colgate,Holy Cross,0.886,0.114,14.3
+Wisconsin,Minnesota,0.885,0.115,14.2
+Utah State,Wyoming,0.883,0.117,14.1
+George Mason,Davidson,0.882,0.118,14
+Akron,Toledo,0.879,0.121,13.7
+Alabama,Missouri,0.877,0.123,13.6
+UCF,Arizona St,0.874,0.126,13.5
+LSU,Mississippi St,0.868,0.132,13.1
+Drake,Evansville,0.862,0.138,12.8
+VCU,Richmond,0.862,0.138,12.7
+Kent State,Ohio,0.853,0.147,12.2
+Tarleton St,Abilene Chrstn,0.842,0.158,11.6
+Tennessee St,Tennessee Tech,0.84,0.16,11.5
+Furman,Samford,0.825,0.175,10.8
+NC State,Syracuse,0.824,0.176,10.7
+San Diego St,Colorado St,0.802,0.198,9.7
+Norfolk St,Morgan St,0.802,0.198,9.7
+Auburn,Texas,0.797,0.203,9.5
+Florida A&M,Jackson St,0.797,0.203,9.5
+Seton Hall,Xavier,0.771,0.229,8.4
+St John's,Butler,0.762,0.238,8.1
+UIC,Indiana St,0.745,0.255,7.5
+LMU,Oregon St,0.74,0.26,7.3
+Queens,C Arkansas,0.735,0.265,7.1
+Pacific,Portland,0.722,0.278,6.6
+Murray St,Illinois St,0.722,0.278,6.6
+Iowa,USC,0.721,0.279,6.6
+West Virginia,Kansas St,0.718,0.282,6.5
+Dayton,Rhode Island,0.705,0.295,6.1
+Temple,Charlotte,0.696,0.304,5.8
+Lamar,E Texas A&M,0.693,0.307,5.6
+Nevada,Grand Canyon,0.684,0.316,5.4
+FIU,Jax State,0.676,0.324,5.1
+Texas A&M-CC,UT Rio Grande,0.673,0.327,5
+Miami,Stanford,0.668,0.332,4.9
+SC State,Delaware St,0.646,0.354,4.2
+Georgetown,DePaul,0.636,0.364,3.9
+Michigan,Nebraska,0.632,0.368,3.8
+Bowling Green,Buffalo,0.626,0.374,3.6
+Grambling,AR-Pine Bluff,0.618,0.382,3.3
+East Carolina,Rice,0.595,0.405,2.7
+New Hampshire,UMass Lowell,0.57,0.43,2
+Army,Lehigh,0.551,0.449,1.4
+Georgia,Tennessee,0.545,0.455,1.3
+Bellarmine,West Georgia,0.54,0.46,1.1
+Fordham,La Salle,0.513,0.487,0.4
+Nicholls,New Orleans,0.498,0.502,-0
+Kennesaw St,Western KY,0.482,0.518,-0.5
+Pepperdine,San Diego,0.449,0.551,-1.4
+UAlbany,NJIT,0.447,0.553,-1.5
+UTEP,Louisiana Tech,0.447,0.553,-1.5
+Lafayette,Bucknell,0.423,0.577,-2.2
+Cincinnati,Baylor,0.388,0.612,-3.2
+Texas Southern,Alabama St,0.363,0.637,-3.9
+Hou Christian,Incarnate Word,0.351,0.649,-4.3
+Duquesne,St Bonaventure,0.339,0.661,-4.6
+Washington St,Seattle U,0.333,0.667,-4.8
+Purdue FW,Oakland,0.33,0.67,-4.9
+Missouri St,Sam Houston,0.321,0.679,-5.2
+Prairie View,Alabama A&M,0.314,0.686,-5.4
+Oregon,UCLA,0.312,0.688,-5.5
+FDU,Le Moyne,0.305,0.695,-5.7
+N Illinois,W Michigan,0.301,0.699,-5.9
+Omaha,S Dakota St,0.296,0.704,-6
+Pitt,Wake Forest,0.294,0.706,-6.1
+E Kentucky,Austin Peay,0.257,0.743,-7.4
+S Illinois,Northern Iowa,0.234,0.766,-8.2
+Tulane,South Florida,0.21,0.79,-9.2
+Notre Dame,Virginia,0.203,0.797,-9.5
+Binghamton,Bryant,0.202,0.798,-9.6
+Boston U,Navy,0.202,0.798,-9.6
+C Michigan,E Michigan,0.189,0.811,-10.1
+TCU,Houston,0.183,0.817,-10.4
+BYU,Arizona,0.18,0.82,-10.5
+Texas St,Marshall,0.152,0.848,-11.9
+Stonehill,C Connecticut,0.144,0.856,-12.4
+Kansas City,Denver,0.139,0.861,-12.7
+Marquette,Creighton,0.132,0.868,-13.1
+Oklahoma,Arkansas,0.119,0.881,-13.9
+Florida St,California,0.116,0.884,-14.1
+Loyola Chicago,Saint Joseph's,0.103,0.897,-15.1
+South Carolina,Florida,0.092,0.908,-15.9
+San José St,Boise St,0.092,0.908,-15.9
+UNLV,New Mexico,0.089,0.911,-16.2
+Valparaiso,Belmont,0.084,0.916,-16.6
+Indiana,Purdue,0.084,0.916,-16.6
+Loyola MD,American,0.081,0.919,-16.8
+Coppin St,Howard,0.062,0.938,-18.9
+UTSA,UAB,0.054,0.946,-19.9
+SE Louisiana,McNeese,0.016,0.984,-28.6
+Rutgers,Michigan St,0.01,0.99,-32.2
