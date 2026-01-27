@@ -1,0 +1,19 @@
+rank,team,rating,record,best_win,best_win_elo
+1,Duke,2716.4,19-1,Michigan St,2547.4
+2,Virginia,2258.9,16-3,SMU,2201.7
+3,North Carolina,2243.5,16-4,Virginia,2258.9
+4,SMU,2201.7,15-5,North Carolina,2243.5
+5,Louisville,2199.3,14-6,Virginia Tech,2116.1
+6,Clemson,2174.1,17-4,SMU,2201.7
+7,Virginia Tech,2116.1,15-6,Virginia,2258.9
+8,NC State,2115.1,14-6,Clemson,2174.1
+9,Miami,2093.7,16-4,Notre Dame,1957.2
+10,California,2084.4,15-5,North Carolina,2243.5
+11,Stanford,2038.3,14-6,Saint Louis,2370.8
+12,Notre Dame,1957.2,11-9,TCU,2104.5
+13,Wake Forest,1931.1,12-10,Virginia Tech,2116.1
+14,Syracuse,1910.9,12-8,Tennessee,2223.7
+15,Pitt,1712.1,8-12,Ohio State,2099.1
+16,Florida St,1666.7,8-12,Miami,2093.7
+17,Georgia Tech,1663.6,11-9,NC State,2115.1
+18,Boston College,1619.3,9-11,Syracuse,1910.9
