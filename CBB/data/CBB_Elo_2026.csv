@@ -1,0 +1,729 @@
+rank,team,rating,record,best_win,best_win_elo
+1,Arizona,2792,21-0,UConn,2663.8
+2,Michigan,2730.2,19-1,Nebraska,2623.4
+3,Duke,2716.4,19-1,Michigan St,2547
+4,UConn,2663.8,20-1,Illinois,2436.5
+5,Nebraska,2623.4,20-1,Michigan St,2547
+6,Michigan St,2547,19-2,Arkansas,2325.9
+7,Gonzaga,2522.4,21-1,Alabama,2312.1
+8,Iowa State,2454.9,18-2,Purdue,2448.6
+9,Purdue,2448.6,17-4,Alabama,2312.1
+10,Illinois,2436.5,17-3,Purdue,2448.6
+11,Houston,2432.6,17-2,Arkansas,2325.9
+12,BYU,2426,17-3,Villanova,2219.8
+13,Vanderbilt,2414.3,18-3,Alabama,2312.1
+14,Saint Louis,2386,20-1,Santa Clara,2180.9
+15,Arkansas,2325.9,16-5,Vanderbilt,2414.3
+16,Miami OH,2322.9,21-0,Akron,1952
+17,Florida,2322.5,14-6,Vanderbilt,2414.3
+18,Alabama,2312.1,14-6,Illinois,2436.5
+19,Texas Tech,2302.1,16-4,Duke,2716.4
+20,Virginia,2265.7,17-3,Louisville,2204.6
+21,Auburn,2251.6,13-7,Arkansas,2325.9
+22,Kansas,2250.1,15-5,Iowa State,2454.9
+23,North Carolina,2241,16-4,Virginia,2265.7
+24,Saint Mary's,2226.5,19-3,Virginia Tech,2121.5
+25,Tennessee,2224.2,13-6,Houston,2432.6
+26,UCF,2222.9,16-4,Kansas,2250.1
+27,Villanova,2219.8,15-5,Seton Hall,2092.9
+28,Louisville,2204.6,14-6,Virginia Tech,2121.5
+29,SMU,2201.2,15-5,North Carolina,2241
+30,Iowa,2199,14-5,Indiana,2028.3
+31,Georgia,2188.9,16-4,Arkansas,2325.9
+32,Santa Clara,2180.9,17-5,Saint Mary's,2226.5
+33,Clemson,2176.1,17-4,SMU,2201.2
+34,St John's,2154,15-5,Villanova,2219.8
+35,Oklahoma St,2129.2,14-6,UCF,2222.9
+36,NC State,2123.9,15-6,Clemson,2176.1
+37,Virginia Tech,2121.5,16-6,Virginia,2265.7
+38,George Mason,2118.4,18-2,VCU,2078.9
+39,New Mexico,2116.9,17-4,Santa Clara,2180.9
+40,USC,2114.7,15-5,Seton Hall,2092.9
+41,Utah State,2108.1,16-3,VCU,2078.9
+42,Kentucky,2105.7,14-7,Tennessee,2224.2
+43,TCU,2102.1,13-7,Florida,2322.5
+44,Ohio State,2096.4,14-6,UCLA,2020.6
+45,Seton Hall,2092.9,14-6,NC State,2123.9
+46,Miami,2088.7,16-4,Notre Dame,1950.7
+47,Texas,2087.8,12-8,Vanderbilt,2414.3
+48,LSU,2086.4,13-7,SMU,2201.2
+49,California,2084.7,15-5,North Carolina,2241
+50,Wisconsin,2079.9,14-6,Michigan,2730.2
+51,VCU,2078.9,15-6,Virginia Tech,2121.5
+52,San Diego St,2078.7,14-5,New Mexico,2116.9
+53,Belmont,2049.3,18-3,Northern Iowa,1807.4
+54,Baylor,2041.3,12-9,Oklahoma St,2129.2
+55,Stanford,2039.1,14-6,Saint Louis,2386
+56,Indiana,2028.3,14-7,Purdue,2448.6
+57,Texas A&M,2025.2,16-4,Auburn,2251.6
+58,UCLA,2020.6,14-6,Purdue,2448.6
+59,Butler,2015.1,13-7,Virginia,2265.7
+60,Missouri,2011.6,14-7,Florida,2322.5
+61,West Virginia,2008.3,14-7,Kansas,2250.1
+62,Tulsa,1997.2,17-3,Northern Iowa,1807.4
+63,Colorado,1994.8,12-8,Washington,1973.2
+64,McNeese,1990.6,17-4,G Washington,1893.4
+65,Washington,1973.2,11-9,USC,2114.7
+66,Boise St,1963.5,13-8,Saint Mary's,2226.5
+67,Akron,1952,17-4,Buffalo,1741.4
+68,Notre Dame,1950.7,11-10,TCU,2102.1
+69,Nevada,1944.8,15-6,Boise St,1963.5
+70,Arizona St,1944.5,11-10,Santa Clara,2180.9
+71,Xavier,1940.2,11-9,Butler,2015.1
+72,Creighton,1935.3,12-9,Villanova,2219.8
+73,Liberty,1935.2,17-3,FAU,1866.9
+74,Yale,1930.7,15-3,Akron,1952
+75,South Florida,1909.3,13-7,Utah State,2108.1
+76,Wake Forest,1907.1,11-10,Virginia Tech,2121.5
+77,Colorado St,1905.6,12-8,Colorado,1994.8
+78,Oklahoma,1898.2,11-10,Oklahoma St,2129.2
+79,Syracuse,1897.8,12-9,Tennessee,2224.2
+80,Cincinnati,1895,10-10,Iowa State,2454.9
+81,G Washington,1893.4,13-8,South Florida,1909.3
+82,SF Austin,1892.4,18-3,Arkansas St,1733.7
+83,UC San Diego,1886.1,15-6,Hawai’i,1779.6
+84,Kansas St,1886,10-11,California,2084.7
+85,Murray St,1881.5,16-5,Akron,1952
+86,FAU,1866.9,14-7,Wichita St,1762.9
+87,South Carolina,1860.2,11-9,LSU,2086.4
+88,Providence,1857.4,9-12,St John's,2154
+89,Grand Canyon,1854.2,13-7,Utah State,2108.1
+90,Dayton,1852.7,14-7,G Washington,1893.4
+91,Georgetown,1843.2,10-10,Clemson,2176.1
+92,Kent State,1839.8,16-5,UNC Wilmington,1822.5
+93,Davidson,1829.6,12-7,G Washington,1893.4
+94,Ole Miss,1824.2,11-9,Georgia,2188.9
+95,Northwestern,1822.5,9-11,USC,2114.7
+96,UNC Wilmington,1822.5,18-3,Marshall,1734.7
+97,Mississippi St,1818.7,10-10,Texas,2087.8
+98,San Francisco,1818.6,13-9,Mississippi St,1818.7
+99,DePaul,1815.3,12-8,Seton Hall,2092.9
+100,Wyoming,1812,12-8,UNLV,1640.1
+101,Seattle U,1809,14-8,Stanford,2039.1
+102,Northern Iowa,1807.4,13-8,Murray St,1881.5
+103,Minnesota,1805.8,10-10,Iowa,2199
+104,Oregon,1804.6,8-12,Hawai’i,1779.6
+105,Richmond,1799.6,13-9,Belmont,2049.3
+106,Rhode Island,1798.4,13-8,George Mason,2118.4
+107,St Bonaventure,1797.5,12-8,FAU,1866.9
+108,Utah Valley,1795.8,15-6,CA Baptist,1776.6
+109,Illinois St,1781.4,14-7,Northern Iowa,1807.4
+110,Hawai’i,1779.6,15-4,UC Davis,1687.4
+111,CA Baptist,1776.6,15-6,Utah Valley,1795.8
+112,Wichita St,1762.9,13-8,South Florida,1909.3
+113,William & Mary,1748.2,14-6,UNC Wilmington,1822.5
+114,Utah,1744.1,9-11,TCU,2102.1
+115,Memphis,1742.7,9-10,Baylor,2041.3
+116,Buffalo,1741.4,14-7,DePaul,1815.3
+117,High Point,1736.8,18-4,Furman,1581.1
+118,Marshall,1734.7,13-7,Toledo,1656.9
+119,Arkansas St,1733.7,13-8,UT Arlington,1713.7
+120,UAB,1732.9,12-8,South Florida,1909.3
+121,Sam Houston,1730.1,13-7,Wyoming,1812
+122,Pitt,1721.7,9-12,Ohio State,2096.4
+123,MTSU,1719,11-8,Murray St,1881.5
+124,Hofstra,1716,13-8,Syracuse,1897.8
+125,Bowling Green,1715.1,13-8,Kansas St,1886
+126,UT Arlington,1713.7,13-6,SF Austin,1892.4
+127,Pacific,1711.3,14-8,Seattle U,1809
+128,LMU,1709.2,11-11,San Francisco,1818.6
+129,Maryland,1706.2,8-12,Penn State,1696.5
+130,Temple,1698.5,13-7,Davidson,1829.6
+131,Penn State,1696.5,9-11,Campbell,1522.4
+132,New Mexico St,1693.6,10-9,New Mexico,2116.9
+133,Troy,1688.5,15-6,San Diego St,2078.7
+134,UC Davis,1687.4,12-8,Nevada,1944.8
+135,UC Irvine,1680.8,14-7,UC San Diego,1886.1
+136,Quinnipiac,1676.4,14-8,Pitt,1721.7
+137,St Thomas (MN),1675,17-5,Portland,1612.2
+138,N Dakota St,1672.4,18-5,St Thomas (MN),1675
+139,Rutgers,1669,9-12,Northwestern,1822.5
+140,ETSU,1666,15-6,Mercer,1662.8
+141,Tarleton St,1665.4,11-9,CA Baptist,1776.6
+142,Winthrop,1665.2,15-8,High Point,1736.8
+143,Georgia Tech,1664.1,11-10,NC State,2123.9
+144,Mercer,1662.8,13-8,Lipscomb,1615.6
+145,Toledo,1656.9,11-10,Bowling Green,1715.1
+146,Florida St,1656.5,8-12,Miami,2088.7
+147,Wright St,1654.8,13-8,Oakland,1626.1
+148,North Texas,1653.2,12-8,Tulsa,1997.2
+149,Fresno St,1651.1,9-11,Colorado St,1905.6
+150,Bradley,1646.5,14-8,Liberty,1935.2
+151,Santa Barbara,1646,13-7,Seattle U,1809
+152,Charleston,1641.7,13-8,William & Mary,1748.2
+153,Marquette,1640.7,8-14,Xavier,1940.2
+154,UNLV,1640.1,10-10,Utah State,2108.1
+155,Western KY,1638.3,11-9,Wichita St,1762.9
+156,Oakland,1626.1,12-10,Toledo,1656.9
+157,Portland St,1624.8,13-5,N Colorado,1543.3
+158,Iona,1624.8,14-8,Hofstra,1716
+159,Washington St,1623.9,9-13,LMU,1709.2
+160,UMass,1623,13-9,Buffalo,1741.4
+161,Boston College,1620.8,9-11,Syracuse,1897.8
+162,Columbia,1617.9,13-6,Hofstra,1716
+163,Charlotte,1617.7,11-9,Wichita St,1762.9
+164,Duquesne,1615.8,11-9,Davidson,1829.6
+165,Lipscomb,1615.6,14-7,Marshall,1734.7
+166,Portland,1612.2,10-12,Kent State,1839.8
+167,Penn,1607.8,9-9,Saint Joseph's,1607.5
+168,Saint Joseph's,1607.5,13-8,Dayton,1852.7
+169,Montana St,1601.6,13-8,St Thomas (MN),1675
+170,Marist,1596.8,13-7,Quinnipiac,1676.4
+171,Oregon St,1592.1,10-12,Arizona St,1944.5
+172,Drake,1592.1,11-10,Murray St,1881.5
+173,Tulane,1590.8,12-8,FAU,1866.9
+174,Robert Morris,1589,13-9,Toledo,1656.9
+175,Towson,1585.4,12-10,Liberty,1935.2
+176,Ohio,1584.9,11-11,St Bonaventure,1797.5
+177,South Alabama,1583,14-6,Arkansas St,1733.7
+178,Furman,1581.1,14-7,Richmond,1799.6
+179,N Kentucky,1578.3,14-8,Robert Morris,1589
+180,Austin Peay,1571.2,14-7,ETSU,1666
+181,Elon,1566.8,12-9,Richmond,1799.6
+182,Valparaiso,1566.2,10-10,Northern Iowa,1807.4
+183,Siena,1561.4,14-7,Marist,1596.8
+184,Kennesaw St,1559.8,12-8,Western KY,1638.3
+185,UT Martin,1557.6,15-5,Bradley,1646.5
+186,Long Island,1557.4,12-8,Missouri St,1537.2
+187,American,1552,13-8,Penn,1607.8
+188,Montana,1546.8,12-9,UNLV,1640.1
+189,FIU,1545,10-10,New Mexico St,1693.6
+190,Wofford,1543.4,14-7,Mercer,1662.8
+191,N Colorado,1543.3,11-10,Colorado,1994.8
+192,Missouri St,1537.2,12-8,New Mexico St,1693.6
+193,Idaho,1536.9,12-8,Washington St,1623.9
+194,S Illinois,1535.1,9-13,Belmont,2049.3
+195,UIC,1533.1,12-10,Northern Iowa,1807.4
+196,Vermont,1527.3,13-8,Siena,1561.4
+197,Campbell,1522.4,9-12,UT Arlington,1713.7
+198,Colgate,1516.7,12-9,Siena,1561.4
+199,Navy,1514.8,15-6,Presbyterian,1304.4
+200,Queens,1513.9,12-9,FGCU,1465.9
+201,Texas A&M-CC,1511.4,11-10,UT Rio Grande,1492.8
+202,Utah Tech,1502.4,11-11,Tarleton St,1665.4
+203,Fullerton,1500,10-12,UC San Diego,1886.1
+204,S Dakota St,1499.7,10-11,Merrimack,1495.1
+205,Green Bay,1498.9,12-10,Santa Barbara,1646
+206,Merrimack,1495.1,13-9,Quinnipiac,1676.4
+207,San José St,1493.4,6-15,San Diego,1446.5
+208,UT Rio Grande,1492.8,10-11,McNeese,1990.6
+209,Idaho St,1488.4,10-11,Idaho,1536.9
+210,E Michigan,1486.7,9-12,Cincinnati,1895
+211,La Salle,1483.4,7-13,Dayton,1852.7
+212,Jax State,1482.5,10-9,MTSU,1719
+213,Stony Brook,1482,12-9,Hofstra,1716
+214,CSU Northridge,1480.9,11-10,UC San Diego,1886.1
+215,Saint Peter's,1467.3,11-7,Quinnipiac,1676.4
+216,FGCU,1465.9,8-13,Samford,1379.4
+217,Weber St,1462.9,10-11,N Colorado,1543.3
+218,Coastal,1457.1,13-9,Marshall,1734.7
+219,New Orleans,1455.2,8-13,TCU,2102.1
+220,Abilene Chrstn,1447.4,11-10,Utah Valley,1795.8
+221,San Diego,1446.5,9-13,UC San Diego,1886.1
+222,App State,1444,13-9,High Point,1736.8
+223,UNC Asheville,1439.6,9-12,Lipscomb,1615.6
+224,Tennessee St,1432.4,13-7,UNLV,1640.1
+225,Purdue FW,1431,14-9,Notre Dame,1950.7
+226,Lindenwood,1427.9,12-9,Charleston So,1357.6
+227,Milwaukee,1427.2,9-13,Robert Morris,1589
+228,Fairfield,1426.5,13-9,Monmouth,1414.9
+229,Fordham,1425.4,10-10,St Bonaventure,1797.5
+230,Cornell,1424.6,9-9,Colgate,1516.7
+231,Southern Miss,1423.9,11-11,UT Martin,1557.6
+232,Youngstown St,1420.1,10-12,Grand Canyon,1854.2
+233,Bethune,1417.7,9-11,Ohio,1584.9
+234,Drexel,1415.7,10-11,William & Mary,1748.2
+235,James Madison,1415.2,10-11,Arkansas St,1733.7
+236,Monmouth,1414.9,10-11,William & Mary,1748.2
+237,GA Southern,1413.6,13-9,FGCU,1465.9
+238,Harvard,1411.2,10-9,Columbia,1617.9
+239,W Michigan,1409,8-13,E Michigan,1486.7
+240,Alabama A&M,1408.8,12-10,Tennessee St,1432.4
+241,UC Riverside,1406.5,7-14,Fullerton,1500
+242,Louisiana Tech,1406.4,11-8,MTSU,1719
+243,Lamar,1404.7,11-10,Montana,1546.8
+244,C Arkansas,1402.8,10-10,FGCU,1465.9
+245,Indiana St,1401.6,9-13,Belmont,2049.3
+246,South Dakota,1393,11-11,W Michigan,1409
+247,Long Beach St,1386.6,8-13,CSU Northridge,1480.9
+248,Dartmouth,1379.6,9-9,Saint Peter's,1467.3
+249,Samford,1379.4,10-11,Cornell,1424.6
+250,Princeton,1375.3,7-13,Yale,1930.7
+251,Texas St,1375.2,11-11,South Alabama,1583
+252,UMBC,1369.9,12-7,NJIT,1261.6
+253,Northeastern,1367.4,6-14,Duquesne,1615.8
+254,Incarnate Word,1362.1,9-12,McNeese,1990.6
+255,Longwood,1360.3,12-10,Winthrop,1665.2
+256,Nicholls,1358.6,8-13,Texas A&M-CC,1511.4
+257,Charleston So,1357.6,11-11,Richmond,1799.6
+258,SIUE,1351.1,13-8,Drake,1592.1
+259,East Carolina,1347.5,6-14,Buffalo,1741.4
+260,Pepperdine,1347.2,6-16,Portland,1612.2
+261,SE Missouri,1346.3,11-10,UT Martin,1557.6
+262,Rice,1341.1,8-12,Wichita St,1762.9
+263,Evansville,1339.7,5-15,Oregon St,1592.1
+264,W Carolina,1338.8,7-12,ETSU,1666
+265,C Connecticut,1334.3,10-9,Rutgers,1669
+266,Old Dominion,1332.3,6-15,Coastal,1457.1
+267,NC A&T,1331.1,9-10,Hofstra,1716
+268,West Georgia,1327.4,10-10,Troy,1688.5
+269,Grambling,1322.2,8-10,Southern Miss,1423.9
+270,Howard,1319.8,13-10,UNC Wilmington,1822.5
+271,E Kentucky,1317.1,7-14,Jax State,1482.5
+272,Florida A&M,1316.2,8-10,Grambling,1322.2
+273,Jacksonville,1314.3,8-13,Bethune,1417.7
+274,Cal Poly,1309.1,7-14,UC San Diego,1886.1
+275,UTEP,1307,7-13,MTSU,1719
+276,Hampton,1306.5,10-11,Towson,1585.4
+277,Sacred Heart,1305.8,9-13,Siena,1561.4
+278,Presbyterian,1304.4,11-11,ETSU,1666
+279,AR-Pine Bluff,1299.7,8-14,UIC,1533.1
+280,E Texas A&M,1299.2,10-15,UT Rio Grande,1492.8
+281,Detroit Mercy,1297.2,8-12,Youngstown St,1420.1
+282,Denver,1294.4,9-13,Colorado St,1905.6
+283,Radford,1292.7,11-11,Longwood,1360.3
+284,Bellarmine,1291.5,8-14,C Arkansas,1402.8
+285,Omaha,1286,10-12,Portland St,1624.8
+286,Southern,1278.4,7-12,Bethune,1417.7
+287,Morehead St,1278.1,11-10,SIUE,1351.1
+288,C Michigan,1276.3,6-15,Kent State,1839.8
+289,Le Moyne,1275.6,11-10,Long Island,1557.4
+290,Bakersfield,1274,8-13,UC Davis,1687.4
+291,North Dakota,1273.7,12-12,Winthrop,1665.2
+292,Stetson,1270.7,7-14,Lipscomb,1615.6
+293,UNC Greensboro,1270.2,8-13,Youngstown St,1420.1
+294,SC Upstate,1269.2,9-13,Fresno St,1651.1
+295,N Illinois,1265.7,7-13,UMass,1623
+296,NJIT,1261.6,9-12,Fordham,1425.4
+297,E Illinois,1257.7,9-12,Tennessee St,1432.4
+298,N Arizona,1255.9,7-14,N Colorado,1543.3
+299,Canisius,1254.1,8-13,Fairfield,1426.5
+300,Southern Utah,1245,7-14,Utah Valley,1795.8
+301,Delaware,1243,5-14,G Washington,1893.4
+302,Air Force,1242.4,3-17,SIUE,1351.1
+303,Chattanooga,1242.1,9-12,Wofford,1543.4
+304,Mount St Marys,1241,9-13,Iona,1624.8
+305,Mercyhurst,1239,10-11,C Connecticut,1334.3
+306,Georgia St,1237.1,9-12,Marshall,1734.7
+307,Bucknell,1231.2,6-15,Delaware,1243
+308,Manhattan,1225.6,8-14,Quinnipiac,1676.4
+309,Holy Cross,1225.4,8-13,American,1552
+310,Hou Christian,1224.1,8-13,New Orleans,1455.2
+311,E Washington,1218.7,5-15,Montana,1546.8
+312,Boston U,1212.8,8-13,Harvard,1411.2
+313,Sacramento St,1207.2,6-13,N Colorado,1543.3
+314,Tennessee Tech,1205.8,7-14,SE Missouri,1346.3
+315,N'Western St,1205.5,6-14,Texas A&M-CC,1511.4
+316,Brown,1203.9,7-11,Columbia,1617.9
+317,SE Louisiana,1203.3,6-15,Navy,1514.8
+318,Little Rock,1195.7,9-11,Lindenwood,1427.9
+319,New Haven,1178.6,9-11,UMass Lowell,1169.4
+320,Loyola Chicago,1177.9,5-17,Santa Clara,2180.9
+321,UAlbany,1170.3,7-14,Vermont,1527.3
+322,UMass Lowell,1169.4,8-13,Sacred Heart,1305.8
+323,Lehigh,1169.2,10-13,Colgate,1516.7
+324,Prairie View,1168.6,8-13,AR-Pine Bluff,1299.7
+325,UTSA,1167,4-16,GA Southern,1413.6
+326,Cleveland St,1164.5,7-14,Wright St,1654.8
+327,Norfolk St,1162.3,10-13,UTEP,1307
+328,Alabama St,1161.3,6-14,UAB,1732.9
+329,North Alabama,1157.4,6-12,San Francisco,1818.6
+330,Jackson St,1157.1,6-14,Florida A&M,1316.2
+331,New Hampshire,1153.5,7-12,Boston U,1212.8
+332,MD Eastern,1149.3,8-13,Longwood,1360.3
+333,Oral Roberts,1149.1,5-17,Montana St,1601.6
+334,Ball State,1142.8,7-13,Ohio,1584.9
+335,Army,1135.5,8-13,UMBC,1369.9
+336,Bryant,1130.5,6-14,Dartmouth,1379.6
+337,Lafayette,1114.6,5-16,Mercyhurst,1239
+338,Texas Southern,1101.2,6-13,Alabama A&M,1408.8
+339,NC Central,1098.1,7-12,Norfolk St,1162.3
+340,Wagner,1094.7,7-13,Manhattan,1225.6
+341,VMI,1086.1,6-15,Chattanooga,1242.1
+342,IU Indy,1084.8,6-16,Oakland,1626.1
+343,Louisiana,1070.6,5-16,South Alabama,1583
+344,Loyola MD,1070.4,7-14,Bucknell,1231.2
+345,The Citadel,1067.5,6-15,Furman,1581.1
+346,North Florida,1059.2,5-16,E Kentucky,1317.1
+347,Alcorn St,1056.7,3-16,Alabama A&M,1408.8
+348,FDU,1048.5,7-14,C Connecticut,1334.3
+349,So Indiana,1039.8,5-15,Valparaiso,1566.2
+350,Maine,1036.8,5-17,NJIT,1261.6
+351,Saint Francis,1022.2,7-15,Wagner,1094.7
+352,Niagara,1020.1,5-15,Sacred Heart,1305.8
+353,Morgan St,1003.4,8-13,Howard,1319.8
+354,Stonehill,990.3,7-14,C Connecticut,1334.3
+355,N Greenville,971.5,1-1,Gardner-Webb,842.2
+356,Fisk,969.5,0-4,NA,NA
+357,Bryan (TN),937.3,0-4,NA,NA
+358,Hawaii Pac,933.4,1-1,Boise St,1963.5
+359,KCU,926,0-4,NA,NA
+360,Kansas City,912.3,4-17,Omaha,1286
+361,SC State,899.5,5-16,Howard,1319.8
+362,Lincoln U (CA),896.9,0-5,NA,NA
+363,Chicago St,873.7,2-19,Loyola Chicago,1177.9
+364,Midway,864.8,0-4,NA,NA
+365,Gardner-Webb,842.2,3-19,SC Upstate,1269.2
+366,East-West,829.2,1-4,East-West,829.2
+367,W Illinois,824.1,4-17,North Dakota,1273.7
+368,Binghamton,822.1,4-18,Lehigh,1169.2
+369,Rider,821.8,2-17,Iona,1624.8
+370,Bethesda,813.3,0-7,NA,NA
+371,Nobel,796.4,0-7,NA,NA
+372,Coppin St,793.9,3-19,Rider,821.8
+373,Penn State-She,792.7,0-4,NA,NA
+374,Delaware St,792.2,6-16,Longwood,1360.3
+375,UL Monroe,792.1,3-18,Miss Valley St,576.3
+376,Barber Scotia,750,1-1,Barber Scotia,750
+377,Champ Chrstn,735.8,0-6,NA,NA
+378,Westminster UT,728.7,0-2,NA,NA
+379,WILMNGTNDE,722.6,1-0,Delaware,1243
+380,LaGrange,716.1,0-2,NA,NA
+381,Milligan,712,0-2,NA,NA
+382,Georgian Court,710.6,0-2,NA,NA
+383,Mid Atl Chrstn,706.2,0-5,NA,NA
+384,Tusculum,705.6,0-2,NA,NA
+385,NM Highlands,702.4,0-3,NA,NA
+386,Brescia,700.3,0-2,NA,NA
+387,UC Santa Cruz,700.1,0-2,NA,NA
+388,Columbia (SC),699.4,0-2,NA,NA
+389,Averett,699.1,0-2,NA,NA
+390,Ohio Weslyan,698.1,0-2,NA,NA
+391,Chaminade,696.5,0-3,NA,NA
+392,IU East,695.9,0-2,NA,NA
+393,Ecclesia,695.8,0-5,NA,NA
+394,Cent St OH,695.3,0-2,NA,NA
+395,Life Pacific,695,0-2,NA,NA
+396,Evergreen,694.7,0-2,NA,NA
+397,Howard Payne,694.4,0-2,NA,NA
+398,Illinois Tech,693.3,0-2,NA,NA
+399,Tougaloo,693.1,0-2,NA,NA
+400,Mount Marty,692.7,0-2,NA,NA
+401,Pfeiffer,692.4,0-2,NA,NA
+402,Blue Mountain,690.2,0-2,NA,NA
+403,Blackburn,689.9,1-2,Blackburn,689.9
+404,Mary Baldwin,689.2,0-2,NA,NA
+405,St Mary's (MD),685.7,0-2,NA,NA
+406,City (NY),685.3,0-2,NA,NA
+407,Columbia Int'l,682.4,0-2,NA,NA
+408,Elizabeth City,681,0-2,NA,NA
+409,Rhodes,680.8,0-2,NA,NA
+410,Webster,679.5,0-2,NA,NA
+411,Defiance,678.8,0-2,NA,NA
+412,Jarvis Chrstn,678.3,0-2,NA,NA
+413,Bethany (WV),677.9,0-2,NA,NA
+414,Whittier,675.6,0-2,NA,NA
+415,S Virginia,675.2,0-2,NA,NA
+416,Montana Tech,674.8,1-0,Montana,1546.8
+417,CO Christian,674.1,0-2,NA,NA
+418,Stanton,672.6,0-2,NA,NA
+419,NW Indian,671.2,0-3,NA,NA
+420,Texas A&M-SA,670.4,0-2,NA,NA
+421,William Carey,669,0-2,NA,NA
+422,Dakota St,668.3,0-3,NA,NA
+423,Siena Heights,667.5,0-2,NA,NA
+424,Eureka,667.1,0-2,NA,NA
+425,Reinhardt,666.5,0-2,NA,NA
+426,Dominican CA,665.2,0-2,NA,NA
+427,Dominican IL,665,0-2,NA,NA
+428,Eastern Oregon,664.4,0-2,NA,NA
+429,Coastal GA,663.3,0-3,NA,NA
+430,Wash Adventist,662.6,0-2,NA,NA
+431,Union (KY),660.3,0-2,NA,NA
+432,SUNY-Oneonta,660.2,0-2,NA,NA
+433,TN Wesleyan,658.4,0-2,NA,NA
+434,Dallas,655.7,0-2,NA,NA
+435,Calumet,655.3,0-2,NA,NA
+436,SUNY-Maritime,653.1,0-2,NA,NA
+437,Notre Dame MD,650.9,0-3,NA,NA
+438,SW Adventist,650.5,0-3,NA,NA
+439,Haskell,648.8,0-2,NA,NA
+440,Bob Jones,647.3,0-3,NA,NA
+441,Bethel (TN),646,0-2,NA,NA
+442,Regent,645.8,0-2,NA,NA
+443,San Fran St,644.1,0-2,NA,NA
+444,La Sierra,644,0-3,NA,NA
+445,Elms,641.8,0-2,NA,NA
+446,Texas Lutheran,641.5,0-2,NA,NA
+447,Justice,641.1,0-3,NA,NA
+448,Arlington Bapt,639.6,0-3,NA,NA
+449,Dall Christian,637.3,0-3,NA,NA
+450,Ft Lauderdale,635.3,0-3,NA,NA
+451,Cleary,633.7,0-3,NA,NA
+452,Oakwood,633.1,0-3,NA,NA
+453,Huston Till,632.7,0-2,NA,NA
+454,West Coast,632.2,0-3,NA,NA
+455,Carolina U,631.3,0-3,NA,NA
+456,Toccoa Falls,629.6,0-4,NA,NA
+457,Worcester St,623.4,0-2,NA,NA
+458,Oakland City,623.3,0-2,NA,NA
+459,Johnson Wales,621.8,0-2,NA,NA
+460,PSU Abington,618.9,0-2,NA,NA
+461,PSU Brandywine,618.9,0-2,NA,NA
+462,Wash Coll (MD),614.5,0-2,NA,NA
+463,Biblical Stud,614,0-9,NA,NA
+464,Brewton Parker,612.3,0-2,NA,NA
+465,Erskine,609.2,0-2,NA,NA
+466,New College FL,606.2,0-2,NA,NA
+467,SW Christian U,593.1,0-3,NA,NA
+468,Manor,593,0-2,NA,NA
+469,S Wesleyan,589.7,0-3,NA,NA
+470,Coe,578.1,0-2,NA,NA
+471,Miss Valley St,576.3,2-20,Miss Valley St,576.3
+472,RIT,575.8,0-2,NA,NA
+473,Trinity Co Jax,568.8,0-3,NA,NA
+474,Saint Xavier,567.9,0-2,NA,NA
+475,VTSU Johnson,565.5,0-3,NA,NA
+476,Northwood,563.1,1-0,W Michigan,1409
+477,Misericordia,562.4,0-2,NA,NA
+478,Virginia St,545.6,1-0,Delaware St,792.2
+479,Cheyney (PA),535.5,0-2,NA,NA
+480,VA Lynchburg,532.3,0-10,NA,NA
+481,Ark Baptist,527.5,0-3,NA,NA
+482,Central Penn,469.8,0-3,NA,NA
+483,Trinity (IL),185.5,0-1,NA,NA
+484,Humboldt,185.5,0-1,NA,NA
+485,OK Christian,185.4,0-1,NA,NA
+486,Frank Pierce,185.3,0-1,NA,NA
+487,St Thomas (TX),185.3,0-1,NA,NA
+488,Catawba,185.2,0-1,NA,NA
+489,Millsaps,185.2,0-1,NA,NA
+490,FL Memorial,185.1,0-1,NA,NA
+491,Capital,185,0-1,NA,NA
+492,La Verne,184.9,0-1,NA,NA
+493,Mount Olive,184.9,0-1,NA,NA
+494,Jamestown,184.8,0-1,NA,NA
+495,Adams St,184.8,0-1,NA,NA
+496,St John's (MN),184.7,0-1,NA,NA
+497,Shaw,184.6,0-1,NA,NA
+498,Northrn St,184.3,0-1,NA,NA
+499,Bloomfield,184.3,0-1,NA,NA
+500,Mnhttn Chrstn,184.3,0-1,NA,NA
+501,Lawrence,184.2,0-1,NA,NA
+502,UC Merced,184.2,0-1,NA,NA
+503,Rockford,184.2,0-1,NA,NA
+504,Western NE,184.2,0-1,NA,NA
+505,Cmbrlnd KY,184.1,0-1,NA,NA
+506,Ohio Christian,184.1,0-1,NA,NA
+507,Molloy,184,0-1,NA,NA
+508,Scholastic,183.9,0-1,NA,NA
+509,Principia,183.9,0-1,NA,NA
+510,Farmingdale St,183.8,0-1,NA,NA
+511,MD West St,183.6,0-1,NA,NA
+512,Brandeis,183.5,0-1,NA,NA
+513,Concord,183.5,0-1,NA,NA
+514,Converse,183.4,0-1,NA,NA
+515,DeSales,183.2,0-1,NA,NA
+516,Angelo State,183.2,0-1,NA,NA
+517,Christian Bros,183.2,0-1,NA,NA
+518,Park U Gilbert,182.9,0-1,NA,NA
+519,Rosemont,182.9,0-1,NA,NA
+520,Northwest U,182.9,0-1,NA,NA
+521,Vassar,182.9,0-1,NA,NA
+522,N Central,182.9,0-1,NA,NA
+523,Wilms Baptist,182.7,0-1,NA,NA
+524,Lynchburg,182.7,0-1,NA,NA
+525,Minn Crook,182.6,0-1,NA,NA
+526,Bowie State,182.6,0-1,NA,NA
+527,Schreiner,182.6,0-1,NA,NA
+528,LeTourneau,182.6,0-1,NA,NA
+529,S Arkansas,182.5,0-1,NA,NA
+530,Menlo,182.4,0-1,NA,NA
+531,Colorado Coll,182.4,0-1,NA,NA
+532,MO So St,182.4,0-1,NA,NA
+533,GA College,182.3,0-1,NA,NA
+534,Morehouse,182.2,0-1,NA,NA
+535,Cumberland,182.2,0-1,NA,NA
+536,Pit Greensburg,182.2,0-1,NA,NA
+537,Doane,182.2,0-1,NA,NA
+538,CINCYCLER,182.1,0-1,NA,NA
+539,Centenary (NJ),182,0-1,NA,NA
+540,WVU Tech,182,0-1,NA,NA
+541,Piedmont,182,0-1,NA,NA
+542,Ripon,182,0-1,NA,NA
+543,St Mary's,181.9,0-1,NA,NA
+544,Geneva,181.9,0-1,NA,NA
+545,UNT Dallas,181.8,0-1,NA,NA
+546,Arcadia,181.8,0-1,NA,NA
+547,Manhatnvll,181.8,0-1,NA,NA
+548,Rutgers-Camden,181.8,0-1,NA,NA
+549,Hawai'i Hilo,181.7,0-1,NA,NA
+550,Old Westbury,181.7,0-1,NA,NA
+551,Franklin,181.6,0-1,NA,NA
+552,AU Montgomery,181.6,0-1,NA,NA
+553,George Fox,181.6,0-1,NA,NA
+554,Marywood,181.5,0-1,NA,NA
+555,Simpson,181.5,0-1,NA,NA
+556,Saint Leo,181.5,0-1,NA,NA
+557,Wash and Lee,181.5,0-1,NA,NA
+558,Mobile,181.5,0-1,NA,NA
+559,Northeastern St,181.4,0-1,NA,NA
+560,Puget Sound,181.4,0-1,NA,NA
+561,Redlands,181.4,0-1,NA,NA
+562,Cameron,181.4,0-1,NA,NA
+563,N Central (IL),181.3,0-1,NA,NA
+564,Lourdes,181.3,0-1,NA,NA
+565,Baptist (Fl),181.2,0-1,NA,NA
+566,Paine,181.2,0-1,NA,NA
+567,Wilson,181.2,0-1,NA,NA
+568,Aquinas,181.2,0-1,NA,NA
+569,Belmont Abbey,181.2,0-1,NA,NA
+570,PSU York,181.1,0-1,NA,NA
+571,Spring Hill,181.1,0-1,NA,NA
+572,Lane,181.1,0-1,NA,NA
+573,Holy Cross Col,181.1,0-1,NA,NA
+574,Mt Saint Mary,181,0-1,NA,NA
+575,PSU Hazleton,181,0-1,NA,NA
+576,Trinity Tx,180.9,0-1,NA,NA
+577,Mid Am Chr,180.9,0-1,NA,NA
+578,Pacific Union,180.8,0-1,NA,NA
+579,Missouri Bapt,180.8,0-1,NA,NA
+580,Maine-Augusta,180.8,0-1,NA,NA
+581,Whitman,180.7,0-1,NA,NA
+582,Johnson C Smth,180.7,0-1,NA,NA
+583,Ottawa (AZ),180.6,0-1,NA,NA
+584,FL National,180.6,0-1,NA,NA
+585,SLCP,180.6,0-1,NA,NA
+586,Dist Columbia,180.6,0-1,NA,NA
+587,Albany St,180.5,0-1,NA,NA
+588,Clinton,180.5,0-1,NA,NA
+589,Willamette,180.5,0-1,NA,NA
+590,PSU Behrend,180.5,0-1,NA,NA
+591,Fresno Pacific,180.4,0-1,NA,NA
+592,Oglethorpe,180.4,0-1,NA,NA
+593,Pensacola Chrs,180.4,0-1,NA,NA
+594,Culver Stock,180.3,0-1,NA,NA
+595,Rowan,180.3,0-1,NA,NA
+596,Rob. Wesleyan,180.2,0-1,NA,NA
+597,McMurry,180.2,0-1,NA,NA
+598,Bloomsburg,180.2,0-1,NA,NA
+599,Sarah Lawrence,180.1,0-1,NA,NA
+600,Crown,180.1,0-1,NA,NA
+601,Peru State,180.1,0-1,NA,NA
+602,Tiffin,180.1,0-1,NA,NA
+603,Plattsburgh,180.1,0-1,NA,NA
+604,Kansas Chrstn,180.1,0-1,NA,NA
+605,W Montana,180.1,0-1,NA,NA
+606,Miami Hamilton,180.1,0-1,NA,NA
+607,Lewis & Clark,180,0-1,NA,NA
+608,Arkansas Tech,180,0-1,NA,NA
+609,Shenandoah,180,0-1,NA,NA
+610,Concordia (NE),180,0-1,NA,NA
+611,Point,180,0-1,NA,NA
+612,Boyce,179.9,0-1,NA,NA
+613,Truett McCnnll,179.9,0-1,NA,NA
+614,MIT,179.8,0-1,NA,NA
+615,SalishKootenai,179.8,0-1,NA,NA
+616,Kean,179.7,0-1,NA,NA
+617,Greensboro,179.7,0-1,NA,NA
+618,McKendree,179.7,0-1,NA,NA
+619,St. Francis IL,179.7,0-1,NA,NA
+620,Warner Pac,179.7,0-1,NA,NA
+621,Lyon,179.7,0-1,NA,NA
+622,Campbellsville,179.6,0-1,NA,NA
+623,Bluefield,179.6,0-1,NA,NA
+624,Morris,179.5,0-1,NA,NA
+625,Warren Wilson,179.5,0-1,NA,NA
+626,William Peace,179.5,0-1,NA,NA
+627,Buena Vista,179.5,0-1,NA,NA
+628,NW Okla St,179.5,0-1,NA,NA
+629,Simpson (CA),179.4,0-1,NA,NA
+630,Sci & Arts OK,179.3,0-1,NA,NA
+631,Centenary (LA),179.3,0-1,NA,NA
+632,Dkta Wesleyan,179.3,0-1,NA,NA
+633,Apprentice,179.3,0-1,NA,NA
+634,SUNY Canton,179.2,0-1,NA,NA
+635,St John Fisher,179.1,0-1,NA,NA
+636,Bryant Str OH,179.1,0-1,NA,NA
+637,Jessup,179,0-1,NA,NA
+638,Caldwell,179,0-1,NA,NA
+639,UMass Boston,179,0-1,NA,NA
+640,Harris Stowe,178.9,0-1,NA,NA
+641,EMERSON,178.9,0-1,NA,NA
+642,Northern NM,178.8,0-1,NA,NA
+643,Berea,178.7,0-1,NA,NA
+644,Bluefield St,178.6,0-1,NA,NA
+645,Lady of Lake,178.6,0-1,NA,NA
+646,Hunting AL,178.6,0-1,NA,NA
+647,Regis U,178.6,0-1,NA,NA
+648,Alice Lloyd,178.4,0-1,NA,NA
+649,Ozark Chrstn,178.4,0-1,NA,NA
+650,Widener,178.4,0-1,NA,NA
+651,St Joseph's LI,178.3,0-1,NA,NA
+652,UC Col Springs,178.3,0-1,NA,NA
+653,AK-Anchorage,178.2,0-1,NA,NA
+654,Lncstr Bible,178.2,0-1,NA,NA
+655,Voorhees,178.2,0-1,NA,NA
+656,Hanover,178.1,0-1,NA,NA
+657,Olivet,178.1,0-1,NA,NA
+658,Occidental,178,0-1,NA,NA
+659,Pacif. Lutheran,177.9,0-1,NA,NA
+660,Caltech,177.5,0-1,NA,NA
+661,Thiel,177.4,0-1,NA,NA
+662,Regis College,177.4,0-1,NA,NA
+663,Southwest,177.2,0-1,NA,NA
+664,York (NE),177.2,0-1,NA,NA
+665,Alfred St,177.2,0-1,NA,NA
+666,Embry Rid (AZ),177.2,0-1,NA,NA
+667,WV Wesleyan,177.2,0-1,NA,NA
+668,John Jay,176.9,0-1,NA,NA
+669,Salve Regina,176.8,0-1,NA,NA
+670,Mitchell,176.7,0-1,NA,NA
+671,Randolph,176.6,0-1,NA,NA
+672,UTPermianBasin,176.6,0-1,NA,NA
+673,Fisher,176.6,0-1,NA,NA
+674,Emmanuel (MA),176.6,0-1,NA,NA
+675,Allegheny,176.5,0-1,NA,NA
+676,SUNY Coble,176.5,0-1,NA,NA
+677,Mayville St,176.5,0-1,NA,NA
+678,Gwynedd Mercy,176.3,0-1,NA,NA
+679,Bryant Str-Alb,176.3,0-1,NA,NA
+680,Loras,176.3,0-1,NA,NA
+681,Franciscan,176.2,0-1,NA,NA
+682,Fort Valley St,176.2,0-1,NA,NA
+683,Southern NO,175.9,0-1,NA,NA
+684,Lehman,175.9,0-1,NA,NA
+685,VT-Lyndon,175.8,0-1,NA,NA
+686,Mercy,175.7,0-1,NA,NA
+687,Western NM,175.6,0-1,NA,NA
+688,John Brown,175.6,0-1,NA,NA
+689,PSU New Kens,175.5,0-1,NA,NA
+690,Houghton,175.5,0-1,NA,NA
+691,Paul Quinn,175.5,0-1,NA,NA
+692,Merch Marn,175.5,0-1,NA,NA
+693,Gallaudet,175.4,0-1,NA,NA
+694,UT Southern,175.4,0-1,NA,NA
+695,LA Christian,175.3,0-1,NA,NA
+696,Valley Forge,175.2,0-1,NA,NA
+697,Rivier,175.1,0-1,NA,NA
+698,Evangel,175.1,0-1,NA,NA
+699,Benedictne,175,0-1,NA,NA
+700,Trinity (FL),174.9,0-1,NA,NA
+701,ME Fort Kent,174.7,0-1,NA,NA
+702,SUNY Delhi,174.6,0-1,NA,NA
+703,Earlham,174.5,0-1,NA,NA
+704,Paul Smith's,174.4,0-1,NA,NA
+705,St Joseph BKN,174.2,0-1,NA,NA
+706,McPherson,174,0-1,NA,NA
+707,Adrian,173.9,0-1,NA,NA
+708,B'tine Mesa,173.6,0-1,NA,NA
+709,St Elizabeth,173.5,0-1,NA,NA
+710,Curry,173.4,0-1,NA,NA
+711,Dicknsn PA,173.3,0-1,NA,NA
+712,Christendom,172.9,0-1,NA,NA
+713,Waynesburg,172.9,0-1,NA,NA
+714,Mansfield,172.7,0-1,NA,NA
+715,Brevard,172.7,0-1,NA,NA
+716,Miami Mid'town,172.4,0-1,NA,NA
+717,IU Columbus,171.5,0-1,NA,NA
+718,J&W (NC),171.5,0-1,NA,NA
+719,Kentucky St,171.1,0-1,NA,NA
+720,Spurgeon,170.4,0-1,NA,NA
+721,THMAS,169,0-1,NA,NA
+722,St. Ambrose,167.7,0-1,NA,NA
+723,Holy Family,167.3,0-1,NA,NA
+724,Han LaGrange,163.5,0-1,NA,NA
+725,Eastern,161.8,0-1,NA,NA
+726,Rust,160,0-1,NA,NA
+727,Elmira,158.8,0-1,NA,NA
+728,Miss for Women,131,0-1,NA,NA
