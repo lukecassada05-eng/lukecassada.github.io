@@ -55,6 +55,7 @@
     <button id="show-conf-elo" style="display:none;">Conference Elo</button>
     <button id="show-conf-standings" style="display:none;">Conference Standings (2026)</button>
     <button id="show-game-predictor" style="display:none;">Game Predictor (2026)</button>
+    <button id="show-resume" style="display:none;">Resume (2026)</button>
   </div>
 
   <!-- Elo Rankings -->
@@ -83,6 +84,11 @@
     <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
+  <!-- Resume Tab (2026 only) -->
+  <div id="resume-container" style="display:none;">
+    <table id="resume-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+
 </div>
 
 <script>
@@ -99,6 +105,7 @@ const projectedContainer = document.getElementById("projected-container");
 const confEloContainer = document.getElementById("conf-elo-container");
 const confStandingsContainer = document.getElementById("conf-standings-container");
 const gamePredictorContainer = document.getElementById("game-predictor-container");
+const resumeContainer = document.getElementById("resume-container");
 const toggleButtons = document.getElementById("toggle-buttons");
 
 const showEloBtn = document.getElementById("show-elo");
@@ -106,8 +113,9 @@ const showProjectedBtn = document.getElementById("show-projected");
 const showConfEloBtn = document.getElementById("show-conf-elo");
 const showConfStandingsBtn = document.getElementById("show-conf-standings");
 const showGamePredictorBtn = document.getElementById("show-game-predictor");
+const showResumeBtn = document.getElementById("show-resume");
 
-let eloData=[], projectedData=[], confEloData=[], confStandingsData={}, gamePredictorData=[];
+let eloData=[], projectedData=[], confEloData=[], confStandingsData={}, gamePredictorData=[], resumeData=[];
 let sortState = {};
 
 // --- Fetch Elo Rankings ---
@@ -144,7 +152,7 @@ fetch(confEloCsv)
 })
 .catch(()=>console.warn("Conference Elo CSV not found"));
 
-// --- Only for 2026: Conference Standings & Game Predictor ---
+// --- Only for 2026: Conference Standings, Game Predictor & Resume ---
 if(year==="2026"){
   // List of conference CSVs
   const conferences = [
@@ -157,18 +165,18 @@ if(year==="2026"){
 
   showConfStandingsBtn.style.display="inline-block";
   showGamePredictorBtn.style.display="inline-block";
+  showResumeBtn.style.display="inline-block";
   toggleButtons.style.display="block";
 
-  // Populate dropdown
+  // Populate conference dropdown
   const confDropdown = document.getElementById("conf-dropdown");
   conferences.forEach(conf=>{
     const opt = document.createElement("option");
-    opt.value=conf;
+    opt.value = conf;
     opt.textContent = conf.replace(/_/g," ");
     confDropdown.appendChild(opt);
   });
 
-  // Fetch conference standings CSVs on change
   confDropdown.addEventListener("change", ()=>{
     const conf = confDropdown.value;
     fetch(`data/${conf}_Conference_Elo_2026.csv`)
@@ -189,6 +197,16 @@ if(year==="2026"){
     renderTable(rows[0], gamePredictorData, document.querySelector("#game-predictor-table thead tr"), document.querySelector("#game-predictor-table tbody"));
   })
   .catch(()=>console.warn("Game Predictor CSV not found"));
+
+  // --- Resume Tab ---
+  fetch("data/CBB_Projected_Records_SOS_2026.csv")
+  .then(r=>{ if(!r.ok) throw new Error("CSV not found"); return r.text(); })
+  .then(csv=>{
+    const rows = csv.trim().split("\n").map(r=>r.split(","));
+    resumeData = rows.slice(1);
+    renderTable(rows[0], resumeData, document.querySelector("#resume-table thead tr"), document.querySelector("#resume-table tbody"));
+  })
+  .catch(()=>console.warn("Resume CSV not found"));
 }
 
 // --- Table rendering & sorting ---
@@ -241,11 +259,13 @@ showEloBtn.onclick=()=>{
   confEloContainer.style.display="none";
   confStandingsContainer.style.display="none";
   gamePredictorContainer.style.display="none";
+  resumeContainer.style.display="none";
   showEloBtn.classList.add("active");
   showProjectedBtn.classList.remove("active");
   showConfEloBtn.classList.remove("active");
   showConfStandingsBtn.classList.remove("active");
   showGamePredictorBtn.classList.remove("active");
+  showResumeBtn.classList.remove("active");
 };
 
 showProjectedBtn.onclick=()=>{
@@ -254,11 +274,13 @@ showProjectedBtn.onclick=()=>{
   confEloContainer.style.display="none";
   confStandingsContainer.style.display="none";
   gamePredictorContainer.style.display="none";
+  resumeContainer.style.display="none";
   showEloBtn.classList.remove("active");
   showProjectedBtn.classList.add("active");
   showConfEloBtn.classList.remove("active");
   showConfStandingsBtn.classList.remove("active");
   showGamePredictorBtn.classList.remove("active");
+  showResumeBtn.classList.remove("active");
 };
 
 showConfEloBtn.onclick=()=>{
@@ -267,11 +289,13 @@ showConfEloBtn.onclick=()=>{
   confEloContainer.style.display="block";
   confStandingsContainer.style.display="none";
   gamePredictorContainer.style.display="none";
+  resumeContainer.style.display="none";
   showEloBtn.classList.remove("active");
   showProjectedBtn.classList.remove("active");
   showConfEloBtn.classList.add("active");
   showConfStandingsBtn.classList.remove("active");
   showGamePredictorBtn.classList.remove("active");
+  showResumeBtn.classList.remove("active");
 };
 
 showConfStandingsBtn.onclick=()=>{
@@ -280,11 +304,13 @@ showConfStandingsBtn.onclick=()=>{
   confEloContainer.style.display="none";
   confStandingsContainer.style.display="block";
   gamePredictorContainer.style.display="none";
+  resumeContainer.style.display="none";
   showEloBtn.classList.remove("active");
   showProjectedBtn.classList.remove("active");
   showConfEloBtn.classList.remove("active");
   showConfStandingsBtn.classList.add("active");
   showGamePredictorBtn.classList.remove("active");
+  showResumeBtn.classList.remove("active");
 };
 
 showGamePredictorBtn.onclick=()=>{
@@ -293,11 +319,28 @@ showGamePredictorBtn.onclick=()=>{
   confEloContainer.style.display="none";
   confStandingsContainer.style.display="none";
   gamePredictorContainer.style.display="block";
+  resumeContainer.style.display="none";
   showEloBtn.classList.remove("active");
   showProjectedBtn.classList.remove("active");
   showConfEloBtn.classList.remove("active");
   showConfStandingsBtn.classList.remove("active");
   showGamePredictorBtn.classList.add("active");
+  showResumeBtn.classList.remove("active");
+};
+
+showResumeBtn.onclick=()=>{
+  eloContainer.style.display="none";
+  projectedContainer.style.display="none";
+  confEloContainer.style.display="none";
+  confStandingsContainer.style.display="none";
+  gamePredictorContainer.style.display="none";
+  resumeContainer.style.display="block";
+  showEloBtn.classList.remove("active");
+  showProjectedBtn.classList.remove("active");
+  showConfEloBtn.classList.remove("active");
+  showConfStandingsBtn.classList.remove("active");
+  showGamePredictorBtn.classList.remove("active");
+  showResumeBtn.classList.add("active");
 };
 </script>
 </body>
