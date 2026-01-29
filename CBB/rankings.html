@@ -5,13 +5,27 @@
 <title>College Basketball Rankings</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PWG43QNM3P"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PWG43QNM3P');
+</script>
+
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f0f2f5; color:#111; }
-  .page { max-width:1200px; margin:0 auto; padding:20px; }
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f6f8; color:#111; }
+  .page { max-width:1100px; margin:0 auto; padding:20px; }
+  .top-nav { margin-bottom:20px; }
+  .top-nav a { text-decoration:none; color:#111; font-weight:bold; font-size:0.9rem; }
+  .top-nav a:hover { text-decoration:underline; }
   h1 { text-align:center; margin-bottom:10px; }
   .subtitle { text-align:center; margin-bottom:20px; color:#555; }
   .toggle-buttons { text-align:center; margin-bottom:20px; }
-  .toggle-buttons button { padding:8px 16px; margin:0 5px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; background:#ddd; transition:0.2s; }
+  .toggle-buttons button {
+    padding:8px 16px; margin:0 5px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; background:#ddd; transition:0.2s;
+  }
   .toggle-buttons button.active { background:#111; color:#fff; }
   .toggle-buttons button:hover { background:#aaa; color:#fff; }
 
@@ -23,169 +37,258 @@
 
   select { padding:6px 10px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; }
 
-  /* Color classes */
-  .auto-bid { background:#c8f7c5; font-weight:bold; }
-  .at-large { background:#ffe4b2; font-weight:bold; }
-  .top10 { background:#b2f0f7; }
-  .bottom10 { background:#f7b2b2; }
-  .top3 { background:#a8e6a3; }
-  .bottom3 { background:#f7a3a3; }
-  .conf-leader { background:#ffeb99; font-weight:bold; }
-  .conf-mid { background:#f0f0f0; }
-  .conf-last { background:#f7b2b2; }
-  .win { background:#b2f7b2; font-weight:bold; }
-  .lose { background:#f7b2b2; font-weight:bold; }
-  .elo-gradient { color:#000; font-weight:bold; }
+  /* Highlight classes */
+  .top10 { background: #e0f7fa; }        /* Elo Top 10 */
+  .top3 { background: #e8f5e9; }         /* Conference Elo Top 3 */
+  .conf-leader { background: #fff3e0; }  /* Conference Standings Leader */
+  .win { background: #d0f0c0; }          /* Game Predictor winner */
+  .lose { background: #f8d7da; }         /* Game Predictor loser */
+  .auto-bid { background: #d4f0d4; }     /* Projected bracket auto bid */
+  .at-large { background: #ffe4b2; }     /* Projected bracket at-large */
 </style>
 </head>
 
 <body>
 <div class="page">
-  <h1 id="title">College Basketball Rankings</h1>
-  <div class="subtitle">Full colorful rankings and projections</div>
 
-  <div class="toggle-buttons" id="toggle-buttons">
-    <button id="show-elo" class="active">Elo Rankings</button>
-    <button id="show-projected">Projected Bracket</button>
-    <button id="show-conf-elo">Conference Elo</button>
-    <button id="show-conf-standings">Conference Standings</button>
-    <button id="show-game-predictor">Game Predictor</button>
-    <button id="show-resume">Resume</button>
+  <div class="top-nav">
+    <a href="index.html">← Back to College Basketball</a>
   </div>
 
+  <h1 id="title">College Basketball Rankings</h1>
+  <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
+
+  <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
+    <button id="show-elo" class="active">Elo Rankings</button>
+    <button id="show-projected" style="display:none;">Projected Seeding</button>
+    <button id="show-conf-elo" style="display:none;">Conference Elo</button>
+    <button id="show-conf-standings" style="display:none;">Conference Standings (2026)</button>
+    <button id="show-game-predictor" style="display:none;">Game Predictor (2026)</button>
+    <button id="show-resume" style="display:none;">Resume (2026)</button>
+  </div>
+
+  <!-- Elo Rankings -->
   <div id="elo-container">
     <table id="elo-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
+
+  <!-- Projected Bracket -->
   <div id="projected-container" style="display:none;">
     <table id="projected-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
+
+  <!-- Conference Elo -->
   <div id="conf-elo-container" style="display:none;">
     <table id="conf-elo-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
+
+  <!-- Conference Standings Dropdown (2026 only) -->
   <div id="conf-standings-container" style="display:none;">
     <select id="conf-dropdown"></select>
     <table id="conf-standings-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
+
+  <!-- Game Predictor (2026 only) -->
   <div id="game-predictor-container" style="display:none;">
     <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
+
+  <!-- Resume Tab (2026 only) -->
   <div id="resume-container" style="display:none;">
     <table id="resume-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
+
 </div>
 
 <script>
-const year="2026"; // simplify
+const params = new URLSearchParams(window.location.search);
+const year = params.get("year") || "2026";
 document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
 
-const showEloBtn=document.getElementById("show-elo");
-const showProjectedBtn=document.getElementById("show-projected");
-const showConfEloBtn=document.getElementById("show-conf-elo");
-const showConfStandingsBtn=document.getElementById("show-conf-standings");
-const showGamePredictorBtn=document.getElementById("show-game-predictor");
-const showResumeBtn=document.getElementById("show-resume");
+const eloCsv = `data/CBB_Elo_${year}.csv`;
+const projectedCsv = `data/projected_bracket${year}.csv`;
+const confEloCsv = `data/CBB_Conference_Elo_${year}.csv`;
 
-function toggle(tab){
-  const containers=[ "elo","projected","conf-elo","conf-standings","game-predictor","resume"];
-  containers.forEach(c=>{
-    document.getElementById(`${c}-container`).style.display=(c===tab)?"block":"none";
-    document.getElementById(`show-${c.replace("-","")}`).classList.toggle("active", c===tab);
+const eloContainer = document.getElementById("elo-container");
+const projectedContainer = document.getElementById("projected-container");
+const confEloContainer = document.getElementById("conf-elo-container");
+const confStandingsContainer = document.getElementById("conf-standings-container");
+const gamePredictorContainer = document.getElementById("game-predictor-container");
+const resumeContainer = document.getElementById("resume-container");
+const toggleButtons = document.getElementById("toggle-buttons");
+
+const showEloBtn = document.getElementById("show-elo");
+const showProjectedBtn = document.getElementById("show-projected");
+const showConfEloBtn = document.getElementById("show-conf-elo");
+const showConfStandingsBtn = document.getElementById("show-conf-standings");
+const showGamePredictorBtn = document.getElementById("show-game-predictor");
+const showResumeBtn = document.getElementById("show-resume");
+
+let eloData=[], projectedData=[], confEloData=[], confStandingsData={}, gamePredictorData=[], resumeData=[];
+let sortState = {};
+
+// --- Generic table render ---
+function renderTable(headers,data,theadRow,tbody,highlightTop=0,highlightCol=0,highlightClass=""){
+  theadRow.innerHTML=""; tbody.innerHTML="";
+  headers.forEach((h,i)=>{
+    const th = document.createElement("th");
+    th.textContent=h;
+    th.addEventListener("click",()=>sortByColumn(i,data,tbody,th,highlightTop,highlightCol,highlightClass));
+    theadRow.appendChild(th);
   });
-}
-
-// Table helper
-function renderTable(headers,data,thead,tbody,colorFn){
-  thead.innerHTML=""; tbody.innerHTML="";
-  headers.forEach(h=>{ const th=document.createElement("th"); th.textContent=h; thead.appendChild(th); });
-  data.forEach((row,i)=>{
+  data.forEach((row,index)=>{
     const tr=document.createElement("tr");
-    row.forEach((cell,j)=>{
-      const td=document.createElement("td"); td.textContent=cell;
-      if(colorFn) colorFn(td,row,i,j);
+    row.forEach((cell,i)=>{
+      const td=document.createElement("td");
+      td.textContent=cell;
+      if(highlightTop>0 && index<highlightTop && i===highlightCol){
+        td.classList.add(highlightClass);
+      }
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
 }
 
-// Dummy CSV data (replace with fetch from your CSVs)
-const eloHeaders=["Team","Wins","Losses","Elo"];
-const eloData=[ ["Team A","20","2","1800"],["Team B","18","4","1750"],["Team C","16","6","1700"],["Team D","5","18","1200"] ];
-renderTable(eloHeaders,eloData,document.querySelector("#elo-table thead tr"),document.querySelector("#elo-table tbody"),(td,row,i,j)=>{
-  if(j===3){
-    const val=parseInt(row[3]);
-    if(val>1750) td.classList.add("top10");
-    else if(val<1300) td.classList.add("bottom10");
-  }
-});
+// --- Sort ---
+function sortByColumn(colIndex,data,tbody,th,highlightTop=0,highlightCol=0,highlightClass=""){
+  const headers=th.parentElement.querySelectorAll("th");
+  headers.forEach(h=>h.classList.remove("sort-asc","sort-desc"));
+  const ascending = sortState[colIndex]!=="asc";
+  sortState={ [colIndex]: ascending ? "asc":"desc" };
+  th.classList.add(ascending?"sort-asc":"sort-desc");
+  data.sort((a,b)=>{
+    const A=parseFloat(a[colIndex]), B=parseFloat(b[colIndex]);
+    if(!isNaN(A)&&!isNaN(B)) return ascending?A-B:B-A;
+    return ascending?a[colIndex].localeCompare(b[colIndex]):b[colIndex].localeCompare(a[colIndex]);
+  });
+  tbody.innerHTML="";
+  data.forEach((row,index)=>{
+    const tr=document.createElement("tr");
+    row.forEach((cell,i)=>{
+      const td=document.createElement("td");
+      td.textContent=cell;
+      if(highlightTop>0 && index<highlightTop && i===highlightCol){
+        td.classList.add(highlightClass);
+      }
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
 
-// Projected Bracket dummy
-const projHeaders=["Seed","Team","auto_bid"];
-const projData=[ ["1","Team A","true"],["2","Team B","false"],["3","Team C","true"] ];
-renderTable(projHeaders,projData,document.querySelector("#projected-table thead tr"),document.querySelector("#projected-table tbody"),(td,row,i,j)=>{
-  if(j===2){
-    if(row[2]==="true") td.classList.add("auto-bid");
-    else td.classList.add("at-large");
-  }
-});
+// --- Projected Bracket ---
+function renderProjectedBracket(headers,data,theadRow,tbody){
+  theadRow.innerHTML=""; tbody.innerHTML="";
+  const autoBidCol = headers.findIndex(h=>h.toLowerCase().includes("auto_bid"));
+  headers.forEach(h=>{
+    const th = document.createElement("th");
+    th.textContent = h;
+    theadRow.appendChild(th);
+  });
+  data.forEach(row=>{
+    const tr = document.createElement("tr");
+    row.forEach((cell,i)=>{
+      const td = document.createElement("td");
+      td.textContent = cell;
+      if(i===autoBidCol){
+        if(cell.toLowerCase() === "true") td.classList.add("auto-bid");
+        else td.classList.add("at-large");
+      }
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+}
 
-// Conference Elo dummy
-const confHeaders=["Team","Conf","Elo"];
-const confData=[ ["Team A","ACC","1800"],["Team B","ACC","1700"],["Team C","ACC","1600"] ];
-renderTable(confHeaders,confData,document.querySelector("#conf-elo-table thead tr"),document.querySelector("#conf-elo-table tbody"),(td,row,i,j)=>{
-  if(j===2){
-    const val=parseInt(row[2]);
-    if(val>1700) td.classList.add("top3");
-    else if(val<1650) td.classList.add("bottom3");
-  }
-});
+// --- Fetch CSVs ---
+fetch(eloCsv)
+.then(r=>r.ok?r.text():Promise.reject())
+.then(csv=>{
+  const rows = csv.trim().split("\n").map(r=>r.split(","));
+  eloData = rows.slice(1);
+  renderTable(rows[0],eloData,document.querySelector("#elo-table thead tr"),document.querySelector("#elo-table tbody"),10,0,"top10");
+})
+.catch(()=>document.querySelector("#elo-table tbody").innerHTML=`<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`);
 
-// Conference Standings dummy
-const confDropdown=document.getElementById("conf-dropdown");
-["ACC","Big Ten"].forEach(c=>{ const opt=document.createElement("option"); opt.value=c; opt.textContent=c; confDropdown.appendChild(opt); });
-const confStandHeaders=["Team","Wins","Losses"];
-const confStandData=[ ["Team A","20","2"],["Team B","16","6"],["Team C","8","14"] ];
-renderTable(confStandHeaders,confStandData,document.querySelector("#conf-standings-table thead tr"),document.querySelector("#conf-standings-table tbody"),(td,row,i,j)=>{
-  if(j===0){
-    if(i===0) td.classList.add("conf-leader");
-    else if(i===1) td.classList.add("conf-mid");
-    else td.classList.add("conf-last");
-  }
-});
+fetch(projectedCsv)
+.then(r=>r.ok?r.text():Promise.reject())
+.then(csv=>{
+  const rows = csv.trim().split("\n").map(r=>r.split(","));
+  projectedData = rows.slice(1);
+  renderProjectedBracket(rows[0],projectedData,document.querySelector("#projected-table thead tr"),document.querySelector("#projected-table tbody"));
+  showProjectedBtn.style.display="inline-block"; toggleButtons.style.display="block";
+})
+.catch(()=>console.warn("No projected bracket"));
 
-// Game Predictor dummy
-const gameHeaders=["Match","Team1","Team2","Predicted_Winner","Elo_Diff"];
-const gameData=[ ["1","Team A","Team B","Team A","50"],["2","Team C","Team D","Team D","200"] ];
-renderTable(gameHeaders,gameData,document.querySelector("#game-predictor-table thead tr"),document.querySelector("#game-predictor-table tbody"),(td,row,i,j)=>{
-  if(j===3){
-    if(row[3]===row[1]) td.classList.add("win"); else td.classList.add("lose");
-  }
-  if(j===4){
-    const diff=parseInt(row[4]);
-    if(diff>100) td.style.backgroundColor="#b2f7b2";
-    else if(diff>50) td.style.backgroundColor="#ffffb2";
-    else td.style.backgroundColor="#f7b2b2";
-  }
-});
+// --- Conference Elo ---
+fetch(confEloCsv)
+.then(r=>r.ok?r.text():Promise.reject())
+.then(csv=>{
+  const rows = csv.trim().split("\n").map(r=>r.split(","));
+  confEloData = rows.slice(1);
+  renderTable(rows[0],confEloData,document.querySelector("#conf-elo-table thead tr"),document.querySelector("#conf-elo-table tbody"),3,0,"top3");
+  showConfEloBtn.style.display="inline-block"; toggleButtons.style.display="block";
+})
+.catch(()=>console.warn("Conference Elo CSV not found"));
 
-// Resume dummy
-const resHeaders=["Team","Projected_Wins"];
-const resData=[ ["Team A","30"],["Team B","25"],["Team C","18"],["Team D","5"] ];
-renderTable(resHeaders,resData,document.querySelector("#resume-table thead tr"),document.querySelector("#resume-table tbody"),(td,row,i,j)=>{
-  if(j===1){
-    const val=parseInt(row[1]);
-    if(val>25) td.classList.add("top3");
-    else if(val<10) td.classList.add("bottom3");
-  }
-});
+// --- 2026 specific ---
+if(year==="2026"){
+  const conferences = ["ASUN","America_East","American","Atlantic_10","Atlantic_Coast","Big_12","Big_East","Big_Sky","Big_South","Big_Ten","Big_West","Coastal_Athletic_Association","Conference_USA","Horizon_League","Ivy_League","Metro_Atlantic_Athletic_Conference","Mid_American","Mid_Eastern_Athletic","Missouri_Valley","Mountain_West","Northeast","Ohio_Valley","Patriot","Southeastern","Southern","Southland","Southwestern_Athletic","Summit","Sun_Belt","West_Coast","Western_Athletic"];
+  showConfStandingsBtn.style.display="inline-block"; showGamePredictorBtn.style.display="inline-block"; showResumeBtn.style.display="inline-block"; toggleButtons.style.display="block";
 
-// Toggle buttons
-showEloBtn.onclick=()=>toggle("elo");
-showProjectedBtn.onclick=()=>toggle("projected");
-showConfEloBtn.onclick=()=>toggle("conf-elo");
-showConfStandingsBtn.onclick=()=>toggle("conf-standings");
-showGamePredictorBtn.onclick=()=>toggle("game-predictor");
-showResumeBtn.onclick=()=>toggle("resume");
+  const confDropdown = document.getElementById("conf-dropdown");
+  conferences.forEach(conf=>{ const opt = document.createElement("option"); opt.value=conf; opt.textContent=conf.replace(/_/g," "); confDropdown.appendChild(opt); });
+
+  confDropdown.addEventListener("change", ()=>{
+    const conf = confDropdown.value;
+    fetch(`data/${conf}_Conference_Elo_2026.csv`)
+    .then(r=>r.text())
+    .then(csv=>{
+      const rows = csv.trim().split("\n").map(r=>r.split(","));
+      renderTable(rows[0], rows.slice(1), document.querySelector("#conf-standings-table thead tr"), document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
+    })
+    .catch(()=>console.warn(`${conf} CSV not found`));
+  });
+
+  // Game Predictor
+  fetch("data/CBB_Elo_Future_Game_Predictions.csv")
+  .then(r=>r.text())
+  .then(csv=>{
+    const rows = csv.trim().split("\n").map(r=>r.split(","));
+    const tbody = document.querySelector("#game-predictor-table tbody");
+    const theadRow = document.querySelector("#game-predictor-table thead tr");
+    theadRow.innerHTML=""; tbody.innerHTML="";
+    rows[0].forEach(h=>{ const th=document.createElement("th"); th.textContent=h; theadRow.appendChild(th); });
+    rows.slice(1).forEach(row=>{
+      const tr=document.createElement("tr");
+      row.forEach((cell,i)=>{
+        const td=document.createElement("td"); td.textContent=cell;
+        if(rows[0][i].toLowerCase().includes("winner")) td.classList.add("win");
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  });
+
+  // Resume
+  fetch("data/CBB_Projected_Records_SOS_2026.csv")
+  .then(r=>r.text())
+  .then(csv=>{
+    const rows = csv.trim().split("\n").map(r=>r.split(","));
+    resumeData = rows.slice(1);
+    renderTable(rows[0], resumeData, document.querySelector("#resume-table thead tr"), document.querySelector("#resume-table tbody"),3,0,"top3");
+  });
+}
+
+// --- Toggle buttons ---
+showEloBtn.onclick=()=>{ eloContainer.style.display="block"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.add("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
+showProjectedBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="block"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.add("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
+showConfEloBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="block"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.add("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
+showConfStandingsBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="block"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.add("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
+showGamePredictorBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="block"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.add("active"); showResumeBtn.classList.remove("active"); };
+showResumeBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="block"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.add("active"); };
 </script>
+
 </body>
 </html>
