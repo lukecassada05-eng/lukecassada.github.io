@@ -30,18 +30,22 @@ jobs:
           Rscript -e "install.packages('qs', repos='https://cloud.r-project.org')"
           Rscript -e "install.packages(c('dplyr','readr','lubridate','hoopR','knitr','rmarkdown'), repos='https://cloud.r-project.org')"
 
-      # 5. Ensure data folder exists
-      - name: Ensure data folder exists
+      # 5. Ensure data folders exist
+      - name: Ensure data folders exist
         run: |
           mkdir -p CBB/data
           mkdir -p CBB/conference_standings
 
-      # 6. Render the RMarkdown file
+      # 6. List CBB folder (debug/fail-safe)
+      - name: List CBB folder
+        run: ls -l CBB
+
+      # 7. Render the renamed RMarkdown file
       - name: Render RMarkdown
         run: |
-          Rscript -e "rmarkdown::render(file.path('CBB', 'CBB 2025 Rankings.Rmd'))"
+          Rscript -e "rmarkdown::render('CBB/CBB_2025_Rankings.Rmd')"
 
-      # 7. Commit & push updated CSVs
+      # 8. Commit & push updated CSVs
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
