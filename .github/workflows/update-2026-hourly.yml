@@ -1,46 +1,39 @@
 name: Update 2026 CBB CSVs Hourly
 
-# Run schedule
 on:
   schedule:
     - cron: "0 * * * *"   # Every hour at the start of the hour (UTC)
-  workflow_dispatch:      # Allows manual run from GitHub
+  workflow_dispatch:      # Allows manual run
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout your repo
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup R environment
+      # 2. Setup R
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      # 3. Install R packages needed
+      # 3. Install necessary R packages (qs first for hoopR)
       - name: Install R packages
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            dplyr
-            readr
-            lubridate
-            hoopR
-            knitr
-            rmarkdown
+        run: |
+          Rscript -e "install.packages('qs', repos='https://cloud.r-project.org')"
+          Rscript -e "install.packages(c('dplyr','readr','lubridate','hoopR','knitr','rmarkdown'), repos='https://cloud.r-project.org')"
 
-      # 4. Run your R Markdown
+      # 4. Render the RMarkdown file
       - name: Render RMarkdown
         run: |
-          Rscript -e "rmarkdown::render('CBB/CBB 2025 Rankings.Rmd')"
+          Rscript -e "rmarkdown::render('CBB 2025 Rankings.Rmd')"
 
       # 5. Commit & push updated CSVs
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add CBB/data/*.csv
+          git add data/*.csv
           git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
           git push
