@@ -125,6 +125,41 @@ const showResumeBtn = document.getElementById("show-resume");
 
 let sortState = {};
 
+// --- Conference file mapping ---
+const confFiles = {
+  "ASUN": "ASUN_Conference_Elo_2026.csv",
+  "America_East": "America_East_Conference_Elo_2026.csv",
+  "American": "American_Conference_Elo_2026.csv",
+  "Atlantic_10": "Atlantic_10_Conference_Elo_2026.csv",
+  "Atlantic_Coast": "Atlantic_Coast_Conference_Elo_2026.csv",
+  "Big_12": "Big_12_Conference_Elo_2026.csv",
+  "Big_East": "Big_East_Conference_Elo_2026.csv",
+  "Big_Sky": "Big_Sky_Conference_Elo_2026.csv",
+  "Big_South": "Big_South_Conference_Elo_2026.csv",
+  "Big_Ten": "Big_Ten_Conference_Elo_2026.csv",
+  "Big_West": "Big_West_Conference_Elo_2026.csv",
+  "Coastal_Athletic_Association": "Coastal_Athletic_Association_Elo_2026.csv",
+  "Conference_USA": "Conference_USA_Elo_2026.csv",
+  "Horizon_League": "Horizon_League_Elo_2026.csv",
+  "Ivy_League": "Ivy_League_Elo_2026.csv",
+  "Metro_Atlantic_Athletic_Conference": "Metro_Atlantic_Athletic_Conference_Elo_2026.csv",
+  "Mid_American": "Mid_American_Conference_Elo_2026.csv",
+  "Mid_Eastern_Athletic": "Mid_Eastern_Athletic_Conference_Elo_2026.csv",
+  "Missouri_Valley": "Missouri_Valley_Conference_Elo_2026.csv",
+  "Mountain_West": "Mountain_West_Conference_Elo_2026.csv",
+  "Northeast": "Northeast_Conference_Elo_2026.csv",
+  "Ohio_Valley": "Ohio_Valley_Conference_Elo_2026.csv",
+  "Patriot": "Patriot_League_Elo_2026.csv",
+  "Southeastern": "Southeastern_Conference_Elo_2026.csv",
+  "Southern": "Southern_Conference_Elo_2026.csv",
+  "Southland": "Southland_Conference_Elo_2026.csv",
+  "Southwestern_Athletic": "Southwestern_Athletic_Conference_Elo_2026.csv",
+  "Summit": "Summit_League_Elo_2026.csv",
+  "Sun_Belt": "Sun_Belt_Conference_Elo_2026.csv",
+  "West_Coast": "West_Coast_Conference_Elo_2026.csv",
+  "Western_Athletic": "Western_Athletic_Conference_Elo_2026.csv"
+};
+
 // --- Generic table render ---
 function renderTable(headers,data,theadRow,tbody,highlightTop=0,highlightCol=-1,highlightClass=""){
   theadRow.innerHTML=""; tbody.innerHTML="";
@@ -174,7 +209,7 @@ function renderProjectedBracket(headers,data,theadRow,tbody){
   headers.forEach((h,i)=>{
     const th = document.createElement("th");
     th.textContent = h;
-    th.addEventListener("click",()=>sortTable(i,data,tbody,th,0,autoBidCol,""));
+    th.addEventListener("click",()=>sortTable(i,data,tbody,th,0,autoBidCol,"auto-bid"));
     theadRow.appendChild(th);
   });
   data.forEach(row=>{
@@ -191,7 +226,7 @@ function renderProjectedBracket(headers,data,theadRow,tbody){
   });
 }
 
-// --- Fetch CSVs ---
+// --- Fetch CSV ---
 function fetchCSV(path, callback, errorMsg){
   fetch(path).then(r=>r.ok?r.text():Promise.reject()).then(csv=>{
     const rows = csv.trim().split("\n").map(r=>r.split(","));
@@ -219,50 +254,12 @@ fetchCSV(confEloCsv, rows=>{
 
 // --- 2026 specific ---
 if(year==="2026"){
-
-  // --- Conference filename mapping ---
-  const confFiles = {
-    "ASUN":"ASUN_Conference_Elo_2026.csv",
-    "America_East":"America_East_Conference_Elo_2026.csv",
-    "American":"American_Conference_Elo_2026.csv",
-    "Atlantic_10":"Atlantic_10_Conference_Elo_2026.csv",
-    "Atlantic_Coast":"Atlantic_Coast_Conference_Elo_2026.csv",
-    "Big_12":"Big_12_Conference_Elo_2026.csv",
-    "Big_East":"Big_East_Conference_Elo_2026.csv",
-    "Big_Sky":"Big_Sky_Conference_Elo_2026.csv",
-    "Big_South":"Big_South_Conference_Elo_2026.csv",
-    "Big_Ten":"Big_Ten_Conference_Elo_2026.csv",
-    "Big_West":"Big_West_Conference_Elo_2026.csv",
-    "Coastal_Athletic_Association":"Coastal_Athletic_Association_Conference_Elo_2026.csv",
-    "Conference_USA":"Conference_USA_Conference_Elo_2026.csv",
-    "Horizon_League":"Horizon_League_Conference_Elo_2026.csv",
-    "Ivy_League":"Ivy_League_Conference_Elo_2026.csv",
-    "Metro_Atlantic_Athletic_Conference":"Metro_Atlantic_Athletic_Conference_Conference_Elo_2026.csv",
-    "Mid_American":"Mid_American_Conference_Elo_2026.csv",
-    "Mid_Eastern_Athletic":"Mid_Eastern_Athletic_Conference_Elo_2026.csv",
-    "Missouri_Valley":"Missouri_Valley_Conference_Elo_2026.csv",
-    "Mountain_West":"Mountain_West_Conference_Elo_2026.csv",
-    "Northeast":"Northeast_Conference_Elo_2026.csv",
-    "Ohio_Valley":"Ohio_Valley_Conference_Elo_2026.csv",
-    "Patriot":"Patriot_Conference_Elo_2026.csv",
-    "Southeastern":"Southeastern_Conference_Elo_2026.csv",
-    "Southern":"Southern_Conference_Elo_2026.csv",
-    "Southland":"Southland_Conference_Elo_2026.csv",
-    "Southwestern_Athletic":"Southwestern_Athletic_Conference_Elo_2026.csv",
-    "Summit":"Summit_League_Elo_2026.csv",
-    "Sun_Belt":"Sun_Belt_Conference_Elo_2026.csv",
-    "West_Coast":"West_Coast_Conference_Elo_2026.csv",
-    "Western_Athletic":"Western_Athletic_Conference_Elo_2026.csv"
-  };
-
-  const conferences = Object.keys(confFiles);
-
-  showConfStandingsBtn.style.display="inline-block"; 
-  showGamePredictorBtn.style.display="inline-block"; 
+  showConfStandingsBtn.style.display="inline-block";
+  showGamePredictorBtn.style.display="inline-block";
   showResumeBtn.style.display="inline-block";
 
   const confDropdown = document.getElementById("conf-dropdown");
-  conferences.forEach(conf=>{
+  Object.keys(confFiles).forEach(conf=>{
     const opt = document.createElement("option");
     opt.value = conf;
     opt.textContent = conf.replace(/_/g," ");
@@ -271,19 +268,21 @@ if(year==="2026"){
 
   confDropdown.addEventListener("change", ()=>{
     const file = confFiles[confDropdown.value];
-    fetchCSV(`data/${file}`, rows=>{
-      renderTable(rows[0], rows.slice(1), document.querySelector("#conf-standings-table thead tr"), document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
-    }, `${confDropdown.value} CSV not found`);
+    if(file){
+      fetchCSV(`data/${file}`, rows=>{
+        renderTable(rows[0], rows.slice(1), document.querySelector("#conf-standings-table thead tr"), document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
+      }, `${confDropdown.value} CSV not found`);
+    }
   });
 
-  // --- Game Predictor ---
+  // Game Predictor
   fetchCSV("data/CBB_Elo_Future_Game_Predictions.csv", rows=>{
     const tbody = document.querySelector("#game-predictor-table tbody");
     const theadRow = document.querySelector("#game-predictor-table thead tr");
     theadRow.innerHTML=""; tbody.innerHTML="";
-    rows[0].forEach(h=>{
+    rows[0].forEach((h,i)=>{
       const th=document.createElement("th"); th.textContent=h; 
-      th.addEventListener("click",()=>sortTable(rows[0].indexOf(h), rows.slice(1), tbody, th, 0, -1, ""));
+      th.addEventListener("click",()=>sortTable(i, rows.slice(1), tbody, th,0,-1,""));
       theadRow.appendChild(th);
     });
     rows.slice(1).forEach(row=>{
@@ -297,13 +296,13 @@ if(year==="2026"){
     });
   }, "Game Predictor CSV not found");
 
-  // --- Resume ---
+  // Resume
   fetchCSV("data/CBB_Projected_Records_SOS_2026.csv", rows=>{
     renderTable(rows[0], rows.slice(1), document.querySelector("#resume-table thead tr"), document.querySelector("#resume-table tbody"), 3, 0, "top3");
   }, "Resume CSV not found");
 }
 
-// --- Toggle buttons ---
+// --- Toggle tabs ---
 function toggleTab(showContainer, activeBtn){
   [eloContainer, projectedContainer, confEloContainer, confStandingsContainer, gamePredictorContainer, resumeContainer].forEach(c=>c.style.display="none");
   [showEloBtn, showProjectedBtn, showConfEloBtn, showConfStandingsBtn, showGamePredictorBtn, showResumeBtn].forEach(b=>b.classList.remove("active"));
