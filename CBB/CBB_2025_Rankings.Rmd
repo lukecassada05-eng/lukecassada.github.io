@@ -959,6 +959,161 @@ print(top_80_elo_beaten)
 ```
 
 ```{r}
+library(hoopR)
+library(dplyr)
+library(lubridate)
+library(readr)
+
+# -------------------------------
+# Step 1: Load schedule
+# -------------------------------
+cbb_all <- load_mbb_schedule(seasons = 2026) %>%
+  mutate(date = as.Date(date))
+
+# -------------------------------
+# Step 2: Filter date range
+# -------------------------------
+season_start <- as.Date("2025-11-01")
+today <- Sys.Date()
+
+cbb_sel <- cbb_all %>%
+  filter(date >= season_start & date <= today)
+
+if (nrow(cbb_sel) == 0) {
+  warning("No games available yet. Using all available games.")
+  cbb_sel <- cbb_all
+}
+if (nrow(cbb_sel) == 0) {
+  cbb_sel <- cbb_all
+}
+
+# -------------------------------
+# Step 3: Winner / loser dataset
+# -------------------------------
+cbb_clean <- cbb_sel %>%
+  mutate(
+    home_pts = as.numeric(home_score),
+    away_pts = as.numeric(away_score),
+    winner = if_else(home_pts > away_pts,
+                     home_short_display_name,
+                     away_short_display_name),
+    loser  = if_else(home_pts < away_pts,
+                     home_short_display_name,
+                     away_short_display_name),
+    winner_pts = if_else(home_pts > away_pts, home_pts, away_pts),
+    loser_pts  = if_else(home_pts < away_pts, home_pts, away_pts),
+    winner_conf_id = if_else(home_pts > away_pts,
+                             home_conference_id,
+                             away_conference_id),
+    loser_conf_id  = if_else(home_pts < away_pts,
+                             home_conference_id,
+                             away_conference_id)
+  ) %>%
+  filter(!is.na(winner), !is.na(loser)) %>%
+  select(date, winner, winner_pts, winner_conf_id,
+         loser, loser_pts, loser_conf_id)
+
+# -------------------------------
+# Step 4: Conference lookup
+# -------------------------------
+conf_lookup <- cbb_all %>%
+  filter(groups_is_conference == TRUE) %>%
+  select(conference_id = groups_id,
+         conference = groups_name) %>%
+  distinct()
+
+cbb_clean <- cbb_clean %>%
+  left_join(conf_lookup,
+            by = c("winner_conf_id" = "conference_id")) %>%
+  rename(winner_conf = conference) %>%
+  left_join(conf_lookup,
+            by = c("loser_conf_id" = "conference_id")) %>%
+  rename(loser_conf = conference) %>%
+  mutate(
+    winner_conf = ifelse(is.na(winner_conf), "Unknown", winner_conf),
+    loser_conf  = ifelse(is.na(loser_conf), "Unknown", loser_conf)
+  )
+
+# -------------------------------
+# Step 5: Initialize Elo
+# -------------------------------
+teams <- unique(c(cbb_clean$winner, cbb_clean$loser))
+
+ratings <- data.frame(
+  team = teams,
+  rating = 1500,
+  wins = 0,
+  losses = 0,
+  stringsAsFactors = FALSE
+)
+
+k_factor <- 30
+num_iter <- 10
+
+# -------------------------------
+# Step 6: Elo computation
+# -------------------------------
+for (iter in seq_len(num_iter)) {
+  for (i in seq_len(nrow(cbb_clean))) {
+    
+    w <- cbb_clean$winner[i]
+    l <- cbb_clean$loser[i]
+    
+    rw <- ratings$rating[ratings$team == w]
+    rl <- ratings$rating[ratings$team == l]
+    
+    expected_w <- 1 / (1 + 10^((rl - rw) / 400))
+    margin <- cbb_clean$winner_pts[i] - cbb_clean$loser_pts[i]
+    adj_k <- k_factor * log(abs(margin) + 1)
+    delta <- adj_k * (1 - expected_w)
+    
+    ratings$rating[ratings$team == w] <- rw + delta
+    ratings$rating[ratings$team == l] <- rl - delta
+    
+    ratings$wins[ratings$team == w] <- ratings$wins[ratings$team == w] + 1
+    ratings$losses[ratings$team == l] <- ratings$losses[ratings$team == l] + 1
+  }
+  
+  ratings <- ratings %>%
+    mutate(rating = ifelse(wins + losses < 4, rating / 2, rating))
+}
+
+# -------------------------------
+# Step 7: Best win
+# -------------------------------
+team_ratings <- ratings %>% select(team, rating)
+
+best_wins <- cbb_clean %>%
+  left_join(team_ratings, by = c("loser" = "team")) %>%
+  rename(loser_elo = rating) %>%
+  group_by(winner) %>%
+  slice_max(loser_elo, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  select(team = winner,
+         best_win = loser,
+         best_win_elo = loser_elo)
+
+# -------------------------------
+# Step 8: Final Elo table
+# -------------------------------
+elo_ranking <- ratings %>%
+  mutate(
+    record = paste0(round(wins / 10, 1), "-", round(losses / 10, 1))
+  ) %>%
+  arrange(desc(rating)) %>%
+  mutate(rank = row_number()) %>%
+  left_join(best_wins, by = "team") %>%
+  mutate(
+    rating = round(rating, 1),
+    best_win_elo = round(best_win_elo, 1)
+  ) %>%
+  select(rank, team, rating, record, best_win, best_win_elo)
+
+write_csv(elo_ranking, file.path("CBB", "data", "CBB_Elo_2026.csv"))
+```
+
+
+```{r}
 library(dplyr)
 
 # --- Step 1: Assign conference for each team ---
@@ -1719,8 +1874,10 @@ SPREAD_SCALE <- 35
 # ===============================
 # LOAD CURRENT Elo AND RECORD
 # ===============================
-elo <- read_csv("CBB_Elo_2026.csv", show_col_types = FALSE) %>%
-  # split record column "16-3" into numeric wins/losses
+elo <- read_csv(
+  file.path("CBB", "data", "CBB_Elo_2026.csv"),
+  show_col_types = FALSE
+) %>%
   mutate(
     wins = as.numeric(sub("-.*", "", record)),
     losses = as.numeric(sub(".*-", "", record)),
@@ -1825,7 +1982,10 @@ SPREAD_SCALE <- 35        # optional
 # ===============================
 # LOAD CURRENT Elo AND RECORD
 # ===============================
-elo <- read_csv("CBB_Elo_2026.csv", show_col_types = FALSE) %>%
+elo <- read_csv(
+  file.path("CBB", "data", "CBB_Elo_2026.csv"),
+  show_col_types = FALSE
+) %>%
   mutate(
     # Parse record like "16-3" and scale back if it was multiplied
     wins = as.numeric(sub("-.*", "", record))/10,
@@ -1964,7 +2124,7 @@ final_df <- elo %>%
 # ===============================
 # WRITE CSV
 # ===============================
-#write_csv(final_df, file.path("data", "CBB_Projected_Records_SOS_2026.csv"))
+#write_csv(final_df, file.path("CBB", "data", "CBB_Projected_Records_SOS_2026.csv"))
 print(final_df)
 ```
 
@@ -1985,7 +2145,10 @@ SPREAD_SCALE <- 35        # Not used here, but can be for spreads
 # ===============================
 # LOAD CURRENT Elo AND RECORD
 # ===============================
-elo <- read_csv("CBB_Elo_2026.csv", show_col_types = FALSE) %>%
+elo <- read_csv(
+  file.path("CBB", "data", "CBB_Elo_2026.csv"),
+  show_col_types = FALSE
+) %>%
   mutate(
     # Parse record like "16-3" into wins/losses
     wins = as.numeric(sub("-.*", "", record)),
@@ -2283,7 +2446,7 @@ elo_ranking <- ratings %>%
 # -------------------------------
 # Step 9: Write team Elo CSV
 # -------------------------------
-write_csv(elo_ranking, file.path("data", "CBB_Elo_2026.csv"))
+write_csv(elo_ranking, file.path("CBB", "data", "CBB_Elo_2026.csv"))
 print(elo_ranking)
 
 # -------------------------------
@@ -2486,7 +2649,7 @@ elo_ranking <- ratings %>%
   ) %>%
   select(rank, team, rating, record, best_win, best_win_elo)
 
-write_csv(elo_ranking, "CBB_Elo_2026.csv")
+write_csv(elo_ranking, file.path("CBB", "data", "CBB_Elo_2026.csv"))
 
 # -------------------------------
 # Step 9: Team → conference map
@@ -2529,7 +2692,10 @@ conf_summary <- full_join(conf_wins, conf_losses, by = "conference") %>%
   mutate(rank = row_number()) %>%
   select(rank, conference, avg_elo, wins, losses)
 
-write_csv(conf_summary, "CBB_Conference_Elo_2026.csv")
+write_csv(
+  conf_summary,
+  file.path("CBB", "data", "CBB_Conference_Elo_2026.csv")
+)
 
 # -------------------------------
 # Step 11: Individual conference standings
@@ -2583,7 +2749,10 @@ SPREAD_SCALE <- 35    # Elo points per basketball point (adjust as needed)
 # -------------------------------
 # Load FINAL Elo ratings
 # -------------------------------
-elo <- read_csv("CBB_Elo_2026.csv", show_col_types = FALSE) %>%
+elo <- read_csv(
+  file.path("CBB", "data", "CBB_Elo_2026.csv"),
+  show_col_types = FALSE
+) %>%
   select(team, rating)
 
 # -------------------------------
