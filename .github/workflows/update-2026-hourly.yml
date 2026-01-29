@@ -30,25 +30,25 @@ jobs:
             build-essential \
             pandoc
 
-      # 4. Install R packages
+      # 4. Install R packages (added 'here')
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
           Rscript -e "pak::pkg_install(c(
             'hoopR','dplyr','readr','lubridate','tibble',
-            'ggplot2','tidyr','knitr','rmarkdown'
+            'ggplot2','tidyr','knitr','rmarkdown','here'
           ))"
 
       # 5. Ensure CSV output folder exists
       - name: Ensure CSV folder exists
         run: mkdir -p CBB/data
 
-      # 5. Render your RMarkdown and generate CSVs
+      # 6. Render your RMarkdown and generate CSVs
       - name: Render RMarkdown and update CSVs
         run: |
           Rscript -e "
-            library(rmarkdown);
-            library(here);
+            library(rmarkdown)
+            library(here)
             # Render the RMarkdown, forcing CSVs to CBB/data
             rmarkdown::render(
               input = 'CBB 2025 Rankings.Rmd',
@@ -59,7 +59,7 @@ jobs:
             )
           "
 
-      # 6. Create a default CSV if none exist
+      # 7. Create a default CSV if none exist
       - name: Create default CSV if missing
         run: |
           if ! compgen -G "CBB/data/*.csv" > /dev/null; then
@@ -67,7 +67,7 @@ jobs:
             echo "Created default CSV file in CBB/data/"
           fi
 
-      # 7. List generated CSVs for debugging
+      # 8. List generated CSVs for debugging
       - name: List CSV files
         run: |
           echo "CSV files in CBB/data/:"
@@ -75,7 +75,7 @@ jobs:
           echo "Checksums for CSV files:"
           for f in CBB/data/*.csv; do md5sum "$f"; done
 
-      # 8. Commit & push updated CSVs safely
+      # 9. Commit & push updated CSVs safely
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
