@@ -10,43 +10,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup R environment
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      # 3. Install system libraries needed for R packages
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev build-essential
 
-      # 4. Install Pandoc (needed for rmarkdown)
       - name: Install Pandoc
         run: |
           sudo apt-get install -y pandoc
 
-      # 5. Install pak and other R packages
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
           Rscript -e "pak::pkg_install(c('hoopR','dplyr','readr','lubridate','tibble','ggplot2','tidyr','knitr','rmarkdown'))"
 
-      # 6. Ensure data folder exists
       - name: Ensure data folder exists
         run: |
           mkdir -p CBB/data
           mkdir -p CBB/conference_standings
 
-      # 7. Render the RMarkdown file
-      - name: Render RMarkdown
+      - name: Render RMarkdown (HTML only)
         run: |
-          Rscript -e "rmarkdown::render('CBB/CBB_2025_Rankings.Rmd')"
+          Rscript -e "rmarkdown::render('CBB/CBB_2025_Rankings.Rmd', output_format = 'html_document', quiet = TRUE)"
 
-      # 8. Commit & push updated CSVs
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
