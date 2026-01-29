@@ -43,6 +43,8 @@ gtag('config', 'G-PWG43QNM3P');
   .conf-leader { background: #fff3e0; }  /* Conference Standings Leader */
   .win { background: #d0f0c0; }          /* Game Predictor winner */
   .lose { background: #f8d7da; }         /* Game Predictor loser */
+  .auto-bid { background: #d4f0d4; }     /* Projected bracket auto bid */
+  .at-large { background: #ffe4b2; }     /* Projected bracket at-large */
 </style>
 </head>
 
@@ -125,7 +127,7 @@ const showResumeBtn = document.getElementById("show-resume");
 let eloData=[], projectedData=[], confEloData=[], confStandingsData={}, gamePredictorData=[], resumeData=[];
 let sortState = {};
 
-// --- Table rendering ---
+// --- Generic table render ---
 function renderTable(headers,data,theadRow,tbody,highlightTop=0,highlightCol=0,highlightClass=""){
   theadRow.innerHTML=""; tbody.innerHTML="";
   headers.forEach((h,i)=>{
@@ -148,6 +150,7 @@ function renderTable(headers,data,theadRow,tbody,highlightTop=0,highlightCol=0,h
   });
 }
 
+// --- Sort ---
 function sortByColumn(colIndex,data,tbody,th,highlightTop=0,highlightCol=0,highlightClass=""){
   const headers=th.parentElement.querySelectorAll("th");
   headers.forEach(h=>h.classList.remove("sort-asc","sort-desc"));
@@ -174,10 +177,10 @@ function sortByColumn(colIndex,data,tbody,th,highlightTop=0,highlightCol=0,highl
   });
 }
 
-// --- Projected Bracket Table with coloring ---
-function renderProjectedTable(headers,data,theadRow,tbody){
+// --- Projected Bracket ---
+function renderProjectedBracket(headers,data,theadRow,tbody){
   theadRow.innerHTML=""; tbody.innerHTML="";
-  const bidCol = headers.findIndex(h=>h.toLowerCase().includes("bid"));
+  const autoBidCol = headers.findIndex(h=>h.toLowerCase().includes("auto_bid"));
   headers.forEach(h=>{
     const th = document.createElement("th");
     th.textContent = h;
@@ -188,10 +191,9 @@ function renderProjectedTable(headers,data,theadRow,tbody){
     row.forEach((cell,i)=>{
       const td = document.createElement("td");
       td.textContent = cell;
-      if(i === bidCol){
-        const val = cell.toLowerCase();
-        if(val.includes("auto")) td.style.backgroundColor = "#d4f0d4";
-        else if(val.includes("at-large")) td.style.backgroundColor = "#ffe4b2";
+      if(i===autoBidCol){
+        if(cell.toLowerCase() === "true") td.classList.add("auto-bid");
+        else td.classList.add("at-large");
       }
       tr.appendChild(td);
     });
@@ -214,11 +216,12 @@ fetch(projectedCsv)
 .then(csv=>{
   const rows = csv.trim().split("\n").map(r=>r.split(","));
   projectedData = rows.slice(1);
-  renderProjectedTable(rows[0],projectedData,document.querySelector("#projected-table thead tr"),document.querySelector("#projected-table tbody"));
+  renderProjectedBracket(rows[0],projectedData,document.querySelector("#projected-table thead tr"),document.querySelector("#projected-table tbody"));
   showProjectedBtn.style.display="inline-block"; toggleButtons.style.display="block";
 })
 .catch(()=>console.warn("No projected bracket"));
 
+// --- Conference Elo ---
 fetch(confEloCsv)
 .then(r=>r.ok?r.text():Promise.reject())
 .then(csv=>{
@@ -229,52 +232,46 @@ fetch(confEloCsv)
 })
 .catch(()=>console.warn("Conference Elo CSV not found"));
 
-// 2026-only logic
+// --- 2026 specific ---
 if(year==="2026"){
   const conferences = ["ASUN","America_East","American","Atlantic_10","Atlantic_Coast","Big_12","Big_East","Big_Sky","Big_South","Big_Ten","Big_West","Coastal_Athletic_Association","Conference_USA","Horizon_League","Ivy_League","Metro_Atlantic_Athletic_Conference","Mid_American","Mid_Eastern_Athletic","Missouri_Valley","Mountain_West","Northeast","Ohio_Valley","Patriot","Southeastern","Southern","Southland","Southwestern_Athletic","Summit","Sun_Belt","West_Coast","Western_Athletic"];
   showConfStandingsBtn.style.display="inline-block"; showGamePredictorBtn.style.display="inline-block"; showResumeBtn.style.display="inline-block"; toggleButtons.style.display="block";
 
   const confDropdown = document.getElementById("conf-dropdown");
-  conferences.forEach(conf=>{
-    const opt = document.createElement("option"); opt.value=conf; opt.textContent=conf.replace(/_/g," "); confDropdown.appendChild(opt);
-  });
+  conferences.forEach(conf=>{ const opt = document.createElement("option"); opt.value=conf; opt.textContent=conf.replace(/_/g," "); confDropdown.appendChild(opt); });
 
   confDropdown.addEventListener("change", ()=>{
     const conf = confDropdown.value;
     fetch(`data/${conf}_Conference_Elo_2026.csv`)
-      .then(r=>r.text())
-      .then(csv=>{
-        const rows = csv.trim().split("\n").map(r=>r.split(","));
-        renderTable(rows[0], rows.slice(1), document.querySelector("#conf-standings-table thead tr"), document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
-      })
-      .catch(()=>console.warn(`${conf} CSV not found`));
+    .then(r=>r.text())
+    .then(csv=>{
+      const rows = csv.trim().split("\n").map(r=>r.split(","));
+      renderTable(rows[0], rows.slice(1), document.querySelector("#conf-standings-table thead tr"), document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
+    })
+    .catch(()=>console.warn(`${conf} CSV not found`));
   });
 
+  // Game Predictor
   fetch("data/CBB_Elo_Future_Game_Predictions.csv")
   .then(r=>r.text())
   .then(csv=>{
     const rows = csv.trim().split("\n").map(r=>r.split(","));
-    gamePredictorData = rows.slice(1);
     const tbody = document.querySelector("#game-predictor-table tbody");
     const theadRow = document.querySelector("#game-predictor-table thead tr");
     theadRow.innerHTML=""; tbody.innerHTML="";
-    rows[0].forEach(h=>{
-      const th = document.createElement("th"); th.textContent=h; theadRow.appendChild(th);
-    });
-    gamePredictorData.forEach(row=>{
-      const tr = document.createElement("tr");
+    rows[0].forEach(h=>{ const th=document.createElement("th"); th.textContent=h; theadRow.appendChild(th); });
+    rows.slice(1).forEach(row=>{
+      const tr=document.createElement("tr");
       row.forEach((cell,i)=>{
-        const td = document.createElement("td"); td.textContent=cell;
-        // highlight winner if column is 'predicted_winner'
-        if(rows[0][i].toLowerCase().includes("winner")){
-          td.style.backgroundColor = "#d0f0c0";
-        }
+        const td=document.createElement("td"); td.textContent=cell;
+        if(rows[0][i].toLowerCase().includes("winner")) td.classList.add("win");
         tr.appendChild(td);
       });
       tbody.appendChild(tr);
     });
   });
 
+  // Resume
   fetch("data/CBB_Projected_Records_SOS_2026.csv")
   .then(r=>r.text())
   .then(csv=>{
