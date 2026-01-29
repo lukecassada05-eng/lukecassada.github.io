@@ -1981,7 +1981,7 @@ predictions <- games %>%
 # ===============================
 # WRITE CSV
 # ===============================
-write_csv(
+#write_csv(
   predictions,
   file.path("CBB", "data", "CBB_OffDef_Elo_Future_Game_Predictions.csv")
 )
