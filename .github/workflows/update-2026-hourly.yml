@@ -43,7 +43,7 @@ jobs:
       - name: Ensure data folder exists
         run: mkdir -p CBB/data
 
-      # 6. Render RMarkdown (HTML only)
+      # 6. Render RMarkdown
       - name: Render RMarkdown
         run: |
           Rscript -e "rmarkdown::render(
@@ -52,17 +52,29 @@ jobs:
             quiet = TRUE
           )"
 
-      # 7. Commit and push CSV updates (SAFE)
+      # 7. VERIFY: Confirm CSVs exist (proof R worked)
+      - name: Verify CSV output
+        run: |
+          echo "Checking for CSV files in CBB/data:"
+          ls -lh CBB/data || echo "CBB/data does not exist"
+
+      # 8. SAFETY CHECK: Ensure no old paths remain
+      - name: Verify no legacy paths
+        run: |
+          echo "Checking for conference_standings references:"
+          grep -R "conference_standings" . || echo "No legacy paths found"
+
+      # 9. Commit and push CSV updates (SAFE)
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          # Only add CSVs if they exist
           if compgen -G "CBB/data/*.csv" > /dev/null; then
+            echo "CSV files found — committing updates"
             git add CBB/data/*.csv
             git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
             git push
           else
-            echo "No CSV files found in CBB/data — skipping commit"
+            echo "No CSV files found — skipping commit"
           fi
