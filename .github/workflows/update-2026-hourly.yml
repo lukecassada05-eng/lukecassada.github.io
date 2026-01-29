@@ -30,64 +30,56 @@ jobs:
             build-essential \
             pandoc
 
-      # 4. Install R packages (including 'here')
+      # 4. Install R packages
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
           Rscript -e "pak::pkg_install(c(
             'hoopR','dplyr','readr','lubridate','tibble',
-            'ggplot2','tidyr','knitr','rmarkdown','here'
+            'ggplot2','tidyr','knitr','rmarkdown'
           ))"
 
       # 5. Ensure CSV output folder exists
       - name: Ensure CSV folder exists
         run: mkdir -p CBB/data
 
-      # 6. Render your RMarkdown and generate CSVs
-      - name: Render RMarkdown and update CSVs
+      # 6. Render RMarkdown (generates CSVs)
+      - name: Render RMarkdown
         run: |
-          Rscript -e "
-            library(rmarkdown)
-            library(here)
-            # Render the RMarkdown, forcing CSVs to CBB/data
-            rmarkdown::render(
-              input = here::here('CBB', 'CBB-2025-Rankings.Rmd'),
-              output_format = 'html_document',
-              output_dir = here::here('CBB'),    # HTML goes to CBB
-              envir = new.env(),
-              quiet = TRUE
-            )
-          "
+          Rscript -e "rmarkdown::render(
+            'CBB/CBB-2025-Rankings.Rmd',
+            output_format = 'html_document',
+            quiet = TRUE
+          )"
 
-      # 7. Create a default CSV if none exist
-      - name: Create default CSV if missing
-        run: |
-          if ! compgen -G "CBB/data/*.csv" > /dev/null; then
-            echo "team,conference,wins,losses" > CBB/data/default.csv
-            echo "Created default CSV file in CBB/data/"
-          fi
-
-      # 8. List generated CSVs for debugging
-      - name: List CSV files
+      # 7. Verify CSV output (debug)
+      - name: Verify CSVs
         run: |
           echo "CSV files in CBB/data/:"
-          ls -R CBB/data/
-          echo "Checksums for CSV files:"
-          for f in CBB/data/*.csv; do md5sum "$f"; done
+          ls -lh CBB/data || echo "CBB/data does not exist"
 
-      # 9. Commit & push updated CSVs safely
+      # 8. Commit and push CSV updates (force overwrite)
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
           if compgen -G "CBB/data/*.csv" > /dev/null; then
+            echo "CSV files found — committing updates"
+
+            # Remove old CSVs to guarantee Git sees changes
+            git rm -f CBB/data/*.csv || echo "No CSVs to remove"
+
+            # Add newly generated CSVs
             git add CBB/data/*.csv
+
+            # Commit (will always create a commit)
             git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
 
-            # Pull remote changes first to avoid push rejection
+            # Pull remote first to avoid push rejection
             git pull --rebase origin main
 
+            # Push changes
             git push origin main
           else
             echo "No CSV files found — skipping commit"
