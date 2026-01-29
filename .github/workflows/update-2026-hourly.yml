@@ -3,7 +3,7 @@ name: Update 2026 CBB CSVs Hourly
 on:
   schedule:
     - cron: "0 * * * *"   # Every hour at the start of the hour (UTC)
-  workflow_dispatch:      # Allows manual run
+  workflow_dispatch:      # Allows manual/manual run
 
 jobs:
   update-data:
@@ -14,22 +14,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup R
+      # 2. Install Pandoc (needed for RMarkdown)
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      # 3. Setup R
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      # 3. Install necessary R packages (qs first for hoopR)
+      # 4. Install R packages
       - name: Install R packages
         run: |
+          # Install qs first for hoopR
           Rscript -e "install.packages('qs', repos='https://cloud.r-project.org')"
           Rscript -e "install.packages(c('dplyr','readr','lubridate','hoopR','knitr','rmarkdown'), repos='https://cloud.r-project.org')"
 
-      # 4. Render the RMarkdown file
+      # 5. Render the RMarkdown file
       - name: Render RMarkdown
         run: |
           Rscript -e "rmarkdown::render('CBB 2025 Rankings.Rmd')"
 
-      # 5. Commit & push updated CSVs
+      # 6. Commit & push updated CSVs
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
