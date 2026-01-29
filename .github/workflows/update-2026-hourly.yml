@@ -30,7 +30,7 @@ jobs:
             build-essential \
             pandoc
 
-      # 4. Install R packages (added 'here')
+      # 4. Install R packages (including 'here')
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
@@ -51,10 +51,10 @@ jobs:
             library(here)
             # Render the RMarkdown, forcing CSVs to CBB/data
             rmarkdown::render(
-              input = 'CBB 2025 Rankings.Rmd',
+              input = here::here('CBB', 'CBB-2025-Rankings.Rmd'),
               output_format = 'html_document',
-              output_dir = 'CBB',    # HTML goes to CBB
-              envir = new.env(),     # clean environment
+              output_dir = here::here('CBB'),    # HTML goes to CBB
+              envir = new.env(),
               quiet = TRUE
             )
           "
