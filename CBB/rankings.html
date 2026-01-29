@@ -23,7 +23,9 @@ gtag('config', 'G-PWG43QNM3P');
   h1 { text-align:center; margin-bottom:10px; }
   .subtitle { text-align:center; margin-bottom:20px; color:#555; }
   .toggle-buttons { text-align:center; margin-bottom:20px; }
-  .toggle-buttons button { padding:8px 16px; margin:0 5px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; background:#ddd; transition:0.2s; }
+  .toggle-buttons button {
+    padding:8px 16px; margin:0 5px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; background:#ddd; transition:0.2s;
+  }
   .toggle-buttons button.active { background:#111; color:#fff; }
   .toggle-buttons button:hover { background:#aaa; color:#fff; }
 
@@ -36,13 +38,13 @@ gtag('config', 'G-PWG43QNM3P');
   select { padding:6px 10px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; }
 
   /* Highlight classes */
-  .top10 { background: #e0f7fa; }        /* Elo Top 10 */
-  .top3 { background: #e8f5e9; }         /* Conference Elo Top 3 */
-  .conf-leader { background: #fff3e0; }  /* Conference Standings Leader */
-  .win { background: #d0f0c0; }          /* Game Predictor winner */
-  .lose { background: #f8d7da; }         /* Game Predictor loser */
-  .auto-bid { background: #d4f0d4; }     /* Projected bracket auto bid */
-  .at-large { background: #ffe4b2; }     /* Projected bracket at-large */
+  .top10 { background: #e0f7fa; }
+  .top3 { background: #e8f5e9; }
+  .conf-leader { background: #fff3e0; }
+  .win { background: #d0f0c0; }
+  .lose { background: #f8d7da; }
+  .auto-bid { background: #d4f0d4; }
+  .at-large { background: #ffe4b2; }
 </style>
 </head>
 
@@ -80,18 +82,18 @@ gtag('config', 'G-PWG43QNM3P');
     <table id="conf-elo-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
-  <!-- Conference Standings Dropdown (2026 only) -->
+  <!-- Conference Standings Dropdown -->
   <div id="conf-standings-container" style="display:none;">
     <select id="conf-dropdown"></select>
     <table id="conf-standings-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
-  <!-- Game Predictor (2026 only) -->
+  <!-- Game Predictor -->
   <div id="game-predictor-container" style="display:none;">
     <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
-  <!-- Resume Tab (2026 only) -->
+  <!-- Resume -->
   <div id="resume-container" style="display:none;">
     <table id="resume-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
@@ -107,25 +109,27 @@ const eloCsv = `data/CBB_Elo_${year}.csv`;
 const projectedCsv = `data/projected_bracket${year}.csv`;
 const confEloCsv = `data/CBB_Conference_Elo_${year}.csv`;
 
-const eloContainer = document.getElementById("elo-container");
-const projectedContainer = document.getElementById("projected-container");
-const confEloContainer = document.getElementById("conf-elo-container");
-const confStandingsContainer = document.getElementById("conf-standings-container");
-const gamePredictorContainer = document.getElementById("game-predictor-container");
-const resumeContainer = document.getElementById("resume-container");
-const toggleButtons = document.getElementById("toggle-buttons");
+const containers = {
+  elo: document.getElementById("elo-container"),
+  projected: document.getElementById("projected-container"),
+  confElo: document.getElementById("conf-elo-container"),
+  confStandings: document.getElementById("conf-standings-container"),
+  gamePredictor: document.getElementById("game-predictor-container"),
+  resume: document.getElementById("resume-container")
+};
 
-const showEloBtn = document.getElementById("show-elo");
-const showProjectedBtn = document.getElementById("show-projected");
-const showConfEloBtn = document.getElementById("show-conf-elo");
-const showConfStandingsBtn = document.getElementById("show-conf-standings");
-const showGamePredictorBtn = document.getElementById("show-game-predictor");
-const showResumeBtn = document.getElementById("show-resume");
+const buttons = {
+  elo: document.getElementById("show-elo"),
+  projected: document.getElementById("show-projected"),
+  confElo: document.getElementById("show-conf-elo"),
+  confStandings: document.getElementById("show-conf-standings"),
+  gamePredictor: document.getElementById("show-game-predictor"),
+  resume: document.getElementById("show-resume")
+};
 
-let eloData=[], projectedData=[], confEloData=[], confStandingsData={}, gamePredictorData=[], resumeData=[];
 let sortState = {};
 
-// --- Generic table render ---
+// --- Generic table render & sort ---
 function renderTable(headers,data,theadRow,tbody,highlightTop=0,highlightCol=0,highlightClass=""){
   theadRow.innerHTML=""; tbody.innerHTML="";
   headers.forEach((h,i)=>{
@@ -148,7 +152,6 @@ function renderTable(headers,data,theadRow,tbody,highlightTop=0,highlightCol=0,h
   });
 }
 
-// --- Sort function ---
 function sortByColumn(colIndex,data,tbody,th,highlightTop=0,highlightCol=0,highlightClass=""){
   const headers=th.parentElement.querySelectorAll("th");
   headers.forEach(h=>h.classList.remove("sort-asc","sort-desc"));
@@ -179,104 +182,94 @@ function sortByColumn(colIndex,data,tbody,th,highlightTop=0,highlightCol=0,highl
 function renderProjectedBracket(headers,data,theadRow,tbody){
   theadRow.innerHTML=""; tbody.innerHTML="";
   const autoBidCol = headers.findIndex(h=>h.toLowerCase().includes("auto_bid"));
-  headers.forEach((h, i)=>{
+  headers.forEach(h=>{
     const th = document.createElement("th");
     th.textContent = h;
-    th.addEventListener("click",()=>sortByColumnProjected(i,data,tbody,th,autoBidCol));
+    th.addEventListener("click", ()=>sortProjectedColumn(autoBidCol));
     theadRow.appendChild(th);
   });
-  populateProjectedRows(data, tbody, autoBidCol);
-}
-
-function populateProjectedRows(data, tbody, autoBidCol){
-  tbody.innerHTML="";
+  function sortProjectedColumn(autoBidCol){
+    const ascending = sortState['proj'] !== 'asc';
+    sortState['proj'] = ascending ? 'asc':'desc';
+    const sorted = [...data].sort((a,b)=>{
+      if(a[autoBidCol]===b[autoBidCol]) return 0;
+      if(a[autoBidCol].toLowerCase()==="true") return ascending?-1:1;
+      return ascending?1:-1;
+    });
+    tbody.innerHTML="";
+    sorted.forEach(row=>{
+      const tr=document.createElement("tr");
+      row.forEach((cell,i)=>{
+        const td=document.createElement("td"); td.textContent=cell;
+        if(i===autoBidCol){
+          td.classList.add(cell.toLowerCase()==="true"?"auto-bid":"at-large");
+        }
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  }
   data.forEach(row=>{
-    const tr = document.createElement("tr");
+    const tr=document.createElement("tr");
     row.forEach((cell,i)=>{
-      const td = document.createElement("td");
-      td.textContent = cell;
-      if(i===autoBidCol){
-        if(cell.toLowerCase() === "true") td.classList.add("auto-bid");
-        else td.classList.add("at-large");
-      }
+      const td=document.createElement("td"); td.textContent=cell;
+      if(i===autoBidCol) td.classList.add(cell.toLowerCase()==="true"?"auto-bid":"at-large");
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
   });
 }
 
-function sortByColumnProjected(colIndex,data,tbody,th,autoBidCol){
-  const headers=th.parentElement.querySelectorAll("th");
-  headers.forEach(h=>h.classList.remove("sort-asc","sort-desc"));
-  const ascending = sortState[colIndex]!=="asc";
-  sortState={ [colIndex]: ascending ? "asc":"desc" };
-  th.classList.add(ascending?"sort-asc":"sort-desc");
-  data.sort((a,b)=>{
-    const A=parseFloat(a[colIndex]), B=parseFloat(b[colIndex]);
-    if(!isNaN(A)&&!isNaN(B)) return ascending?A-B:B-A;
-    return ascending?a[colIndex].localeCompare(b[colIndex]):b[colIndex].localeCompare(a[colIndex]);
-  });
-  populateProjectedRows(data, tbody, autoBidCol);
-}
-
 // --- Fetch CSVs ---
-fetch(eloCsv)
-.then(r=>r.ok?r.text():Promise.reject())
-.then(csv=>{
-  const rows = csv.trim().split("\n").map(r=>r.split(","));
-  eloData = rows.slice(1);
-  renderTable(rows[0],eloData,document.querySelector("#elo-table thead tr"),document.querySelector("#elo-table tbody"),10,0,"top10");
-})
-.catch(()=>document.querySelector("#elo-table tbody").innerHTML=`<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`);
+fetch(eloCsv).then(r=>r.ok?r.text():Promise.reject()).then(csv=>{
+  const rows=csv.trim().split("\n").map(r=>r.split(","));
+  renderTable(rows[0],rows.slice(1),document.querySelector("#elo-table thead tr"),document.querySelector("#elo-table tbody"),10,0,"top10");
+}).catch(()=>document.querySelector("#elo-table tbody").innerHTML=`<tr><td colspan="20">Elo data not found for ${year}.</td></tr>`);
 
-fetch(projectedCsv)
-.then(r=>r.ok?r.text():Promise.reject())
-.then(csv=>{
-  const rows = csv.trim().split("\n").map(r=>r.split(","));
-  projectedData = rows.slice(1);
-  renderProjectedBracket(rows[0],projectedData,document.querySelector("#projected-table thead tr"),document.querySelector("#projected-table tbody"));
-  showProjectedBtn.style.display="inline-block"; toggleButtons.style.display="block";
-})
-.catch(()=>console.warn("No projected bracket"));
+fetch(projectedCsv).then(r=>r.ok?r.text():Promise.reject()).then(csv=>{
+  const rows=csv.trim().split("\n").map(r=>r.split(","));
+  renderProjectedBracket(rows[0],rows.slice(1),document.querySelector("#projected-table thead tr"),document.querySelector("#projected-table tbody"));
+  buttons.projected.style.display="inline-block"; toggleButtons.style.display="block";
+}).catch(()=>console.warn("No projected bracket"));
 
-fetch(confEloCsv)
-.then(r=>r.ok?r.text():Promise.reject())
-.then(csv=>{
-  const rows = csv.trim().split("\n").map(r=>r.split(","));
-  confEloData = rows.slice(1);
-  renderTable(rows[0],confEloData,document.querySelector("#conf-elo-table thead tr"),document.querySelector("#conf-elo-table tbody"),3,0,"top3");
-  showConfEloBtn.style.display="inline-block"; toggleButtons.style.display="block";
-})
-.catch(()=>console.warn("Conference Elo CSV not found"));
+fetch(confEloCsv).then(r=>r.ok?r.text():Promise.reject()).then(csv=>{
+  const rows=csv.trim().split("\n").map(r=>r.split(","));
+  renderTable(rows[0],rows.slice(1),document.querySelector("#conf-elo-table thead tr"),document.querySelector("#conf-elo-table tbody"),3,0,"top3");
+  buttons.confElo.style.display="inline-block"; toggleButtons.style.display="block";
+}).catch(()=>console.warn("Conference Elo CSV not found"));
 
 // --- 2026 specific ---
 if(year==="2026"){
-  const conferences = ["ASUN","America_East","American","Atlantic_10","Atlantic_Coast","Big_12","Big_East","Big_Sky","Big_South","Big_Ten","Big_West","Coastal_Athletic_Association","Conference_USA","Horizon_League","Ivy_League","Metro_Atlantic_Athletic_Conference","Mid_American","Mid_Eastern_Athletic","Missouri_Valley","Mountain_West","Northeast","Ohio_Valley","Patriot","Southeastern","Southern","Southland","Southwestern_Athletic","Summit_League","Sun_Belt","West_Coast","Western_Athletic"];
-  showConfStandingsBtn.style.display="inline-block"; showGamePredictorBtn.style.display="inline-block"; showResumeBtn.style.display="inline-block"; toggleButtons.style.display="block";
+  const conferences=[
+    "ASUN","America_East","American","Atlantic_10","Atlantic_Coast","Big_12","Big_East","Big_Sky","Big_South",
+    "Big_Ten","Big_West","Coastal_Athletic_Association","Conference_USA","Horizon_League","Ivy_League",
+    "Metro_Atlantic_Athletic_Conference","Mid_American","Mid_Eastern_Athletic","Missouri_Valley","Mountain_West",
+    "Northeast","Ohio_Valley","Patriot","Southeastern","Southern","Southland","Southwestern_Athletic",
+    "Summit_League","Sun_Belt","West_Coast","Western_Athletic"
+  ];
+  buttons.confStandings.style.display="inline-block";
+  buttons.gamePredictor.style.display="inline-block";
+  buttons.resume.style.display="inline-block";
+  toggleButtons.style.display="block";
 
-  const confDropdown = document.getElementById("conf-dropdown");
-  conferences.forEach(conf=>{ const opt = document.createElement("option"); opt.value=conf; opt.textContent=conf.replace(/_/g," "); confDropdown.appendChild(opt); });
-
-  confDropdown.addEventListener("change", ()=>{
-    const conf = confDropdown.value;
-    fetch(`data/${conf}_Elo_2026.csv`)
-    .then(r=>r.text())
-    .then(csv=>{
-      const rows = csv.trim().split("\n").map(r=>r.split(","));
-      renderTable(rows[0], rows.slice(1), document.querySelector("#conf-standings-table thead tr"), document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
-    })
-    .catch(()=>console.warn(`${conf} CSV not found`));
+  const confDropdown=document.getElementById("conf-dropdown");
+  conferences.forEach(conf=>{
+    const opt=document.createElement("option"); opt.value=conf; opt.textContent=conf.replace(/_/g," "); confDropdown.appendChild(opt);
+  });
+  confDropdown.addEventListener("change",()=>{
+    const conf=confDropdown.value;
+    fetch(`data/${conf}_Conference_Elo_2026.csv`).then(r=>r.text()).then(csv=>{
+      const rows=csv.trim().split("\n").map(r=>r.split(","));
+      renderTable(rows[0],rows.slice(1),document.querySelector("#conf-standings-table thead tr"),document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
+    }).catch(()=>console.warn(`${conf} CSV not found`));
   });
 
-  // Game Predictor
-  fetch("data/CBB_Elo_Future_Game_Predictions.csv")
-  .then(r=>r.text())
-  .then(csv=>{
-    const rows = csv.trim().split("\n").map(r=>r.split(","));
-    const tbody = document.querySelector("#game-predictor-table tbody");
-    const theadRow = document.querySelector("#game-predictor-table thead tr");
+  fetch("data/CBB_Elo_Future_Game_Predictions.csv").then(r=>r.text()).then(csv=>{
+    const rows=csv.trim().split("\n").map(r=>r.split(","));
+    const tbody=document.querySelector("#game-predictor-table tbody");
+    const theadRow=document.querySelector("#game-predictor-table thead tr");
     theadRow.innerHTML=""; tbody.innerHTML="";
-    rows[0].forEach(h=>{ const th=document.createElement("th"); th.textContent=h; th.addEventListener("click",()=>sortByColumnProjected(rows[0].indexOf(h),rows.slice(1),tbody,th,rows[0].indexOf("Winner"))); theadRow.appendChild(th); });
+    rows[0].forEach(h=>{ const th=document.createElement("th"); th.textContent=h; theadRow.appendChild(th); });
     rows.slice(1).forEach(row=>{
       const tr=document.createElement("tr");
       row.forEach((cell,i)=>{
@@ -288,40 +281,19 @@ if(year==="2026"){
     });
   });
 
-  // Resume
-  fetch("data/CBB_Projected_Records_SOS_2026.csv")
-  .then(r=>r.text())
-  .then(csv=>{
-    const rows = csv.trim().split("\n").map(r=>r.split(","));
-    resumeData = rows.slice(1);
-    renderTable(rows[0], resumeData, document.querySelector("#resume-table thead tr"), document.querySelector("#resume-table tbody"),3,0,"top3");
+  fetch("data/CBB_Projected_Records_SOS_2026.csv").then(r=>r.text()).then(csv=>{
+    const rows=csv.trim().split("\n").map(r=>r.split(","));
+    renderTable(rows[0],rows.slice(1),document.querySelector("#resume-table thead tr"),document.querySelector("#resume-table tbody"),3,0,"top3");
   });
 }
 
-// --- Toggle buttons ---
-function setActiveTab(tab){
-  eloContainer.style.display="none";
-  projectedContainer.style.display="none";
-  confEloContainer.style.display="none";
-  confStandingsContainer.style.display="none";
-  gamePredictorContainer.style.display="none";
-  resumeContainer.style.display="none";
-  showEloBtn.classList.remove("active");
-  showProjectedBtn.classList.remove("active");
-  showConfEloBtn.classList.remove("active");
-  showConfStandingsBtn.classList.remove("active");
-  showGamePredictorBtn.classList.remove("active");
-  showResumeBtn.classList.remove("active");
-
-  tab.style.display="block";
-}
-
-showEloBtn.onclick=()=>{ setActiveTab(eloContainer); showEloBtn.classList.add("active"); };
-showProjectedBtn.onclick=()=>{ setActiveTab(projectedContainer); showProjectedBtn.classList.add("active"); };
-showConfEloBtn.onclick=()=>{ setActiveTab(confEloContainer); showConfEloBtn.classList.add("active"); };
-showConfStandingsBtn.onclick=()=>{ setActiveTab(confStandingsContainer); showConfStandingsBtn.classList.add("active"); };
-showGamePredictorBtn.onclick=()=>{ setActiveTab(gamePredictorContainer); showGamePredictorBtn.classList.add("active"); };
-showResumeBtn.onclick=()=>{ setActiveTab(resumeContainer); showResumeBtn.classList.add("active"); };
+// --- Toggle buttons click ---
+Object.keys(buttons).forEach(key=>{
+  buttons[key].onclick=()=>{ 
+    Object.keys(containers).forEach(k=>containers[k].style.display=(k===key)?"block":"none");
+    Object.keys(buttons).forEach(k=>buttons[k].classList.toggle("active", k===key));
+  };
+});
 </script>
 
 </body>
