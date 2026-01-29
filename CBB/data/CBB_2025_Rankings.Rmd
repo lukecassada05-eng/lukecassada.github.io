@@ -831,6 +831,10 @@ library(tibble)
 library(readr)
 library(ggplot2)
 
+# --- Step 0: Ensure the data folder exists
+if (!dir.exists(file.path("CBB", "data"))) {
+  dir.create(file.path("CBB", "data"), recursive = TRUE)
+} 
 
 # --- Step 1: Identify automatic bids (top team in each conference)
 auto_bids <- elo_ranking %>%
