@@ -15,36 +15,129 @@ gtag('config', 'G-PWG43QNM3P');
 </script>
 
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f6f8; color:#111; }
-  .page { max-width:1100px; margin:0 auto; padding:20px; }
-  .top-nav { margin-bottom:20px; }
-  .top-nav a { text-decoration:none; color:#111; font-weight:bold; font-size:0.9rem; }
-  .top-nav a:hover { text-decoration:underline; }
-  h1 { text-align:center; margin-bottom:10px; }
-  .subtitle { text-align:center; margin-bottom:20px; color:#555; }
-  .toggle-buttons { text-align:center; margin-bottom:20px; }
-  .toggle-buttons button {
-    padding:8px 16px; margin:0 5px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; background:#ddd; transition:0.2s;
+  body { 
+    font-family: Arial, sans-serif; 
+    margin:0; padding:0; 
+    background: linear-gradient(120deg, #f0f4f8, #e8edf3); 
+    color:#111; 
   }
-  .toggle-buttons button.active { background:#111; color:#fff; }
-  .toggle-buttons button:hover { background:#aaa; color:#fff; }
 
-  table { border-collapse:collapse; width:100%; margin-top:10px; background:#fff; border-radius:6px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-  th, td { padding:8px 10px; border:1px solid #ccc; text-align:left; }
-  th { background-color:#f2f2f2; cursor:pointer; user-select:none; }
-  th.sort-asc::after { content:" ▲"; }
-  th.sort-desc::after { content:" ▼"; }
+  .page { 
+    max-width:1100px; 
+    margin:0 auto; 
+    padding:20px; 
+    background: #fff; 
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
 
-  select { padding:6px 10px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; }
+  .top-nav { 
+    margin-bottom:20px; 
+  }
+
+  .top-nav a { 
+    text-decoration:none; 
+    color:#1565c0; 
+    font-weight:bold; 
+    font-size:0.95rem; 
+  }
+
+  .top-nav a:hover { 
+    text-decoration:underline; 
+    color:#0d47a1;
+  }
+
+  h1 { 
+    text-align:center; 
+    margin-bottom:10px; 
+    color:#0d47a1;
+  }
+
+  .subtitle { 
+    text-align:center; 
+    margin-bottom:20px; 
+    color:#555; 
+    font-style: italic;
+  }
+
+  .toggle-buttons { 
+    text-align:center; 
+    margin-bottom:20px; 
+  }
+
+  .toggle-buttons button {
+    padding:8px 16px; 
+    margin:0 5px; 
+    border:none; 
+    border-radius:6px; 
+    font-weight:bold; 
+    cursor:pointer; 
+    background: linear-gradient(145deg, #e0e0e0, #cfcfcf); 
+    color: #111;
+    transition:0.3s;
+  }
+
+  .toggle-buttons button.active { 
+    background: linear-gradient(145deg, #1565c0, #0d47a1); 
+    color:#fff; 
+  }
+
+  .toggle-buttons button:hover { 
+    background: linear-gradient(145deg, #90caf9, #42a5f5); 
+    color:#fff; 
+  }
+
+  table { 
+    border-collapse:collapse; 
+    width:100%; 
+    margin-top:10px; 
+    background:#fdfdfd; 
+    border-radius:8px; 
+    overflow:hidden; 
+    box-shadow:0 6px 15px rgba(0,0,0,0.08); 
+  }
+
+  th, td { 
+    padding:10px 12px; 
+    border:1px solid #ccc; 
+    text-align:left; 
+    transition: background 0.3s;
+  }
+
+  th { 
+    background-color:#1976d2; 
+    color:#fff;
+    cursor:pointer; 
+    user-select:none; 
+  }
+
+  th.sort-asc::after { 
+    content:" ▲"; 
+  }
+
+  th.sort-desc::after { 
+    content:" ▼"; 
+  }
+
+  select { 
+    padding:6px 10px; 
+    margin-bottom:15px; 
+    border-radius:5px; 
+    border:1px solid #ccc; 
+    background:#f0f4f8;
+  }
 
   /* Highlight classes */
-  .top10 { background: #e0f7fa; }        /* Elo Top 10 */
-  .top3 { background: #e8f5e9; }         /* Conference Elo Top 3 */
-  .conf-leader { background: #fff3e0; }  /* Conference Standings Leader */
-  .win { background: #d0f0c0; }          /* Game Predictor winner */
-  .lose { background: #f8d7da; }         /* Game Predictor loser */
-  .auto-bid { background: #d4f0d4; }     /* Projected bracket auto bid */
-  .at-large { background: #ffe4b2; }     /* Projected bracket at-large */
+  .top10 { background: #b3e5fc; font-weight:bold; }           /* Elo Top 10 */
+  .top3 { background: #c8e6c9; font-weight:bold; }            /* Conference Elo Top 3 */
+  .conf-leader { background: #ffe0b2; font-weight:bold; }     /* Conference Standings Leader */
+  .win { background: #a5d6a7; }                               /* Game Predictor winner */
+  .lose { background: #ef9a9a; }                              /* Game Predictor loser */
+  .auto-bid { background: #81c784; color:#fff; font-weight:bold; }  /* Projected bracket auto bid */
+  .at-large { background: #ffb74d; color:#fff; font-weight:bold; }  /* Projected bracket at-large */
+
+  /* Row hover */
+  tbody tr:hover { background: #f1f8ff; }
 </style>
 </head>
 
@@ -101,6 +194,7 @@ gtag('config', 'G-PWG43QNM3P');
 </div>
 
 <script>
+// (Your original JS code here, unchanged)
 const params = new URLSearchParams(window.location.search);
 const year = params.get("year") || "2026";
 document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
@@ -285,10 +379,54 @@ if(year==="2026"){
 showEloBtn.onclick=()=>{ eloContainer.style.display="block"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.add("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
 showProjectedBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="block"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.add("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
 showConfEloBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="block"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.add("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
-showConfStandingsBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="block"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.add("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.remove("active"); };
-showGamePredictorBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="block"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.add("active"); showResumeBtn.classList.remove("active"); };
-showResumeBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="none"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="block"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.remove("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn.classList.add("active"); };
-</script>
+showConfStandingsBtn.onclick=()=>{ eloContainer.style.display="none"; projectedContainer.style.display="none"; confEloContainer.style.display="none"; confStandingsContainer.style.display="block"; gamePredictorContainer.style.display="none"; resumeContainer.style.display="none"; showEloBtn.classList.remove("active"); showProjectedBtn.classList.remove("active"); showConfEloBtn.classList.remove("active"); showConfStandingsBtn.classList.add("active"); showGamePredictorBtn.classList.remove("active"); showResumeBtn
+::contentReference[oaicite:0]{index=0}
 
+
+showConfStandingsBtn.onclick=()=>{ 
+  eloContainer.style.display="none"; 
+  projectedContainer.style.display="none"; 
+  confEloContainer.style.display="none"; 
+  confStandingsContainer.style.display="block"; 
+  gamePredictorContainer.style.display="none"; 
+  resumeContainer.style.display="none"; 
+  showEloBtn.classList.remove("active"); 
+  showProjectedBtn.classList.remove("active"); 
+  showConfEloBtn.classList.remove("active"); 
+  showConfStandingsBtn.classList.add("active"); 
+  showGamePredictorBtn.classList.remove("active"); 
+  showResumeBtn.classList.remove("active"); 
+};
+
+showGamePredictorBtn.onclick=()=>{ 
+  eloContainer.style.display="none"; 
+  projectedContainer.style.display="none"; 
+  confEloContainer.style.display="none"; 
+  confStandingsContainer.style.display="none"; 
+  gamePredictorContainer.style.display="block"; 
+  resumeContainer.style.display="none"; 
+  showEloBtn.classList.remove("active"); 
+  showProjectedBtn.classList.remove("active"); 
+  showConfEloBtn.classList.remove("active"); 
+  showConfStandingsBtn.classList.remove("active"); 
+  showGamePredictorBtn.classList.add("active"); 
+  showResumeBtn.classList.remove("active"); 
+};
+
+showResumeBtn.onclick=()=>{ 
+  eloContainer.style.display="none"; 
+  projectedContainer.style.display="none"; 
+  confEloContainer.style.display="none"; 
+  confStandingsContainer.style.display="none"; 
+  gamePredictorContainer.style.display="none"; 
+  resumeContainer.style.display="block"; 
+  showEloBtn.classList.remove("active"); 
+  showProjectedBtn.classList.remove("active"); 
+  showConfEloBtn.classList.remove("active"); 
+  showConfStandingsBtn.classList.remove("active"); 
+  showGamePredictorBtn.classList.remove("active"); 
+  showResumeBtn.classList.add("active"); 
+};
+</script>
 </body>
 </html>
