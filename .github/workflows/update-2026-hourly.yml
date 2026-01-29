@@ -2,52 +2,56 @@ name: Update 2026 CBB CSVs Hourly
 
 on:
   schedule:
-    - cron: "0 * * * *"
-  workflow_dispatch:
+    - cron: "0 * * * *"  # Every hour at the start of the hour (UTC)
+  workflow_dispatch:      # Allows manual run
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repo
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup R
+      # 2. Setup R environment
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      # 3. Install pandoc
-      - name: Install Pandoc
+      # 3. Install system libraries needed for R packages
+      - name: Install system dependencies
         run: |
           sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev build-essential
+
+      # 4. Install Pandoc (needed for rmarkdown)
+      - name: Install Pandoc
+        run: |
           sudo apt-get install -y pandoc
 
-      # 4. Install pak and dependencies
-      - name: Install R packages using pak
+      # 5. Install pak and other R packages
+      - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
-          Rscript -e "pak::pkg_install(c('dplyr','readr','lubridate','tibble','ggplot2','tidyr','knitr','rmarkdown'))"
-          Rscript -e "pak::pkg_install('SportsDataverse/hoopR')"
+          Rscript -e "pak::pkg_install(c('hoopR','dplyr','readr','lubridate','tibble','ggplot2','tidyr','knitr','rmarkdown'))"
 
-      # 5. Ensure data folders exist
+      # 6. Ensure data folder exists
       - name: Ensure data folder exists
         run: |
           mkdir -p CBB/data
           mkdir -p CBB/conference_standings
 
-      # 6. Render RMarkdown
+      # 7. Render the RMarkdown file
       - name: Render RMarkdown
         run: |
-          Rscript -e "rmarkdown::render('CBB/CBB_2025_Rankings.Rmd', output_dir = 'CBB')"
+          Rscript -e "rmarkdown::render('CBB/CBB_2025_Rankings.Rmd')"
 
-      # 7. Commit & push CSVs
+      # 8. Commit & push updated CSVs
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add CBB/data/*.csv
           git add CBB/conference_standings/*.csv
-          git commit -m 'Auto-update 2026 CSVs' || echo 'No changes to commit'
+          git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
           git push
