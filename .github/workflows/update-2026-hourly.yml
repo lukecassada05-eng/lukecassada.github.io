@@ -10,23 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # -------------------------------------------------
-      # 1. Checkout repository (FULL history required)
-      # -------------------------------------------------
+      # -----------------------------------------
+      # 1. Checkout repository (full history)
+      # -----------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # -------------------------------------------------
+      # -----------------------------------------
       # 2. Setup R
-      # -------------------------------------------------
+      # -----------------------------------------
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      # -------------------------------------------------
+      # -----------------------------------------
       # 3. Install system dependencies (NO LaTeX)
-      # -------------------------------------------------
+      # -----------------------------------------
       - name: Install system dependencies
         run: |
           sudo apt-get update
@@ -37,9 +37,9 @@ jobs:
             libgit2-dev \
             build-essential
 
-      # -------------------------------------------------
-      # 4. Install required R packages
-      # -------------------------------------------------
+      # -----------------------------------------
+      # 4. Install R packages
+      # -----------------------------------------
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
@@ -55,43 +55,44 @@ jobs:
             'rmarkdown'
           ))"
 
-      # -------------------------------------------------
-      # 5. Ensure CSV output directory exists
-      # -------------------------------------------------
+      # -----------------------------------------
+      # 5. Ensure CSV directory exists
+      # -----------------------------------------
       - name: Ensure data directory exists
         run: mkdir -p CBB/data
 
-      # -------------------------------------------------
-      # 6. Render RMarkdown (HTML only)
-      # -------------------------------------------------
+      # -----------------------------------------
+      # 6. Render RMarkdown (CORRECT PATH)
+      # -----------------------------------------
       - name: Render RMarkdown
         run: |
-          Rscript -e '{
-            knitr::opts_knit$set(root.dir = getwd())
+          Rscript -e '
+          knitr::opts_knit$set(root.dir = getwd())
 
-            rmarkdown::render(
-              input = "CBB_2025_Rankings.Rmd",
-              output_format = "html_document",
-              quiet = FALSE
-            )
-          }'
+          rmarkdown::render(
+            input = "CBB/CBB_2025_Rankings.Rmd",
+            output_format = "html_document",
+            output_dir = "CBB",
+            quiet = FALSE
+          )
+          '
 
-      # -------------------------------------------------
-      # 7. Verify CSV output (hard fail if none exist)
-      # -------------------------------------------------
+      # -----------------------------------------
+      # 7. Verify CSVs were generated
+      # -----------------------------------------
       - name: Verify CSV output
         run: |
           echo "CSV files in CBB/data:"
           ls -lh CBB/data || true
 
           if ! compgen -G "CBB/data/*.csv" > /dev/null; then
-            echo " ERROR: No CSV files were generated"
+            echo " ERROR: No CSV files generated"
             exit 1
           fi
 
-      # -------------------------------------------------
+      # -----------------------------------------
       # 8. Commit & push ONLY if CSVs changed
-      # -------------------------------------------------
+      # -----------------------------------------
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
@@ -102,7 +103,7 @@ jobs:
           git add CBB/data/*.csv
 
           if git diff --cached --quiet; then
-            echo " No CSV changes detected — nothing to commit"
+            echo " No CSV changes detected"
           else
             git commit -m "Auto-update 2026 CBB CSVs"
             git pull --rebase origin main
