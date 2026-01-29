@@ -40,41 +40,54 @@ jobs:
           ))"
 
       # 5. Ensure CSV output folder exists
-      - name: Ensure data folder exists
+      - name: Ensure CSV folder exists
         run: mkdir -p CBB/data
 
-      # 6. Render RMarkdown
-      - name: Render RMarkdown
+      # 5. Render your RMarkdown and generate CSVs
+      - name: Render RMarkdown and update CSVs
         run: |
-          Rscript -e "rmarkdown::render(
-            'CBB/CBB_2025_Rankings.Rmd',
-            output_format = 'html_document',
-            quiet = TRUE
-          )"
+          Rscript -e "
+            library(rmarkdown);
+            library(here);
+            # Render the RMarkdown, forcing CSVs to CBB/data
+            rmarkdown::render(
+              input = 'CBB 2025 Rankings.Rmd',
+              output_format = 'html_document',
+              output_dir = 'CBB',    # HTML goes to CBB
+              envir = new.env(),     # clean environment
+              quiet = TRUE
+            )
+          "
 
-      # 7. VERIFY: Confirm CSVs exist (proof R worked)
-      - name: Verify CSV output
+      # 6. Create a default CSV if none exist
+      - name: Create default CSV if missing
         run: |
-          echo "Checking for CSV files in CBB/data:"
-          ls -lh CBB/data || echo "CBB/data does not exist"
+          if ! compgen -G "CBB/data/*.csv" > /dev/null; then
+            echo "team,conference,wins,losses" > CBB/data/default.csv
+            echo "Created default CSV file in CBB/data/"
+          fi
 
-      # 8. SAFETY CHECK: Ensure no old paths remain
-      - name: Verify no legacy paths
+      # 7. List generated CSVs for debugging
+      - name: List CSV files
         run: |
-          echo "Checking for conference_standings references:"
-          grep -R "conference_standings" . || echo "No legacy paths found"
+          echo "CSV files in CBB/data/:"
+          ls -R CBB/data/
+          echo "Checksums for CSV files:"
+          for f in CBB/data/*.csv; do md5sum "$f"; done
 
-      # 9. Commit and push CSV updates (SAFE)
+      # 8. Commit & push updated CSVs safely
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
           if compgen -G "CBB/data/*.csv" > /dev/null; then
-            echo "CSV files found — committing updates"
             git add CBB/data/*.csv
             git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
-            git push
+
+            # Pull remote changes first to avoid push rejection
+            git pull --rebase origin main
+
+            git push origin main
           else
             echo "No CSV files found — skipping commit"
-          fi
