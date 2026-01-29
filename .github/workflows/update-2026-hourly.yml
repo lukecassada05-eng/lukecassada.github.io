@@ -2,7 +2,7 @@ name: Update 2026 CBB CSVs Hourly
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Every hour (UTC)
+    - cron: "0 * * * *"   # Every hour (UTC)
   workflow_dispatch:
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repo
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -18,7 +18,7 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      # 3. System dependencies
+      # 3. Install system dependencies
       - name: Install system dependencies
         run: |
           sudo apt-get update
@@ -30,7 +30,7 @@ jobs:
             build-essential \
             pandoc
 
-      # 4. R packages
+      # 4. Install R packages
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
@@ -39,23 +39,24 @@ jobs:
             'tibble','ggplot2','tidyr','knitr','rmarkdown'
           ))"
 
-      # 5. Ensure CSV folder exists
+      # 5. Ensure CSV output folder exists
       - name: Ensure CSV folder exists
         run: mkdir -p CBB/data
 
-      # 6. Render RMarkdown (THIS writes the CSVs)
+      # 6. Render RMarkdown (HTML ONLY — writes CSVs)
       - name: Render RMarkdown
         run: |
           Rscript -e "rmarkdown::render(
-            'CBB/CBB_2025_Rankings.Rmd',
+            input = 'CBB/CBB_2025_Rankings.Rmd',
+            output_format = 'html_document',
             quiet = TRUE
           )"
 
-      # 7. Verify CSV output
+      # 7. Verify CSVs were written
       - name: Verify CSV output
         run: |
-          echo "CSV files in CBB/data:"
-          ls -lh CBB/data || echo "No CSVs found"
+          echo 'CSV files in CBB/data:'
+          ls -lh CBB/data || echo 'No CSVs found'
 
       # 8. Force commit CSV updates
       - name: Commit and push CSV updates
@@ -64,9 +65,9 @@ jobs:
           git config --local user.name "GitHub Action"
 
           if compgen -G "CBB/data/*.csv" > /dev/null; then
-            echo "Updating CSVs"
+            echo "Forcing CSV update commit"
 
-            # Force Git to see changes
+            # Force Git to detect changes
             git rm -f CBB/data/*.csv || true
             git add CBB/data/*.csv
 
@@ -74,5 +75,5 @@ jobs:
             git pull --rebase origin main
             git push origin main
           else
-            echo "No CSVs generated"
+            echo "No CSVs generated — skipping commit"
           fi
