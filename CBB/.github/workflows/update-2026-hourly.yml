@@ -3,7 +3,7 @@ name: Update 2026 CBB CSVs Hourly
 on:
   schedule:
     - cron: "0 * * * *"   # Every hour at the start of the hour (UTC)
-  workflow_dispatch:      # Allows manual run from GitHub
+  workflow_dispatch:      # Allows manual run
 
 jobs:
   update-data:
@@ -29,15 +29,27 @@ jobs:
             hoopR
             knitr
             rmarkdown
+            here   # ensures paths resolve correctly
 
-      # 4. Run your R Markdown
-      - name: Render RMarkdown
-        run: |
-          Rscript -e "rmarkdown::render('CBB 2025 Rankings.Rmd')"
-
-      # 5. Ensure CSV folder exists
+      # 4. Ensure CSV folder exists (before rendering)
       - name: Ensure CSV folder exists
         run: mkdir -p CBB/data
+
+      # 5. Run your R Markdown and force CSVs to CBB/data
+      - name: Render RMarkdown and update CSVs
+        run: |
+          Rscript -e "
+            library(rmarkdown);
+            library(here);
+            # Set working directory to repo root
+            rmarkdown::render(
+              input = 'CBB 2025 Rankings.Rmd',
+              output_format = 'html_document',
+              output_dir = 'CBB',   # HTML can go to CBB
+              envir = new.env(),
+              quiet = TRUE
+            )
+          "
 
       # 6. Create a default CSV if none exist
       - name: Create default CSV if missing
@@ -59,6 +71,10 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          git add CBB/data/*.csv
-          git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
-          git push
+          # Only add CSVs if they exist
+          if compgen -G "CBB/data/*.csv" > /dev/null; then
+            git add CBB/data/*.csv
+            git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
+            git push
+          else
+            echo "No CSV files found — skipping commit"
