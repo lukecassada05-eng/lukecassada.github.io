@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repository
+      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -18,7 +18,7 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
-      # 3. Install system dependencies
+      # 3. System dependencies
       - name: Install system dependencies
         run: |
           sudo apt-get update
@@ -30,56 +30,49 @@ jobs:
             build-essential \
             pandoc
 
-      # 4. Install R packages
+      # 4. R packages
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
           Rscript -e "pak::pkg_install(c(
-            'hoopR','dplyr','readr','lubridate','tibble',
-            'ggplot2','tidyr','knitr','rmarkdown'
+            'hoopR','dplyr','readr','lubridate',
+            'tibble','ggplot2','tidyr','knitr','rmarkdown'
           ))"
 
-      # 5. Ensure CSV output folder exists
+      # 5. Ensure CSV folder exists
       - name: Ensure CSV folder exists
         run: mkdir -p CBB/data
 
-      # 6. Render RMarkdown (generates CSVs)
+      # 6. Render RMarkdown (THIS writes the CSVs)
       - name: Render RMarkdown
         run: |
           Rscript -e "rmarkdown::render(
-            'CBB/CBB-2025-Rankings.Rmd',
-            output_format = 'html_document',
+            'CBB/CBB_2025_Rankings.Rmd',
             quiet = TRUE
           )"
 
-      # 7. Verify CSV output (debug)
-      - name: Verify CSVs
+      # 7. Verify CSV output
+      - name: Verify CSV output
         run: |
-          echo "CSV files in CBB/data/:"
-          ls -lh CBB/data || echo "CBB/data does not exist"
+          echo "CSV files in CBB/data:"
+          ls -lh CBB/data || echo "No CSVs found"
 
-      # 8. Commit and push CSV updates (force overwrite)
+      # 8. Force commit CSV updates
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
           if compgen -G "CBB/data/*.csv" > /dev/null; then
-            echo "CSV files found — committing updates"
+            echo "Updating CSVs"
 
-            # Remove old CSVs to guarantee Git sees changes
-            git rm -f CBB/data/*.csv || echo "No CSVs to remove"
-
-            # Add newly generated CSVs
+            # Force Git to see changes
+            git rm -f CBB/data/*.csv || true
             git add CBB/data/*.csv
 
-            # Commit (will always create a commit)
             git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
-
-            # Pull remote first to avoid push rejection
             git pull --rebase origin main
-
-            # Push changes
             git push origin main
           else
-            echo "No CSV files found — skipping commit"
+            echo "No CSVs generated"
+          fi
