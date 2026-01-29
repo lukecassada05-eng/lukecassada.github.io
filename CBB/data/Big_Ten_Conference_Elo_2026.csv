@@ -1,19 +1,19 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Michigan,2697.2,18-1,Gonzaga,2512.5
-2,Nebraska,2667.9,20-0,Michigan St,2547.4
-3,Michigan St,2547.4,19-3,Michigan St,2547.4
-4,Purdue,2479.3,17-3,Texas Tech,2313
-5,Illinois,2448.5,17-3,Purdue,2479.3
-6,Iowa,2202.1,14-5,UCLA,2021.7
-7,USC,2116.6,15-5,Seton Hall,2095.3
-8,Ohio State,2099.1,14-6,UCLA,2021.7
-9,Wisconsin,2083.2,14-6,Michigan,2697.2
-10,UCLA,2021.7,14-6,Purdue,2479.3
-11,Indiana,2000.5,13-7,Washington,1970.4
-12,Washington,1970.4,11-9,USC,2116.6
-13,Northwestern,1824,9-11,USC,2116.6
-14,Oregon,1809.1,8-12,Hawai’i,1782.1
-15,Minnesota,1807.2,10-10,Iowa,2202.1
-16,Maryland,1694.1,8-12,Penn State,1692.4
-17,Penn State,1692.4,9-11,Campbell,1527.2
-18,Rutgers,1668,9-11,Northwestern,1824
+1,Michigan,2733.6,19-1,Nebraska,2624.1
+2,Nebraska,2624.1,20-1,Michigan St,2546.5
+3,Michigan St,2546.5,19-2,Arkansas,2325.4
+4,Purdue,2450.5,17-4,Alabama,2317.2
+5,Illinois,2437.1,17-3,Purdue,2450.5
+6,Iowa,2206.5,15-5,USC,2114.4
+7,USC,2114.4,15-6,Seton Hall,2109.3
+8,Ohio State,2096,14-6,UCLA,2029.2
+9,Wisconsin,2083.4,15-6,Michigan,2733.6
+10,UCLA,2029.2,15-6,Purdue,2450.5
+11,Indiana,2028.8,14-7,Purdue,2450.5
+12,Washington,1968.8,11-9,USC,2114.4
+13,Northwestern,1817.3,9-11,USC,2114.4
+14,Oregon,1796.3,8-13,Hawai’i,1777.8
+15,Minnesota,1796.2,10-11,Iowa,2206.5
+16,Maryland,1711,8-12,Penn State,1696.1
+17,Penn State,1696.1,9-11,Campbell,1521.1
+18,Rutgers,1662.4,9-12,Northwestern,1817.3
