@@ -1,6 +1,5 @@
 name: Update 2026 CBB CSVs Hourly
 
-# Run schedule
 on:
   schedule:
     - cron: "0 * * * *"   # Every hour at the start of the hour (UTC)
@@ -11,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout your repo
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -36,11 +35,30 @@ jobs:
         run: |
           Rscript -e "rmarkdown::render('CBB 2025 Rankings.Rmd')"
 
-      # 5. Commit & push updated CSVs
+      # 5. Ensure CSV folder exists
+      - name: Ensure CSV folder exists
+        run: mkdir -p CBB/data
+
+      # 6. Create a default CSV if none exist
+      - name: Create default CSV if missing
+        run: |
+          if ! compgen -G "CBB/data/*.csv" > /dev/null; then
+            echo "team,conference,wins,losses" > CBB/data/default.csv
+            echo "Created default CSV file in CBB/data/"
+          fi
+
+      # 7. List generated CSVs (debug)
+      - name: List CSV files
+        run: |
+          echo "CSV files in CBB/data/:"
+          ls -R CBB/data/
+
+      # 8. Commit & push updated CSVs
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/*.csv
+
+          git add CBB/data/*.csv
           git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
           git push
