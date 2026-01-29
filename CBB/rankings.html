@@ -59,11 +59,11 @@ gtag('config', 'G-PWG43QNM3P');
 
   <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
     <button id="show-elo" class="active">Elo Rankings</button>
-    <button id="show-projected" style="display:none;">Projected Seeding</button>
-    <button id="show-conf-elo" style="display:none;">Conference Elo</button>
-    <button id="show-conf-standings" style="display:none;">Conference Standings (2026)</button>
-    <button id="show-game-predictor" style="display:none;">Game Predictor (2026)</button>
-    <button id="show-resume" style="display:none;">Resume (2026)</button>
+    <button id="show-projected">Projected Seeding</button>
+    <button id="show-conf-elo">Conference Elo</button>
+    <button id="show-conf-standings">Conference Standings (2026)</button>
+    <button id="show-game-predictor">Game Predictor (2026)</button>
+    <button id="show-resume">Resume (2026)</button>
   </div>
 
   <!-- Elo Rankings -->
@@ -171,10 +171,10 @@ function sortTable(colIndex, data, tbody, th, highlightTop, highlightCol, highli
 function renderProjectedBracket(headers,data,theadRow,tbody){
   theadRow.innerHTML=""; tbody.innerHTML="";
   const autoBidCol = headers.findIndex(h=>h.toLowerCase().includes("auto_bid"));
-  headers.forEach(h=>{
+  headers.forEach((h,i)=>{
     const th = document.createElement("th");
     th.textContent = h;
-    th.addEventListener("click",()=>sortTableColumn(i,h,data,tbody,autoBidCol));
+    th.addEventListener("click",()=>sortTable(i,data,tbody,th,0,autoBidCol,""));
     theadRow.appendChild(th);
   });
   data.forEach(row=>{
@@ -191,7 +191,7 @@ function renderProjectedBracket(headers,data,theadRow,tbody){
   });
 }
 
-// --- Fetch CSVs and render all tables ---
+// --- Fetch CSVs ---
 function fetchCSV(path, callback, errorMsg){
   fetch(path).then(r=>r.ok?r.text():Promise.reject()).then(csv=>{
     const rows = csv.trim().split("\n").map(r=>r.split(","));
@@ -202,35 +202,81 @@ function fetchCSV(path, callback, errorMsg){
 // --- Elo ---
 fetchCSV(eloCsv, rows=>{
   renderTable(rows[0], rows.slice(1), document.querySelector("#elo-table thead tr"), document.querySelector("#elo-table tbody"), 10, 0, "top10");
+  toggleButtons.style.display="block";
 }, `Elo CSV not found for ${year}`);
 
 // --- Projected ---
 fetchCSV(projectedCsv, rows=>{
   renderProjectedBracket(rows[0], rows.slice(1), document.querySelector("#projected-table thead tr"), document.querySelector("#projected-table tbody"));
-  showProjectedBtn.style.display="inline-block"; toggleButtons.style.display="block";
+  showProjectedBtn.style.display="inline-block";
 }, "Projected bracket not found");
 
 // --- Conference Elo ---
 fetchCSV(confEloCsv, rows=>{
   renderTable(rows[0], rows.slice(1), document.querySelector("#conf-elo-table thead tr"), document.querySelector("#conf-elo-table tbody"), 3, 0, "top3");
-  showConfEloBtn.style.display="inline-block"; toggleButtons.style.display="block";
+  showConfEloBtn.style.display="inline-block";
 }, "Conference Elo CSV not found");
 
 // --- 2026 specific ---
 if(year==="2026"){
-  const conferences = ["ASUN","America_East","American","Atlantic_10","Atlantic_Coast","Big_12","Big_East","Big_Sky","Big_South","Big_Ten","Big_West","Coastal_Athletic_Association","Conference_USA","Horizon_League","Ivy_League","Metro_Atlantic_Athletic_Conference","Mid_American","Mid_Eastern_Athletic","Missouri_Valley","Mountain_West","Northeast","Ohio_Valley","Patriot","Southeastern","Southern","Southland","Southwestern_Athletic","Summit","Sun_Belt","West_Coast","Western_Athletic"];
-  showConfStandingsBtn.style.display="inline-block"; showGamePredictorBtn.style.display="inline-block"; showResumeBtn.style.display="inline-block"; toggleButtons.style.display="block";
+
+  // --- Conference filename mapping ---
+  const confFiles = {
+    "ASUN":"ASUN_Conference_Elo_2026.csv",
+    "America_East":"America_East_Conference_Elo_2026.csv",
+    "American":"American_Conference_Elo_2026.csv",
+    "Atlantic_10":"Atlantic_10_Conference_Elo_2026.csv",
+    "Atlantic_Coast":"Atlantic_Coast_Conference_Elo_2026.csv",
+    "Big_12":"Big_12_Conference_Elo_2026.csv",
+    "Big_East":"Big_East_Conference_Elo_2026.csv",
+    "Big_Sky":"Big_Sky_Conference_Elo_2026.csv",
+    "Big_South":"Big_South_Conference_Elo_2026.csv",
+    "Big_Ten":"Big_Ten_Conference_Elo_2026.csv",
+    "Big_West":"Big_West_Conference_Elo_2026.csv",
+    "Coastal_Athletic_Association":"Coastal_Athletic_Association_Conference_Elo_2026.csv",
+    "Conference_USA":"Conference_USA_Conference_Elo_2026.csv",
+    "Horizon_League":"Horizon_League_Conference_Elo_2026.csv",
+    "Ivy_League":"Ivy_League_Conference_Elo_2026.csv",
+    "Metro_Atlantic_Athletic_Conference":"Metro_Atlantic_Athletic_Conference_Conference_Elo_2026.csv",
+    "Mid_American":"Mid_American_Conference_Elo_2026.csv",
+    "Mid_Eastern_Athletic":"Mid_Eastern_Athletic_Conference_Elo_2026.csv",
+    "Missouri_Valley":"Missouri_Valley_Conference_Elo_2026.csv",
+    "Mountain_West":"Mountain_West_Conference_Elo_2026.csv",
+    "Northeast":"Northeast_Conference_Elo_2026.csv",
+    "Ohio_Valley":"Ohio_Valley_Conference_Elo_2026.csv",
+    "Patriot":"Patriot_Conference_Elo_2026.csv",
+    "Southeastern":"Southeastern_Conference_Elo_2026.csv",
+    "Southern":"Southern_Conference_Elo_2026.csv",
+    "Southland":"Southland_Conference_Elo_2026.csv",
+    "Southwestern_Athletic":"Southwestern_Athletic_Conference_Elo_2026.csv",
+    "Summit":"Summit_League_Elo_2026.csv",
+    "Sun_Belt":"Sun_Belt_Conference_Elo_2026.csv",
+    "West_Coast":"West_Coast_Conference_Elo_2026.csv",
+    "Western_Athletic":"Western_Athletic_Conference_Elo_2026.csv"
+  };
+
+  const conferences = Object.keys(confFiles);
+
+  showConfStandingsBtn.style.display="inline-block"; 
+  showGamePredictorBtn.style.display="inline-block"; 
+  showResumeBtn.style.display="inline-block";
 
   const confDropdown = document.getElementById("conf-dropdown");
-  conferences.forEach(conf=>{ const opt = document.createElement("option"); opt.value=conf; opt.textContent=conf.replace(/_/g," "); confDropdown.appendChild(opt); });
+  conferences.forEach(conf=>{
+    const opt = document.createElement("option");
+    opt.value = conf;
+    opt.textContent = conf.replace(/_/g," ");
+    confDropdown.appendChild(opt);
+  });
 
   confDropdown.addEventListener("change", ()=>{
-    fetchCSV(`data/${confDropdown.value}_Conference_Elo_2026.csv`, rows=>{
+    const file = confFiles[confDropdown.value];
+    fetchCSV(`data/${file}`, rows=>{
       renderTable(rows[0], rows.slice(1), document.querySelector("#conf-standings-table thead tr"), document.querySelector("#conf-standings-table tbody"),1,0,"conf-leader");
     }, `${confDropdown.value} CSV not found`);
   });
 
-  // Game Predictor
+  // --- Game Predictor ---
   fetchCSV("data/CBB_Elo_Future_Game_Predictions.csv", rows=>{
     const tbody = document.querySelector("#game-predictor-table tbody");
     const theadRow = document.querySelector("#game-predictor-table thead tr");
@@ -251,7 +297,7 @@ if(year==="2026"){
     });
   }, "Game Predictor CSV not found");
 
-  // Resume
+  // --- Resume ---
   fetchCSV("data/CBB_Projected_Records_SOS_2026.csv", rows=>{
     renderTable(rows[0], rows.slice(1), document.querySelector("#resume-table thead tr"), document.querySelector("#resume-table tbody"), 3, 0, "top3");
   }, "Resume CSV not found");
