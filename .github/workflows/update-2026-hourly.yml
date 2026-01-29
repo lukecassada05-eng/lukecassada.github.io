@@ -2,48 +2,67 @@ name: Update 2026 CBB CSVs Hourly
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Every hour at the start of the hour (UTC)
-  workflow_dispatch:      # Allows manual run
+    - cron: "0 * * * *"  # Every hour (UTC)
+  workflow_dispatch:
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Setup R
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
+      # 3. Install system dependencies
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev build-essential
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libgit2-dev \
+            build-essential \
+            pandoc
 
-      - name: Install Pandoc
-        run: |
-          sudo apt-get install -y pandoc
-
+      # 4. Install R packages
       - name: Install R packages
         run: |
           Rscript -e "install.packages('pak', repos='https://cloud.r-project.org')"
-          Rscript -e "pak::pkg_install(c('hoopR','dplyr','readr','lubridate','tibble','ggplot2','tidyr','knitr','rmarkdown'))"
+          Rscript -e "pak::pkg_install(c(
+            'hoopR','dplyr','readr','lubridate','tibble',
+            'ggplot2','tidyr','knitr','rmarkdown'
+          ))"
 
+      # 5. Ensure CSV output folder exists
       - name: Ensure data folder exists
-        run: |
-          mkdir -p CBB/data
-          mkdir -p CBB/conference_standings
+        run: mkdir -p CBB/data
 
-      - name: Render RMarkdown (HTML only)
+      # 6. Render RMarkdown (HTML only)
+      - name: Render RMarkdown
         run: |
-          Rscript -e "rmarkdown::render('CBB/CBB_2025_Rankings.Rmd', output_format = 'html_document', quiet = TRUE)"
+          Rscript -e "rmarkdown::render(
+            'CBB/CBB_2025_Rankings.Rmd',
+            output_format = 'html_document',
+            quiet = TRUE
+          )"
 
+      # 7. Commit and push CSV updates (SAFE)
       - name: Commit and push CSV updates
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add CBB/data/*.csv
-          git add CBB/conference_standings/*.csv
-          git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
-          git push
+
+          # Only add CSVs if they exist
+          if compgen -G "CBB/data/*.csv" > /dev/null; then
+            git add CBB/data/*.csv
+            git commit -m "Auto-update 2026 CSVs" || echo "No changes to commit"
+            git push
+          else
+            echo "No CSV files found in CBB/data — skipping commit"
+          fi
