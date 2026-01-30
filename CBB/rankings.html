@@ -15,138 +15,103 @@ gtag('config', 'G-PWG43QNM3P');
 </script>
 
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f6f8; color:#111; }
-.page { max-width:1100px; margin:0 auto; padding:20px; }
-.top-nav { margin-bottom:20px; }
-.top-nav a { text-decoration:none; color:#111; font-weight:bold; font-size:0.9rem; }
-h1 { text-align:center; margin-bottom:10px; }
-.subtitle { text-align:center; margin-bottom:20px; color:#555; }
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f6f8; color:#111; }
+  .page { max-width:1100px; margin:0 auto; padding:20px; }
+  .top-nav { margin-bottom:20px; }
+  .top-nav a { text-decoration:none; color:#111; font-weight:bold; font-size:0.9rem; }
+  .top-nav a:hover { text-decoration:underline; }
+  h1 { text-align:center; margin-bottom:10px; }
+  .subtitle { text-align:center; margin-bottom:20px; color:#555; }
+  .toggle-buttons { text-align:center; margin-bottom:20px; }
+  .toggle-buttons button {
+    padding:8px 16px; margin:0 5px; border:none; border-radius:6px; font-weight:bold; cursor:pointer; background:#ddd; transition:0.2s;
+  }
+  .toggle-buttons button.active { background:#111; color:#fff; }
+  .toggle-buttons button:hover { background:#aaa; color:#fff; }
 
-.toggle-buttons { text-align:center; margin-bottom:20px; }
-.toggle-buttons button {
-  padding:8px 16px; margin:0 5px; border:none; border-radius:6px;
-  font-weight:bold; cursor:pointer; background:#ddd;
-}
-.toggle-buttons button.active { background:#111; color:#fff; }
+  table { border-collapse:collapse; width:100%; margin-top:10px; background:#fff; border-radius:6px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+  th, td { padding:8px 10px; border:1px solid #ccc; text-align:left; }
+  th { background-color:#f2f2f2; cursor:pointer; user-select:none; }
+  th.sort-asc::after { content:" ▲"; }
+  th.sort-desc::after { content:" ▼"; }
+  select { padding:6px 10px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; }
 
-table {
-  border-collapse:collapse; width:100%; margin-top:10px;
-  background:#fff; border-radius:6px; overflow:hidden;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-th, td { padding:8px 10px; border:1px solid #ccc; text-align:left; }
-th { background:#f2f2f2; cursor:pointer; user-select:none; }
+  .top10 { background:#e0f7fa; }
+  .top3 { background:#e8f5e9; }
+  .conf-leader { background:#fff3e0; }
+  .win { background:#d0f0c0; }
+  .lose { background:#f8d7da; }
+  .auto-bid { background:#d4f0d4; }
+  .at-large { background:#ffe4b2; }
 
-.top10 { background:#e0f7fa; }
-.top3 { background:#e8f5e9; }
-.conf-leader { background:#fff3e0; }
-.win { background:#d0f0c0; }
-.lose { background:#f8d7da; }
-.auto-bid { background:#d4f0d4; }
-.at-large { background:#ffe4b2; }
-
-/* ---------- MODAL ---------- */
-.modal {
-  position:fixed; inset:0; background:rgba(0,0,0,0.55);
-  display:none; align-items:center; justify-content:center;
-  z-index:1000;
-}
-.modal-content {
-  background:#fff; padding:20px; border-radius:8px;
-  width:90%; max-width:520px; position:relative;
-}
-.close {
-  position:absolute; right:12px; top:8px;
-  font-size:22px; cursor:pointer;
-}
-.team-header {
-  display:flex; align-items:center; gap:15px;
-}
-.team-header img {
-  width:60px; height:60px; object-fit:contain;
-}
-.team-stats p { margin:6px 0; }
-
-/* ---------- MATCHUP ---------- */
-#matchup-container {
-  margin-top:35px; background:#fff; padding:20px;
-  border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-#matchup-container select, #matchup-container button {
-  padding:8px 12px; margin-right:10px; margin-top:10px;
-}
+  .matchup-box {
+    background:#fff;
+    padding:15px;
+    border-radius:6px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom:15px;
+  }
 </style>
 </head>
 
 <body>
 <div class="page">
 
-<div class="top-nav">
-  <a href="index.html">← Back to College Basketball</a>
-</div>
-
-<h1 id="title">College Basketball Rankings</h1>
-<div class="subtitle">Elo-based rankings by season (2003–2026)</div>
-
-<div class="toggle-buttons" id="toggle-buttons" style="display:none;">
-  <button id="show-elo" class="active">Elo Rankings</button>
-  <button id="show-projected">Projected Seeding</button>
-  <button id="show-conf-elo">Conference Elo</button>
-  <button id="show-conf-standings">Conference Standings (2026)</button>
-  <button id="show-game-predictor">Game Predictor (2026)</button>
-  <button id="show-resume">Resume (2026)</button>
-</div>
-
-<div id="elo-container">
-  <table id="elo-table"><thead><tr></tr></thead><tbody></tbody></table>
-</div>
-
-<div id="projected-container" style="display:none;">
-  <table id="projected-table"><thead><tr></tr></thead><tbody></tbody></table>
-</div>
-
-<div id="conf-elo-container" style="display:none;">
-  <table id="conf-elo-table"><thead><tr></tr></thead><tbody></tbody></table>
-</div>
-
-<div id="conf-standings-container" style="display:none;">
-  <select id="conf-dropdown"></select>
-  <table id="conf-standings-table"><thead><tr></tr></thead><tbody></tbody></table>
-</div>
-
-<div id="game-predictor-container" style="display:none;">
-  <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
-</div>
-
-<div id="resume-container" style="display:none;">
-  <table id="resume-table"><thead><tr></tr></thead><tbody></tbody></table>
-</div>
-
-<!-- MATCHUP SIMULATOR -->
-<div id="matchup-container">
-  <h2>Neutral Site Matchup Simulator</h2>
-  <select id="teamA"></select>
-  <select id="teamB"></select>
-  <button onclick="simulateMatchup()">Simulate Matchup</button>
-  <div id="matchup-result" style="margin-top:15px;font-weight:bold;"></div>
-</div>
-
-</div>
-
-<!-- TEAM MODAL -->
-<div class="modal" id="teamModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">×</span>
-    <div class="team-header">
-      <img id="teamLogo">
-      <h2 id="teamName"></h2>
-    </div>
-    <div class="team-stats" id="teamStats"></div>
+  <div class="top-nav">
+    <a href="index.html">← Back to College Basketball</a>
   </div>
+
+  <h1 id="title">College Basketball Rankings</h1>
+  <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
+
+  <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
+    <button id="show-elo" class="active">Elo Rankings</button>
+    <button id="show-matchup">Hypothetical Matchup</button>
+    <button id="show-projected">Projected Seeding</button>
+    <button id="show-conf-elo">Conference Elo</button>
+    <button id="show-conf-standings">Conference Standings (2026)</button>
+    <button id="show-game-predictor">Game Predictor (2026)</button>
+    <button id="show-resume">Resume (2026)</button>
+  </div>
+
+  <div id="elo-container">
+    <table id="elo-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+
+  <!-- Hypothetical Matchup -->
+  <div id="matchup-container" style="display:none;">
+    <div class="matchup-box">
+      <select id="teamA"></select>
+      <select id="teamB"></select>
+      <button id="calcMatchup">Calculate</button>
+      <div id="matchup-result" style="margin-top:10px;font-weight:bold;"></div>
+    </div>
+  </div>
+
+  <div id="projected-container" style="display:none;">
+    <table id="projected-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+
+  <div id="conf-elo-container" style="display:none;">
+    <table id="conf-elo-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+
+  <div id="conf-standings-container" style="display:none;">
+    <select id="conf-dropdown"></select>
+    <table id="conf-standings-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+
+  <div id="game-predictor-container" style="display:none;">
+    <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+
+  <div id="resume-container" style="display:none;">
+    <table id="resume-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+
 </div>
 
 <script>
-/* ---------------- CORE SETUP ---------------- */
 const params = new URLSearchParams(window.location.search);
 const year = params.get("year") || "2026";
 document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
@@ -155,103 +120,62 @@ const eloCsv = `data/CBB_Elo_${year}.csv`;
 const projectedCsv = `data/projected_bracket${year}.csv`;
 const confEloCsv = `data/CBB_Conference_Elo_${year}.csv`;
 
-let eloRows = [];
-let eloHeaders = [];
+const eloContainer = document.getElementById("elo-container");
+const matchupContainer = document.getElementById("matchup-container");
+const projectedContainer = document.getElementById("projected-container");
+const confEloContainer = document.getElementById("conf-elo-container");
+const confStandingsContainer = document.getElementById("conf-standings-container");
+const gamePredictorContainer = document.getElementById("game-predictor-container");
+const resumeContainer = document.getElementById("resume-container");
 
-/* ---------------- FETCH CSV ---------------- */
-function fetchCSV(path, callback, errorMsg){
-  fetch(path)
-    .then(r=>r.ok?r.text():Promise.reject())
-    .then(csv=>{
-      callback(csv.trim().split("\n").map(r=>r.split(",")));
-    })
-    .catch(()=>console.warn(errorMsg));
-}
+const showEloBtn = document.getElementById("show-elo");
+const showMatchupBtn = document.getElementById("show-matchup");
+const showProjectedBtn = document.getElementById("show-projected");
+const showConfEloBtn = document.getElementById("show-conf-elo");
+const showConfStandingsBtn = document.getElementById("show-conf-standings");
+const showGamePredictorBtn = document.getElementById("show-game-predictor");
+const showResumeBtn = document.getElementById("show-resume");
 
-/* ---------------- GENERIC TABLE ---------------- */
-function renderTable(headers,data,theadRow,tbody){
-  theadRow.innerHTML=""; tbody.innerHTML="";
-  headers.forEach(h=>{
-    const th=document.createElement("th");
-    th.textContent=h;
-    theadRow.appendChild(th);
-  });
-  data.forEach(row=>{
-    const tr=document.createElement("tr");
-    tr.onclick=()=>openModal(row);
-    row.forEach(c=>{
-      const td=document.createElement("td");
-      td.textContent=c;
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
+let eloData = {};
+
+function fetchCSV(path, callback){
+  fetch(path).then(r=>r.text()).then(t=>{
+    callback(t.trim().split("\n").map(r=>r.split(",")));
   });
 }
 
-/* ---------------- MODAL ---------------- */
-function openModal(row){
-  const teamCol = eloHeaders.findIndex(h=>h.toLowerCase()==="team");
-  document.getElementById("teamName").textContent=row[teamCol];
-  document.getElementById("teamLogo").src=
-    `https://a.espncdn.com/i/teamlogos/ncaa/500/${row[teamCol]}.png`;
-
-  document.getElementById("teamStats").innerHTML=
-    eloHeaders.map((h,i)=>`<p><strong>${h}:</strong> ${row[i]}</p>`).join("");
-
-  document.getElementById("teamModal").style.display="flex";
-}
-function closeModal(){ document.getElementById("teamModal").style.display="none"; }
-
-/* ---------------- ELO ---------------- */
 fetchCSV(eloCsv, rows=>{
-  eloHeaders = rows[0];
-  eloRows = rows.slice(1);
-
-  renderTable(
-    eloHeaders,
-    eloRows,
-    document.querySelector("#elo-table thead tr"),
-    document.querySelector("#elo-table tbody")
-  );
-
-  const teamCol = eloHeaders.findIndex(h=>h.toLowerCase()==="team");
-  const teamA=document.getElementById("teamA");
-  const teamB=document.getElementById("teamB");
-
-  eloRows.forEach(r=>{
-    teamA.add(new Option(r[teamCol], r[teamCol]));
-    teamB.add(new Option(r[teamCol], r[teamCol]));
+  rows.slice(1).forEach(r=>eloData[r[0]] = parseFloat(r[1]));
+  const teamA=document.getElementById("teamA"), teamB=document.getElementById("teamB");
+  Object.keys(eloData).forEach(t=>{
+    teamA.add(new Option(t,t));
+    teamB.add(new Option(t,t));
   });
+});
 
-  document.getElementById("toggle-buttons").style.display="block";
-}, "Elo CSV not found");
+document.getElementById("calcMatchup").onclick=()=>{
+  const A=teamA.value, B=teamB.value;
+  const diff=eloData[A]-eloData[B];
+  const prob=1/(1+Math.pow(10,-diff/400));
+  document.getElementById("matchup-result").textContent =
+    `${A} win probability: ${(prob*100).toFixed(1)}%`;
+};
 
-/* ---------------- MATCHUP SIM ---------------- */
-function simulateMatchup(){
-  const tA=document.getElementById("teamA").value;
-  const tB=document.getElementById("teamB").value;
-  if(tA===tB){
-    document.getElementById("matchup-result").textContent="Select two different teams.";
-    return;
-  }
-
-  const teamCol = eloHeaders.findIndex(h=>h.toLowerCase()==="team");
-  const eloCol = eloHeaders.findIndex(h=>h.toLowerCase().includes("elo"));
-
-  const A = eloRows.find(r=>r[teamCol]===tA);
-  const B = eloRows.find(r=>r[teamCol]===tB);
-
-  const eloA=parseFloat(A[eloCol]);
-  const eloB=parseFloat(B[eloCol]);
-
-  const pA = 1/(1+Math.pow(10,(eloB-eloA)/400));
-  const spread = (eloA-eloB)/25;
-
-  document.getElementById("matchup-result").innerHTML=
-    `${tA}: ${(pA*100).toFixed(1)}%<br>
-     ${tB}: ${(100-pA*100).toFixed(1)}%<br>
-     Projected Spread: <strong>${spread>0?tA:tB} ${Math.abs(spread).toFixed(1)}</strong>`;
+function toggleTab(show, btn){
+  [eloContainer,matchupContainer,projectedContainer,confEloContainer,confStandingsContainer,gamePredictorContainer,resumeContainer]
+    .forEach(c=>c.style.display="none");
+  [showEloBtn,showMatchupBtn,showProjectedBtn,showConfEloBtn,showConfStandingsBtn,showGamePredictorBtn,showResumeBtn]
+    .forEach(b=>b.classList.remove("active"));
+  show.style.display="block"; btn.classList.add("active");
 }
+
+showEloBtn.onclick=()=>toggleTab(eloContainer,showEloBtn);
+showMatchupBtn.onclick=()=>toggleTab(matchupContainer,showMatchupBtn);
+showProjectedBtn.onclick=()=>toggleTab(projectedContainer,showProjectedBtn);
+showConfEloBtn.onclick=()=>toggleTab(confEloContainer,showConfEloBtn);
+showConfStandingsBtn.onclick=()=>toggleTab(confStandingsContainer,showConfStandingsBtn);
+showGamePredictorBtn.onclick=()=>toggleTab(gamePredictorContainer,showGamePredictorBtn);
+showResumeBtn.onclick=()=>toggleTab(resumeContainer,showResumeBtn);
 </script>
 </body>
 </html>
