@@ -89,8 +89,6 @@ gtag('config', 'G-PWG43QNM3P');
 
   <!-- Game Predictor (2026 only) -->
   <div id="game-predictor-container" style="display:none;">
-
-    <!-- Neutral Site Predictor -->
     <div id="neutral-predictor" style="margin-bottom:15px; padding:10px; background:#f0f0f0; border-radius:6px;">
       <strong>Neutral Site Predictor (IR)</strong><br><br>
       Team 1: <input type="text" id="team1-input" placeholder="Enter Team 1" list="teams-list" style="margin-right:10px;">
@@ -135,6 +133,7 @@ const showGamePredictorBtn = document.getElementById("show-game-predictor");
 const showResumeBtn = document.getElementById("show-resume");
 
 let sortState = {};
+let eloRows = []; // store main Elo CSV for neutral predictor
 
 // --- Conference file mapping ---
 const confFiles = {
@@ -247,6 +246,7 @@ function fetchCSV(path, callback, errorMsg){
 
 // --- Elo ---
 fetchCSV(eloCsv, rows=>{
+  eloRows = rows; // store for neutral predictor
   renderTable(rows[0], rows.slice(1), document.querySelector("#elo-table thead tr"), document.querySelector("#elo-table tbody"), 10, 0, "top10");
   toggleButtons.style.display="block";
 }, `Elo CSV not found for ${year}`);
@@ -286,83 +286,55 @@ if(year==="2026"){
     }
   });
 
- // --- Global variable to hold prediction CSV ---
-let gamePredictionRows = [];
-
-// Game Predictor
-fetchCSV("data/CBB_Elo_Future_Game_Predictions.csv", rows=>{
-    gamePredictionRows = rows; // store globally
-    const tbody = document.querySelector("#game-predictor-table tbody");
-    const theadRow = document.querySelector("#game-predictor-table thead tr");
-    theadRow.innerHTML=""; tbody.innerHTML="";
-    rows[0].forEach((h,i)=>{
-        const th=document.createElement("th"); th.textContent=h; 
-        th.addEventListener("click",()=>sortTable(i, rows.slice(1), tbody, th,0,-1,""));
-        theadRow.appendChild(th);
+  // --- Neutral Site Predictor using main Elo CSV ---
+  const teamListEl = document.getElementById("teams-list");
+  function updateTeamList(){
+    teamListEl.innerHTML = "";
+    if(eloRows.length < 2) return;
+    const teams = eloRows.slice(1).map(r=>r[0]);
+    teams.forEach(t=>{
+      const opt = document.createElement("option");
+      opt.value = t;
+      teamListEl.appendChild(opt);
     });
-    rows.slice(1).forEach(row=>{
-        const tr=document.createElement("tr");
-        row.forEach((cell,i)=>{
-            const td=document.createElement("td"); td.textContent=cell;
-            if(rows[0][i].toLowerCase().includes("winner")) td.classList.add("win");
-            tr.appendChild(td);
-        });
-        tbody.appendChild(tr);
-    });
+  }
 
-    // --- Neutral Site Predictor Options ---
-    const teams = Array.from(new Set(rows.slice(1).flatMap(r=>[r[0], r[1]])));
-    const teamList = document.getElementById("teams-list");
-    teams.forEach(t=>{ const opt=document.createElement("option"); opt.value=t; teamList.appendChild(opt); });
-}, "Game Predictor CSV not found");
+  const team1Input = document.getElementById("team1-input");
+  const team2Input = document.getElementById("team2-input");
+  const predictBtn = document.getElementById("predict-btn");
+  const predictionResult = document.getElementById("prediction-result");
 
-// --- Neutral Site Predictor Button ---
-const team1Input = document.getElementById("team1-input");
-const team2Input = document.getElementById("team2-input");
-const predictBtn = document.getElementById("predict-btn");
-const predictionResult = document.getElementById("prediction-result");
-
-predictBtn.onclick = ()=>{
+  predictBtn.onclick = ()=>{
     const t1 = team1Input.value.trim();
     const t2 = team2Input.value.trim();
     if(!t1 || !t2 || t1===t2){ 
-        predictionResult.textContent="Please select two different teams."; 
-        return; 
+      predictionResult.textContent="Please select two different teams."; 
+      return; 
     }
-    if(gamePredictionRows.length === 0){
-        predictionResult.textContent="Game predictions not loaded yet.";
-        return;
-    }
-
-    const header = gamePredictionRows[0];
-
-    // Find rows containing each team
-    const t1Row = gamePredictionRows.slice(1).find(r=>r[0]===t1 || r[1]===t1);
-    const t2Row = gamePredictionRows.slice(1).find(r=>r[0]===t2 || r[1]===t2);
-    if(!t1Row || !t2Row){ 
-        predictionResult.textContent="One or both teams not found."; 
-        return; 
+    if(eloRows.length < 2){
+      predictionResult.textContent="Elo data not loaded yet.";
+      return;
     }
 
-    // Find the correct Elo column for each team
-    let t1Elo, t2Elo;
-    const eloCols = header.map((h,i)=>h.toLowerCase().includes("elo") ? i : -1).filter(i=>i!==-1);
-    
-    // Look for Elo value in the same row as the team
-    for(const col of eloCols){
-        if(t1Row[col] && !isNaN(parseFloat(t1Row[col]))) t1Elo = parseFloat(t1Row[col]);
-        if(t2Row[col] && !isNaN(parseFloat(t2Row[col]))) t2Elo = parseFloat(t2Row[col]);
+    const header = eloRows[0];
+    const t1Row = eloRows.slice(1).find(r=>r[0]===t1);
+    const t2Row = eloRows.slice(1).find(r=>r[0]===t2);
+
+    if(!t1Row || !t2Row){
+      predictionResult.textContent="Elo values not found for selected teams.";
+      return;
     }
 
-    if(t1Elo===undefined || t2Elo===undefined){
-        predictionResult.textContent="Elo values not found for selected teams.";
-        return;
-    }
+    const eloCol = header.findIndex(h=>h.toLowerCase().includes("elo"));
+    const t1Elo = parseFloat(t1Row[eloCol]);
+    const t2Elo = parseFloat(t2Row[eloCol]);
 
     const winner = t1Elo >= t2Elo ? t1 : t2;
     const margin = Math.abs(t1Elo - t2Elo).toFixed(1);
     predictionResult.textContent=`Predicted winner (neutral site): ${winner} (Margin: ${margin})`;
-};
+  };
+
+  updateTeamList();
 
   // Resume
   fetchCSV("data/CBB_Projected_Records_SOS_2026.csv", rows=>{
