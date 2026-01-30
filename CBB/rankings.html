@@ -45,7 +45,7 @@ gtag('config', 'G-PWG43QNM3P');
   .auto-bid { background: #d4f0d4; }     
   .at-large { background: #ffe4b2; }     
 
-  /* Graph and matchup styling */
+  /* Enhancements styling */
   #enhancements { margin-bottom:30px; }
   #matchup-container, #team-stats-container { text-align:center; margin-bottom:20px; }
   #team-selects select { padding:6px 10px; margin:0 5px; border-radius:5px; border:1px solid #ccc; }
@@ -53,8 +53,6 @@ gtag('config', 'G-PWG43QNM3P');
   #graphs-container { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-bottom:20px; }
   .graph { flex:1; min-width:300px; }
   canvas { background:#fff; border-radius:6px; padding:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-
-  /* Team stats font coloring */
   .record-win { color:green; font-weight:bold; }
   .record-loss { color:red; font-weight:bold; }
 
@@ -71,7 +69,7 @@ gtag('config', 'G-PWG43QNM3P');
   <h1 id="title">College Basketball Rankings</h1>
   <div class="subtitle">Elo-based rankings by season (2003–2026)</div>
 
-  <!-- ENHANCEMENTS SECTION (safe, does not touch existing tabs) -->
+  <!-- ENHANCEMENTS: completely isolated -->
   <div id="enhancements">
 
     <!-- Hypothetical matchup -->
@@ -99,7 +97,7 @@ gtag('config', 'G-PWG43QNM3P');
 
   </div>
 
-  <!-- EXISTING TOGGLE BUTTONS AND TABS REMAIN COMPLETELY UNCHANGED -->
+  <!-- ORIGINAL TOGGLE BUTTONS AND TABLES REMAIN UNCHANGED -->
   <div class="toggle-buttons" id="toggle-buttons" style="display:none;">
     <button id="show-elo" class="active">Elo Rankings</button>
     <button id="show-projected">Projected Seeding</button>
@@ -109,196 +107,124 @@ gtag('config', 'G-PWG43QNM3P');
     <button id="show-resume">Resume (2026)</button>
   </div>
 
-  <!-- Elo Rankings -->
   <div id="elo-container">
     <table id="elo-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
-
-  <!-- Projected Bracket -->
   <div id="projected-container" style="display:none;">
     <table id="projected-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
-
-  <!-- Conference Elo -->
   <div id="conf-elo-container" style="display:none;">
     <table id="conf-elo-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
-
-  <!-- Conference Standings Dropdown (2026 only) -->
   <div id="conf-standings-container" style="display:none;">
     <select id="conf-dropdown"></select>
     <table id="conf-standings-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
-
-  <!-- Game Predictor (2026 only) -->
   <div id="game-predictor-container" style="display:none;">
     <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
-
-  <!-- Resume Tab (2026 only) -->
   <div id="resume-container" style="display:none;">
     <table id="resume-table"><thead><tr></tr></thead><tbody></tbody></table>
   </div>
 
 </div>
 
-<!-- Chart.js CDN -->
+<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-// ---------------------
-// URL params and CSV paths
-// ---------------------
+// --- Params ---
 const params = new URLSearchParams(window.location.search);
 const year = params.get("year") || "2026";
 document.getElementById("title").textContent = `College Basketball ${year} Rankings`;
 
+// --- Paths ---
 const eloCsv = `data/CBB_Elo_${year}.csv`;
 const projectedCsv = `data/projected_bracket${year}.csv`;
 const confEloCsv = `data/CBB_Conference_Elo_${year}.csv`;
+const predictorCsv = "data/CBB_Elo_Future_Game_Predictions.csv";
 
-// ---------------------
-// ENHANCEMENT DATA
-// ---------------------
-let eloDataAll = [], predictorDataAll = [], projectedDataAll = [], confEloDataAll = [];
+// --- Enhancement data arrays (isolated) ---
+let eloData = [], projectedData = [], confEloData = [], predictorData = [];
 
-// Safe CSV fetch helper
-function fetchCSV(path, callback, errorMsg){
+// --- Safe CSV fetch helper ---
+function fetchCSV(path, callback){
   fetch(path).then(r=>r.ok?r.text():Promise.reject())
   .then(csv=>{
     const rows = csv.trim().split("\n").map(r=>r.split(","));
     callback(rows);
-  }).catch(()=>console.warn(errorMsg));
+  }).catch(()=>console.warn(`CSV not found: ${path}`));
 }
 
-// Load Elo for enhancements
-fetchCSV(eloCsv, rows=>{
-  eloDataAll = rows.slice(1);
-  populateTeamDropdowns(eloDataAll);
-  renderEloGraph(eloDataAll);
-}, "Elo CSV not found for enhancements");
-
-// Load Predictor for enhancements
-fetchCSV("data/CBB_Elo_Future_Game_Predictions.csv", rows=>{
-  predictorDataAll = rows.slice(1);
-  renderPredictorScatter(predictorDataAll);
-}, "Predictor CSV not found");
-
-// Load Projected Bracket for team stats panel
-fetchCSV(projectedCsv, rows=>{
-  projectedDataAll = rows.slice(1);
-}, "Projected CSV not found for team stats");
-
-// Load Conference Elo for team stats panel
-fetchCSV(confEloCsv, rows=>{
-  confEloDataAll = rows.slice(1);
-}, "Conference Elo CSV not found for team stats");
-
-// ---------------------
-// Populate team dropdowns
-// ---------------------
-function populateTeamDropdowns(data){
+// --- Populate team dropdowns ---
+function populateTeamDropdowns(){
   const t1 = document.getElementById("team1");
   const t2 = document.getElementById("team2");
   const tStats = document.getElementById("team-stats-select");
   t1.innerHTML = t2.innerHTML = tStats.innerHTML = "";
-  const teams = data.map(r=>r[0]).sort();
-  teams.forEach(team=>{
+  eloData.forEach(r=>{
+    const team = r[0];
     [t1,t2,tStats].forEach(sel=>{
-      const opt = document.createElement("option"); opt.value=team; opt.textContent=team;
+      const opt = document.createElement("option");
+      opt.value = team; opt.textContent = team;
       sel.appendChild(opt);
     });
   });
 }
 
-// ---------------------
-// Hypothetical matchup
-// ---------------------
+// --- Hypothetical matchup ---
 document.getElementById("predict-btn").onclick = ()=>{
-  const team1 = document.getElementById("team1").value;
-  const team2 = document.getElementById("team2").value;
-  const match = predictorDataAll.find(r=>
-    (r[0]===team1 && r[1]===team2) || (r[0]===team2 && r[1]===team1)
-  ));
-  if(match){
-    const winner = match[2]; // CSV: team1,team2,winner,...
-    document.getElementById("predicted-winner").textContent = `Predicted Winner: ${winner}`;
-  } else {
-    document.getElementById("predicted-winner").textContent = "No prediction found for selected matchup";
-  }
+  const t1 = document.getElementById("team1").value;
+  const t2 = document.getElementById("team2").value;
+  const match = predictorData.find(r=>
+    (r[0]===t1 && r[1]===t2) || (r[0]===t2 && r[1]===t1)
+  );
+  document.getElementById("predicted-winner").textContent =
+    match ? `Predicted Winner: ${match[2]}` : "No prediction found";
 };
 
-// ---------------------
-// Elo Graph
-// ---------------------
-function renderEloGraph(data){
-  const ctx = document.getElementById("elo-bar-chart").getContext("2d");
-  const top10 = data.slice(0,10);
-  new Chart(ctx,{
-    type:'bar',
-    data:{
-      labels: top10.map(r=>r[0]),
-      datasets:[{label:'Elo Rating', data:top10.map(r=>Number(r[1])), backgroundColor:'#2196f3'}]
-    },
-    options:{responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:false}}}
-  });
-}
-
-// ---------------------
-// Predictor Scatterplot
-// ---------------------
-function renderPredictorScatter(data){
-  const ctx = document.getElementById("predictor-scatter").getContext("2d");
-  const scatterData = data.map(r=>({x:Number(r[3]), y:Number(r[4]), label:`${r[0]} vs ${r[1]}`}));
-  new Chart(ctx,{
-    type:'scatter',
-    data:{datasets:[{label:'Higher vs Lower Elo', data:scatterData, backgroundColor:'purple'}]},
-    options:{
-      responsive:true,
-      plugins:{
-        tooltip:{
-          callbacks:{label: ctx => ctx.raw.label + ` (High:${ctx.raw.x}, Low:${ctx.raw.y})`}
-        }
-      },
-      scales:{x:{title:{display:true,text:"Higher Seed Elo"}},y:{title:{display:true,text:"Lower Seed Elo"}}}
-    }
-  });
-}
-
-// ---------------------
-// Team stats panel
-// ---------------------
+// --- Team stats panel ---
 document.getElementById("team-stats-select").onchange = function(){
   const team = this.value;
   const out = document.getElementById("team-stats-output");
   out.innerHTML = "";
 
-  // Elo
-  const elo = eloDataAll.find(r=>r[0]===team);
-  if(elo){
-    const div = document.createElement("div");
-    div.innerHTML = `<b>Elo Ranking:</b> ${elo[0]} - ${elo[1]}`;
-    out.appendChild(div);
-  }
+  const elo = eloData.find(r=>r[0]===team);
+  const proj = projectedData.find(r=>r[0]===team);
+  const conf = confEloData.find(r=>r[0]===team);
 
-  // Projected bracket
-  const proj = projectedDataAll.find(r=>r[0]===team);
-  if(proj){
-    const div = document.createElement("div");
-    div.innerHTML = `<b>Projected Bracket:</b> ${proj.join(", ")}`;
-    out.appendChild(div);
-  }
-
-  // Conference Elo
-  const conf = confEloDataAll.find(r=>r[0]===team);
-  if(conf){
-    const div = document.createElement("div");
-    div.innerHTML = `<b>Conference Elo:</b> ${conf.join(", ")}`;
-    out.appendChild(div);
-  }
+  if(elo) out.innerHTML += `<div><b>Elo:</b> ${elo[1]}</div>`;
+  if(proj) out.innerHTML += `<div><b>Projected:</b> ${proj.slice(1).join(", ")}</div>`;
+  if(conf) out.innerHTML += `<div><b>Conference Elo:</b> ${conf.slice(1).join(", ")}</div>`;
 };
-</script>
 
+// --- Graphs ---
+function renderEloGraph(){
+  const ctx = document.getElementById("elo-bar-chart").getContext("2d");
+  const top10 = eloData.slice(0,10);
+  new Chart(ctx,{
+    type:'bar',
+    data:{labels:top10.map(r=>r[0]), datasets:[{label:'Elo Rating', data:top10.map(r=>Number(r[1])), backgroundColor:'#2196f3'}]},
+    options:{plugins:{legend:{display:false}}, scales:{y:{beginAtZero:false}}}
+  });
+}
+
+function renderPredictorScatter(){
+  const ctx = document.getElementById("predictor-scatter").getContext("2d");
+  const scatterData = predictorData.map(r=>({x:Number(r[3]),y:Number(r[4]),label:`${r[0]} vs ${r[1]}`}));
+  new Chart(ctx,{
+    type:'scatter',
+    data:{datasets:[{label:'Higher vs Lower Elo', data:scatterData, backgroundColor:'purple'}]},
+    options:{plugins:{tooltip:{callbacks:{label: ctx => ctx.raw.label + ` (High:${ctx.raw.x}, Low:${ctx.raw.y})`}}}, scales:{x:{title:{display:true,text:"Higher Seed Elo"}}, y:{title:{display:true,text:"Lower Seed Elo"}}}}
+  });
+}
+
+// --- Load all enhancement CSVs (safe, isolated) ---
+fetchCSV(eloCsv, rows=>{eloData=rows.slice(1); populateTeamDropdowns(); renderEloGraph();});
+fetchCSV(projectedCsv, rows=>{projectedData=rows.slice(1);});
+fetchCSV(confEloCsv, rows=>{confEloData=rows.slice(1);});
+fetchCSV(predictorCsv, rows=>{predictorData=rows.slice(1); renderPredictorScatter();});
+
+</script>
 </body>
 </html>
-
