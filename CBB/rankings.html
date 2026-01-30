@@ -333,15 +333,32 @@ predictBtn.onclick = ()=>{
         predictionResult.textContent="Game predictions not loaded yet.";
         return;
     }
-    const eloCol = gamePredictionRows[0].findIndex(h=>h.toLowerCase().includes("elo"));
+
+    const header = gamePredictionRows[0];
+
+    // Find rows containing each team
     const t1Row = gamePredictionRows.slice(1).find(r=>r[0]===t1 || r[1]===t1);
     const t2Row = gamePredictionRows.slice(1).find(r=>r[0]===t2 || r[1]===t2);
     if(!t1Row || !t2Row){ 
         predictionResult.textContent="One or both teams not found."; 
         return; 
     }
-    const t1Elo = parseFloat(t1Row[eloCol]);
-    const t2Elo = parseFloat(t2Row[eloCol]);
+
+    // Find the correct Elo column for each team
+    let t1Elo, t2Elo;
+    const eloCols = header.map((h,i)=>h.toLowerCase().includes("elo") ? i : -1).filter(i=>i!==-1);
+    
+    // Look for Elo value in the same row as the team
+    for(const col of eloCols){
+        if(t1Row[col] && !isNaN(parseFloat(t1Row[col]))) t1Elo = parseFloat(t1Row[col]);
+        if(t2Row[col] && !isNaN(parseFloat(t2Row[col]))) t2Elo = parseFloat(t2Row[col]);
+    }
+
+    if(t1Elo===undefined || t2Elo===undefined){
+        predictionResult.textContent="Elo values not found for selected teams.";
+        return;
+    }
+
     const winner = t1Elo >= t2Elo ? t1 : t2;
     const margin = Math.abs(t1Elo - t2Elo).toFixed(1);
     predictionResult.textContent=`Predicted winner (neutral site): ${winner} (Margin: ${margin})`;
