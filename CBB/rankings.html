@@ -89,22 +89,19 @@ gtag('config', 'G-PWG43QNM3P');
 
   <!-- Game Predictor (2026 only) -->
   <div id="game-predictor-container" style="display:none;">
-    
-  <!-- Neutral Site Predictor -->
-  <div id="game-predictor-container" style="display:none;">
-  
-  <!-- Neutral Site Predictor -->
-  <div id="neutral-predictor" style="margin-bottom:15px; padding:10px; background:#f0f0f0; border-radius:6px;">
-    <strong>Neutral Site Predictor (IR)</strong><br><br>
-    Team 1: <input type="text" id="team1-input" placeholder="Enter Team 1" list="teams-list" style="margin-right:10px;">
-    Team 2: <input type="text" id="team2-input" placeholder="Enter Team 2" list="teams-list" style="margin-right:10px;">
-    <button id="predict-btn" style="padding:5px 10px; cursor:pointer;">Predict Winner</button>
-    <div id="prediction-result" style="margin-top:10px; font-weight:bold;"></div>
-    <datalist id="teams-list"></datalist>
-  </div>
 
-  <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
-</div>
+    <!-- Neutral Site Predictor -->
+    <div id="neutral-predictor" style="margin-bottom:15px; padding:10px; background:#f0f0f0; border-radius:6px;">
+      <strong>Neutral Site Predictor (IR)</strong><br><br>
+      Team 1: <input type="text" id="team1-input" placeholder="Enter Team 1" list="teams-list" style="margin-right:10px;">
+      Team 2: <input type="text" id="team2-input" placeholder="Enter Team 2" list="teams-list" style="margin-right:10px;">
+      <button id="predict-btn" style="padding:5px 10px; cursor:pointer;">Predict Winner</button>
+      <div id="prediction-result" style="margin-top:10px; font-weight:bold;"></div>
+      <datalist id="teams-list"></datalist>
+    </div>
+
+    <table id="game-predictor-table"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
 
   <!-- Resume Tab (2026 only) -->
   <div id="resume-container" style="display:none;">
@@ -308,17 +305,17 @@ if(year==="2026"){
       });
       tbody.appendChild(tr);
     });
+
+    // --- Neutral Site Predictor Logic ---
+    const teams = Array.from(new Set(rows.slice(1).flatMap(r=>[r[0], r[1]])));
+    const teamList = document.getElementById("teams-list");
+    teams.forEach(t=>{ const opt=document.createElement("option"); opt.value=t; teamList.appendChild(opt); });
   }, "Game Predictor CSV not found");
 
-  // --- Neutral Site Predictor Logic ---
-const teams = Array.from(new Set(rows.slice(1).flatMap(r=>[r[0], r[1]])));
-const teamList = document.getElementById("teams-list");
-teams.forEach(t=>{ const opt=document.createElement("option"); opt.value=t; teamList.appendChild(opt); });
-
-const team1Input = document.getElementById("team1-input");
-const team2Input = document.getElementById("team2-input");
-const predictBtn = document.getElementById("predict-btn");
-const predictionResult = document.getElementById("prediction-result");
+  const team1Input = document.getElementById("team1-input");
+  const team2Input = document.getElementById("team2-input");
+  const predictBtn = document.getElementById("predict-btn");
+  const predictionResult = document.getElementById("prediction-result");
 
 predictBtn.onclick = ()=>{
   const t1 = team1Input.value.trim();
