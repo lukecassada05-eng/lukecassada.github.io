@@ -23,7 +23,12 @@ library(lubridate)
 # Step 1: Load schedule
 # -------------------------------
 cbb_all <- load_mbb_schedule(seasons = 2026) %>%
-  mutate(date = as.Date(date))
+  mutate(date = as.Date(date)) %>%
+  filter(
+    home_short_display_name != away_short_display_name,
+    !is.na(home_short_display_name),
+    !is.na(away_short_display_name)
+  )
 
 # -------------------------------
 # Step 2: Filter for Nov 1–4, 2025
@@ -135,7 +140,12 @@ library(tibble)
 # Step 1: Load schedule
 # -------------------------------
 cbb_all <- load_mbb_schedule(seasons = 2026) %>%
-  mutate(date = as.Date(date))
+  mutate(date = as.Date(date)) %>%
+  filter(
+    home_short_display_name != away_short_display_name,
+    !is.na(home_short_display_name),
+    !is.na(away_short_display_name)
+  )
 
 # -------------------------------
 # Step 2: Filter for Nov 1–4, 2025
@@ -968,7 +978,12 @@ library(readr)
 # Step 1: Load schedule
 # -------------------------------
 cbb_all <- load_mbb_schedule(seasons = 2026) %>%
-  mutate(date = as.Date(date))
+  mutate(date = as.Date(date)) %>%
+  filter(
+    home_short_display_name != away_short_display_name,
+    !is.na(home_short_display_name),
+    !is.na(away_short_display_name)
+  )
 
 # -------------------------------
 # Step 2: Filter date range
