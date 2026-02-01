@@ -1,17 +1,17 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Vanderbilt,2326.7,18-3,Alabama,2240.7
-2,Florida,2249.2,15-6,Vanderbilt,2326.7
-3,Arkansas,2246.8,16-5,Vanderbilt,2326.7
-4,Alabama,2240.7,14-6,Illinois,2370.9
-5,Auburn,2188.4,14-7,Florida,2249.2
-6,Tennessee,2149.8,14-6,Houston,2367.4
-7,Georgia,2106,16-5,Arkansas,2246.8
-8,Kentucky,2028.4,14-7,Tennessee,2149.8
-9,Texas,2001.7,11-9,Vanderbilt,2326.7
-10,LSU,1955.7,13-8,SMU,2110.7
-11,Texas A&M,1946.9,16-4,Auburn,2188.4
-12,Missouri,1921.5,14-7,Florida,2249.2
-13,Oklahoma,1823.1,11-10,Oklahoma St,2048.7
-14,Mississippi St,1772.2,11-10,Texas,2001.7
-15,South Carolina,1759.7,11-10,LSU,1955.7
-16,Ole Miss,1746.5,11-9,Georgia,2106
+1,Vanderbilt,2407.3,18-3,Alabama,2318.7
+2,Florida,2326.8,15-6,Vanderbilt,2407.3
+3,Arkansas,2324,16-5,Vanderbilt,2407.3
+4,Alabama,2318.7,14-6,Illinois,2445
+5,Auburn,2266.7,14-7,Florida,2326.8
+6,Tennessee,2228.3,14-6,Houston,2443.5
+7,Georgia,2187,16-5,Arkansas,2324
+8,Kentucky,2107.8,14-7,Tennessee,2228.3
+9,Texas,2080.1,12-9,Vanderbilt,2407.3
+10,LSU,2040.7,13-8,SMU,2194.2
+11,Texas A&M,2028.2,16-4,Auburn,2266.7
+12,Missouri,2004.4,14-7,Florida,2326.8
+13,Oklahoma,1908.7,11-10,Oklahoma St,2131.2
+14,Mississippi St,1856.8,11-10,Texas,2080.1
+15,South Carolina,1848,11-10,LSU,2040.7
+16,Ole Miss,1834.7,11-9,Georgia,2187

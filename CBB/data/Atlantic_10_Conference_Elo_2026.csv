@@ -1,15 +1,15 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Saint Louis,2330.3,20-1,Santa Clara,2102.8
-2,George Mason,2040.3,18-2,VCU,1997.4
-3,VCU,1997.4,16-6,Virginia Tech,2032.7
-4,G Washington,1796.8,12-8,South Florida,1823.6
-5,Dayton,1767.1,14-8,G Washington,1796.8
-6,Davidson,1736.5,11-8,G Washington,1796.8
-7,Richmond,1715.8,12-9,Belmont,1963.3
-8,St Bonaventure,1709.8,12-8,FAU,1759
-9,Rhode Island,1705.5,13-8,George Mason,2040.3
-10,Duquesne,1514.3,9-10,Davidson,1736.5
-11,Saint Joseph's,1512.9,11-8,Dayton,1767.1
-12,La Salle,1370.9,6-14,Dayton,1767.1
-13,Fordham,1347.6,8-10,St Bonaventure,1709.8
-14,Loyola Chicago,1083.8,5-18,Santa Clara,2102.8
+1,Saint Louis,2408.4,21-1,Santa Clara,2187.1
+2,George Mason,2126.4,19-2,VCU,2080.9
+3,VCU,2080.9,16-6,Virginia Tech,2116
+4,G Washington,1885.9,13-8,South Florida,1911.2
+5,Dayton,1856.6,14-8,G Washington,1885.9
+6,Davidson,1827.3,12-8,G Washington,1885.9
+7,Richmond,1808.7,13-9,Belmont,2057.3
+8,St Bonaventure,1801,13-8,FAU,1850.2
+9,Rhode Island,1795.1,13-8,George Mason,2126.4
+10,Duquesne,1606.3,11-10,Davidson,1827.3
+11,Saint Joseph's,1601.4,13-8,Dayton,1856.6
+12,La Salle,1462.2,7-14,Dayton,1856.6
+13,Fordham,1440.8,11-10,St Bonaventure,1801
+14,Loyola Chicago,1177.9,5-18,Santa Clara,2187.1
