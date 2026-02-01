@@ -2624,25 +2624,54 @@ if (nrow(cbb_sel) == 0) {
 cbb_clean <- cbb_sel %>%
   mutate(
     home_pts = as.numeric(home_score),
-    away_pts = as.numeric(away_score),
-    winner = if_else(home_pts > away_pts,
-                     home_short_display_name,
-                     away_short_display_name),
-    loser  = if_else(home_pts < away_pts,
-                     home_short_display_name,
-                     away_short_display_name),
-    winner_pts = if_else(home_pts > away_pts, home_pts, away_pts),
-    loser_pts  = if_else(home_pts < away_pts, home_pts, away_pts),
-    winner_conf_id = if_else(home_pts > away_pts,
-                             home_conference_id,
-                             away_conference_id),
-    loser_conf_id  = if_else(home_pts < away_pts,
-                             home_conference_id,
-                             away_conference_id)
+    away_pts = as.numeric(away_score)
   ) %>%
-  filter(!is.na(winner), !is.na(loser)) %>%
-  select(date, winner, winner_pts, winner_conf_id,
-         loser, loser_pts, loser_conf_id)
+  # remove unfinished games, ties, and bad rows
+  filter(
+    !is.na(home_pts),
+    !is.na(away_pts),
+    home_pts != away_pts
+  ) %>%
+  mutate(
+    winner = if_else(
+      home_pts > away_pts,
+      home_short_display_name,
+      away_short_display_name
+    ),
+    loser = if_else(
+      home_pts < away_pts,
+      home_short_display_name,
+      away_short_display_name
+    ),
+
+    winner_pts = pmax(home_pts, away_pts),
+    loser_pts  = pmin(home_pts, away_pts),
+
+    # 🔑 REQUIRED for Step 4, 10
+    winner_conf_id = if_else(
+      home_pts > away_pts,
+      home_conference_id,
+      away_conference_id
+    ),
+    loser_conf_id = if_else(
+      home_pts < away_pts,
+      home_conference_id,
+      away_conference_id
+    )
+  ) %>%
+  # absolute safety net
+  filter(
+    !is.na(winner),
+    !is.na(loser),
+    winner != loser,
+    !is.na(winner_conf_id),
+    !is.na(loser_conf_id)
+  ) %>%
+  select(
+    date,
+    winner, winner_pts, winner_conf_id,
+    loser,  loser_pts,  loser_conf_id
+  )
 
 # -------------------------------
 # Step 4: Conference lookup
