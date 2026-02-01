@@ -2428,21 +2428,27 @@ cbb_clean <- cbb_sel %>%
   select(date, winner, winner_pts, loser, loser_pts)
 
 # -------------------------------
-# Step 4: Build conference lookup table
+# Step 4: Build team -> conference lookup
 # -------------------------------
-conf_lookup <- cbb_all %>%
+team_conf_lookup <- cbb_all %>%
   filter(groups_is_conference == TRUE) %>%
-  select(conference_id = groups_id, conference_name = groups_name) %>%
+  select(team = home_short_display_name,
+         conference_id = groups_id,
+         conference_name = groups_name) %>%
   distinct()
 
-# Map IDs to names
+# Map winner and loser teams to their conferences
 cbb_clean <- cbb_clean %>%
-  left_join(conf_lookup %>% rename(winner_conf_id = conference_id,
-                                   winner_conf = conference_name),
-            by = "winner_conf_id") %>%
-  left_join(conf_lookup %>% rename(loser_conf_id = conference_id,
-                                   loser_conf = conference_name),
-            by = "loser_conf_id") %>%
+  left_join(team_conf_lookup %>%
+              rename(winner = team,
+                     winner_conf_id = conference_id,
+                     winner_conf = conference_name),
+            by = "winner") %>%
+  left_join(team_conf_lookup %>%
+              rename(loser = team,
+                     loser_conf_id = conference_id,
+                     loser_conf = conference_name),
+            by = "loser") %>%
   mutate(
     winner_conf = ifelse(is.na(winner_conf), "Unknown", winner_conf),
     loser_conf  = ifelse(is.na(loser_conf), "Unknown", loser_conf)
