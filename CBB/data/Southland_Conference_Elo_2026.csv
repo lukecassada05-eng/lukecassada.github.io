@@ -1,13 +1,13 @@
 rank,team,rating,record,best_win,best_win_elo
-1,McNeese,1986.4,17-4,G Washington,1885.9
-2,SF Austin,1881.9,18-3,Arkansas St,1706.8
-3,Texas A&M-CC,1508.1,11-10,UT Rio Grande,1490.1
-4,UT Rio Grande,1490.1,10-11,McNeese,1986.4
-5,New Orleans,1453.6,8-13,TCU,2083.3
-6,Lamar,1411.3,11-10,Montana,1560.2
-7,Incarnate Word,1366.3,9-12,McNeese,1986.4
-8,Nicholls,1356.1,8-13,Texas A&M-CC,1508.1
-9,E Texas A&M,1303.3,8-13,UT Rio Grande,1490.1
-10,Hou Christian,1228.4,8-13,New Orleans,1453.6
-11,SE Louisiana,1207.6,6-15,Navy,1514.1
-12,N'Western St,1204.4,6-14,Texas A&M-CC,1508.1
+1,McNeese,1975.8,18-4,SF Austin,1873.6
+2,SF Austin,1873.6,19-3,Arkansas St,1681.3
+3,Texas A&M-CC,1509.1,12-10,UT Rio Grande,1502.4
+4,UT Rio Grande,1502.4,11-11,McNeese,1975.8
+5,New Orleans,1459,9-13,TCU,2091.7
+6,Lamar,1410.8,11-11,Montana,1540.4
+7,Nicholls,1357.8,9-13,Texas A&M-CC,1509.1
+8,Incarnate Word,1351.8,9-13,McNeese,1975.8
+9,E Texas A&M,1296.5,8-14,UT Rio Grande,1502.4
+10,Hou Christian,1220.9,8-14,New Orleans,1459
+11,SE Louisiana,1205.2,6-16,Navy,1514.5
+12,N'Western St,1185.5,6-15,Texas A&M-CC,1509.1

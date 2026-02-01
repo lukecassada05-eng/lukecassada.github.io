@@ -1,10 +1,10 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Vermont,1529.5,14-8,Siena,1557.9
-2,UMBC,1352,12-8,NJIT,1268
-3,NJIT,1268,10-12,Fordham,1440.8
-4,New Hampshire,1171.4,8-12,Boston U,1211.9
-5,UAlbany,1161,7-15,Vermont,1529.5
-6,UMass Lowell,1149.4,8-14,Sacred Heart,1313.2
-7,Bryant,1106.5,6-15,Dartmouth,1382.4
-8,Maine,1034.9,5-17,NJIT,1268
-9,Binghamton,849.8,5-18,Lehigh,1166.5
+1,Vermont,1521.1,14-9,Siena,1552.9
+2,UMBC,1364.6,13-8,NJIT,1280.8
+3,NJIT,1280.8,11-12,Vermont,1521.1
+4,UMass Lowell,1170.9,9-14,Sacred Heart,1315.2
+5,UAlbany,1161.9,7-16,Vermont,1521.1
+6,New Hampshire,1148.1,8-13,Boston U,1202.7
+7,Bryant,1133.5,7-15,Dartmouth,1390.9
+8,Maine,1016.4,5-18,NJIT,1280.8
+9,Binghamton,842.3,5-18,Lehigh,1176

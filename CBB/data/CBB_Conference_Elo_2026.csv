@@ -1,32 +1,32 @@
 rank,conference,avg_elo,wins,losses
-1,Big 12 Conference,2164.83125,165,40
-2,Southeastern Conference,2110.5125,157,50
-3,Big Ten Conference,2100.9166666666665,156,39
-4,Atlantic Coast Conference,2034.6055555555556,175,55
-5,Big East Conference,2015.7727272727273,87,34
-6,Mountain West Conference,1820.3166666666666,75,45
-7,West Coast Conference,1795.1916666666666,84,57
-8,Atlantic 10 Conference,1777.0642857142857,108,59
-9,Missouri Valley Conference,1650.5454545454545,61,46
-10,American Conference,1645.9384615384615,80,70
-11,Mid-American Conference,1613.0846153846153,69,60
-12,Western Athletic Conference,1590.2857142857142,38,35
-13,Conference USA,1560.4666666666667,45,53
-14,Big West Conference,1543.7454545454545,48,58
-15,Coastal Athletic Association,1529.0846153846153,74,69
-16,Ivy League,1493.5375,46,49
-17,Big Sky Conference,1449.91,34,65
-18,Southland Conference,1449.7916666666667,26,60
-19,Horizon League,1435.2545454545455,34,61
-20,Sun Belt Conference,1406.3285714285714,63,84
-21,Southern Conference,1383.04,37,66
-22,Big South Conference,1364.088888888889,41,66
-23,Metro Atlantic Athletic Conference,1362.253846153846,54,71
-24,ASUN Conference,1354.9333333333334,37,90
-25,Summit League,1349.4333333333334,36,71
-26,Patriot League,1275.24,35,79
-27,Ohio Valley Conference,1259.3090909090909,24,64
-28,Southwestern Athletic Conference,1187.0833333333333,18,113
-29,America East Conference,1180.2777777777778,24,87
-30,Northeast Conference,1160.57,23,84
-31,Mid-Eastern Athletic Conference,1027.55,15,89
+1,Big 12 Conference,2167.275,165,40
+2,Southeastern Conference,2111.475,157,50
+3,Big Ten Conference,2101.938888888889,156,39
+4,Atlantic Coast Conference,2035.461111111111,175,55
+5,Big East Conference,2017.5,87,34
+6,Mountain West Conference,1819.675,75,45
+7,West Coast Conference,1797.6416666666667,84,57
+8,Atlantic 10 Conference,1776.8214285714284,108,59
+9,Missouri Valley Conference,1648.8090909090909,61,46
+10,American Conference,1642.9615384615386,80,70
+11,Mid-American Conference,1613.423076923077,69,60
+12,Western Athletic Conference,1587.242857142857,38,35
+13,Conference USA,1561.0666666666666,45,53
+14,Big West Conference,1543.6727272727273,48,58
+15,Coastal Athletic Association,1527.1923076923076,74,69
+16,Ivy League,1492.1,46,49
+17,Big Sky Conference,1452.47,34,65
+18,Southland Conference,1445.7,26,60
+19,Horizon League,1433.8636363636363,34,61
+20,Sun Belt Conference,1402.2214285714285,63,84
+21,Southern Conference,1380.92,37,66
+22,Big South Conference,1363.0222222222224,41,66
+23,Metro Atlantic Athletic Conference,1362.923076923077,54,71
+24,ASUN Conference,1354.1416666666667,37,90
+25,Summit League,1347.6222222222223,36,71
+26,Patriot League,1274.4,35,79
+27,Ohio Valley Conference,1259.290909090909,24,64
+28,Southwestern Athletic Conference,1188.175,18,113
+29,America East Conference,1182.1777777777777,24,87
+30,Northeast Conference,1169.34,23,84
+31,Mid-Eastern Athletic Conference,1029.5125,15,89
