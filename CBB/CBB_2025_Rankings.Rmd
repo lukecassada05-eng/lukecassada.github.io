@@ -2583,74 +2583,30 @@ if (nrow(cbb_sel) == 0) {
 # -------------------------------
 # Step 3: Winner / loser dataset
 # -------------------------------
+# Step 3: Winner / loser dataset
 cbb_clean <- cbb_sel %>%
   mutate(
     home_pts = as.numeric(home_score),
     away_pts = as.numeric(away_score)
   ) %>%
-  # remove unfinished games, ties, and bad rows
-  filter(
-    !is.na(home_pts),
-    !is.na(away_pts),
-    home_pts != away_pts
-  ) %>%
+  filter(!is.na(home_pts), !is.na(away_pts), home_pts != away_pts) %>%
   mutate(
-    winner = if_else(
-      home_pts > away_pts,
-      home_short_display_name,
-      away_short_display_name
-    ),
-    loser = if_else(
-      home_pts < away_pts,
-      home_short_display_name,
-      away_short_display_name
-    ),
-
+    winner = if_else(home_pts > away_pts, home_short_display_name, away_short_display_name),
+    loser  = if_else(home_pts < away_pts, home_short_display_name, away_short_display_name),
     winner_pts = pmax(home_pts, away_pts),
-    loser_pts  = pmin(home_pts, away_pts),
-
-    # 🔑 REQUIRED for Step 4, 10
-    winner_conf_id = if_else(
-      home_pts > away_pts,
-      home_conference_id,
-      away_conference_id
-    ),
-    loser_conf_id = if_else(
-      home_pts < away_pts,
-      home_conference_id,
-      away_conference_id
-    )
-  ) %>%
-  # absolute safety net
-  filter(
-    !is.na(winner),
-    !is.na(loser),
-    winner != loser,
-    !is.na(winner_conf_id),
-    !is.na(loser_conf_id)
-  ) %>%
-  select(
-    date,
-    winner, winner_pts, winner_conf_id,
-    loser,  loser_pts,  loser_conf_id
+    loser_pts  = pmin(home_pts, away_pts)
   )
 
-# -------------------------------
-# Step 4: Conference lookup
-# -------------------------------
-conf_lookup <- cbb_all %>%
+# Build team -> conference lookup from ALL teams in the season
+team_conf_lookup <- cbb_all %>%
   filter(groups_is_conference == TRUE) %>%
-  select(conference_id = groups_id,
-         conference = groups_name) %>%
+  select(team = home_short_display_name, conference = groups_name) %>%
   distinct()
 
+# Attach conferences to winner and loser safely
 cbb_clean <- cbb_clean %>%
-  left_join(conf_lookup,
-            by = c("winner_conf_id" = "conference_id")) %>%
-  rename(winner_conf = conference) %>%
-  left_join(conf_lookup,
-            by = c("loser_conf_id" = "conference_id")) %>%
-  rename(loser_conf = conference) %>%
+  left_join(team_conf_lookup %>% rename(winner = team, winner_conf = conference), by = "winner") %>%
+  left_join(team_conf_lookup %>% rename(loser = team, loser_conf = conference), by = "loser") %>%
   mutate(
     winner_conf = ifelse(is.na(winner_conf), "Unknown", winner_conf),
     loser_conf  = ifelse(is.na(loser_conf), "Unknown", loser_conf)
@@ -2778,6 +2734,8 @@ write_csv(
   conf_summary,
   file.path("CBB", "data", "CBB_Conference_Elo_2026.csv")
 )
+
+print(head(elo_ranking, 30))
 
 # -------------------------------
 # Step 11: Individual conference standings
