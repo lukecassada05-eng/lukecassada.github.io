@@ -1,14 +1,14 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Miami OH,2325,21-0,Akron,1972.3
-2,Akron,1972.3,18-4,Kent State,1819.4
-3,Kent State,1819.4,16-6,UNC Wilmington,1830.5
-4,Buffalo,1736.3,14-7,DePaul,1794.7
-5,Bowling Green,1715.6,13-8,Kansas St,1895.5
-6,Toledo,1650.4,11-10,Bowling Green,1715.6
-7,UMass,1621.4,13-9,Buffalo,1736.3
-8,Ohio,1575.5,12-12,St Bonaventure,1802
-9,E Michigan,1487.5,10-13,Cincinnati,1917.5
-10,W Michigan,1405,8-13,E Michigan,1487.5
-11,C Michigan,1278.1,6-15,Kent State,1819.4
-12,N Illinois,1265.4,8-14,UMass,1621.4
-13,Ball State,1146.2,8-14,Ohio,1575.5
+1,Miami OH,2241.7,18-0,Akron,1883.7
+2,Akron,1883.7,16-4,Kent State,1724
+3,Kent State,1724,14-6,UNC Wilmington,1735
+4,Buffalo,1645.4,12-7,DePaul,1708.7
+5,Bowling Green,1622.7,10-8,Kansas St,1809.9
+6,Toledo,1555.4,9-10,Bowling Green,1622.7
+7,UMass,1527.1,12-9,Buffalo,1645.4
+8,Ohio,1482,9-11,St Bonaventure,1709.8
+9,E Michigan,1395,8-12,Cincinnati,1830.3
+10,W Michigan,1364.6,7-12,E Michigan,1395
+11,C Michigan,1184.7,4-15,Kent State,1724
+12,N Illinois,1157.9,5-13,UMass,1527.1
+13,Ball State,1045,5-13,Ohio,1482

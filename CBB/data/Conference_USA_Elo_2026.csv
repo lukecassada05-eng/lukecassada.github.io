@@ -1,13 +1,13 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Liberty,1946.1,18-3,Dayton,1857.5
-2,Sam Houston,1731.6,14-7,Wyoming,1803.7
-3,MTSU,1705.3,11-9,Murray St,1868.8
-4,New Mexico St,1657.7,11-11,New Mexico,2127.1
-5,Western KY,1621.9,12-11,Wichita St,1757.7
-6,Kennesaw St,1568.1,13-8,Western KY,1621.9
-7,FIU,1529.4,10-11,New Mexico St,1657.7
-8,Missouri St,1521.4,12-9,New Mexico St,1657.7
-9,Jax State,1487.5,12-10,MTSU,1705.3
-10,Louisiana Tech,1416.3,12-8,MTSU,1705.3
-11,Delaware,1279.1,6-14,G Washington,1886.7
-12,UTEP,1274.1,7-14,MTSU,1705.3
+1,Liberty,1857.1,15-3,Dayton,1767.1
+2,Sam Houston,1641.7,11-7,Wyoming,1710.6
+3,MTSU,1613.8,8-9,Murray St,1776.2
+4,New Mexico St,1565.9,7-10,New Mexico,2043.6
+5,Western KY,1521,9-10,Wichita St,1659.8
+6,Kennesaw St,1471.5,10-8,Western KY,1521
+7,FIU,1431.6,7-11,New Mexico St,1565.9
+8,Missouri St,1430.9,9-9,New Mexico St,1565.9
+9,Jax State,1389.5,8-9,MTSU,1613.8
+10,Louisiana Tech,1315.5,9-8,MTSU,1613.8
+11,Delaware,1277,6-13,G Washington,1796.8
+12,UTEP,1181.1,4-14,MTSU,1613.8
