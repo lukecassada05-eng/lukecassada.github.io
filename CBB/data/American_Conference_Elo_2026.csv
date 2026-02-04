@@ -1,14 +1,14 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Tulsa,2008,19-3,Northern Iowa,1791.8
-2,South Florida,1900.7,14-8,Utah State,2128.4
-3,FAU,1840.2,14-9,Memphis,1758.6
-4,Memphis,1758.6,10-11,Baylor,2026.2
-5,Wichita St,1743.7,13-9,South Florida,1900.7
-6,UAB,1733.5,14-8,South Florida,1900.7
-7,Temple,1673.7,14-8,South Florida,1900.7
-8,Charlotte,1638.6,13-9,Wichita St,1743.7
-9,North Texas,1627.5,12-10,Tulsa,2008
-10,Tulane,1585.8,13-9,FAU,1840.2
-11,Rice,1348.3,9-13,Wichita St,1743.7
-12,East Carolina,1322.4,7-15,FAU,1840.2
-13,UTSA,1158.6,4-17,GA Southern,1389.8
+1,Tulsa,2008.1,19-3,Northern Iowa,1791.9
+2,South Florida,1901,14-8,Utah State,2129.7
+3,FAU,1840.1,14-9,Memphis,1758.9
+4,Memphis,1758.9,10-11,Baylor,2028
+5,Wichita St,1745.4,13-9,South Florida,1901
+6,UAB,1734.5,14-8,South Florida,1901
+7,Temple,1668.4,14-8,South Florida,1901
+8,Charlotte,1637.4,13-9,Wichita St,1745.4
+9,North Texas,1628.9,12-10,Tulsa,2008.1
+10,Tulane,1586.3,13-9,FAU,1840.1
+11,Rice,1348.4,9-13,Wichita St,1745.4
+12,East Carolina,1321.4,7-15,FAU,1840.1
+13,UTSA,1161.2,4-17,GA Southern,1389.9
