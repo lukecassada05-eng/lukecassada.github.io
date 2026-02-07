@@ -1,14 +1,14 @@
 rank,team,rating,record,best_win,best_win_elo
-1,UNC Wilmington,1799.5,19-4,Marshall,1725.6
-2,William & Mary,1718.5,15-8,UNC Wilmington,1799.5
-3,Hofstra,1708.9,15-9,Syracuse,1941.4
-4,Charleston,1641.8,16-8,William & Mary,1718.5
-5,Towson,1576.1,13-11,Liberty,1945.7
-6,Elon,1550.1,13-11,Richmond,1758
-7,Campbell,1524.8,11-13,William & Mary,1718.5
-8,Stony Brook,1504,14-10,Hofstra,1708.9
-9,Drexel,1415.5,12-12,William & Mary,1718.5
-10,Monmouth,1406.3,12-12,William & Mary,1718.5
-11,Northeastern,1358.5,6-16,Duquesne,1668.7
-12,NC A&T,1309,9-13,Hofstra,1708.9
-13,Hampton,1298.9,11-13,Towson,1576.1
+1,UNC Wilmington,1800.5,19-4,Marshall,1725.8
+2,William & Mary,1720.6,15-8,UNC Wilmington,1800.5
+3,Hofstra,1709.4,15-9,Syracuse,1941
+4,Charleston,1641.5,16-8,William & Mary,1720.6
+5,Towson,1576.5,13-11,Liberty,1944.3
+6,Elon,1550.4,13-11,Richmond,1758.6
+7,Campbell,1525.2,11-13,William & Mary,1720.6
+8,Stony Brook,1504.2,14-10,Hofstra,1709.4
+9,Drexel,1415.7,12-12,William & Mary,1720.6
+10,Monmouth,1406.5,12-12,William & Mary,1720.6
+11,Northeastern,1358.7,6-16,Duquesne,1668.7
+12,NC A&T,1309.3,9-13,Hofstra,1709.4
+13,Hampton,1299.1,11-13,Towson,1576.5

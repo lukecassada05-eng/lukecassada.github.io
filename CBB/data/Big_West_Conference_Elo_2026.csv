@@ -1,12 +1,12 @@
 rank,team,rating,record,best_win,best_win_elo
-1,UC San Diego,1834.9,16-8,Hawai’i,1767
-2,Hawai’i,1767,16-5,UC Irvine,1700.7
-3,UC Irvine,1700.7,16-7,UC San Diego,1834.9
-4,UC Davis,1676.9,14-9,Nevada,1947
-5,Santa Barbara,1664.5,15-8,UC San Diego,1834.9
-6,CSU Northridge,1505.5,14-10,UC San Diego,1834.9
-7,Fullerton,1503.1,11-13,UC San Diego,1834.9
-8,UC Riverside,1402.4,8-16,Fullerton,1503.1
-9,Long Beach St,1372.1,8-16,CSU Northridge,1505.5
-10,Cal Poly,1345.5,9-15,UC San Diego,1834.9
-11,Bakersfield,1244.6,8-16,UC Davis,1676.9
+1,UC San Diego,1834.4,16-8,Hawai’i,1767.2
+2,Hawai’i,1767.2,16-5,UC Irvine,1701.6
+3,UC Irvine,1701.6,16-7,UC San Diego,1834.4
+4,UC Davis,1677,14-9,Nevada,1947.4
+5,Santa Barbara,1664.6,15-8,UC San Diego,1834.4
+6,CSU Northridge,1506.4,14-10,UC San Diego,1834.4
+7,Fullerton,1503.3,11-13,UC San Diego,1834.4
+8,UC Riverside,1402.5,8-16,Fullerton,1503.3
+9,Long Beach St,1372.3,8-16,CSU Northridge,1506.4
+10,Cal Poly,1345.6,9-15,UC San Diego,1834.4
+11,Bakersfield,1244.5,8-16,UC Davis,1677
