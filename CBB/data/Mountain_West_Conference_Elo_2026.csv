@@ -1,13 +1,13 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Utah State,2154.8,19-3,New Mexico,2098.2
-2,New Mexico,2098.2,18-5,Santa Clara,2179.3
-3,San Diego St,2094.6,16-6,New Mexico,2098.2
-4,Boise St,1967.1,14-9,Saint Mary's,2201.1
-5,Nevada,1947.4,16-7,Boise St,1967.1
-6,Grand Canyon,1886.1,15-7,Utah State,2154.8
-7,Colorado St,1885.3,12-10,Colorado,1998.8
-8,Wyoming,1820.9,13-10,Colorado St,1885.3
-9,Fresno St,1662.8,11-11,SF Austin,1919.8
-10,UNLV,1635.6,10-12,Utah State,2154.8
-11,San José St,1501.4,6-16,San Diego,1446.5
-12,Air Force,1246.3,3-19,SIUE,1353
+1,Utah State,2157,20-3,San Diego St,2098.9
+2,San Diego St,2098.9,17-6,New Mexico,2092.5
+3,New Mexico,2092.5,18-6,Santa Clara,2183.9
+4,Boise St,1971.9,15-9,Saint Mary's,2206.6
+5,Nevada,1952.9,17-7,Boise St,1971.9
+6,Colorado St,1887.9,13-10,Colorado,2007.8
+7,Grand Canyon,1876.8,15-8,Utah State,2157
+8,Wyoming,1820,13-11,Colorado St,1887.9
+9,Fresno St,1657.7,11-12,SF Austin,1939.2
+10,UNLV,1643.4,11-12,Utah State,2157
+11,San José St,1500.8,6-17,San Diego,1438.3
+12,Air Force,1249.5,3-20,SIUE,1354.9
