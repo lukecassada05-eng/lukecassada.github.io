@@ -1,19 +1,19 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Duke,2653.2,21-2,Michigan St,2501.3
-2,North Carolina,2278.1,19-4,Duke,2653.2
-3,Virginia,2276.4,20-3,Louisville,2227.8
-4,Louisville,2227.8,17-6,SMU,2179
-5,Clemson,2200,20-4,SMU,2179
-6,SMU,2179,16-7,North Carolina,2278.1
-7,NC State,2159.4,18-6,Clemson,2200
-8,Miami,2097.3,18-5,Stanford,1985.9
-9,Virginia Tech,2091.1,16-8,Virginia,2276.4
-10,California,2050.8,17-7,North Carolina,2278.1
-11,Stanford,1985.9,15-9,Saint Louis,2421.5
-12,Syracuse,1938.3,13-11,Tennessee,2262.2
-13,Notre Dame,1896.1,11-13,TCU,2049.5
-14,Wake Forest,1888.5,11-12,Virginia Tech,2091.1
-15,Florida St,1725.3,11-12,Miami,2097.3
-16,Pitt,1714.1,9-15,Ohio State,2071.3
-17,Georgia Tech,1641.7,11-13,NC State,2159.4
-18,Boston College,1613.3,9-14,Syracuse,1938.3
+1,Duke,2653.7,21-2,Michigan St,2503.8
+2,North Carolina,2278,19-4,Duke,2653.7
+3,Virginia,2277.3,20-3,Louisville,2231.9
+4,Louisville,2231.9,17-6,SMU,2178.9
+5,Clemson,2204.2,20-4,SMU,2178.9
+6,SMU,2178.9,16-7,North Carolina,2278
+7,NC State,2160.5,18-6,Clemson,2204.2
+8,Miami,2097.8,18-5,Stanford,1984.4
+9,Virginia Tech,2091.5,16-8,Virginia,2277.3
+10,California,2051.7,17-7,North Carolina,2278
+11,Stanford,1984.4,15-9,Saint Louis,2422.1
+12,Syracuse,1937.8,13-11,Tennessee,2262
+13,Notre Dame,1895.9,11-13,TCU,2050.4
+14,Wake Forest,1888.8,11-12,Virginia Tech,2091.5
+15,Florida St,1726,11-12,Miami,2097.8
+16,Pitt,1713.2,9-15,Ohio State,2068.8
+17,Georgia Tech,1641.9,11-13,NC State,2160.5
+18,Boston College,1612.5,9-14,Syracuse,1937.8
