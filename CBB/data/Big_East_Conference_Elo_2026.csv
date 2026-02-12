@@ -1,12 +1,12 @@
 rank,team,rating,record,best_win,best_win_elo
-1,UConn,2579.2,22-2,Illinois,2431.6
-2,Villanova,2254.7,19-5,Wisconsin,2108
-3,St John's,2206.8,19-5,UConn,2579.2
-4,Seton Hall,2103.5,16-8,NC State,2145.5
-5,Butler,1952,13-11,Virginia,2275.2
-6,Xavier,1934.9,12-12,West Virginia,2020.8
-7,Creighton,1932.7,13-11,Villanova,2254.7
-8,Georgetown,1901,13-11,Clemson,2210.7
-9,Providence,1878.3,11-13,St John's,2206.8
-10,DePaul,1762.6,12-12,Seton Hall,2103.5
-11,Marquette,1671,9-16,Butler,1952
+1,UConn,2584,23-2,Illinois,2432.4
+2,Villanova,2255.9,19-5,Wisconsin,2109.8
+3,St John's,2208,19-5,UConn,2584
+4,Seton Hall,2103.6,17-8,NC State,2150.4
+5,Butler,1950.8,13-12,Virginia,2278.4
+6,Xavier,1931.7,12-12,West Virginia,2021.4
+7,Creighton,1924.3,13-12,Villanova,2255.9
+8,Georgetown,1904.1,13-11,Clemson,2180.2
+9,Providence,1877.7,11-14,St John's,2208
+10,DePaul,1766.5,13-12,Seton Hall,2103.6
+11,Marquette,1672.9,9-16,Butler,1950.8
