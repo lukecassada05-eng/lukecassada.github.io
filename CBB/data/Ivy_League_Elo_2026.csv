@@ -1,9 +1,9 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Yale,1901.1,18-4,Akron,1892.3
-2,Penn,1600.2,11-10,Saint Joseph's,1627.7
-3,Columbia,1577.8,14-8,Hofstra,1713.6
-4,Cornell,1459.6,11-10,Columbia,1577.8
-5,Harvard,1424.4,13-9,Yale,1901.1
-6,Dartmouth,1379.4,10-11,Saint Peter's,1483.3
-7,Princeton,1368.4,8-15,Yale,1901.1
-8,Brown,1186.6,7-14,Columbia,1577.8
+1,Yale,1902,18-4,Akron,1893
+2,Penn,1602.4,11-10,Saint Joseph's,1627.6
+3,Columbia,1575.8,14-8,Hofstra,1724.8
+4,Cornell,1461.1,11-10,Columbia,1575.8
+5,Harvard,1421.8,13-9,Yale,1902
+6,Dartmouth,1376.7,10-11,Saint Peter's,1488.4
+7,Princeton,1370,8-15,Yale,1902
+8,Brown,1181.9,7-14,Columbia,1575.8
