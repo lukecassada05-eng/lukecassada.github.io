@@ -188,9 +188,9 @@ Kennesaw St,17.2-13.8
 UT Rio Grande,17.4-13.6
 Utah Tech,18.3-13.7
 Siena,20.7-10.3
-Colgate,19-12
 Idaho,17.1-13.9
 Elon,16-15
+Colgate,18.2-11.8
 Drake,13.2-17.8
 CSU Northridge,19.3-12.7
 Queens,17.9-13.1
@@ -221,7 +221,7 @@ James Madison,16.3-14.7
 Cornell,14.2-12.8
 C Arkansas,18.8-12.2
 New Orleans,13.1-17.9
-Southern Miss,15-16
+Southern Miss,15.1-15.9
 Samford,17.7-13.3
 Weber St,14.5-16.5
 Abilene Chrstn,13.8-17.2
@@ -251,7 +251,7 @@ La Salle,8.1-22.9
 C Connecticut,18.2-10.8
 UC Riverside,9.6-22.4
 Grambling,15.2-15.8
-Old Dominion,10.8-20.2
+Old Dominion,10-20
 Princeton,9.8-19.2
 Indiana St,10.6-20.4
 Cal Poly,12.6-19.4
@@ -276,8 +276,8 @@ Detroit Mercy,13.2-15.8
 Pepperdine,7.6-23.4
 West Georgia,13.6-16.4
 NJIT,17.2-13.8
-E Texas A&M,12.3-19.7
 Sacred Heart,13-18
+E Texas A&M,11.6-19.4
 East Carolina,10.1-20.9
 UTEP,10.9-20.1
 E Kentucky,10.4-20.6
@@ -302,19 +302,19 @@ Evansville,6.7-24.3
 Southern Utah,9.6-21.4
 Chattanooga,12-19
 Manhattan,12.5-18.5
+Boston U,13.3-16.7
 E Illinois,12.7-18.3
 Florida A&M,11.4-17.6
 Norfolk St,15.4-15.6
-Boston U,13.5-17.5
-Holy Cross,11.2-19.8
+Holy Cross,11.1-19.9
 New Haven,14.3-16.7
 Bakersfield,9.3-22.7
 Hou Christian,10.5-20.5
+SE Louisiana,8.8-21.2
 Canisius,9.4-21.6
-Georgia St,10.1-20.9
+Georgia St,10.2-20.8
 Prairie View,12.3-18.7
 Alabama St,10.4-20.6
-SE Louisiana,9.1-21.9
 Jackson St,11-20
 Tennessee Tech,11.9-19.1
 Cleveland St,10.7-20.3
@@ -330,9 +330,9 @@ N'Western St,9.1-21.9
 Texas Southern,11.2-17.8
 New Hampshire,10.9-18.1
 Oral Roberts,7.5-23.5
+Louisiana,9.4-20.6
 UAlbany,10.8-20.2
 Army,11.4-19.6
-Louisiana,9.5-21.5
 NC Central,12.6-16.4
 North Alabama,8.7-20.3
 Lafayette,9.1-21.9
