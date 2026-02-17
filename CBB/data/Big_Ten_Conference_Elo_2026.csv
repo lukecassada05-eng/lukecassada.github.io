@@ -1,19 +1,19 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Michigan,2752.9,24-1,Nebraska,2511.6
-2,Nebraska,2511.6,22-3,Illinois,2440.9
-3,Purdue,2477.7,21-4,Nebraska,2511.6
-4,Illinois,2440.9,21-5,Nebraska,2511.6
-5,Michigan St,2431.8,20-5,Illinois,2440.9
-6,Iowa,2181.2,18-7,USC,2111.4
-7,Wisconsin,2154.4,18-7,Michigan,2752.9
-8,USC,2111.4,18-7,Wisconsin,2154.4
-9,Ohio State,2100.5,16-9,USC,2111.4
-10,UCLA,2047.7,17-8,Purdue,2477.7
-11,Indiana,2033.9,17-9,Purdue,2477.7
-12,Washington,1964,13-13,USC,2111.4
-13,Northwestern,1814.7,10-16,USC,2111.4
-14,Oregon,1796.4,9-16,Hawai’i,1763
-15,Minnesota,1780.4,11-14,Michigan St,2431.8
-16,Maryland,1741.9,10-15,Iowa,2181.2
-17,Penn State,1697.7,11-15,Washington,1964
-18,Rutgers,1680.5,10-15,Northwestern,1814.7
+1,Michigan,2753,24-1,Nebraska,2511.8
+2,Nebraska,2511.8,22-3,Illinois,2440.8
+3,Purdue,2479.7,21-4,Nebraska,2511.8
+4,Illinois,2440.8,21-5,Nebraska,2511.8
+5,Michigan St,2432,20-5,Illinois,2440.8
+6,Iowa,2182.2,18-7,USC,2111.3
+7,Wisconsin,2154.1,18-7,Michigan,2753
+8,USC,2111.3,18-7,Wisconsin,2154.1
+9,Ohio State,2100.6,16-9,USC,2111.3
+10,UCLA,2047.7,17-8,Purdue,2479.7
+11,Indiana,2033.1,17-9,Purdue,2479.7
+12,Washington,1964.1,13-13,USC,2111.3
+13,Northwestern,1815.8,10-16,USC,2111.3
+14,Oregon,1796.5,9-16,Hawai’i,1763.1
+15,Minnesota,1780.1,11-14,Michigan St,2432
+16,Maryland,1742.3,10-15,Iowa,2182.2
+17,Penn State,1698.4,11-15,Washington,1964.1
+18,Rutgers,1680.3,10-15,Northwestern,1815.8
