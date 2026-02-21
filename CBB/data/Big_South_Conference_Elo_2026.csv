@@ -1,10 +1,10 @@
 rank,team,rating,record,best_win,best_win_elo
-1,High Point,1755.3,25-4,Furman,1561.4
-2,Winthrop,1681.5,20-8,High Point,1755.3
-3,UNC Asheville,1449.6,12-15,Lipscomb,1561.5
-4,Radford,1333.8,15-13,Charleston So,1326.3
-5,Charleston So,1326.3,13-15,Richmond,1760.6
-6,Presbyterian,1312.2,14-14,ETSU,1681
-7,Longwood,1310.9,14-15,Winthrop,1681.5
-8,SC Upstate,1280.2,11-17,Fresno St,1659.2
-9,Gardner-Webb,793.8,3-26,SC Upstate,1280.2
+1,High Point,1755,25-4,UIC,1561.3
+2,Winthrop,1681.2,20-8,High Point,1755
+3,UNC Asheville,1449.3,12-15,Lipscomb,1561.3
+4,Radford,1333.7,15-13,Charleston So,1325.9
+5,Charleston So,1325.9,13-15,Richmond,1760
+6,Presbyterian,1311.6,14-14,ETSU,1680.8
+7,Longwood,1310.1,14-15,Winthrop,1681.2
+8,SC Upstate,1280,11-17,Fresno St,1659.1
+9,Gardner-Webb,793.6,3-26,SC Upstate,1280
