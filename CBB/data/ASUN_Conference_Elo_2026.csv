@@ -1,13 +1,13 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Austin Peay,1599.7,20-6,ETSU,1680.8
-2,Lipscomb,1561.3,17-11,Marshall,1705.8
-3,Queens,1509.2,16-12,Lipscomb,1561.3
-4,C Arkansas,1470.6,18-10,Lipscomb,1561.3
-5,FGCU,1461.8,13-15,Samford,1430.8
-6,Bellarmine,1327.9,11-16,Queens,1509.2
-7,West Georgia,1317.3,12-15,Troy,1639.1
-8,E Kentucky,1304.6,10-18,Jax State,1482.4
-9,Jacksonville,1281.1,10-18,Lipscomb,1561.3
-10,Stetson,1248.6,9-19,Lipscomb,1561.3
-11,North Alabama,1147.1,8-18,San Francisco,1788.3
-12,North Florida,1052.1,6-22,Bellarmine,1327.9
+1,Austin Peay,1603.6,21-6,ETSU,1685.5
+2,Lipscomb,1563.1,18-11,Marshall,1699.4
+3,Queens,1509.7,17-12,Lipscomb,1563.1
+4,FGCU,1467.8,14-15,C Arkansas,1467
+5,C Arkansas,1467,18-11,Lipscomb,1563.1
+6,Bellarmine,1320.6,11-17,Queens,1509.7
+7,West Georgia,1313.2,12-16,Troy,1632.4
+8,E Kentucky,1308.6,11-18,Jax State,1488.3
+9,Jacksonville,1282,10-19,Lipscomb,1563.1
+10,Stetson,1248.6,10-19,Lipscomb,1563.1
+11,North Alabama,1146,8-19,San Francisco,1787.5
+12,North Florida,1040.2,6-23,Bellarmine,1320.6
