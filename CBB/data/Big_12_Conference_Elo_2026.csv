@@ -1,17 +1,17 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Arizona,2669.9,25-2,UConn,2538.5
-2,Houston,2484.8,23-4,BYU,2366.9
-3,Iowa State,2447.4,23-4,Houston,2484.8
-4,BYU,2366.9,20-7,Iowa State,2447.4
-5,Kansas,2271.5,20-7,Arizona,2669.9
-6,Texas Tech,2266.7,20-7,Duke,2714.3
-7,UCF,2195.5,19-7,Kansas,2271.5
-8,Oklahoma St,2110,16-11,BYU,2366.9
-9,TCU,2101.1,17-10,Iowa State,2447.4
-10,Baylor,2038.5,14-13,Oklahoma St,2110
-11,West Virginia,2019.9,16-11,Kansas,2271.5
-12,Colorado,2014.6,15-12,Oklahoma St,2110
-13,Cincinnati,1993.3,15-12,Iowa State,2447.4
-14,Arizona St,1982.4,14-13,Texas Tech,2266.7
-15,Kansas St,1885.9,11-16,Baylor,2038.5
-16,Utah,1752,10-17,TCU,2101.1
+1,Arizona,2664.6,25-2,UConn,2540
+2,Iowa State,2452.6,23-4,Purdue,2457
+3,Houston,2448.4,23-5,BYU,2365.5
+4,BYU,2365.5,20-7,Iowa State,2452.6
+5,Kansas,2290.4,21-7,Arizona,2664.6
+6,Texas Tech,2264.2,20-7,Duke,2714
+7,UCF,2195.5,19-7,Kansas,2290.4
+8,Oklahoma St,2112,16-11,BYU,2365.5
+9,TCU,2100.9,17-10,Iowa State,2452.6
+10,Baylor,2038.3,14-13,Oklahoma St,2112
+11,West Virginia,2019.4,16-11,Kansas,2290.4
+12,Colorado,2015.1,15-12,Oklahoma St,2112
+13,Cincinnati,1990.8,15-12,Iowa State,2452.6
+14,Arizona St,1981,14-13,Texas Tech,2264.2
+15,Kansas St,1885.8,11-16,California,2038.3
+16,Utah,1752.4,10-17,TCU,2100.9
