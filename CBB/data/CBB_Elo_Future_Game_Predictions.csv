@@ -2,12 +2,14 @@ team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
 Gonzaga,Portland,0.997,0.003,28.3
 Michigan,Minnesota,0.997,0.003,28.1
 Troy,UL Monroe,0.992,0.008,23.6
+Miami OH,Toledo,0.99,0.01,22.7
 South Alabama,UL Monroe,0.99,0.01,22.9
 Belmont,Evansville,0.99,0.01,23
 Nebraska,Maryland,0.989,0.011,22.3
 AR-Pine Bluff,Miss Valley St,0.988,0.012,22
 Iona,Rider,0.987,0.013,21.4
 Saint Louis,Duquesne,0.986,0.014,21
+Illinois,Oregon,0.983,0.017,20
 UC San Diego,Bakersfield,0.981,0.019,19.5
 Siena,Rider,0.98,0.02,19.4
 Wyoming,Air Force,0.978,0.022,18.8
@@ -15,10 +17,13 @@ VCU,Fordham,0.978,0.022,18.7
 Santa Clara,Oregon St,0.976,0.024,18.5
 Long Island,Chicago St,0.973,0.027,17.7
 Miami,Boston College,0.972,0.028,17.6
+Alcorn St,Miss Valley St,0.969,0.031,17.2
+Florida,Mississippi St,0.967,0.033,16.8
 Arkansas St,Louisiana,0.967,0.033,16.8
 UNC Wilmington,NC A&T,0.967,0.033,16.8
 SIUE,W Illinois,0.966,0.034,16.6
 Kent State,C Michigan,0.963,0.037,16.1
+Virginia Tech,Boston College,0.962,0.038,16
 Howard,Coppin St,0.962,0.038,16.1
 SC Upstate,Gardner-Webb,0.962,0.038,16.1
 Long Island,FDU,0.959,0.041,15.6
@@ -29,6 +34,7 @@ UC San Diego,Cal Poly,0.949,0.051,14.5
 UConn,Seton Hall,0.947,0.053,14.3
 Houston,Colorado,0.946,0.054,14.2
 Auburn,Ole Miss,0.942,0.058,13.9
+William & Mary,Hampton,0.941,0.059,13.7
 Wofford,The Citadel,0.941,0.059,13.7
 Duke,Virginia,0.938,0.062,13.5
 Toledo,N Illinois,0.933,0.067,13.1
@@ -36,6 +42,7 @@ William & Mary,Northeastern,0.932,0.068,13
 Samford,VMI,0.931,0.069,12.9
 N Dakota St,North Dakota,0.929,0.071,12.8
 Robert Morris,Cleveland St,0.928,0.072,12.7
+Virginia,Wake Forest,0.926,0.074,12.5
 Arizona,Kansas,0.926,0.074,12.5
 Columbia,Brown,0.926,0.074,12.5
 Winthrop,Presbyterian,0.925,0.075,12.5
@@ -48,22 +55,26 @@ Utah Valley,Abilene Chrstn,0.911,0.089,11.6
 Marshall,Old Dominion,0.91,0.09,11.5
 UT Martin,Tennessee Tech,0.907,0.093,11.3
 UConn,St John's,0.904,0.096,11.2
+Vermont,UAlbany,0.901,0.099,11
 UT Rio Grande,N'Western St,0.901,0.099,11
 South Florida,Tulane,0.901,0.099,11
 UMBC,Bryant,0.9,0.1,10.9
 California,Pitt,0.899,0.101,10.9
 Western KY,UTEP,0.899,0.101,10.8
 Villanova,Butler,0.898,0.102,10.8
+St John's,Georgetown,0.897,0.103,10.8
 MTSU,UTEP,0.897,0.103,10.8
 St Thomas (MN),Omaha,0.891,0.109,10.4
 Morehead St,So Indiana,0.891,0.109,10.5
 American,Lehigh,0.889,0.111,10.3
 Vermont,UMass Lowell,0.888,0.112,10.3
+Hofstra,Drexel,0.887,0.113,10.2
 Marshall,GA Southern,0.887,0.113,10.2
 New Orleans,SE Louisiana,0.885,0.115,10.1
 Utah State,Grand Canyon,0.885,0.115,10.1
 Texas A&M-CC,N'Western St,0.884,0.116,10.1
 Bowling Green,W Michigan,0.884,0.116,10.1
+Louisville,Syracuse,0.881,0.119,9.9
 Montana St,Sacramento St,0.879,0.121,9.8
 Kennesaw St,Delaware,0.877,0.123,9.7
 Texas Tech,Cincinnati,0.875,0.125,9.7
@@ -72,6 +83,7 @@ Santa Barbara,UC Riverside,0.867,0.133,9.3
 Colorado St,Fresno St,0.867,0.133,9.3
 Arkansas,Texas A&M,0.863,0.137,9.1
 Penn,Dartmouth,0.858,0.142,8.9
+W Michigan,Ball State,0.857,0.143,8.9
 Cornell,Brown,0.856,0.144,8.8
 Stanford,Pitt,0.856,0.144,8.9
 Idaho,N Arizona,0.853,0.147,8.7
@@ -88,14 +100,16 @@ Arizona St,Utah,0.844,0.156,8.4
 Montana,Sacramento St,0.843,0.157,8.3
 Georgetown,Marquette,0.842,0.158,8.3
 Saint Peter's,Manhattan,0.841,0.159,8.3
+Indiana,Minnesota,0.837,0.163,8.1
 George Mason,St Bonaventure,0.835,0.165,8
+Campbell,NC A&T,0.834,0.166,8
 UNC Wilmington,Charleston,0.833,0.167,8
 Chattanooga,VMI,0.832,0.168,7.9
+Auburn,LSU,0.831,0.169,7.9
 Arizona,Iowa State,0.831,0.169,7.9
 Buffalo,E Michigan,0.83,0.17,7.9
 FAU,Charlotte,0.829,0.171,7.8
 Texas A&M-CC,E Texas A&M,0.826,0.174,7.7
-New Haven,Saint Francis,0.826,0.174,7.7
 Indiana,Northwestern,0.825,0.175,7.7
 Grand Canyon,UNLV,0.824,0.176,7.7
 Penn,Harvard,0.823,0.177,7.6
@@ -114,6 +128,7 @@ Little Rock,So Indiana,0.794,0.206,6.7
 North Carolina,Virginia Tech,0.791,0.209,6.6
 West Georgia,North Alabama,0.791,0.209,6.6
 Lindenwood,E Illinois,0.791,0.209,6.6
+Texas Tech,TCU,0.788,0.212,6.5
 Le Moyne,FDU,0.788,0.212,6.5
 Oregon St,San Diego,0.786,0.214,6.5
 UCF,Baylor,0.782,0.218,6.3
@@ -122,6 +137,7 @@ Creighton,DePaul,0.775,0.225,6.1
 Portland St,Weber St,0.774,0.226,6.1
 SE Missouri,Tennessee Tech,0.774,0.226,6.1
 Virginia,NC State,0.772,0.228,6.1
+Fresno St,San José St,0.77,0.23,6
 UAlbany,Maine,0.769,0.231,6
 UNC Asheville,Charleston So,0.768,0.232,5.9
 South Alabama,Southern Miss,0.767,0.233,5.9
@@ -129,12 +145,14 @@ Samford,UNC Greensboro,0.764,0.236,5.8
 Portland,San Diego,0.762,0.238,5.8
 Austin Peay,C Arkansas,0.76,0.24,5.7
 Boise St,Wyoming,0.759,0.241,5.7
+VCU,George Mason,0.755,0.245,5.6
 UT Martin,Tennessee St,0.754,0.246,5.6
 Colorado,Kansas St,0.754,0.246,5.6
 SIUE,E Illinois,0.749,0.251,5.4
 CA Baptist,UT Arlington,0.746,0.254,5.3
 TCU,Arizona St,0.744,0.256,5.3
 Wagner,Chicago St,0.735,0.265,5.1
+North Carolina,Clemson,0.725,0.275,4.8
 Marist,Saint Peter's,0.721,0.279,4.7
 N Illinois,Ball State,0.721,0.279,4.7
 UAB,North Texas,0.716,0.284,4.6
@@ -144,6 +162,7 @@ LSU,Oklahoma,0.707,0.293,4.4
 Rhode Island,Saint Joseph's,0.706,0.294,4.3
 Holy Cross,Loyola MD,0.705,0.295,4.3
 Southern,Florida A&M,0.704,0.296,4.3
+UCF,Oklahoma St,0.702,0.298,4.2
 Grambling,Florida A&M,0.699,0.301,4.2
 N Colorado,Montana,0.692,0.308,4
 Florida,Arkansas,0.692,0.308,4
@@ -153,12 +172,14 @@ MD Eastern,SC State,0.683,0.317,3.8
 Bowling Green,UMass,0.677,0.323,3.7
 Maryland,Rutgers,0.676,0.324,3.6
 Prairie View,Alcorn St,0.676,0.324,3.7
+Alabama A&M,Grambling,0.671,0.329,3.5
 UAlbany,New Hampshire,0.669,0.331,3.5
 Iowa,Ohio State,0.669,0.331,3.5
 James Madison,GA Southern,0.665,0.335,3.4
 Creighton,Providence,0.663,0.337,3.4
 Towson,Elon,0.659,0.341,3.3
 Northern Iowa,Illinois St,0.657,0.343,3.2
+UMass,Ohio,0.652,0.348,3.1
 Sacred Heart,Mount St Marys,0.652,0.348,3.1
 Northwestern,Oregon,0.65,0.35,3.1
 Radford,SC Upstate,0.649,0.351,3.1
@@ -178,10 +199,15 @@ Xavier,Georgetown,0.628,0.372,2.6
 UC Irvine,Santa Barbara,0.627,0.373,2.6
 Purdue,Michigan St,0.625,0.375,2.5
 Saint Mary's,Santa Clara,0.62,0.38,2.4
+Butler,Creighton,0.619,0.381,2.4
 St Bonaventure,Rhode Island,0.617,0.383,2.4
 New Hampshire,Bryant,0.605,0.395,2.1
 Idaho St,Weber St,0.605,0.395,2.1
 Western KY,New Mexico St,0.593,0.407,1.9
+TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
@@ -205,12 +231,18 @@ St John's,Villanova,0.521,0.479,0.4
 Lehigh,Bucknell,0.521,0.479,0.4
 SE Missouri,Tennessee St,0.52,0.48,0.4
 Texas St,App State,0.519,0.481,0.4
+La Salle,Fordham,0.514,0.486,0.3
 New Haven,Le Moyne,0.514,0.486,0.3
 Mercer,ETSU,0.511,0.489,0.2
 Montana St,Portland St,0.509,0.491,0.2
 MD Eastern,NC Central,0.506,0.494,0.1
 N Kentucky,Wright St,0.505,0.495,0.1
 Milwaukee,Youngstown St,0.505,0.495,0.1
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 Louisiana Tech,Missouri St,0.499,0.501,-0
 SC State,Morgan St,0.499,0.501,-0
@@ -226,10 +258,15 @@ Monmouth,Stony Brook,0.477,0.523,-0.5
 Army,Bucknell,0.476,0.524,-0.5
 UIC,Bradley,0.475,0.525,-0.5
 Pacific,San Francisco,0.472,0.528,-0.6
+Northeastern,Monmouth,0.47,0.53,-0.6
 Princeton,Harvard,0.464,0.536,-0.7
 South Dakota,S Dakota St,0.462,0.538,-0.8
+Texas A&M,Kentucky,0.46,0.54,-0.8
+Oklahoma,Missouri,0.457,0.543,-0.9
+Boise St,San Diego St,0.453,0.547,-0.9
 Kent State,Akron,0.453,0.547,-0.9
 Fairfield,Siena,0.453,0.547,-0.9
+Jackson St,AR-Pine Bluff,0.452,0.548,-1
 Drexel,Campbell,0.451,0.549,-1
 G Washington,Dayton,0.45,0.55,-1
 Louisiana Tech,FIU,0.448,0.552,-1
@@ -245,10 +282,12 @@ Southern,Bethune,0.42,0.58,-1.6
 Cincinnati,Oklahoma St,0.42,0.58,-1.6
 Grambling,Bethune,0.414,0.586,-1.7
 Little Rock,Morehead St,0.406,0.594,-1.9
+Kansas St,West Virginia,0.403,0.597,-2
 UC Riverside,CSU Northridge,0.402,0.598,-2
 UTSA,East Carolina,0.401,0.599,-2
 Bakersfield,Long Beach St,0.397,0.603,-2.1
 Duquesne,Davidson,0.397,0.603,-2.1
+Alabama St,Southern,0.383,0.617,-2.4
 Georgia St,Old Dominion,0.381,0.619,-2.4
 CSU Northridge,UC Irvine,0.378,0.622,-2.5
 California,SMU,0.376,0.624,-2.5
@@ -257,10 +296,12 @@ Mississippi St,Missouri,0.365,0.635,-2.7
 Nevada,New Mexico,0.361,0.639,-2.8
 Georgia,Alabama,0.36,0.64,-2.9
 Maine,UMass Lowell,0.358,0.642,-2.9
+Richmond,Dayton,0.356,0.644,-2.9
 Binghamton,Maine,0.351,0.649,-3.1
 North Alabama,Bellarmine,0.349,0.651,-3.1
 Bradley,Murray St,0.347,0.653,-3.1
 Georgia Tech,Florida St,0.347,0.653,-3.1
+Xavier,Seton Hall,0.345,0.655,-3.2
 Indiana St,UIC,0.341,0.659,-3.3
 Morgan St,Norfolk St,0.332,0.668,-3.5
 Washington,Wisconsin,0.326,0.674,-3.6
@@ -286,11 +327,11 @@ Kentucky,Vanderbilt,0.252,0.748,-5.4
 Texas,Florida,0.252,0.748,-5.4
 E Kentucky,Lipscomb,0.251,0.749,-5.4
 Binghamton,New Hampshire,0.247,0.753,-5.5
+Utah,Colorado,0.243,0.757,-5.6
 Illinois St,Belmont,0.242,0.758,-5.7
 Drake,Northern Iowa,0.241,0.759,-5.7
 UNLV,Nevada,0.241,0.759,-5.7
 Missouri,Tennessee,0.24,0.76,-5.7
-Rutgers,Washington,0.239,0.761,-5.7
 E Washington,N Colorado,0.235,0.765,-5.9
 Georgia St,Coastal,0.235,0.765,-5.9
 Notre Dame,NC State,0.233,0.767,-5.9
@@ -309,6 +350,8 @@ Fresno St,Boise St,0.206,0.794,-6.7
 Oklahoma,Auburn,0.206,0.794,-6.7
 IU Indy,Purdue FW,0.203,0.797,-6.8
 Illinois,Michigan,0.198,0.802,-6.9
+Arizona St,Kansas,0.197,0.803,-7
+Elon,UNC Wilmington,0.191,0.809,-7.2
 Hampton,Charleston,0.187,0.813,-7.3
 Saint Joseph's,George Mason,0.186,0.814,-7.3
 Coppin St,Norfolk St,0.184,0.816,-7.4
@@ -327,10 +370,11 @@ Morgan St,Howard,0.155,0.845,-8.4
 Oregon,Wisconsin,0.155,0.845,-8.4
 USC,Nebraska,0.151,0.849,-8.6
 Charleston So,Winthrop,0.151,0.849,-8.6
-La Salle,G Washington,0.141,0.859,-9
+Cincinnati,BYU,0.144,0.856,-8.8
 Indiana,Michigan St,0.126,0.874,-9.6
 San José St,Colorado St,0.124,0.876,-9.7
 NC A&T,William & Mary,0.124,0.876,-9.7
+UCLA,Nebraska,0.12,0.88,-9.9
 Dayton,Saint Louis,0.119,0.881,-9.9
 East Carolina,Memphis,0.115,0.885,-10.1
 Jax State,Liberty,0.113,0.887,-10.2
@@ -346,19 +390,23 @@ Ball State,UMass,0.088,0.912,-11.6
 Penn State,Iowa,0.082,0.918,-12
 IU Indy,Oakland,0.082,0.918,-12
 Niagara,Merrimack,0.081,0.919,-12.1
+UNLV,Utah State,0.079,0.921,-12.2
 Loyola Chicago,Richmond,0.058,0.942,-13.9
 NC State,Duke,0.057,0.943,-14
 W Illinois,Lindenwood,0.055,0.945,-14.1
+N Illinois,Kent State,0.051,0.949,-14.5
 UTSA,Wichita St,0.051,0.949,-14.5
 Rice,South Florida,0.051,0.949,-14.5
 Incarnate Word,SF Austin,0.048,0.952,-14.8
 Nicholls,McNeese,0.047,0.953,-15
+Ole Miss,Vanderbilt,0.045,0.955,-15.1
 Kansas City,S Dakota St,0.045,0.955,-15.1
+C Michigan,Akron,0.044,0.956,-15.2
 Niagara,Quinnipiac,0.039,0.961,-15.9
 Baylor,Arizona,0.038,0.962,-16
+Air Force,Grand Canyon,0.036,0.964,-16.3
 Gardner-Webb,UNC Asheville,0.031,0.969,-17.1
 Hou Christian,SF Austin,0.026,0.974,-18.1
 Utah,Iowa State,0.025,0.975,-18.1
 Notre Dame,Duke,0.012,0.988,-21.7
-E Michigan,Miami OH,0.008,0.992,-23.9
 W Michigan,Miami OH,0.005,0.995,-26.1
