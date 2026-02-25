@@ -1,17 +1,17 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Vanderbilt,2399.8,21-6,Alabama,2332.1
-2,Florida,2383,21-6,Vanderbilt,2399.8
-3,Alabama,2332.1,20-7,Illinois,2421.2
-4,Arkansas,2307.2,20-7,Vanderbilt,2399.8
-5,Tennessee,2286.2,20-7,Houston,2448.4
-6,Auburn,2225.2,15-12,Florida,2383
-7,Georgia,2167,19-8,Arkansas,2307.2
-8,Kentucky,2145.7,17-10,Arkansas,2307.2
-9,Texas,2128.8,17-10,Vanderbilt,2399.8
-10,Texas A&M,2052.6,19-8,Auburn,2225.2
-11,Missouri,2020.8,18-9,Vanderbilt,2399.8
-12,LSU,2013.6,14-13,SMU,2191.6
-13,Oklahoma,1925.6,13-14,Vanderbilt,2399.8
-14,Mississippi St,1859.8,13-14,Auburn,2225.2
-15,South Carolina,1818.3,12-15,LSU,2013.6
-16,Ole Miss,1805,11-16,Georgia,2167
+1,Vanderbilt,2400.1,21-6,Alabama,2330.9
+2,Florida,2379.4,21-6,Vanderbilt,2400.1
+3,Alabama,2330.9,20-7,Illinois,2418.6
+4,Arkansas,2300.6,20-7,Vanderbilt,2400.1
+5,Tennessee,2272.4,20-8,Houston,2445.8
+6,Auburn,2200.9,15-13,Florida,2379.4
+7,Georgia,2167.4,19-8,Arkansas,2300.6
+8,Kentucky,2147.2,18-10,Arkansas,2300.6
+9,Texas,2130.3,17-10,Vanderbilt,2400.1
+10,Texas A&M,2059.8,19-8,Auburn,2200.9
+11,Missouri,2033.4,19-9,Vanderbilt,2400.1
+12,LSU,2013.8,14-13,SMU,2192.6
+13,Oklahoma,1947.4,14-14,Vanderbilt,2400.1
+14,Mississippi St,1862.5,13-14,Auburn,2200.9
+15,South Carolina,1819.9,12-16,LSU,2013.8
+16,Ole Miss,1808.7,11-16,Georgia,2167.4
