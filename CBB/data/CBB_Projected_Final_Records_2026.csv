@@ -12,7 +12,7 @@ Michigan St,25-6
 Illinois,24.2-6.8
 Vanderbilt,24.3-6.7
 Florida,24.4-6.6
-Miami OH,31-0
+Miami OH,30-0
 BYU,22.4-8.6
 Alabama,22.9-8.1
 Virginia,26.8-4.2
@@ -69,10 +69,10 @@ Stanford,18-13
 Nevada,21.3-9.7
 Butler,16.3-14.7
 Washington,15.4-15.6
-Yale,23.7-4.3
 George Mason,22.2-8.8
 Dayton,20.6-10.4
 Akron,25.5-5.5
+Yale,22.8-4.2
 SF Austin,26.9-4.1
 Creighton,15-16
 Colorado St,19.6-11.4
@@ -127,13 +127,13 @@ UC Irvine,21.1-10.9
 Pitt,10.7-20.3
 UC Davis,18.2-12.8
 LMU,15.4-15.6
-Quinnipiac,19.9-11.1
 Western KY,19.2-11.8
 Buffalo,18.3-12.7
 ETSU,21.5-9.5
 St Thomas (MN),22.9-8.1
 Winthrop,20.9-10.1
 Penn State,11.6-19.4
+Quinnipiac,18.9-11.1
 North Texas,17.2-13.8
 N Dakota St,23.9-7.1
 Saint Joseph's,19.4-11.6
@@ -223,8 +223,8 @@ James Madison,17.6-13.4
 UNC Asheville,14.8-15.2
 FGCU,14.7-16.3
 Southern Miss,15.2-15.8
+Cornell,13.4-12.6
 Fairfield,19.3-11.7
-Cornell,13.5-13.5
 Samford,17.8-13.2
 E Michigan,10.5-20.5
 Texas St,18.5-12.5
@@ -247,10 +247,10 @@ Milwaukee,12-19
 GA Southern,15.1-15.9
 SE Missouri,18.8-12.2
 South Dakota,15.5-15.5
+W Michigan,10.9-19.1
 Cal Poly,14-18
 Indiana St,10.3-20.7
 UC Riverside,9.5-22.5
-W Michigan,10.9-20.1
 Old Dominion,10.6-20.4
 Dartmouth,12.1-14.9
 Denver,15-16
@@ -348,8 +348,8 @@ FDU,11-20
 MD Eastern,10.1-20.9
 VMI,6.2-24.8
 Maine,9-22
+Niagara,7.1-21.9
 Morgan St,13.3-15.7
-Niagara,7.1-22.9
 So Indiana,7.2-22.8
 Stonehill,11.3-19.7
 Chicago St,7.3-23.7
