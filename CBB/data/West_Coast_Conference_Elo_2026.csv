@@ -1,13 +1,13 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Gonzaga,2510.8,28-2,Alabama,2331.7
-2,Saint Mary's,2232,26-4,Santa Clara,2167.9
-3,Santa Clara,2167.9,23-7,Saint Mary's,2232
-4,Seattle U,1798.7,18-12,Stanford,1976.5
-5,San Francisco,1785.8,15-15,Mississippi St,1857
-6,Pacific,1702.6,17-13,Seattle U,1798.7
-7,LMU,1684.6,15-15,San Francisco,1785.8
-8,Washington St,1647.6,12-18,Seattle U,1798.7
-9,Oregon St,1608.8,16-14,Arizona St,1976.3
-10,Portland,1580.8,12-18,Gonzaga,2510.8
-11,San Diego,1437.7,11-19,UC San Diego,1829.1
-12,Pepperdine,1348.1,8-22,LMU,1684.6
+1,Gonzaga,2474,28-3,Alabama,2338
+2,Saint Mary's,2261.7,27-4,Gonzaga,2474
+3,Santa Clara,2173.8,24-7,Saint Mary's,2261.7
+4,Seattle U,1802.9,19-12,Stanford,1997.1
+5,San Francisco,1792.5,16-15,Mississippi St,1849.3
+6,Pacific,1696.3,17-14,Seattle U,1802.9
+7,LMU,1678.8,15-16,San Francisco,1792.5
+8,Washington St,1641.2,12-19,Seattle U,1802.9
+9,Oregon St,1607.7,16-15,Arizona St,1978.8
+10,Portland,1584.2,13-18,Gonzaga,2474
+11,San Diego,1435.1,11-20,UC San Diego,1827.7
+12,Pepperdine,1360.6,9-22,LMU,1678.8
