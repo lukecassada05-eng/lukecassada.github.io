@@ -1,8 +1,10 @@
 team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
 Saint Louis,Loyola Chicago,0.998,0.002,31.4
+Gonzaga,TBD,0.996,0.004,27.8
 Michigan St,Rutgers,0.991,0.009,23.1
 Nevada,Air Force,0.989,0.011,22.1
 Miami OH,Toledo,0.989,0.011,22.5
+Saint Mary's,TBD,0.988,0.012,21.8
 Akron,N Illinois,0.988,0.012,22.1
 Illinois,Oregon,0.981,0.019,19.4
 Santa Clara,TBD,0.98,0.02,19.2
@@ -143,6 +145,9 @@ TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
 UT Martin,TBD,0.585,0.415,1.7
 Georgetown,Providence,0.574,0.426,1.5
 South Dakota,Omaha,0.574,0.426,1.5
@@ -168,6 +173,24 @@ Queens,TBD,0.509,0.491,0.2
 Tarleton St,UT Arlington,0.506,0.494,0.1
 St Bonaventure,Davidson,0.505,0.495,0.1
 Wofford,TBD,0.503,0.497,0.1
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
@@ -264,7 +287,6 @@ UTEP,Jax State,0.354,0.646,-3
 Xavier,Seton Hall,0.354,0.646,-3
 Santa Barbara,UC San Diego,0.35,0.65,-3.1
 West Virginia,UCF,0.346,0.654,-3.2
-Morgan St,Norfolk St,0.346,0.654,-3.2
 SE Missouri,TBD,0.339,0.661,-3.3
 Hou Christian,Lamar,0.338,0.662,-3.3
 E Washington,Idaho,0.336,0.664,-3.4
