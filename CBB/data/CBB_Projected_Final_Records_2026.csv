@@ -53,10 +53,10 @@ Texas A&M,20.5-10.5
 California,21.4-9.6
 Baylor,15.9-15.1
 West Virginia,17.4-13.6
-Indiana,18.1-12.9
 Cincinnati,17.3-13.7
 Missouri,20.2-10.8
 Colorado,17-14
+Indiana,17.3-12.7
 Belmont,26.9-5.1
 LSU,15.5-15.5
 Tulsa,24.9-6.1
@@ -66,17 +66,17 @@ Syracuse,15.8-15.2
 Oklahoma,16.2-14.8
 Boise St,19.5-11.5
 McNeese,26.9-5.1
-Butler,16.3-14.7
 South Florida,22.6-8.4
 Washington,15-16
+Butler,15.6-14.4
 Dayton,21.4-9.6
 Nevada,20-11
 George Mason,22.2-8.8
 Wake Forest,15.4-15.6
 Akron,26-5
 SF Austin,27.9-4.1
+Creighton,14-16
 Notre Dame,14.3-16.7
-Creighton,14.4-16.6
 Liberty,25.7-5.3
 Colorado St,19.7-11.3
 Yale,23-5
@@ -91,8 +91,8 @@ UC San Diego,22.5-9.5
 Mississippi St,13.2-17.8
 Utah Valley,23.7-7.3
 Wyoming,17.8-13.2
+Minnesota,14.6-15.4
 Northwestern,13.5-17.5
-Minnesota,14.8-16.2
 Murray St,20.8-11.2
 Davidson,19.3-11.7
 Ole Miss,12.6-18.4
@@ -107,7 +107,7 @@ Florida St,15.6-15.4
 FAU,17.4-13.6
 Hawai’i,22.9-7.1
 Wichita St,20.6-10.4
-DePaul,16.4-14.6
+DePaul,16.5-14.5
 Illinois St,20.8-11.2
 High Point,27.8-4.2
 UAB,19.6-11.4
@@ -200,7 +200,7 @@ Texas A&M-CC,17.5-14.5
 Queens,18.5-13.5
 San José St,8.2-22.8
 Wofford,19.5-12.5
-Fordham,16.8-14.2
+Fordham,16.3-13.7
 Fullerton,15.5-16.5
 Missouri St,13.7-17.3
 New Orleans,14.8-17.2
@@ -215,21 +215,21 @@ Green Bay,18-14
 Colgate,17.9-14.1
 App State,19.5-12.5
 Idaho St,12.8-19.2
-James Madison,17.8-14.2
 Saint Peter's,17.5-11.5
 Southern Miss,16.5-15.5
+James Madison,17-14
 Bethune,17.7-13.3
-FGCU,14.8-17.2
 American,16-15
 Tennessee St,21.4-9.6
 S Dakota St,14.2-17.8
 Cornell,14.5-12.5
+FGCU,14-17
 UNC Asheville,14.7-16.3
 Abilene Chrstn,13.4-17.6
 E Michigan,10.3-20.7
 UMBC,21.9-8.1
-La Salle,8.7-22.3
 Texas St,19.4-12.6
+La Salle,8.2-21.8
 Fairfield,19.7-12.3
 Monmouth,17.4-14.6
 Drexel,16.4-15.6
@@ -265,9 +265,9 @@ Omaha,15.4-16.6
 C Connecticut,18.8-11.2
 Radford,16.5-15.5
 East Carolina,11.1-19.9
-Bellarmine,12.6-18.4
 Incarnate Word,12-19
 E Washington,13.3-18.7
+Bellarmine,12-18
 Longwood,16.3-15.7
 Princeton,9-20
 Long Beach St,9.2-22.8
@@ -277,23 +277,23 @@ Morehead St,19.3-12.7
 Presbyterian,14.5-17.5
 Southern,14.3-16.7
 C Michigan,10.6-20.4
-E Kentucky,11.6-20.4
 Northeastern,6.5-23.5
+E Kentucky,11-20
 UTEP,10.6-20.4
 NC A&T,11.5-18.5
 SC Upstate,13.9-18.1
 Sacred Heart,13.2-18.8
+Jacksonville,12-19
 UNC Greensboro,13.8-18.2
 E Texas A&M,11-21
 Hampton,13.2-18.8
-Jacksonville,12.4-19.6
 NJIT,15.9-16.1
 Sacramento St,10.2-20.8
 AR-Pine Bluff,12.7-18.3
 North Dakota,16.4-16.6
 Evansville,7.1-24.9
 Southern Utah,10.1-20.9
-Stetson,11.4-20.6
+Stetson,11-20
 Delaware,9.5-21.5
 Chattanooga,13.7-18.3
 Mercyhurst,15.8-16.2
@@ -321,17 +321,17 @@ Bakersfield,8.4-23.6
 N Illinois,9-21
 UTSA,5.2-24.8
 Little Rock,12.3-19.7
+Louisiana,11-21
 Alabama St,10.4-20.6
 Jackson St,11-20
 Holy Cross,11.4-21.6
 UMass Lowell,14.6-17.4
 Norfolk St,15.3-15.7
-Louisiana,11.2-21.8
 New Haven,14-17
 Brown,9.1-17.9
 Texas Southern,12.6-16.4
 Ball State,11.4-19.6
-North Alabama,9.2-20.8
+North Alabama,9-20
 UAlbany,11.4-20.6
 Lafayette,11-21
 Army,11-21
