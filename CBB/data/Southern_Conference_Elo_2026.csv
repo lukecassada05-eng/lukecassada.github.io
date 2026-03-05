@@ -1,11 +1,11 @@
 rank,team,rating,record,best_win,best_win_elo
-1,ETSU,1669.6,21-10,Mercer,1618
-2,Mercer,1618,19-12,ETSU,1669.6
-3,Furman,1554.6,19-12,Richmond,1750.3
-4,Wofford,1501.2,19-12,ETSU,1669.6
-5,Samford,1430.6,18-13,ETSU,1669.6
-6,W Carolina,1380.2,14-15,ETSU,1669.6
-7,UNC Greensboro,1283.4,13-18,Furman,1554.6
-8,Chattanooga,1257,13-18,Mercer,1618
-9,The Citadel,1098.9,10-21,Furman,1554.6
-10,VMI,1041.9,6-25,Chattanooga,1257
+1,ETSU,1669.9,21-10,Mercer,1617.5
+2,Mercer,1617.5,19-12,ETSU,1669.9
+3,Furman,1554.4,19-12,Richmond,1749.6
+4,Wofford,1500.1,19-12,ETSU,1669.9
+5,Samford,1431,18-13,ETSU,1669.9
+6,W Carolina,1380.8,14-15,ETSU,1669.9
+7,UNC Greensboro,1283.1,13-18,Furman,1554.4
+8,Chattanooga,1257.3,13-18,Mercer,1617.5
+9,The Citadel,1099.6,10-21,Furman,1554.4
+10,VMI,1042.8,6-25,Chattanooga,1257.3
