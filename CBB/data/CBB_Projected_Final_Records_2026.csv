@@ -1,15 +1,15 @@
 team,proj_record
-Michigan,28.8-2.2
 Duke,29-2
+Michigan,28.9-2.1
 Arizona,29-2
 UConn,28-3
 Gonzaga,29-3
 Houston,25.8-5.2
-Michigan St,25.1-5.9
 Iowa State,24.9-6.1
+Michigan St,25.1-5.9
 Purdue,23.9-7.1
 Florida,24.8-6.2
-Nebraska,25.9-5.1
+Nebraska,25.8-5.2
 Illinois,24-7
 Vanderbilt,23.6-7.4
 Miami OH,31-0
@@ -21,19 +21,19 @@ Saint Louis,27.8-3.2
 Kansas,21.9-9.1
 Saint Mary's,28-4
 Tennessee,21.4-9.6
-Texas Tech,22.3-8.7
 Villanova,23.9-7.1
+Texas Tech,22.3-8.7
 Louisville,21.5-9.5
 North Carolina,24-7
 St John's,24.6-6.4
-UCF,20.7-9.3
+UCF,20.6-9.4
 Georgia,21.8-9.2
 Santa Clara,25-7
 Auburn,16.2-14.8
+Iowa,20.2-10.8
 SMU,19.8-11.2
 Clemson,22-9
 Miami,24.5-6.5
-Iowa,20.2-10.8
 NC State,19.8-11.2
 Kentucky,19.2-11.8
 Texas,18.8-12.2
@@ -51,8 +51,8 @@ USC,18.6-12.4
 New Mexico,22.3-8.7
 Baylor,15.9-15.1
 Texas A&M,20.5-10.5
-California,21.5-9.5
-West Virginia,17.3-13.7
+California,21.6-9.4
+West Virginia,17.4-13.6
 Indiana,18.3-12.7
 Cincinnati,17.3-13.7
 Colorado,17-14
@@ -67,119 +67,119 @@ Washington,15.6-15.4
 Oklahoma,16.2-14.8
 McNeese,26.9-5.1
 Boise St,19.5-11.5
-South Florida,22.6-8.4
+South Florida,22.9-8.1
 Dayton,21.4-9.6
 Butler,15.6-15.4
 Nevada,20-11
 George Mason,22.2-8.8
-Wake Forest,15.5-15.5
-Akron,26-5
+Wake Forest,15.4-15.6
 Creighton,15-16
 Colorado St,20.5-10.5
+Akron,26-5
 SF Austin,27.9-4.1
-Liberty,25.7-5.3
 Notre Dame,13.8-17.2
 Yale,23-5
 Xavier,14.1-16.9
 Georgetown,13.6-17.4
-Grand Canyon,19.8-11.2
+Liberty,24.8-6.2
 Providence,14.4-16.6
+Grand Canyon,19.8-11.2
 Kansas St,12.1-18.9
 G Washington,18-13
-UC San Diego,22.5-9.5
 UNC Wilmington,26.9-5.1
 Northwestern,13.4-17.6
 Mississippi St,13.2-17.8
-Utah Valley,23.7-7.3
 Wyoming,17.8-13.2
+UC San Diego,21.6-10.4
 Minnesota,14.6-16.4
+Utah Valley,23.8-7.2
 Murray St,20.8-11.2
 Ole Miss,12.6-18.4
-CA Baptist,22.8-8.2
-Northern Iowa,19.9-12.1
 Seattle U,19.9-12.1
+CA Baptist,22.9-8.1
 South Carolina,12.4-18.6
 Davidson,18.5-12.5
+Northern Iowa,20.6-12.4
 San Francisco,16.8-15.2
 Kent State,22.9-8.1
 Florida St,16.2-14.8
 Oregon,11.4-19.6
 FAU,17.4-13.6
 DePaul,16.4-14.6
-Hawai’i,22.9-7.1
 Wichita St,20.6-10.4
 High Point,28-4
-Illinois St,20.8-11.2
+Hawai’i,22.9-7.1
 UAB,19.9-11.1
-Sam Houston,22.1-8.9
+Illinois St,20.4-11.6
 Richmond,15.5-15.5
 St Bonaventure,15.5-15.5
 Hofstra,21.8-10.2
-Memphis,12.9-18.1
+Memphis,12.6-18.4
 Utah,10.1-20.9
+Sam Houston,21.2-9.8
 Maryland,11-20
 Pitt,11.2-19.8
 William & Mary,19.8-11.2
 Rhode Island,16.7-14.3
-Arkansas St,20.8-11.2
 Penn State,12.4-18.6
 Pacific,17.8-14.2
-Saint Joseph's,20.8-10.2
-UC Irvine,21.5-10.5
-Marshall,19.7-12.3
-UC Davis,18.2-12.8
 Rutgers,12.6-18.4
-LMU,15.8-16.2
+Arkansas St,20-12
+Saint Joseph's,20.8-10.2
+UC Irvine,21.6-10.4
+Marshall,19.7-12.3
+St Thomas (MN),24.7-8.3
 Marquette,11-20
-St Thomas (MN),23.8-8.2
+UC Davis,18.4-12.6
 ETSU,21.7-10.3
 UNLV,16.1-14.9
-North Texas,18-13
+LMU,15-17
 Winthrop,21.9-10.1
-N Dakota St,24.9-7.1
-Western KY,19.2-11.8
-UT Arlington,16.2-13.8
-Bowling Green,17.7-13.3
+UT Arlington,16.7-13.3
+North Texas,18-13
+N Dakota St,25.7-7.3
 Duquesne,16.5-14.5
-MTSU,16.2-14.8
+Bowling Green,17.7-13.3
+MTSU,16.6-14.4
 Quinnipiac,19.6-12.4
+Santa Barbara,18.4-12.6
+Western KY,18.6-12.4
 Fresno St,13.2-17.8
-Santa Barbara,18.3-12.7
-Bradley,20.7-11.3
 Buffalo,17.4-13.6
-Washington St,12.7-19.3
-New Mexico St,14.4-15.6
+Washington St,12.6-19.4
+Bradley,20.6-11.4
 Penn,15.9-11.1
+New Mexico St,14.7-15.3
 Troy,20.7-11.3
+Mercer,19.8-12.2
 Toledo,16.6-14.4
 Charleston,21.7-10.3
-Mercer,19.8-12.2
 Wright St,21.7-11.3
 Portland St,19.7-10.3
 Oregon St,16.7-15.3
+Temple,16.1-14.9
 Georgia Tech,11-20
-Tulane,17.8-13.2
-Temple,15.7-15.3
 Robert Morris,22.8-10.2
-Tarleton St,14.5-16.5
-South Alabama,21.6-10.4
-Iona,18-13
-Portland,13.8-18.2
+Tulane,17.4-13.6
+South Alabama,21.7-10.3
 N Colorado,20.6-11.4
+Tarleton St,14-17
 Towson,17.8-14.2
-Kennesaw St,19.1-11.9
-UMass,16-15
+Iona,18-14
 Montana St,18.6-13.4
-Valparaiso,17.7-14.3
-Navy,25.9-6.1
+Portland,14.4-18.6
+UMass,16-15
+Navy,26.9-6.1
 Austin Peay,21.8-8.2
 Charlotte,15.1-15.9
-Oakland,16-16
 Columbia,16.6-11.4
+Oakland,16-16
 Boston College,10.2-20.8
-UT Martin,21.9-10.1
+Valparaiso,18.4-14.6
 Long Island,22.9-10.1
-S Illinois,16-15
+Kennesaw St,18.3-12.7
+S Illinois,16-16
+UT Martin,22.6-10.4
 Furman,19.7-12.3
 Marist,18.4-11.6
 Lipscomb,19.6-12.4
@@ -188,167 +188,167 @@ UIC,17.2-14.8
 Utah Tech,18.2-13.8
 UT Rio Grande,18.6-13.4
 Campbell,14.6-17.4
-Drake,12-19
-CSU Northridge,19.4-12.6
-FIU,14.8-16.2
+FIU,14.4-16.6
 Idaho,17.8-14.2
+Drake,13.1-19.9
+CSU Northridge,19.6-12.4
 Siena,20.8-11.2
 Ohio,15-16
+Merrimack,21.8-10.2
 Queens,18.7-13.3
 Montana,16.4-15.6
-Merrimack,21.5-10.5
+Fullerton,16.4-15.6
 Texas A&M-CC,17.5-14.5
 San José St,8.2-22.8
+Missouri St,14.4-16.6
 Wofford,19.5-12.5
-Fullerton,15.5-16.5
 C Arkansas,20.7-11.3
-Missouri St,13.7-17.3
-New Orleans,14.8-17.2
-Vermont,20.9-11.1
-Fordham,16.3-14.7
 Weber St,16.7-15.3
+Jax State,14.6-16.4
+New Orleans,14.8-17.2
+Fordham,16.3-14.7
 Elon,14.2-17.8
-Jax State,14.9-16.1
+Vermont,20.9-11.1
 Coastal,19.5-12.5
 App State,19.5-12.5
 Stony Brook,17.4-14.6
-Colgate,17.9-14.1
 Green Bay,18.4-14.6
+Southern Miss,17.6-15.4
 Idaho St,12.8-19.2
-Saint Peter's,17.5-11.5
-Southern Miss,16-15
-James Madison,18-14
-American,16.7-15.3
-Bethune,17.7-13.3
-Tennessee St,21.4-9.6
-S Dakota St,14.2-17.8
+Colgate,18.8-14.2
+Saint Peter's,17.6-11.4
+James Madison,18-15
+S Dakota St,14-18
+Abilene Chrstn,13.3-17.7
+American,16-16
 Cornell,14.5-12.5
+Tennessee St,21.4-9.6
 UNC Asheville,14.7-16.3
+Louisiana Tech,17.6-13.4
 FGCU,15.4-17.6
-Abilene Chrstn,13.4-17.6
+Bethune,17-14
+La Salle,9.2-21.8
 UMBC,21.9-8.1
 E Michigan,10.3-20.7
-La Salle,9.2-21.8
 Texas St,19.4-12.6
 Monmouth,17.4-14.6
-Fairfield,19.7-12.3
 Drexel,16.4-15.6
-Louisiana Tech,16.7-14.3
-Samford,18.3-13.7
+San Diego,12.1-20.9
+Fairfield,20.4-12.6
 Youngstown St,15-17
-San Diego,11.2-20.8
+Samford,18.3-13.7
+GA Southern,18.3-15.7
 Harvard,16.4-11.6
-Alabama A&M,17.7-13.3
-GA Southern,17.2-15.8
+Cal Poly,13.8-18.2
+UC Riverside,10-22
 South Dakota,16.6-15.4
+Indiana St,11-21
+Alabama A&M,17-14
 Purdue FW,17-15
-Cal Poly,13.9-18.1
-Howard,20.7-10.3
-Indiana St,11.3-20.7
-Rice,12.8-18.2
-Lindenwood,18.5-14.5
+SE Missouri,20.6-12.4
+Howard,21-10
 Lamar,12-19
-SE Missouri,19.5-12.5
-UC Riverside,10.1-21.9
+Rice,12.8-18.2
+Lindenwood,18-15
 Milwaukee,12-20
 W Carolina,14.2-15.8
 W Michigan,10.1-20.9
+Pepperdine,9-23
 Nicholls,13.7-18.3
 Old Dominion,12-21
 Denver,15.6-16.4
-Pepperdine,9.2-22.8
 Dartmouth,11.5-15.5
 SIUE,19-13
 Detroit Mercy,16.2-14.8
+East Carolina,11.1-19.9
 Omaha,15.4-16.6
+Long Beach St,9.1-22.9
+UTEP,11.4-19.6
 Radford,16.5-15.5
 Incarnate Word,12-19
-East Carolina,11.1-19.9
 E Washington,13.3-18.7
-Longwood,16.3-15.7
+Southern,15-16
 Princeton,9-20
+Longwood,16.3-15.7
 West Georgia,15.3-16.7
 Bellarmine,13.3-18.7
-Long Beach St,9.2-22.8
 Charleston So,15.1-16.9
-Grambling,12.6-18.4
-Morehead St,19.3-12.7
+Morehead St,19.4-12.6
+Grambling,13-18
 C Connecticut,18-12
-Southern,14.3-16.7
 Presbyterian,14.5-17.5
 C Michigan,10.6-20.4
-UTEP,10.6-20.4
 Northeastern,6.5-23.5
 NC A&T,11.5-18.5
-Sacred Heart,13-18
+Sacred Heart,14.2-18.8
 E Kentucky,11-21
 UNC Greensboro,13.8-18.2
 Jacksonville,12-20
 E Texas A&M,11-21
 Hampton,13.2-18.8
-NJIT,15.9-16.1
-Sacramento St,10.2-20.8
-AR-Pine Bluff,12.7-18.3
-North Dakota,16.4-16.6
-SC Upstate,13-19
-Evansville,7.1-24.9
+Evansville,7-25
 Southern Utah,10.1-20.9
+NJIT,15.9-16.1
+Delaware,10.4-20.6
+Sacramento St,10.2-20.8
+North Dakota,16.4-16.6
+AR-Pine Bluff,13-18
+SC Upstate,13-19
 Stetson,12.2-20.8
 Mercyhurst,16.8-16.2
-Delaware,9.5-21.5
+Florida A&M,14-15
 Chattanooga,13.7-18.3
 N Arizona,10.2-21.8
 Mount St Marys,15.2-16.8
-Florida A&M,13.3-15.7
-Boston U,15.3-16.7
-Manhattan,12.3-19.7
+Manhattan,12-20
+Boston U,16.1-16.9
 Le Moyne,15-17
 Tennessee Tech,13-18
+Bucknell,10-23
+E Illinois,13-20
 Loyola Chicago,7-24
 Hou Christian,12.2-19.8
-E Illinois,13.1-19.9
-Bucknell,10.1-22.9
-Lehigh,15.6-16.4
 Air Force,3-28
+Prairie View,14-17
 N'Western St,10.3-21.7
 Cleveland St,11-22
-Canisius,10-21
 SE Louisiana,9-22
+Canisius,10-21
+Bakersfield,8.2-23.8
 Georgia St,10-22
-Prairie View,13.4-17.6
-Bakersfield,8.4-23.6
+Lehigh,16.2-16.8
 Little Rock,12-20
 N Illinois,9-21
 UTSA,5.2-24.8
+Oral Roberts,10-23
+Alabama St,10-21
 Louisiana,11-22
-Jackson St,11-20
-Alabama St,10.4-20.6
+Holy Cross,11-22
 UMass Lowell,14.6-17.4
-Holy Cross,11.4-21.6
-Norfolk St,15.3-15.7
-Oral Roberts,10.1-22.9
-Brown,9.1-17.9
+Norfolk St,15-16
 New Haven,14-17
-Texas Southern,12.6-16.4
+Brown,9.1-17.9
+Jackson St,11-20
+Texas Southern,12-17
 Ball State,11.4-19.6
 North Alabama,9-21
 UAlbany,11.4-20.6
 Lafayette,11-21
 Army,11-21
 Wagner,14.1-16.9
-Loyola MD,12.1-19.9
+Loyola MD,12-20
 The Citadel,10.3-21.7
-Alcorn St,8.3-21.7
-NC Central,12-16
+Alcorn St,8-22
 Bryant,9.1-21.9
 IU Indy,7-25
 New Hampshire,9.1-20.9
+NC Central,12-17
 North Florida,7-25
 FDU,11-21
 Niagara,8-22
-Morgan St,13.8-15.2
-MD Eastern,9.9-21.1
+Morgan St,14-15
 VMI,6.2-25.8
+MD Eastern,9-22
 Stonehill,12.2-20.8
 So Indiana,7-23
 Maine,8.1-23.9
@@ -358,26 +358,26 @@ Bryan (TN),0-4
 N Greenville,1-1
 Fisk,0-4
 KCU,0-4
+SC State,9-21
 Hawaii Pac,1-1
-SC State,8-21
 Rider,4-25
 Lincoln U (CA),0-5
 Midway,0-4
 UL Monroe,4-28
+Coppin St,7-24
 Binghamton,8-23
-Coppin St,7.2-23.8
 Bethesda,0-7
 Kansas City,4-27
 W Illinois,5-26
 Gardner-Webb,4-29
+Delaware St,7-22
 Nobel,0-7
-Delaware St,6.1-22.9
 Champ Chrstn,0-6
 Penn State-She,0-4
 Westminster UT,0-2
 WILMNGTNDE,1-0
-LaGrange,0-2
 Milligan,0-2
+LaGrange,0-2
 Ecclesia,0-5
 Tusculum,0-2
 Georgian Court,0-2
@@ -387,45 +387,45 @@ Chaminade,0-3
 Averett,0-2
 Ohio Weslyan,0-2
 Cent St OH,0-2
-Pfeiffer,0-2
 Mount Marty,0-2
+Pfeiffer,0-2
 UC Santa Cruz,0-2
 Tougaloo,0-2
 St Mary's (MD),0-2
-Life Pacific,0-2
 IU East,0-2
+Life Pacific,0-2
 Illinois Tech,0-2
 Evergreen,0-2
 Mid Atl Chrstn,0-6
 Mary Baldwin,0-2
-Elizabeth City,0-2
 Columbia (SC),0-2
-CO Christian,0-2
 City (NY),0-2
-Howard Payne,0-2
+CO Christian,0-2
+Elizabeth City,0-2
 Blue Mountain,0-2
+Howard Payne,0-2
 Webster,0-2
 Rhodes,0-2
 Columbia Int'l,0-2
 Bethany (WV),0-2
-Reinhardt,0-2
 Siena Heights,0-2
-Eastern Oregon,0-2
+Reinhardt,0-2
 Dominican CA,0-2
+Eastern Oregon,0-2
 S Virginia,0-2
 Montana Tech,1-0
 Texas A&M-SA,0-2
-Jarvis Chrstn,0-2
 NW Indian,0-3
+Jarvis Chrstn,0-2
 Defiance,0-2
 Dakota St,0-3
 William Carey,0-2
 Stanton,0-2
 Whittier,0-2
+Dallas,0-2
 Eureka,0-2
 Coastal GA,0-3
 Wash Adventist,0-2
-Dallas,0-2
 TN Wesleyan,0-2
 Notre Dame MD,0-3
 Union (KY),0-2
@@ -433,39 +433,39 @@ San Fran St,0-2
 Bethel (TN),0-2
 SW Adventist,0-3
 Dominican IL,0-2
+SUNY-Oneonta,0-2
 SUNY-Maritime,0-2
 Haskell,0-2
-SUNY-Oneonta,0-2
-Regent,0-2
-Bob Jones,0-3
 La Sierra,0-3
+Bob Jones,0-3
+Regent,0-2
 Texas Lutheran,0-2
 Calumet,0-2
 Huston Till,0-2
 Justice,0-3
 West Coast,0-3
 Biblical Stud,0-9
-Oakwood,0-3
 PSU Brandywine,0-2
 Dall Christian,0-3
+Oakwood,0-3
 Arlington Bapt,0-3
 Ft Lauderdale,0-3
 Wash Coll (MD),0-2
 Cleary,0-3
 Elms,0-2
-Carolina U,0-3
-PSU Abington,0-2
 Brewton Parker,0-2
+PSU Abington,0-2
+Carolina U,0-3
 Oakland City,0-2
 Johnson Wales,0-2
 Erskine,0-2
 Saint Xavier,0-2
+Miss Valley St,3-29
 Manor,0-2
 New College FL,0-2
 Worcester St,0-2
-Toccoa Falls,0-4
 S Wesleyan,0-3
-Miss Valley St,3-29
+Toccoa Falls,0-4
 SW Christian U,0-3
 RIT,0-2
 East-West,0-3
@@ -477,8 +477,8 @@ Trinity Co Jax,0-3
 VA Lynchburg,0-10
 Ark Baptist,0-3
 Virginia St,1-0
-Central Penn,0-3
 Cheyney (PA),0-2
+Central Penn,0-3
 Trinity (IL),0-1
 Humboldt,0-1
 Millsaps,0-1
@@ -492,13 +492,13 @@ Principia,0-1
 Catawba,0-1
 Jamestown,0-1
 Capital,0-1
-La Verne,0-1
-Lawrence,0-1
 Mnhttn Chrstn,0-1
+Lawrence,0-1
+La Verne,0-1
 UC Merced,0-1
-Molloy,0-1
-FL Memorial,0-1
 Rosemont,0-1
+FL Memorial,0-1
+Molloy,0-1
 Concord,0-1
 Adams St,0-1
 GA College,0-1
@@ -506,184 +506,184 @@ Bloomfield,0-1
 Northrn St,0-1
 Shaw,0-1
 Brandeis,0-1
-Rockford,0-1
 Scholastic,0-1
-Western NE,0-1
-Ohio Christian,0-1
+Rockford,0-1
 N Central,0-1
+Western NE,0-1
 Bowie State,0-1
+Ohio Christian,0-1
 Cmbrlnd KY,0-1
 Farmingdale St,0-1
 Converse,0-1
-Christian Bros,0-1
 Minn Crook,0-1
+Christian Bros,0-1
 Old Westbury,0-1
 DeSales,0-1
 Schreiner,0-1
 Northwest U,0-1
+Colorado Coll,0-1
 LeTourneau,0-1
 Centenary (NJ),0-1
-Colorado Coll,0-1
-MD West St,0-1
 Arcadia,0-1
 Vassar,0-1
+MD West St,0-1
 St Mary's,0-1
-Pit Greensburg,0-1
 Park U Gilbert,0-1
+Pit Greensburg,0-1
 Lynchburg,0-1
-Mobile,0-1
 Menlo,0-1
-Angelo State,0-1
+Mobile,0-1
 Kansas Chrstn,0-1
+Angelo State,0-1
 Geneva,0-1
 Doane,0-1
 Rutgers-Camden,0-1
 S Arkansas,0-1
 Manhatnvll,0-1
+MO So St,0-1
 CINCYCLER,0-1
+Ripon,0-1
 Wash and Lee,0-1
 Redlands,0-1
-Ripon,0-1
-MO So St,0-1
 PSU York,0-1
 Franklin,0-1
-Clinton,0-1
 WVU Tech,0-1
-George Fox,0-1
+Clinton,0-1
 Dist Columbia,0-1
-Lourdes,0-1
 Hawai'i Hilo,0-1
-N Central (IL),0-1
-Spring Hill,0-1
+George Fox,0-1
 Cumberland,0-1
-AU Montgomery,0-1
+Lourdes,0-1
+N Central (IL),0-1
 Pacific Union,0-1
+Spring Hill,0-1
 UNT Dallas,0-1
 Baptist (Fl),0-1
+AU Montgomery,0-1
 Paine,0-1
-Wilms Baptist,0-1
 Puget Sound,0-1
-Mt Saint Mary,0-1
 Piedmont,0-1
+Wilms Baptist,0-1
+Mt Saint Mary,0-1
+PSU Hazleton,0-1
 Missouri Bapt,0-1
 Wilson,0-1
-PSU Hazleton,0-1
-Marywood,0-1
 Mid Am Chr,0-1
+Marywood,0-1
 Shenandoah,0-1
-Arkansas Tech,0-1
 Trinity Tx,0-1
 Rowan,0-1
+Arkansas Tech,0-1
+Northeastern St,0-1
 Aquinas,0-1
 Saint Leo,0-1
 Rob. Wesleyan,0-1
-Northeastern St,0-1
-Campbellsville,0-1
-FL National,0-1
 Maine-Augusta,0-1
+FL National,0-1
 Oglethorpe,0-1
 Whitman,0-1
-Point,0-1
-Lane,0-1
-Pensacola Chrs,0-1
-Ottawa (AZ),0-1
+Campbellsville,0-1
 Simpson,0-1
+Pensacola Chrs,0-1
+Lane,0-1
+Ottawa (AZ),0-1
 Alice Lloyd,0-1
+Point,0-1
 Belmont Abbey,0-1
-SLCP,0-1
 Johnson C Smth,0-1
-Culver Stock,0-1
-Concordia (NE),0-1
-McKendree,0-1
+SLCP,0-1
 SUNY Canton,0-1
+Concordia (NE),0-1
 Holy Cross Col,0-1
+Culver Stock,0-1
+McKendree,0-1
 Miami Hamilton,0-1
 Fresno Pacific,0-1
-McMurry,0-1
+Willamette,0-1
 Plattsburgh,0-1
 Regis U,0-1
 St. Francis IL,0-1
-Willamette,0-1
+McMurry,0-1
 Morris,0-1
 Crown,0-1
 MIT,0-1
-Cameron,0-1
 Warner Pac,0-1
-Peru State,0-1
 Bryant Str OH,0-1
+Cameron,0-1
+Peru State,0-1
 Sarah Lawrence,0-1
 UC Col Springs,0-1
-Bloomsburg,0-1
-Tiffin,0-1
-Jessup,0-1
 Albany St,0-1
+Bloomsburg,0-1
+Jessup,0-1
+Tiffin,0-1
 Lyon,0-1
 AK-Anchorage,0-1
 Northern NM,0-1
 PSU Behrend,0-1
 William Peace,0-1
-EMERSON,0-1
-Bluefield,0-1
-Boyce,0-1
 St John Fisher,0-1
+EMERSON,0-1
+Boyce,0-1
+Bluefield,0-1
 SalishKootenai,0-1
 Lewis & Clark,0-1
-Sci & Arts OK,0-1
-Harris Stowe,0-1
-Berea,0-1
 NW Okla St,0-1
-Caldwell,0-1
+Sci & Arts OK,0-1
+Berea,0-1
+Harris Stowe,0-1
 Centenary (LA),0-1
-Dkta Wesleyan,0-1
-Simpson (CA),0-1
+Caldwell,0-1
 W Montana,0-1
+Simpson (CA),0-1
 Truett McCnnll,0-1
-Voorhees,0-1
+Dkta Wesleyan,0-1
+Kean,0-1
 Widener,0-1
+Voorhees,0-1
 Apprentice,0-1
 Pacif. Lutheran,0-1
 Warren Wilson,0-1
-Kean,0-1
 Hunting AL,0-1
-Bluefield St,0-1
 St Joseph's LI,0-1
 Alfred St,0-1
 Hanover,0-1
 Ozark Chrstn,0-1
 Olivet,0-1
+Bluefield St,0-1
+Buena Vista,0-1
 Lady of Lake,0-1
 Thiel,0-1
-Buena Vista,0-1
 UMass Boston,0-1
 Caltech,0-1
 Greensboro,0-1
 WV Wesleyan,0-1
 Occidental,0-1
-York (NE),0-1
 Lncstr Bible,0-1
+York (NE),0-1
 Fisher,0-1
 Randolph,0-1
 Embry Rid (AZ),0-1
 Bryant Str-Alb,0-1
 LA Christian,0-1
-Salve Regina,0-1
 UTPermianBasin,0-1
+Salve Regina,0-1
 Mitchell,0-1
 John Jay,0-1
-Regis College,0-1
-Mayville St,0-1
 Paul Quinn,0-1
+Mayville St,0-1
+Regis College,0-1
 PSU New Kens,0-1
-John Brown,0-1
 Southwest,0-1
+John Brown,0-1
 SUNY Coble,0-1
-Blackburn,0-1
 Valley Forge,0-1
 Western NM,0-1
-Fort Valley St,0-1
-Rivier,0-1
+Blackburn,0-1
 Merch Marn,0-1
+Rivier,0-1
 Lehman,0-1
+Fort Valley St,0-1
 VT-Lyndon,0-1
 Allegheny,0-1
 Houghton,0-1
@@ -693,14 +693,14 @@ Mercy,0-1
 Emmanuel (MA),0-1
 Trinity (FL),0-1
 Gallaudet,0-1
-UT Southern,0-1
 Adrian,0-1
+UT Southern,0-1
 St Joseph BKN,0-1
 Franciscan,0-1
 SUNY Delhi,0-1
 Paul Smith's,0-1
-Dicknsn PA,0-1
 Waynesburg,0-1
+Dicknsn PA,0-1
 St Elizabeth,0-1
 ME Fort Kent,0-1
 Earlham,0-1
@@ -718,11 +718,11 @@ THMAS,0-1
 J&W (NC),0-1
 Kentucky St,0-1
 McPherson,0-1
-St. Ambrose,0-1
 Eastern,0-1
+St. Ambrose,0-1
 Elmira,0-1
-Spurgeon,0-1
 Holy Family,0-1
+Spurgeon,0-1
 Rust,0-1
 Han LaGrange,0-1
 Miss for Women,0-1
