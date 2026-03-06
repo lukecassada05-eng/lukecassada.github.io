@@ -161,9 +161,9 @@ Georgia Tech,11-20
 Tulane,17.8-13.2
 Temple,15.7-15.3
 Robert Morris,22.8-10.2
-Iona,18.8-13.2
 Tarleton St,14.5-16.5
 South Alabama,21.6-10.4
+Iona,18-13
 Portland,13.8-18.2
 N Colorado,20.6-11.4
 Towson,17.8-14.2
@@ -179,7 +179,7 @@ Columbia,16.6-11.4
 Boston College,10.2-20.8
 UT Martin,21.9-10.1
 Long Island,22.9-10.1
-S Illinois,16.5-15.5
+S Illinois,16-15
 Furman,19.7-12.3
 Marist,18.4-11.6
 Lipscomb,19.6-12.4
@@ -188,7 +188,7 @@ UIC,17.2-14.8
 Utah Tech,18.2-13.8
 UT Rio Grande,18.6-13.4
 Campbell,14.6-17.4
-Drake,12.5-19.5
+Drake,12-19
 CSU Northridge,19.4-12.6
 FIU,14.8-16.2
 Idaho,17.8-14.2
@@ -216,8 +216,8 @@ Colgate,17.9-14.1
 Green Bay,18.4-14.6
 Idaho St,12.8-19.2
 Saint Peter's,17.5-11.5
-Southern Miss,16.5-15.5
-James Madison,18.5-14.5
+Southern Miss,16-15
+James Madison,18-14
 American,16.7-15.3
 Bethune,17.7-13.3
 Tennessee St,21.4-9.6
@@ -280,11 +280,11 @@ C Michigan,10.6-20.4
 UTEP,10.6-20.4
 Northeastern,6.5-23.5
 NC A&T,11.5-18.5
+Sacred Heart,13-18
 E Kentucky,11-21
 UNC Greensboro,13.8-18.2
 Jacksonville,12-20
 E Texas A&M,11-21
-Sacred Heart,13.2-18.8
 Hampton,13.2-18.8
 NJIT,15.9-16.1
 Sacramento St,10.2-20.8
@@ -337,9 +337,9 @@ Lafayette,11-21
 Army,11-21
 Wagner,14.1-16.9
 Loyola MD,12.1-19.9
-NC Central,12.8-16.2
 The Citadel,10.3-21.7
 Alcorn St,8.3-21.7
+NC Central,12-16
 Bryant,9.1-21.9
 IU Indy,7-25
 New Hampshire,9.1-20.9
@@ -359,7 +359,7 @@ N Greenville,1-1
 Fisk,0-4
 KCU,0-4
 Hawaii Pac,1-1
-SC State,8.2-21.8
+SC State,8-21
 Rider,4-25
 Lincoln U (CA),0-5
 Midway,0-4
