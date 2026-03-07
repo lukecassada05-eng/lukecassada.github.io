@@ -1,15 +1,15 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Saint Louis,2273.7,27-3,Santa Clara,2170.1
-2,VCU,2090.6,23-7,Virginia Tech,2079.5
-3,Dayton,1949.2,21-9,Saint Louis,2273.7
-4,George Mason,1947.9,22-8,VCU,2090.6
-5,G Washington,1832.8,17-13,George Mason,1947.9
-6,Davidson,1806.8,18-12,G Washington,1832.8
-7,Richmond,1749.5,15-15,Belmont,1995.4
-8,St Bonaventure,1748.1,15-15,FAU,1789.9
-9,Rhode Island,1716.7,16-14,Saint Louis,2273.7
-10,Saint Joseph's,1688.5,20-10,Dayton,1949.2
-11,Duquesne,1663.4,16-14,George Mason,1947.9
-12,Fordham,1494.3,16-14,G Washington,1832.8
-13,La Salle,1456.3,9-21,Dayton,1949.2
-14,Loyola Chicago,1234.6,7-23,Santa Clara,2170.1
+1,Saint Louis,2274.4,27-3,Santa Clara,2170.2
+2,VCU,2095.2,24-7,Virginia Tech,2080.6
+3,George Mason,1948.3,22-8,VCU,2095.2
+4,Dayton,1945.4,21-10,Saint Louis,2274.4
+5,G Washington,1832.1,17-13,George Mason,1948.3
+6,Davidson,1806.2,18-12,G Washington,1832.1
+7,Richmond,1748.5,15-15,Belmont,1966.4
+8,St Bonaventure,1747.6,15-15,FAU,1789.6
+9,Rhode Island,1716.4,16-14,Saint Louis,2274.4
+10,Saint Joseph's,1688.8,20-10,George Mason,1948.3
+11,Duquesne,1663.2,16-14,George Mason,1948.3
+12,Fordham,1494.2,16-14,G Washington,1832.1
+13,La Salle,1457,9-21,Dayton,1945.4
+14,Loyola Chicago,1232.4,7-23,Santa Clara,2170.2
