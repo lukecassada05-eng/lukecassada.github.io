@@ -2,66 +2,29 @@ team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
 Gonzaga,TBD,0.996,0.004,27.8
 Miami OH,UMass,0.988,0.012,22.1
 Saint Mary's,TBD,0.988,0.012,21.7
-Nevada,Air Force,0.988,0.012,22
 Grambling,Miss Valley St,0.984,0.016,20.3
 Santa Clara,TBD,0.979,0.021,19.1
-Hawai’i,Long Beach St,0.94,0.06,13.7
-UAB,East Carolina,0.932,0.068,13
 McNeese,TBD,0.928,0.072,12.7
-South Florida,Charlotte,0.916,0.084,11.9
 SF Austin,TBD,0.915,0.085,11.8
-Tulsa,Temple,0.915,0.085,11.8
-Navy,Boston U,0.903,0.097,11.1
-St Thomas (MN),North Dakota,0.901,0.099,11
-Michigan,Michigan St,0.883,0.117,10
-UNC Wilmington,TBD,0.871,0.129,9.5
-N Dakota St,Omaha,0.858,0.142,8.9
-Nebraska,Iowa,0.848,0.152,8.5
-Grand Canyon,Fresno St,0.826,0.174,7.7
-Siena,Mount St Marys,0.809,0.191,7.2
 Morgan St,Delaware St,0.808,0.192,7.1
-New Orleans,Hou Christian,0.808,0.192,7.1
-Cal Poly,Bakersfield,0.804,0.196,7
-Rice,UTSA,0.803,0.197,7
 Robert Morris,Detroit Mercy,0.8,0.2,6.9
-Mercer,W Carolina,0.797,0.203,6.8
 Norfolk St,SC State,0.795,0.205,6.7
 Hofstra,TBD,0.794,0.206,6.7
-Idaho,Sacramento St,0.788,0.212,6.5
-Texas,Oklahoma,0.784,0.216,6.4
-William & Mary,Elon,0.781,0.219,6.3
-San Francisco,Portland,0.758,0.242,5.7
-Idaho St,N Arizona,0.756,0.244,5.6
-Alabama,Auburn,0.755,0.245,5.6
 Marshall,TBD,0.744,0.256,5.3
 Nicholls,N'Western St,0.698,0.302,4.2
-Tennessee St,Morehead St,0.686,0.314,3.9
-Troy,TBD,0.677,0.323,3.7
-BYU,Texas Tech,0.669,0.331,3.5
 Wright St,TBD,0.667,0.333,3.4
-Charleston,TBD,0.664,0.336,3.4
-Portland St,TBD,0.661,0.339,3.3
 Oregon St,TBD,0.652,0.348,3.1
 Alabama St,Alcorn St,0.635,0.365,2.7
 Montana St,TBD,0.62,0.38,2.4
-CSU Northridge,Fullerton,0.607,0.393,2.2
 TBD,Fairfield,0.596,0.404,1.9
-Georgetown,Providence,0.593,0.407,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
-UC Irvine,UC Davis,0.592,0.408,1.8
-Coastal,GA Southern,0.591,0.409,1.8
-Austin Peay,Queens,0.588,0.412,1.8
-Rutgers,Penn State,0.578,0.422,1.6
 Southern,AR-Pine Bluff,0.567,0.433,1.3
-USC,UCLA,0.565,0.435,1.3
-Minnesota,Northwestern,0.565,0.435,1.3
 NC Central,MD Eastern,0.56,0.44,1.2
 UT Rio Grande,TBD,0.556,0.444,1.1
-Merrimack,TBD,0.516,0.484,0.3
 Texas A&M-CC,TBD,0.51,0.49,0.2
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
@@ -216,28 +179,11 @@ TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
 Bethune,TBD,0.422,0.578,-1.6
-Monmouth,TBD,0.416,0.584,-1.7
-Tulane,Memphis,0.404,0.596,-1.9
-Green Bay,N Kentucky,0.398,0.602,-2
 Montana,N Colorado,0.394,0.606,-2.1
-Oregon,Washington,0.362,0.638,-2.8
-Santa Barbara,UC San Diego,0.36,0.64,-2.9
-Pacific,Seattle U,0.347,0.653,-3.1
 Howard,TBD,0.341,0.659,-3.3
-Abilene Chrstn,UT Arlington,0.313,0.687,-3.9
 E Washington,Weber St,0.298,0.702,-4.3
-Lehigh,Colgate,0.243,0.757,-5.6
-Utah Tech,Utah Valley,0.243,0.757,-5.6
 Texas Southern,Alabama A&M,0.21,0.79,-6.6
 Florida A&M,TBD,0.205,0.795,-6.7
 Prairie View,TBD,0.153,0.847,-8.5
 Jackson St,TBD,0.129,0.871,-9.5
-Southern Utah,CA Baptist,0.078,0.922,-12.3
-Maryland,Illinois,0.032,0.968,-16.9
-Colorado,Arizona,0.031,0.969,-17.1
