@@ -3,7 +3,7 @@ Duke,28-2
 Michigan,28-2
 Arizona,28-2
 UConn,27-3
-Gonzaga,29-3
+Gonzaga,28-3
 Houston,25-5
 Michigan St,25-5
 Iowa State,24-6
@@ -17,10 +17,10 @@ Alabama,22-8
 BYU,20-10
 Virginia,26-4
 Arkansas,22-8
-Saint Mary's,28-4
 Saint Louis,27-3
 Kansas,21-9
 Tennessee,21-9
+Saint Mary's,27-4
 Texas Tech,22-8
 North Carolina,24-6
 Villanova,23-7
@@ -74,10 +74,10 @@ Wake Forest,15-15
 Butler,15-15
 Creighton,15-16
 Colorado St,20-10
-SF Austin,27.9-4.1
 Nevada,19-11
 Xavier,14-16
 Akron,26-5
+SF Austin,27-4
 Notre Dame,13-17
 Yale,22-5
 Kansas St,12-18
@@ -158,9 +158,9 @@ Wright St,21-11
 Charleston,21-10
 Mercer,19-12
 Portland St,19-10
-Robert Morris,22.8-10.2
 Oregon St,16-15
 Tulane,17-13
+Robert Morris,22-10
 Tarleton St,14-17
 Portland,15-18
 N Colorado,20-11
@@ -187,7 +187,7 @@ Utah Tech,18-13
 Drake,14-19
 N Kentucky,19-13
 Lipscomb,19-13
-UT Rio Grande,18.6-13.4
+UT Rio Grande,18-13
 FIU,14-16
 Ohio,15-16
 Campbell,14-17
@@ -204,10 +204,10 @@ Texas A&M-CC,17-14
 Wofford,19-12
 Elon,14-17
 Fordham,16-14
-Weber St,16.7-15.3
 C Arkansas,21-11
 Coastal,19-12
 Jax State,14-16
+Weber St,16-15
 App State,19-12
 New Orleans,14-17
 Green Bay,18-14
@@ -255,28 +255,28 @@ Rice,12-18
 W Michigan,10-21
 Pepperdine,9-23
 Old Dominion,12-21
+Detroit Mercy,16-14
 Dartmouth,11-15
 East Carolina,11-19
 Nicholls,13-18
-Detroit Mercy,16.2-14.8
 SIUE,19-13
 Denver,15-17
 Long Beach St,9-22
 Omaha,16-16
 Princeton,9-19
 UTEP,11-19
+E Washington,13-18
 West Georgia,15-17
 Charleston So,15-17
-Grambling,14-18
 Incarnate Word,12-19
 Southern,15.6-16.4
-E Washington,13.3-18.7
 Morehead St,20-12
 Bellarmine,13-19
 Longwood,16-16
 Radford,16-16
 C Connecticut,18-12
 Presbyterian,15-17
+Grambling,13-18
 Northeastern,7-23
 Sacred Heart,14-19
 Southern Utah,10-20
@@ -315,11 +315,11 @@ Lehigh,16-16
 N Illinois,9-21
 SE Louisiana,9-22
 Cleveland St,11-22
+Prairie View,14-17
 Georgia St,10-22
 Canisius,10-21
 UTSA,5-24
 Little Rock,12-20
-Prairie View,14.2-17.8
 Norfolk St,15.8-16.2
 Oral Roberts,10-23
 Holy Cross,11-22
@@ -461,11 +461,11 @@ Erskine,0-2
 Johnson Wales,0-2
 Saint Xavier,0-2
 Manor,0-2
+Miss Valley St,3-29
 New College FL,0-2
 Worcester St,0-2
 S Wesleyan,0-3
 Toccoa Falls,0-4
-Miss Valley St,3-30
 SW Christian U,0-3
 RIT,0-2
 East-West,0-3
