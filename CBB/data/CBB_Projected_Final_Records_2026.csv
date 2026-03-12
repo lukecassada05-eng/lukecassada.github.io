@@ -66,9 +66,9 @@ Belmont,26-6
 Washington,15-15
 Boise St,19-11
 Syracuse,15-15
-McNeese,26.9-5.1
 George Mason,22-8
 Dayton,21-10
+McNeese,26-5
 South Florida,22-8
 Wake Forest,15-15
 Butler,15-15
@@ -228,7 +228,7 @@ Cornell,14-12
 UNC Asheville,15-16
 Louisiana Tech,17-13
 E Michigan,10-21
-Bethune,17.4-14.6
+Bethune,17-14
 Monmouth,17-14
 San Diego,12-21
 Drexel,16-15
@@ -329,7 +329,7 @@ Brown,9-18
 UMass Lowell,14-17
 New Haven,14-17
 Ball State,12-19
-Jackson St,11.1-20.9
+Jackson St,11-20
 North Alabama,9-21
 Texas Southern,12.2-17.8
 UAlbany,11-20
@@ -346,8 +346,8 @@ NC Central,12.6-17.4
 North Florida,7-25
 FDU,11-21
 Niagara,8-22
-Morgan St,14.8-15.2
 VMI,6-26
+Morgan St,14-15
 MD Eastern,9.4-22.6
 Stonehill,12-20
 Maine,8-23
@@ -370,7 +370,7 @@ Bethesda,0-7
 Kansas City,4-27
 W Illinois,5-26
 Gardner-Webb,4-29
-Delaware St,7.2-22.8
+Delaware St,7-22
 Nobel,0-7
 Champ Chrstn,0-6
 Penn State-She,0-4
