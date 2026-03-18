@@ -31,8 +31,6 @@ Louisville,South Florida,0.832,0.168,7.9
 Saint Mary's,Texas A&M,0.759,0.241,5.7
 Seattle U,St Thomas (MN),0.748,0.252,5.4
 Nevada,Murray St,0.74,0.26,5.2
-George Mason,Liberty,0.708,0.292,4.4
-Yale,UNC Wilmington,0.702,0.298,4.2
 Miami,Missouri,0.696,0.304,4.1
 North Carolina,VCU,0.695,0.305,4.1
 Tulsa,SF Austin,0.684,0.316,3.8
@@ -47,9 +45,10 @@ TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
+TBD,TBD,0.592,0.408,1.9
 Utah Valley,G Washington,0.582,0.418,1.6
 Illinois St,Kent State,0.549,0.451,1
-Wichita St,Wyoming,0.546,0.454,0.9
 NC State,Texas,0.536,0.464,0.7
 Ohio State,TCU,0.511,0.489,0.2
 TBD,TBD,0.5,0.5,0
@@ -73,6 +72,5 @@ Kentucky,Santa Clara,0.462,0.538,-0.7
 Clemson,Iowa,0.459,0.541,-0.8
 Georgia,Saint Louis,0.453,0.547,-0.9
 SMU,Miami OH,0.413,0.587,-1.7
-Howard,UMBC,0.401,0.599,-2
 UCLA,UCF,0.382,0.618,-2.4
 Bradley,Dayton,0.197,0.803,-7
