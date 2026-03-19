@@ -17,7 +17,6 @@ Alabama,Hofstra,0.966,0.034,16.5
 Arkansas,Hawai'i,0.962,0.038,16
 California,UIC,0.95,0.05,14.6
 Kansas,CA Baptist,0.936,0.064,13.3
-Wake Forest,Navy,0.933,0.067,13
 St John's,Northern Iowa,0.925,0.075,12.4
 Vanderbilt,McNeese,0.924,0.076,12.4
 New Mexico,Sam Houston,0.902,0.098,11
@@ -31,6 +30,7 @@ Nevada,Murray St,0.741,0.259,5.2
 North Carolina,VCU,0.698,0.302,4.1
 Miami,Missouri,0.692,0.308,4
 Villanova,Utah State,0.641,0.359,2.9
+TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
@@ -61,7 +61,10 @@ TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
-Lehigh,Prairie View,0.493,0.507,-0.1
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
 Kentucky,Santa Clara,0.465,0.535,-0.7
 Georgia,Saint Louis,0.465,0.535,-0.7
 Clemson,Iowa,0.458,0.542,-0.8
