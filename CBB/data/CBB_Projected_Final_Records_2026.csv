@@ -1,30 +1,30 @@
 team,proj_record
-Duke,33-2
+Duke,32-2
 Arizona,33-2
-Michigan,32-3
+Michigan,31-3
 UConn,30-5
 Gonzaga,31-3
 Houston,29-6
 Purdue,28-8
 Iowa State,28-7
-Michigan St,26-7
 Florida,27-7
-Nebraska,27-6
-Vanderbilt,26.9-8.1
+Michigan St,25-7
+Nebraska,26-6
+Vanderbilt,26-8
 Illinois,25-8
 Virginia,30-5
 Alabama,24-9
-BYU,23.8-11.2
-Arkansas,27-8
+BYU,23-11
+Arkansas,26-8
 Kansas,23.9-10.1
 Tennessee,22.5-11.5
 St John's,28.9-6.1
 Texas Tech,22.9-10.1
 Miami OH,32.5-1.5
-Saint Mary's,27.8-5.2
-North Carolina,24.7-8.3
-Louisville,23.8-10.2
+Saint Mary's,27-5
 Villanova,24.6-8.4
+North Carolina,24-8
+Louisville,23-10
 Saint Louis,28.5-5.5
 UCF,21.6-11.4
 Auburn,18-16
@@ -32,26 +32,26 @@ Georgia,22.5-10.5
 Iowa,21.5-12.5
 Santa Clara,26.5-8.5
 Miami,25.7-8.3
-Wisconsin,24.9-10.1
-Ohio State,21.5-12.5
+Ohio State,21-12
 Kentucky,21.5-13.5
 Clemson,24.5-10.5
-TCU,22.5-11.5
+Wisconsin,24-10
+TCU,22-11
 NC State,20-14
 SMU,20-14
 Utah State,28.4-6.6
 Oklahoma St,20-14
-Texas,19.2-14.8
+Texas,19-14
 UCLA,23.4-11.6
 Seton Hall,21-12
-VCU,27.3-7.7
+VCU,27-7
 Virginia Tech,19-13
 New Mexico,24-10
 Baylor,16.8-16.2
 San Diego St,22-11
 USC,18-14
+Texas A&M,21-11
 West Virginia,18.6-14.4
-Texas A&M,21.2-11.8
 Colorado,17.6-15.4
 Cincinnati,18-15
 California,22-11
@@ -63,12 +63,12 @@ LSU,15-17
 Oklahoma,19.4-15.6
 Tulsa,27-7
 Belmont,26-6
+McNeese,28-5
 Washington,16-17
 Boise St,20-12
+South Florida,25-8
 Wake Forest,18-16
 Dayton,24-11
-South Florida,25.2-8.8
-McNeese,28.1-5.9
 George Mason,23-10
 Syracuse,15-17
 Butler,16-16
@@ -106,17 +106,17 @@ San Francisco,17-16
 DePaul,16-16
 CA Baptist,25.1-8.9
 FAU,18-15
+High Point,30-4
 Kent State,24-10
-High Point,30.1-4.9
 Maryland,12-21
 Illinois St,21-12
+Hawai'i,24-8
 St Bonaventure,17-17
 UAB,20-12
 Pitt,13-20
 Memphis,13-19
 Utah,10-22
 Hofstra,24-11
-Hawai'i,24-9
 Sam Houston,22-12
 Richmond,15-17
 Marquette,12-20
@@ -137,6 +137,7 @@ LMU,15-17
 St Thomas (MN),24-10
 UT Arlington,18-14
 ETSU,23-11
+N Dakota St,27-7
 Winthrop,23-11
 Santa Barbara,18-14
 Bowling Green,18-14
@@ -144,16 +145,15 @@ Fresno St,13-19
 MTSU,17-15
 Quinnipiac,19-13
 Western KY,18-14
-N Dakota St,27-8
 Bradley,21-13
 Toledo,19-15
 Buffalo,17-15
 New Mexico St,16-16
 Washington St,12-20
+Troy,22-11
 Penn,18-12
 Georgia Tech,11-20
 Temple,16-16
-Troy,22-12
 Portland St,20-11
 Oregon St,17-16
 Charleston,21-11
@@ -193,6 +193,7 @@ UT Rio Grande,19-14
 Ohio,15-17
 San José St,9-24
 CSU Northridge,20-14
+Siena,23-11
 Montana,18-16
 Fullerton,18-16
 Missouri St,16-18
@@ -201,7 +202,6 @@ Merrimack,23-11
 Texas A&M-CC,18-15
 Queens,21-14
 Fordham,17-15
-Siena,23-12
 Wofford,19-13
 C Arkansas,22-12
 Elon,14-18
@@ -239,11 +239,11 @@ Fairfield,21-13
 Youngstown St,15-17
 GA Southern,21-16
 Harvard,17-12
+Howard,24-10
 Indiana St,11-21
 UC Riverside,10-22
 Alabama A&M,18-15
 Cal Poly,14-19
-Howard,24-11
 Purdue FW,17-15
 W Carolina,15-16
 South Dakota,16-16

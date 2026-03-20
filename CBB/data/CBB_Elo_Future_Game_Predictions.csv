@@ -1,29 +1,18 @@
 team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
 Florida,Prairie View,0.999,0.001,33.4
 Arizona,Long Island,0.999,0.001,33.1
-Michigan,Howard,0.999,0.001,37.1
-Duke,Siena,0.999,0.001,35.2
 Iowa State,Tennessee St,0.996,0.004,27.6
 Houston,Idaho,0.996,0.004,27.1
 UConn,Furman,0.995,0.005,26.5
 Purdue,Queens,0.995,0.005,26.2
 Gonzaga,Kennesaw St,0.994,0.006,25.4
-Nebraska,Troy,0.989,0.011,22.3
-Michigan St,N Dakota St,0.988,0.012,21.9
 Illinois,Penn,0.986,0.014,21
 Virginia,Wright St,0.983,0.017,20.3
 Alabama,Hofstra,0.966,0.034,16.6
-Arkansas,Hawai'i,0.962,0.038,16
 Kansas,CA Baptist,0.936,0.064,13.3
 St John's,Northern Iowa,0.925,0.075,12.4
-Vanderbilt,McNeese,0.925,0.075,12.4
-Wisconsin,High Point,0.895,0.105,10.7
 Texas Tech,Akron,0.871,0.129,9.5
-Louisville,South Florida,0.827,0.173,7.8
-BYU,Texas,0.766,0.234,5.9
-Saint Mary's,Texas A&M,0.759,0.241,5.7
 Miami,Missouri,0.691,0.309,4
-North Carolina,VCU,0.69,0.31,4
 Villanova,Utah State,0.639,0.361,2.8
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
@@ -37,8 +26,11 @@ TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
-Ohio State,TCU,0.509,0.491,0.2
 Tennessee,Miami OH,0.508,0.492,0.2
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
+TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
