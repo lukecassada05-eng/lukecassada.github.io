@@ -1,32 +1,36 @@
 team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
-Florida,Prairie View,0.999,0.001,33.4
+Florida,Prairie View,0.999,0.001,33.6
 Arizona,Long Island,0.999,0.001,33.1
-Iowa State,Tennessee St,0.996,0.004,27.6
-Houston,Idaho,0.996,0.004,27.1
+Iowa State,Tennessee St,0.996,0.004,27.5
 UConn,Furman,0.995,0.005,26.5
-Purdue,Queens,0.995,0.005,26.2
-Gonzaga,Kennesaw St,0.994,0.006,25.4
-Illinois,Penn,0.986,0.014,21
-Virginia,Wright St,0.983,0.017,20.3
+Purdue,Queens,0.995,0.005,26.1
+Virginia,Wright St,0.984,0.016,20.4
+Duke,TCU,0.97,0.03,17.2
 Alabama,Hofstra,0.966,0.034,16.6
-Kansas,CA Baptist,0.936,0.064,13.3
-St John's,Northern Iowa,0.925,0.075,12.4
-Texas Tech,Akron,0.871,0.129,9.5
-Miami,Missouri,0.691,0.309,4
-Villanova,Utah State,0.639,0.361,2.8
+Arkansas,High Point,0.956,0.044,15.3
+Kansas,CA Baptist,0.937,0.063,13.4
+Auburn,Seattle U,0.936,0.064,13.3
+Michigan,Saint Louis,0.93,0.07,12.8
+St John's,Northern Iowa,0.926,0.074,12.5
+Houston,Texas A&M,0.912,0.088,11.6
+Oklahoma St,Wichita St,0.906,0.094,11.2
+California,Saint Joseph's,0.892,0.108,10.5
+Tulsa,UNLV,0.879,0.121,9.9
+Gonzaga,Texas,0.874,0.126,9.6
+Texas Tech,Akron,0.87,0.13,9.4
+New Mexico,G Washington,0.846,0.154,8.5
+Illinois,VCU,0.824,0.176,7.7
+Wake Forest,Illinois St,0.818,0.182,7.5
+Michigan St,Louisville,0.746,0.254,5.3
+Miami,Missouri,0.682,0.318,3.8
+Nevada,Liberty,0.667,0.333,3.5
+Villanova,Utah State,0.636,0.364,2.8
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-Tennessee,Miami OH,0.508,0.492,0.2
+Tennessee,Miami OH,0.517,0.483,0.3
+Nebraska,Vanderbilt,0.512,0.488,0.2
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
@@ -43,15 +47,7 @@ TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-Kentucky,Santa Clara,0.463,0.537,-0.7
-Clemson,Iowa,0.458,0.542,-0.8
-Georgia,Saint Louis,0.454,0.546,-0.9
-UCLA,UCF,0.381,0.619,-2.4
+Kentucky,Santa Clara,0.484,0.516,-0.3
+Clemson,Iowa,0.462,0.538,-0.8
+UCLA,UCF,0.373,0.627,-2.6
+UNC Wilmington,Dayton,0.372,0.628,-2.6
