@@ -1,19 +1,19 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Michigan,2697.2,32-3,Gonzaga,2470.8
-2,Purdue,2434.4,27-8,Michigan,2697.2
-3,Michigan St,2421.5,26-7,Purdue,2434.4
-4,Nebraska,2409.7,27-6,Michigan St,2421.5
-5,Illinois,2383,25-8,Purdue,2434.4
-6,Iowa,2177.7,21-12,Nebraska,2409.7
-7,Ohio State,2144.3,21-13,Purdue,2434.4
-8,Wisconsin,2140.7,24-11,Michigan,2697.2
-9,UCLA,2103.5,23-11,Purdue,2434.4
-10,USC,2052,18-14,Wisconsin,2140.7
-11,Indiana,2011.2,18-14,Purdue,2434.4
-12,Washington,1958,16-17,Ohio State,2144.3
-13,Northwestern,1859,15-19,USC,2052
-14,Minnesota,1820.8,15-17,Michigan St,2421.5
-15,Oregon,1796,12-20,Wisconsin,2140.7
-16,Maryland,1759.7,12-21,Iowa,2177.7
-17,Rutgers,1716.2,14-19,Northwestern,1859
-18,Penn State,1701.3,12-20,Iowa,2177.7
+1,Michigan,2703.9,32-3,Gonzaga,2472.5
+2,Purdue,2443,28-8,Michigan,2703.9
+3,Michigan St,2431.9,26-7,Purdue,2443
+4,Nebraska,2419.8,27-6,Michigan St,2431.9
+5,Illinois,2391.7,25-8,Purdue,2443
+6,Iowa,2190.7,22-12,Nebraska,2419.8
+7,Ohio State,2154.6,21-13,Purdue,2443
+8,Wisconsin,2146.8,24-11,Michigan,2703.9
+9,UCLA,2117.8,24-11,Purdue,2443
+10,USC,2058.5,18-14,Wisconsin,2146.8
+11,Indiana,2017.3,18-14,Purdue,2443
+12,Washington,1964.2,16-17,Ohio State,2154.6
+13,Northwestern,1864.5,15-19,USC,2058.5
+14,Minnesota,1824.1,15-17,Michigan St,2431.9
+15,Oregon,1800.8,12-20,Wisconsin,2146.8
+16,Maryland,1765.3,12-21,Iowa,2190.7
+17,Rutgers,1722,14-19,Northwestern,1864.5
+18,Penn State,1703.4,12-20,Iowa,2190.7

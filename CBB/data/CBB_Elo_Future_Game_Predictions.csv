@@ -1,27 +1,31 @@
 team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
-Florida,Prairie View,0.999,0.001,33.6
-UConn,Furman,0.995,0.005,26.5
-Duke,TCU,0.97,0.03,17.2
-Arkansas,High Point,0.956,0.044,15.3
-Kansas,CA Baptist,0.937,0.063,13.4
-Auburn,Seattle U,0.936,0.064,13.3
-Michigan,Saint Louis,0.93,0.07,12.8
-Houston,Texas A&M,0.912,0.088,11.6
-Oklahoma St,Wichita St,0.906,0.094,11.2
+Duke,TCU,0.97,0.03,17.3
+Arizona,Utah State,0.966,0.034,16.6
+Arkansas,High Point,0.958,0.042,15.5
+Auburn,Seattle U,0.938,0.062,13.5
+Michigan,Saint Louis,0.932,0.068,13
+Houston,Texas A&M,0.911,0.089,11.6
+Oklahoma St,Wichita St,0.907,0.093,11.3
+UConn,UCLA,0.9,0.1,10.9
 California,Saint Joseph's,0.892,0.108,10.5
-Tulsa,UNLV,0.879,0.121,9.9
-Gonzaga,Texas,0.874,0.126,9.6
-New Mexico,G Washington,0.846,0.154,8.5
-Illinois,VCU,0.824,0.176,7.7
-Wake Forest,Illinois St,0.818,0.182,7.5
-Michigan St,Louisville,0.746,0.254,5.3
-Miami,Missouri,0.682,0.318,3.8
-Nevada,Liberty,0.667,0.333,3.5
+Tulsa,UNLV,0.876,0.124,9.7
+Gonzaga,Texas,0.87,0.13,9.4
+New Mexico,G Washington,0.85,0.15,8.6
+Purdue,Miami,0.83,0.17,7.9
+Illinois,VCU,0.829,0.171,7.8
+Iowa State,Kentucky,0.826,0.174,7.7
+Wake Forest,Illinois St,0.82,0.18,7.5
+Florida,Iowa,0.798,0.202,6.8
+Michigan St,Louisville,0.751,0.249,5.5
+Nevada,Liberty,0.673,0.327,3.6
+Alabama,Texas Tech,0.617,0.383,2.4
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
 TBD,TBD,0.592,0.408,1.9
-Nebraska,Vanderbilt,0.512,0.488,0.2
+Virginia,Tennessee,0.576,0.424,1.5
+Kansas,St John's,0.52,0.48,0.4
+Nebraska,Vanderbilt,0.518,0.482,0.4
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
@@ -32,12 +36,4 @@ TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-UNC Wilmington,Dayton,0.372,0.628,-2.6
+UNC Wilmington,Dayton,0.369,0.631,-2.7
