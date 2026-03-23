@@ -1,19 +1,19 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Duke,2765.6,34-2,Michigan,2711.8
-2,Virginia,2344.5,30-5,Louisville,2239.2
-3,Louisville,2239.2,24-11,Miami,2167.8
-4,North Carolina,2234.1,24-9,Duke,2765.6
-5,Miami,2167.8,26-8,Louisville,2239.2
-6,Clemson,2148.6,24-11,Louisville,2239.2
-7,NC State,2145.3,20-14,North Carolina,2234.1
-8,SMU,2140.9,20-14,Louisville,2239.2
-9,Virginia Tech,2074,19-13,Virginia,2344.5
-10,California,2018.1,22-11,North Carolina,2234.1
-11,Stanford,1999.4,20-12,Saint Louis,2247.5
-12,Wake Forest,1957.4,18-16,Clemson,2148.6
-13,Syracuse,1949.1,15-17,Tennessee,2292.7
-14,Notre Dame,1887.6,13-18,TCU,2154.6
-15,Florida St,1833.2,18-15,Miami,2167.8
-16,Pitt,1744.9,13-20,Ohio State,2162.2
-17,Georgia Tech,1628.7,11-20,NC State,2145.3
-18,Boston College,1600.9,11-20,Wake Forest,1957.4
+1,Duke,2754.9,34-2,Michigan,2712.2
+2,Virginia,2322,30-6,Louisville,2232.6
+3,Louisville,2232.6,24-11,Kentucky,2164
+4,North Carolina,2226.3,24-9,Duke,2754.9
+5,Miami,2154.9,26-9,Louisville,2232.6
+6,Clemson,2140.3,24-11,Louisville,2232.6
+7,NC State,2140,20-14,North Carolina,2226.3
+8,SMU,2136.1,20-14,Louisville,2232.6
+9,Virginia Tech,2068.4,19-13,Virginia,2322
+10,California,2006.2,22-12,North Carolina,2226.3
+11,Stanford,1991.8,20-12,Saint Louis,2246.5
+12,Wake Forest,1945.2,18-17,Clemson,2140.3
+13,Syracuse,1941.7,15-17,Tennessee,2296.9
+14,Notre Dame,1882.3,13-18,TCU,2140.1
+15,Florida St,1826.9,18-15,Miami,2154.9
+16,Pitt,1739.5,13-20,Ohio State,2160.9
+17,Georgia Tech,1626.3,11-20,NC State,2140
+18,Boston College,1599,11-20,Wake Forest,1945.2

@@ -1,22 +1,17 @@
 team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
-Michigan,TBD,0.999,0.001,34.6
-Duke,TBD,0.999,0.001,36.2
-Oklahoma St,Wichita St,0.909,0.091,11.4
-UConn,UCLA,0.901,0.099,10.9
-California,Saint Joseph's,0.892,0.108,10.5
-New Mexico,G Washington,0.853,0.147,8.7
-Houston,Illinois,0.612,0.388,2.3
-Alabama,Texas Tech,0.611,0.389,2.3
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
-TBD,TBD,0.592,0.408,1.9
+Duke,St John's,0.943,0.057,13.9
+New Mexico,Saint Joseph's,0.919,0.081,12.1
+Arizona,Arkansas,0.912,0.088,11.6
+Michigan,Alabama,0.889,0.111,10.3
+Auburn,Nevada,0.876,0.124,9.7
+Purdue,Texas,0.849,0.151,8.6
+Dayton,Illinois St,0.818,0.182,7.4
+Tulsa,Wichita St,0.795,0.205,6.7
+Nebraska,Iowa,0.794,0.206,6.7
+Iowa State,Tennessee,0.687,0.313,3.9
+UConn,Michigan St,0.596,0.404,1.9
+Houston,Illinois,0.592,0.408,1.8
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,Texas,0.023,0.977,-18.6

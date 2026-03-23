@@ -1,11 +1,11 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Navy,1551.8,26-8,American,1454
-2,American,1454,16-16,Penn,1645.9
-3,Colgate,1453.9,18-15,Siena,1517.7
-4,Boston U,1237.8,17-17,Navy,1551.8
-5,Bucknell,1225.1,10-23,American,1454
-6,Lehigh,1215,18-17,American,1454
-7,Holy Cross,1177.9,11-22,Fordham,1508.9
-8,Lafayette,1136.4,11-21,American,1454
-9,Army,1128,11-21,UMBC,1446.7
-10,Loyola MD,1113.7,12-20,American,1454
+1,Navy,1551.1,26-8,Colgate,1453.5
+2,Colgate,1453.5,18-15,Siena,1517.6
+3,American,1453.1,16-16,Penn,1646.2
+4,Boston U,1237.4,17-17,Navy,1551.1
+5,Bucknell,1224.9,10-23,American,1453.1
+6,Lehigh,1214.5,18-17,Colgate,1453.5
+7,Holy Cross,1177.5,11-22,Fordham,1508.3
+8,Lafayette,1136.2,11-21,Colgate,1453.5
+9,Army,1127.6,11-21,UMBC,1446.8
+10,Loyola MD,1113.4,12-20,American,1453.1
