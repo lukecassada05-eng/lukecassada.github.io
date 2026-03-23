@@ -1,47 +1,47 @@
 team,proj_record
 Duke,35-2
-Arizona,34-2
+Arizona,33-2
 Michigan,34-3
 UConn,30.9-5.1
 Houston,30.6-6.4
-Purdue,28.8-8.2
-Iowa State,28.8-7.2
+Purdue,28-8
 Gonzaga,31-4
 Michigan St,27-7
-Florida,27.8-7.2
+Iowa State,28-7
 Nebraska,28-6
+Florida,27-7
 Vanderbilt,27-9
 Illinois,26.4-8.6
-Virginia,30.6-5.4
 Alabama,24.6-9.4
+Virginia,30-5
 Arkansas,28-8
 BYU,23-12
-Tennessee,23.4-11.6
-Kansas,24.5-10.5
+Tennessee,23-11
+Kansas,24-10
 Texas Tech,23.4-10.6
-St John's,29.5-6.5
+St John's,29-6
 Saint Louis,29-6
 Louisville,24-11
 North Carolina,24-9
 Villanova,24-9
-Auburn,18.9-16.1
+Auburn,18-16
 Saint Mary's,27-6
 Georgia,22-11
+Iowa,22-12
 UCF,21-12
-Iowa,22.2-12.8
 Miami OH,32-2
+Miami,26-8
 Texas,22-14
+Kentucky,22-13
 Ohio State,21-13
-Miami,26.2-8.8
 Santa Clara,26-9
-Kentucky,22.2-13.8
 TCU,23-12
 Wisconsin,24-11
+Utah State,29-6
 Clemson,24-11
 NC State,20-14
 Oklahoma St,20.9-14.1
 SMU,20-14
-Utah State,29-7
 VCU,28-8
 UCLA,24.1-11.9
 Seton Hall,21-12
@@ -61,13 +61,13 @@ Oklahoma,19.5-15.5
 LSU,15-17
 Arizona St,17-16
 Stanford,20.4-12.6
-Tulsa,27.9-7.1
+Tulsa,27-7
 Washington,16-17
 Boise St,20-12
-Wake Forest,18.8-16.2
 Dayton,25-11
 Belmont,26-6
 South Florida,25-9
+Wake Forest,18-16
 McNeese,28-6
 George Mason,23-10
 Syracuse,15-17
@@ -100,17 +100,17 @@ Davidson,20-14
 Oregon,12-20
 Murray St,20-13
 CA Baptist,25-9
+Seattle U,21-13
 UNC Wilmington,27-7
 San Francisco,17-16
 DePaul,16-16
 Wichita St,23.1-11.9
-Seattle U,21.1-13.9
 High Point,31-5
 FAU,18-15
 Maryland,12-21
 Kent State,24-10
+Illinois St,21-12
 Hawai'i,24-9
-Illinois St,21.2-12.8
 St Bonaventure,17-17
 Hofstra,24-11
 UAB,20-12
@@ -124,8 +124,8 @@ Marquette,12-20
 William & Mary,20-12
 Rhode Island,16-16
 Penn State,12-20
+UNLV,18-16
 Saint Joseph's,23.1-11.9
-UNLV,18.1-16.9
 Arkansas St,20-12
 Pacific,18-15
 UC Irvine,23-12
