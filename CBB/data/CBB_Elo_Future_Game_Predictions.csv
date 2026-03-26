@@ -1,17 +1,16 @@
 team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
 Duke,St John's,0.943,0.057,13.9
-Arizona,Arkansas,0.912,0.088,11.6
-Michigan,Alabama,0.889,0.111,10.3
-Auburn,Nevada,0.875,0.125,9.7
+Arizona,Arkansas,0.911,0.089,11.6
+Michigan,Alabama,0.888,0.112,10.3
 Purdue,Texas,0.849,0.151,8.6
 Nebraska,Iowa,0.794,0.206,6.7
-Iowa State,Tennessee,0.687,0.313,3.9
+Iowa State,Tennessee,0.686,0.314,3.9
 UConn,Michigan St,0.596,0.404,1.9
 Houston,Illinois,0.592,0.408,1.8
-Colorado,Oklahoma,0.526,0.474,0.5
+Colorado,Oklahoma,0.524,0.476,0.5
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
-Tulsa,New Mexico,0.383,0.617,-2.4
+Tulsa,New Mexico,0.385,0.615,-2.3
 Minnesota,Baylor,0.222,0.778,-6.2

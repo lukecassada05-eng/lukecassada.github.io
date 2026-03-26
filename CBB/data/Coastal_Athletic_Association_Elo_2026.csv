@@ -1,14 +1,14 @@
 rank,team,rating,record,best_win,best_win_elo
-1,UNC Wilmington,1794.4,27-7,Yale,1879.3
-2,Hofstra,1747.2,24-11,Syracuse,1941.2
-3,William & Mary,1707.5,20-12,UNC Wilmington,1794.4
-4,Charleston,1608.3,21-11,UNC Wilmington,1794.4
-5,Towson,1584.6,19-15,Liberty,1864.4
-6,Campbell,1536.7,16-18,UNC Wilmington,1794.4
-7,Elon,1487.5,14-18,Hofstra,1747.2
-8,Stony Brook,1471.5,17-15,Hofstra,1747.2
-9,Monmouth,1446,19-15,William & Mary,1707.5
-10,Drexel,1435.7,17-16,William & Mary,1707.5
-11,Northeastern,1306.2,7-24,Duquesne,1679.6
-12,Hampton,1296.6,13-19,William & Mary,1707.5
-13,NC A&T,1292.7,11-19,Hofstra,1747.2
+1,UNC Wilmington,1793,27-7,Yale,1879.5
+2,Hofstra,1746.6,24-11,Syracuse,1940.8
+3,William & Mary,1706.6,20-12,UNC Wilmington,1793
+4,Charleston,1608.7,21-11,UNC Wilmington,1793
+5,Towson,1583.9,19-15,Liberty,1863.8
+6,Campbell,1536.4,16-18,UNC Wilmington,1793
+7,Elon,1487.1,14-18,Hofstra,1746.6
+8,Stony Brook,1471,17-15,Hofstra,1746.6
+9,Monmouth,1445.3,19-15,William & Mary,1706.6
+10,Drexel,1434.8,17-16,William & Mary,1706.6
+11,Northeastern,1305.6,7-24,Duquesne,1676.5
+12,Hampton,1296.2,13-19,William & Mary,1706.6
+13,NC A&T,1292.2,11-19,Hofstra,1746.6
