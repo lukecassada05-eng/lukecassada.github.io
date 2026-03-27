@@ -1,20 +1,20 @@
 team,proj_record
 Duke,34.9-2.1
-Arizona,34.9-2.1
+Arizona,35.8-2.2
 Michigan,33.9-3.1
 UConn,31.6-5.4
-Houston,30.6-6.4
-Purdue,29-8
+Houston,30-7
 Gonzaga,31-4
+Purdue,30.2-8.8
 Michigan St,27.4-7.6
 Iowa State,29.7-7.3
-Nebraska,28-6
+Nebraska,28-7
 Florida,27-8
+Illinois,27.8-8.2
 Vanderbilt,27-9
-Illinois,26.4-8.6
 Alabama,25.1-9.9
+Arkansas,28-9
 Virginia,30-6
-Arkansas,28.1-8.9
 BYU,23-12
 Tennessee,24.3-11.7
 Kansas,24-11
@@ -26,20 +26,20 @@ Villanova,24-9
 Auburn,20.9-16.1
 North Carolina,24-9
 Saint Mary's,27-6
-Iowa,23-12
+Iowa,24.2-12.8
 Georgia,22-11
 Miami OH,32-2
 UCF,21-12
-Kentucky,22-14
 Ohio State,21-13
+Kentucky,22-14
 Santa Clara,26-9
 Utah State,29-7
 Miami,26-9
-Texas,21-14
 Wisconsin,24-11
+Texas,21-15
 Clemson,24-11
-TCU,23-12
 NC State,20-14
+TCU,23-12
 SMU,20-14
 UCLA,24-12
 Oklahoma St,20-15
@@ -47,8 +47,8 @@ VCU,28-8
 Seton Hall,21-12
 New Mexico,26.6-10.4
 San Diego St,22-11
-Texas A&M,22-12
 Virginia Tech,19-13
+Texas A&M,22-12
 USC,18-14
 Baylor,16.8-16.2
 West Virginia,18.6-14.4
@@ -82,16 +82,16 @@ Providence,15-18
 Notre Dame,13-18
 Yale,24-7
 SF Austin,28-6
-Kansas St,12-20
 Grand Canyon,20-12
+Kansas St,12-20
 Northwestern,15-19
 Ole Miss,15-20
 Liberty,26-8
 Mississippi St,13-19
 Wyoming,18-15
 South Carolina,13-19
-Florida St,18-15
 G Washington,19-16
+Florida St,18-15
 Northern Iowa,23-13
 Wichita St,24-12
 Minnesota,15.2-17.8
@@ -148,8 +148,8 @@ Penn,18-12
 Western KY,18-14
 Bradley,21-13
 Buffalo,17-15
-New Mexico St,16-16
 Toledo,19-15
+New Mexico St,16-16
 Washington St,12-20
 Troy,22-12
 Temple,16-16
@@ -236,8 +236,8 @@ Texas St,19-13
 Drexel,17-16
 Samford,18-14
 Fairfield,21-13
-GA Southern,21-16
 Youngstown St,15-17
+GA Southern,21-16
 Harvard,17-12
 Indiana St,11-21
 Howard,24-11
@@ -326,8 +326,8 @@ Oral Roberts,10-23
 Jackson St,12-21
 Holy Cross,11-22
 Brown,9-18
-Norfolk St,15-17
 New Haven,14-17
+Norfolk St,15-17
 UMass Lowell,15-18
 Ball State,12-19
 Texas Southern,12-18
@@ -387,8 +387,8 @@ Cent St OH,0-2
 Brescia,0-2
 Averett,0-2
 Ohio Weslyan,0-2
-Pfeiffer,0-2
 UC Santa Cruz,0-2
+Pfeiffer,0-2
 Tougaloo,0-2
 St Mary's (MD),0-2
 Mount Marty,0-2
@@ -519,16 +519,16 @@ Old Westbury,0-1
 Minn Crook,0-1
 Christian Bros,0-1
 DeSales,0-1
-Schreiner,0-1
 Arcadia,0-1
+Schreiner,0-1
 Northwest U,0-1
-Colorado Coll,0-1
 LeTourneau,0-1
+Colorado Coll,0-1
 Vassar,0-1
 Centenary (NJ),0-1
 MD West St,0-1
-Lynchburg,0-1
 St Mary's,0-1
+Lynchburg,0-1
 Park U Gilbert,0-1
 Pit Greensburg,0-1
 Kansas Chrstn,0-1
@@ -543,8 +543,8 @@ PSU York,0-1
 S Arkansas,0-1
 CINCYCLER,0-1
 Wash and Lee,0-1
-Redlands,0-1
 MO So St,0-1
+Redlands,0-1
 Dist Columbia,0-1
 Ripon,0-1
 Lourdes,0-1
@@ -552,8 +552,8 @@ Franklin,0-1
 Clinton,0-1
 George Fox,0-1
 Cumberland,0-1
-Hawai'i Hilo,0-1
 WVU Tech,0-1
+Hawai'i Hilo,0-1
 UNT Dallas,0-1
 Paine,0-1
 N Central (IL),0-1
@@ -562,15 +562,15 @@ PSU Hazleton,0-1
 AU Montgomery,0-1
 Baptist (Fl),0-1
 Mt Saint Mary,0-1
-Pacific Union,0-1
 Puget Sound,0-1
+Pacific Union,0-1
 Wilson,0-1
 Wilms Baptist,0-1
 Piedmont,0-1
 Missouri Bapt,0-1
 Mid Am Chr,0-1
-Marywood,0-1
 Rowan,0-1
+Marywood,0-1
 Trinity Tx,0-1
 Rob. Wesleyan,0-1
 Arkansas Tech,0-1
@@ -595,8 +595,8 @@ Belmont Abbey,0-1
 Concordia (NE),0-1
 McKendree,0-1
 Holy Cross Col,0-1
-Culver Stock,0-1
 SUNY Canton,0-1
+Culver Stock,0-1
 Fresno Pacific,0-1
 Willamette,0-1
 St. Francis IL,0-1
@@ -625,21 +625,21 @@ Sci & Arts OK,0-1
 Bluefield,0-1
 AK-Anchorage,0-1
 EMERSON,0-1
-SalishKootenai,0-1
 Boyce,0-1
+SalishKootenai,0-1
 Centenary (LA),0-1
 Lewis & Clark,0-1
 St John Fisher,0-1
 NW Okla St,0-1
-Berea,0-1
 PSU Behrend,0-1
+Berea,0-1
 Caldwell,0-1
 Harris Stowe,0-1
 Simpson (CA),0-1
-W Montana,0-1
 Truett McCnnll,0-1
-Voorhees,0-1
+W Montana,0-1
 Dkta Wesleyan,0-1
+Voorhees,0-1
 Widener,0-1
 Pacif. Lutheran,0-1
 Apprentice,0-1
@@ -674,15 +674,15 @@ Mayville St,0-1
 John Jay,0-1
 Regis College,0-1
 PSU New Kens,0-1
-Southwest,0-1
 Valley Forge,0-1
+Southwest,0-1
 SUNY Coble,0-1
 John Brown,0-1
 Western NM,0-1
 Merch Marn,0-1
+Lehman,0-1
 Blackburn,0-1
 VT-Lyndon,0-1
-Lehman,0-1
 Fort Valley St,0-1
 Rivier,0-1
 Allegheny,0-1
