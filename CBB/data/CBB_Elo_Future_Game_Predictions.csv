@@ -1,15 +1,14 @@
 team_1,team_2,team_1_win_pct,team_2_win_pct,projected_spread
+Arizona,TBD,0.999,0.001,35.7
 Auburn,Illinois St,0.929,0.071,12.7
-Michigan,Tennessee,0.916,0.084,11.9
-Arizona,Purdue,0.835,0.165,8
-Duke,UConn,0.802,0.198,6.9
-Creighton,Rutgers,0.767,0.233,5.9
-West Virginia,Stanford,0.551,0.449,1
+Michigan,Tennessee,0.915,0.085,11.8
+Duke,UConn,0.8,0.2,6.9
+Creighton,Rutgers,0.768,0.232,5.9
+West Virginia,Stanford,0.552,0.448,1
 Colorado,Oklahoma,0.52,0.48,0.4
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
 TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
-TBD,TBD,0.5,0.5,0
 Tulsa,New Mexico,0.386,0.614,-2.3
-Minnesota,Baylor,0.228,0.772,-6
+Minnesota,Baylor,0.227,0.773,-6.1
+TBD,Illinois,0.005,0.995,-26.4

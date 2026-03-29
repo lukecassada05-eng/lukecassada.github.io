@@ -1,15 +1,15 @@
 team,proj_record
 Duke,35.8-2.2
-Arizona,35.8-2.2
+Arizona,37-2
 Michigan,34.9-3.1
 UConn,32.2-5.8
 Houston,30-7
 Gonzaga,31-4
-Purdue,30.2-8.8
+Purdue,30-9
+Illinois,29-8
 Michigan St,27-8
 Florida,27-8
 Nebraska,28-7
-Illinois,27-8
 Iowa State,29-8
 Vanderbilt,27-9
 Alabama,25-10
@@ -25,15 +25,15 @@ Louisville,24-11
 Villanova,24-9
 Auburn,20.9-16.1
 North Carolina,24-9
-Iowa,24-12
 Saint Mary's,27-6
-Miami OH,32-2
+Iowa,24-13
 Georgia,22-11
+Miami OH,32-2
 UCF,21-12
-Ohio State,21-13
 Kentucky,22-14
-Santa Clara,26-9
+Ohio State,21-13
 Utah State,29-7
+Santa Clara,26-9
 Miami,26-9
 Texas,21-15
 Wisconsin,24-11
@@ -47,8 +47,8 @@ VCU,28-8
 Seton Hall,21-12
 New Mexico,26.6-10.4
 San Diego St,22-11
-Virginia Tech,19-13
 Texas A&M,22-12
+Virginia Tech,19-13
 USC,18-14
 Baylor,16.8-16.2
 Missouri,20-13
@@ -56,8 +56,8 @@ West Virginia,18.6-14.4
 Indiana,18-14
 Colorado,17.5-15.5
 Cincinnati,18-15
-California,22-12
 LSU,15-17
+California,22-12
 Oklahoma,19.5-15.5
 Tulsa,29.4-7.6
 Arizona St,17-16
@@ -318,8 +318,8 @@ Canisius,10-21
 N'Western St,10-22
 SE Louisiana,9-22
 Bakersfield,8-24
-Little Rock,12-20
 UTSA,5-25
+Little Rock,12-20
 Alabama St,10-22
 Louisiana,11-22
 Oral Roberts,10-23
@@ -418,8 +418,8 @@ Texas A&M-SA,0-2
 Dallas,0-2
 NW Indian,0-3
 Jarvis Chrstn,0-2
-Defiance,0-2
 Dakota St,0-3
+Defiance,0-2
 William Carey,0-2
 Eureka,0-2
 Coastal GA,0-3
@@ -562,15 +562,15 @@ PSU Hazleton,0-1
 AU Montgomery,0-1
 Baptist (Fl),0-1
 Mt Saint Mary,0-1
-Puget Sound,0-1
 Pacific Union,0-1
+Puget Sound,0-1
 Wilson,0-1
 Wilms Baptist,0-1
 Piedmont,0-1
 Missouri Bapt,0-1
+Rowan,0-1
 Mid Am Chr,0-1
 Marywood,0-1
-Rowan,0-1
 Trinity Tx,0-1
 Rob. Wesleyan,0-1
 Arkansas Tech,0-1
@@ -594,8 +594,8 @@ Campbellsville,0-1
 Belmont Abbey,0-1
 Concordia (NE),0-1
 McKendree,0-1
-Holy Cross Col,0-1
 SUNY Canton,0-1
+Holy Cross Col,0-1
 Culver Stock,0-1
 Fresno Pacific,0-1
 Willamette,0-1
@@ -616,8 +616,8 @@ Tiffin,0-1
 Bloomsburg,0-1
 Jessup,0-1
 William Peace,0-1
-Cameron,0-1
 Northern NM,0-1
+Cameron,0-1
 Sarah Lawrence,0-1
 Kean,0-1
 UC Col Springs,0-1
@@ -625,10 +625,10 @@ Sci & Arts OK,0-1
 Bluefield,0-1
 AK-Anchorage,0-1
 EMERSON,0-1
-SalishKootenai,0-1
 Boyce,0-1
-Lewis & Clark,0-1
+SalishKootenai,0-1
 Centenary (LA),0-1
+Lewis & Clark,0-1
 St John Fisher,0-1
 NW Okla St,0-1
 PSU Behrend,0-1
@@ -638,8 +638,8 @@ Harris Stowe,0-1
 Simpson (CA),0-1
 Truett McCnnll,0-1
 W Montana,0-1
-Voorhees,0-1
 Dkta Wesleyan,0-1
+Voorhees,0-1
 Widener,0-1
 Pacif. Lutheran,0-1
 Apprentice,0-1
