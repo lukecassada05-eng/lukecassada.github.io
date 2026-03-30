@@ -1,39 +1,39 @@
 team,proj_record
-Arizona,37-2
-Duke,35-2
-Michigan,34-3
-UConn,32-5
+Arizona,36.5-2.5
+Duke,35-3
+Michigan,35.5-3.5
+UConn,33.6-5.4
 Houston,30-7
 Gonzaga,31-4
 Purdue,30-9
-Illinois,29-8
 Michigan St,27-8
 Florida,27-8
 Nebraska,28-7
+Illinois,28.4-8.6
 Iowa State,29-8
 Vanderbilt,27-9
 Alabama,25-10
 Arkansas,28-9
 Virginia,30-6
-Tennessee,25-11
 BYU,23-12
+Tennessee,25-12
 St John's,30-7
 Kansas,24-11
 Texas Tech,23-11
 Saint Louis,29-6
-Louisville,24-11
 Villanova,24-9
+Louisville,24-11
 Auburn,20.9-16.1
 North Carolina,24-9
-Saint Mary's,27-6
 Iowa,24-13
+Saint Mary's,27-6
 Georgia,22-11
 Miami OH,32-2
 UCF,21-12
 Kentucky,22-14
 Ohio State,21-13
-Utah State,29-7
 Santa Clara,26-9
+Utah State,29-7
 Miami,26-9
 Texas,21-15
 Wisconsin,24-11
@@ -59,8 +59,8 @@ Cincinnati,18-15
 LSU,15-17
 California,22-12
 Oklahoma,19.5-15.5
-Tulsa,29.4-7.6
 Arizona St,17-16
+Tulsa,29.4-7.6
 Stanford,20.4-12.6
 Belmont,26-6
 South Florida,25-9
@@ -90,8 +90,8 @@ Liberty,26-8
 Mississippi St,13-19
 Wyoming,18-15
 South Carolina,13-19
-Florida St,18-15
 G Washington,19-16
+Florida St,18-15
 Northern Iowa,23-13
 Wichita St,24-12
 Minnesota,15.2-17.8
@@ -100,8 +100,8 @@ UC San Diego,23-11
 Murray St,20-13
 Davidson,20-14
 Oregon,12-20
-CA Baptist,25-9
 DePaul,16-16
+CA Baptist,25-9
 Seattle U,21-14
 UNC Wilmington,27-7
 San Francisco,17-16
@@ -130,8 +130,8 @@ Arkansas St,20-12
 Pacific,18-15
 UC Irvine,23-12
 North Texas,19-14
-Marshall,19-13
 Duquesne,18-15
+Marshall,19-13
 UC Davis,19-14
 LMU,15-17
 ETSU,23-11
@@ -318,8 +318,8 @@ Canisius,10-21
 N'Western St,10-22
 SE Louisiana,9-22
 Bakersfield,8-24
-UTSA,5-25
 Little Rock,12-20
+UTSA,5-25
 Alabama St,10-22
 Louisiana,11-22
 Oral Roberts,10-23
@@ -391,8 +391,8 @@ UC Santa Cruz,0-2
 Pfeiffer,0-2
 Tougaloo,0-2
 St Mary's (MD),0-2
-IU East,0-2
 Mount Marty,0-2
+IU East,0-2
 Life Pacific,0-2
 Evergreen,0-2
 Illinois Tech,0-2
@@ -403,8 +403,8 @@ Columbia (SC),0-2
 CO Christian,0-2
 Blue Mountain,0-2
 Howard Payne,0-2
-Rhodes,0-2
 Elizabeth City,0-2
+Rhodes,0-2
 Webster,0-2
 Columbia Int'l,0-2
 Bethany (WV),0-2
@@ -522,8 +522,8 @@ DeSales,0-1
 Arcadia,0-1
 Schreiner,0-1
 Northwest U,0-1
-LeTourneau,0-1
 Colorado Coll,0-1
+LeTourneau,0-1
 Vassar,0-1
 Centenary (NJ),0-1
 MD West St,0-1
@@ -540,8 +540,8 @@ Mobile,0-1
 Doane,0-1
 Manhatnvll,0-1
 PSU York,0-1
-CINCYCLER,0-1
 S Arkansas,0-1
+CINCYCLER,0-1
 Wash and Lee,0-1
 MO So St,0-1
 Redlands,0-1
@@ -562,8 +562,8 @@ PSU Hazleton,0-1
 AU Montgomery,0-1
 Baptist (Fl),0-1
 Mt Saint Mary,0-1
-Pacific Union,0-1
 Puget Sound,0-1
+Pacific Union,0-1
 Wilson,0-1
 Wilms Baptist,0-1
 Piedmont,0-1
@@ -609,11 +609,11 @@ Regis U,0-1
 Miami Hamilton,0-1
 Warner Pac,0-1
 Lyon,0-1
-Albany St,0-1
 Peru State,0-1
+Albany St,0-1
 Bryant Str OH,0-1
-Tiffin,0-1
 Bloomsburg,0-1
+Tiffin,0-1
 Jessup,0-1
 William Peace,0-1
 Northern NM,0-1
@@ -660,8 +660,8 @@ Occidental,0-1
 WV Wesleyan,0-1
 York (NE),0-1
 Fisher,0-1
-Greensboro,0-1
 Lncstr Bible,0-1
+Greensboro,0-1
 Paul Quinn,0-1
 LA Christian,0-1
 Randolph,0-1
