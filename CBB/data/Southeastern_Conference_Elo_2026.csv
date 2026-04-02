@@ -1,17 +1,17 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Florida,2433.2,27-8,Vanderbilt,2405.3
-2,Vanderbilt,2405.3,27-9,Florida,2433.2
-3,Alabama,2354.3,25-10,Illinois,2427.2
-4,Arkansas,2326.5,28-9,Vanderbilt,2405.3
-5,Tennessee,2306.4,25-12,Houston,2454
-6,Auburn,2217.7,20-16,Florida,2433.2
-7,Georgia,2195.4,22-11,Alabama,2354.3
-8,Kentucky,2165.2,22-14,Vanderbilt,2405.3
-9,Texas,2153.2,21-15,Gonzaga,2449.3
-10,Texas A&M,2067.2,22-12,Auburn,2217.7
-11,Missouri,2031.2,20-13,Florida,2433.2
-12,LSU,2006.2,15-17,SMU,2136.8
-13,Oklahoma,2001.8,19-15,Vanderbilt,2405.3
-14,Ole Miss,1868.3,15-20,Alabama,2354.3
-15,Mississippi St,1855.4,13-19,Auburn,2217.7
-16,South Carolina,1826.9,13-19,LSU,2006.2
+1,Florida,2435.3,27-8,Vanderbilt,2407.1
+2,Vanderbilt,2407.1,27-9,Florida,2435.3
+3,Alabama,2355.6,25-10,Illinois,2427
+4,Arkansas,2328.6,28-9,Vanderbilt,2407.1
+5,Tennessee,2308.5,25-12,Houston,2454.4
+6,Auburn,2219.9,20-16,Florida,2435.3
+7,Georgia,2198,22-11,Alabama,2355.6
+8,Kentucky,2166.8,22-14,Vanderbilt,2407.1
+9,Texas,2156,21-15,Gonzaga,2449.9
+10,Texas A&M,2070,22-12,Auburn,2219.9
+11,Missouri,2032.7,20-13,Florida,2435.3
+12,LSU,2008.1,15-17,SMU,2137.9
+13,Oklahoma,2006.5,20-15,Vanderbilt,2407.1
+14,Ole Miss,1870.6,15-20,Alabama,2355.6
+15,Mississippi St,1857.4,13-19,Auburn,2219.9
+16,South Carolina,1829.3,13-19,LSU,2008.1
