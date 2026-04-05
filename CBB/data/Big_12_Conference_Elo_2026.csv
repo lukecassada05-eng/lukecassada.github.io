@@ -1,17 +1,17 @@
 rank,team,rating,record,best_win,best_win_elo
-1,Arizona,2752.7,36-2,UConn,2532.1
-2,Houston,2457.6,30-7,Arkansas,2330
-3,Iowa State,2421.8,29-8,Houston,2457.6
-4,BYU,2309.9,23-12,Iowa State,2421.8
-5,Kansas,2259,24-11,Arizona,2752.7
-6,Texas Tech,2245.1,23-11,Arizona,2752.7
-7,UCF,2178.3,21-12,BYU,2309.9
-8,TCU,2136.4,23-12,Florida,2436.7
-9,Oklahoma St,2115.7,20-15,BYU,2309.9
-10,Baylor,2044.4,17-16,UCF,2178.3
-11,West Virginia,2033.7,19-14,BYU,2309.9
-12,Colorado,2014.3,17-16,TCU,2136.4
-13,Cincinnati,2013.1,18-15,Iowa State,2421.8
-14,Arizona St,1993.4,17-16,Kansas,2259
-15,Kansas St,1873.9,12-20,Baylor,2044.4
-16,Utah,1736,10-22,TCU,2136.4
+1,Arizona,2715.7,36-3,UConn,2537.1
+2,Houston,2454.6,30-7,Arkansas,2332.8
+3,Iowa State,2419.6,29-8,Houston,2454.6
+4,BYU,2309.2,23-12,Iowa State,2419.6
+5,Kansas,2258.8,24-11,Arizona,2715.7
+6,Texas Tech,2244.2,23-11,Duke,2749.8
+7,UCF,2178.4,21-12,BYU,2309.2
+8,TCU,2134.1,23-12,Florida,2438.3
+9,Oklahoma St,2116,20-15,BYU,2309.2
+10,Baylor,2037.1,17-17,UCF,2178.4
+11,West Virginia,2036.3,20-14,BYU,2309.2
+12,Colorado,2013.1,17-16,TCU,2134.1
+13,Cincinnati,2011.9,18-15,Iowa State,2419.6
+14,Arizona St,1992.9,17-16,Kansas,2258.8
+15,Kansas St,1872.3,12-20,Baylor,2037.1
+16,Utah,1734.8,10-22,TCU,2134.1
